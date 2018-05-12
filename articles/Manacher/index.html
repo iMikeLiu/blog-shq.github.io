@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, Shq, Algorithm" />
+  <meta name="keywords" content="Algorithm,字符串,最长回文子串,Manacher,算法," />
 
 
 
@@ -92,17 +92,22 @@
 
 
 
-<meta name="description" content="并非所有流浪者都迷失了自我">
+<meta name="description" content="最长回文子串问题：给定一个字符串，求它的最长回文子串长度 我们有两种办法去解决这个问题: 暴力枚举 $+$ 优化 $\rightarrow$ $O(n^2)$Manacher算法 $\rightarrow$ $O(n)$">
+<meta name="keywords" content="Algorithm,字符串,最长回文子串,Manacher,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Manacher">
 <meta property="og:url" content="https://blog.ishq.site/articles/Manacher/index.html">
 <meta property="og:site_name" content="Shq&#39;s Blog">
-<meta property="og:description" content="并非所有流浪者都迷失了自我">
+<meta property="og:description" content="最长回文子串问题：给定一个字符串，求它的最长回文子串长度 我们有两种办法去解决这个问题: 暴力枚举 $+$ 优化 $\rightarrow$ $O(n^2)$Manacher算法 $\rightarrow$ $O(n)$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-12T00:05:34.058Z">
+<meta property="og:image" content="http://img.blog.csdn.net/20141221160212654">
+<meta property="og:image" content="http://img.blog.csdn.net/20141221160232375">
+<meta property="og:image" content="http://img.blog.csdn.net/20141221160247614">
+<meta property="og:updated_time" content="2018-05-12T03:25:29.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Manacher">
-<meta name="twitter:description" content="并非所有流浪者都迷失了自我">
+<meta name="twitter:description" content="最长回文子串问题：给定一个字符串，求它的最长回文子串长度 我们有两种办法去解决这个问题: 暴力枚举 $+$ 优化 $\rightarrow$ $O(n^2)$Manacher算法 $\rightarrow$ $O(n)$">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20141221160212654">
 
 
 
@@ -260,22 +265,22 @@
         </li>
       
         
-        <li class="menu-item menu-item-shq's-2048">
+        <li class="menu-item menu-item-game">
           <a href="/2048/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-trophy"></i> <br />
             
-            Shq's 2048
+            Game
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-shq's-gobang">
-          <a href="/Five/" rel="section">
+        <li class="menu-item menu-item-shq's-oj">
+          <a href="/shq-s-oj/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
             
-            Shq's Gobang
+            Shq's OJ
           </a>
         </li>
       
@@ -386,6 +391,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">属于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/《算法详解》/" itemprop="url" rel="index">
+                    <span itemprop="name">《算法详解》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -413,7 +440,102 @@
       
 
       
-        
+        <p><strong>最长回文子串问题：给定一个字符串，求它的最长回文子串长度</strong></p>
+<p>我们有两种办法去解决这个问题:</p>
+<p>暴力枚举 $+$ 优化 $\rightarrow$ $O(n^2)$<br>Manacher算法 $\rightarrow$ $O(n)$</p>
+<a id="more"></a>
+<p>回文串: 如果一个字符串正着读和反着读是一样的，那它就是回文串</p>
+<p>栗子: <code>aba</code> , <code>asddsa</code> , <code>123432234321</code> , <code>aa</code></p>
+<p>上述就是几个回文串</p>
+<p>回文子串: 它的所有字串中有回文串</p>
+<p>栗子: <code>aas</code>, <code>adas</code>, <code>sdsasdp</code></p>
+<blockquote>
+<p>注意: 回文子串的长度可能为奇数，也可能为偶数</p>
+</blockquote>
+<h2 id="暴力"><a href="#暴力" class="headerlink" title="暴力"></a>暴力</h2><p>对于最长回文子串问题，最简单粗暴的办法是：找到字符串的所有子串，遍历每一个子串以验证它们是否为回文串。一个子串由子串的起点和终点确定，因此对于一个长度为n的字符串，共有$n^2$个子串。这些子串的平均长度大约是$n\over 2$，因此这个解法的时间复杂度是$O(n^3)$</p>
+<h2 id="暴力优化"><a href="#暴力优化" class="headerlink" title="暴力优化"></a>暴力优化</h2><p>显然所有的回文串都是对称的。长度为奇数回文串以最中间字符的位置为对称轴左右对称，而长度为偶数的回文串的对称轴在中间两个字符之间的空隙。可否利用这种对称性来提高算法效率呢？</p>
+<p>答案是肯定的。我们知道整个字符串中的所有字符，以及字符间的空隙，都可能是某个回文子串的对称轴位置。可以遍历这些位置，在每个位置上同时向左和向右扩展，直到左右两边的字符不同，或者达到边界。对于一个长度为$n$的字符串，这样的位置一共有$n+n-1=2n-1$个，在每个位置上平均大约要进行$n\over 4$次字符比较，于是此算法的时间复杂度是$O(n^2)$</p>
+<hr>
+<h2 id="Manacher-算法"><a href="#Manacher-算法" class="headerlink" title="Manacher 算法"></a>Manacher 算法</h2><p>这就是这篇文章所重点介绍的了</p>
+<p>下面介绍Manacher算法的原理与步骤</p>
+<p>首先，Manacher算法提供了一种巧妙地办法，将长度为奇数的回文串和长度为偶数的回文串一起考虑，具体做法是，在原字符串的每个相邻两个字符中间<strong>插入分隔符</strong>，同时在首尾也要添加一个分隔符，分隔符的要求是不在原串中出现，一般情况下可以用<code>#</code>号。下面举一个栗子</p>
+<table>
+<thead>
+<tr>
+<th>原串</th>
+<th>a</th>
+<th>b</th>
+<th>a</th>
+<th>c</th>
+<th>-</th>
+<th>-</th>
+<th>-</th>
+<th>-</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变换后的串</td>
+<td>#</td>
+<td>a</td>
+<td>#</td>
+<td>b</td>
+<td>#</td>
+<td>a</td>
+<td>#</td>
+<td>c</td>
+<td>#</td>
+</tr>
+</tbody>
+</table>
+<p>Manacher算法用一个辅助数组$Len[i]$表示以字符$T[i]$为中心的最长回文字串的最右字符到$T[i]$的长度，比如以$T[i]$为中心的最长回文字串是$T[l,r]$,那么$Len[i]=r-i+1$</p>
+<table>
+<thead>
+<tr>
+<th>$T[i]$</th>
+<th>#</th>
+<th>a</th>
+<th>#</th>
+<th>b</th>
+<th>#</th>
+<th>a</th>
+<th>#</th>
+<th>c</th>
+<th>#</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$len[i]$</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>$Len$数组有一个性质，那就是$Len[i]-1$就是该回文子串在原字符串$S$中的长度，至于证明，首先在转换得到的字符串$T$中，所有的回文字串的长度都为奇数，那么对于以$T[i]$为中心的最长回文字串，其长度就为$2\times Len[i]-1$,经过观察可知，$T$中所有的回文子串，其中分隔符的数量一定比其他字符的数量多$1$，也就是有$Len[i]$个分隔符，剩下$Len[i]-1$个字符来自原字符串，所以该回文串在原字符串中的长度就为$Len[i]-1$</p>
+<p>有了这个性质，那么原问题就转化为求所有的$Len[i]$</p>
+<p>下面介绍如何在线性时间复杂度内求出所有的$Len$</p>
+<p>首先从左往右依次计算$Len[i]$，当计算$Len[i]$时，$Len<a href="0&lt;j&lt;i">j</a>$已经计算完毕。设$P$为之前计算中最长回文子串的右端点的最大值，并且设取得这个最大值的位置为$po$，分两种情况：</p>
+<p>第一种情况：$i&lt;=P$</p>
+<p>那么找到$i$相对于$po$的对称位置，设为$j$，那么如果$Len[j]&lt;P-i$，如下图：</p>
+<p><img src="http://img.blog.csdn.net/20141221160212654" alt="img"></p>
+<p>那么说明以$j$为中心的回文串一定在以$po$为中心的回文串的内部，且$j$和$i$关于位置$po$对称，由回文串的定义可知，一个回文串反过来还是一个回文串，所以以$i$为中心的回文串的长度至少和以$j$为中心的回文串一样，即$Len[i]&gt;=Len[j]$。因为$Len[j]&lt;P-i$,所以说$i+Len[j]&lt;P$。由对称性可知$Len[i]=Len[j]$</p>
+<p>如果$Len[j]&gt;=P-i$, 由对称性，说明以$i$为中心的回文串可能会延伸到$P$之外，而大于$P$的部分我们还没有进行匹配，所以要从$P+1$位置开始一个一个进行匹配，直到发生失配，从而更新$P$和对应的$po$以及$Len[i]$</p>
+<p><img src="http://img.blog.csdn.net/20141221160232375" alt="img"></p>
+<p>第二种情况: $i&gt;P$</p>
+<p>如果$i$比$P$还要大，说明对于中点为$i$的回文串还一点都没有匹配，这个时候，就只能老老实实地一个一个匹配了，匹配完成后要更新P的位置和对应的$po$以及$Len[i]$</p>
+<p><img src="http://img.blog.csdn.net/20141221160247614" alt="img"></p>
+<p>Manacher算法的时间复杂度分析和Z算法类似，因为算法只有遇到还没有匹配的位置时才进行匹配，已经匹配过的位置不再进行匹配，所以对于$T$字符串中的每一个位置，只进行一次匹配，所以Manacher算法的总体时间复杂度为$O(n)$，其中$n$为$T$字符串的长度，由于$T$的长度事实上是$S$的两倍，所以时间复杂度依然是线性的</p>
+<p>注意，为了避免更新$P$的时候导致越界，我们在字符串$T$的前增加一个特殊字符，比如说<code>$</code>,所以算法中字符串是从$1$开始的</p>
+
       
     </div>
     
@@ -490,6 +612,20 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+          
+            <a href="/tags/字符串/" rel="tag"><i class="fa fa-tag"></i> 字符串</a>
+          
+            <a href="/tags/最长回文子串/" rel="tag"><i class="fa fa-tag"></i> 最长回文子串</a>
+          
+            <a href="/tags/Manacher/" rel="tag"><i class="fa fa-tag"></i> Manacher</a>
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+        </div>
+      
 
       
       
@@ -559,8 +695,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -569,7 +714,7 @@
                 alt="Shq" />
             
               <p class="site-author-name" itemprop="name">Shq</p>
-              <p class="site-description motion-element" itemprop="description">并非所有流浪者都迷失了自我</p>
+              <p class="site-description motion-element" itemprop="description">我不知道能否会成功，但我仍想试一试，哪怕只有一线希望</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -601,7 +746,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -648,20 +793,23 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#暴力"><span class="nav-number">1.</span> <span class="nav-text">暴力</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#暴力优化"><span class="nav-number">2.</span> <span class="nav-text">暴力优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Manacher-算法"><span class="nav-number">3.</span> <span class="nav-text">Manacher 算法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
       
-<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-<div class="widget-wrap">
-    <div id="myCanvasContainer" class="widget tagcloud">
-        <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AC自动机/">AC自动机</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chtholly/">Chtholly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/">KMP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP自动机/">KMP自动机</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lemon/">Lemon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lgy/">Lgy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MathJax/">MathJax</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NOI/">NOI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NOIP/">NOIP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Problem/">Problem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Problems/">Problems</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RP/">RP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splay/">Splay</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tarjian/">Tarjian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Treap/">Treap</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trie/">Trie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/USACO/">USACO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dijkstra/">dijkstra</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash/">hash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/problem/">problem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qbxt/">qbxt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/">system</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/">terminal</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkw线段树/">zkw线段树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/主席树/">主席树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乱搞/">乱搞</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分图/">二分图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分图匹配/">二分图匹配</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉搜索树/">二叉搜索树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉树/">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码规范/">代码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/几何/">几何</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/凸包/">凸包</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分块/">分块</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/初等数论/">初等数论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前缀和/">前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/卷积/">卷积</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/叉积/">叉积</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/向量/">向量</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图/">图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/常数优化/">常数优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并查集/">并查集</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/强联通/">强联通</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抽象代数/">抽象代数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数堆/">数堆</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文学/">文学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智熄/">智熄</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力/">暴力</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最优化/">最优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/极角/">极角</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树剖/">树剖</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树套树/">树套树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树状数组/">树状数组</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树链剖分/">树链剖分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟赛/">模拟赛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板/">模板</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模版/">模版</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/欧拉筛/">欧拉筛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试题/">测试题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/济南/">济南</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/清北/">清北</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爆零/">爆零</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/玄学/">玄学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/矩阵/">矩阵</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/矩阵翻转/">矩阵翻转</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法竞赛/">算法竞赛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/素数/">素数</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线性基/">线性基</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线性筛/">线性筛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/群论/">群论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动机/">自动机</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫比乌斯/">莫比乌斯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/证明/">证明</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评测机/">评测机</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/诗/">诗</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/路径压缩/">路径压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆元/">逆元</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递推/">递推</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/邻接表/">邻接表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/配置/">配置</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集训/">集训</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/题目/">题目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/题解/">题解</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高性能/">高性能</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高精度/">高精度</a><span class="tag-list-count">1</span></li></ul>
-        </canvas>
-    </div>
-</div>
-
-
-
     </div>
   </aside>
 
@@ -672,7 +820,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <!--<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
@@ -701,7 +849,7 @@
   <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
 
 
-
+-->
 
         
 
@@ -1176,6 +1324,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
