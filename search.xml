@@ -3,7 +3,26 @@
   
     
     <entry>
-      <title>Manacher</title>
+      <title>「置顶」NOIP2018提高组爆零记</title>
+      <link href="/articles/NOIP-2018-zero/"/>
+      <url>/articles/NOIP-2018-zero/</url>
+      <content type="html"><![CDATA[<p>先占个坑，希望到时候不要鸽掉　（逃</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> NOIP </tag>
+            
+            <tag> NOIP2018 </tag>
+            
+            <tag> 游记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Manacher算法学习笔记</title>
       <link href="/articles/Manacher/"/>
       <url>/articles/Manacher/</url>
       <content type="html"><![CDATA[<p><strong>最长回文子串问题：给定一个字符串，求它的最长回文子串长度</strong></p><p>我们有两种办法去解决这个问题:</p><p>暴力枚举 $+$ 优化 $\rightarrow$ $O(n^2)$<br>Manacher算法 $\rightarrow$ $O(n)$</p><a id="more"></a><p>回文串: 如果一个字符串正着读和反着读是一样的，那它就是回文串</p><p>栗子: <code>aba</code> , <code>asddsa</code> , <code>123432234321</code> , <code>aa</code></p><p>上述就是几个回文串</p><p>回文子串: 它的所有字串中有回文串</p><p>栗子: <code>aas</code>, <code>adas</code>, <code>sdsasdp</code></p><blockquote><p>注意: 回文子串的长度可能为奇数，也可能为偶数</p></blockquote><h2 id="暴力"><a href="#暴力" class="headerlink" title="暴力"></a>暴力</h2><p>对于最长回文子串问题，最简单粗暴的办法是：找到字符串的所有子串，遍历每一个子串以验证它们是否为回文串。一个子串由子串的起点和终点确定，因此对于一个长度为n的字符串，共有$n^2$个子串。这些子串的平均长度大约是$n\over 2$，因此这个解法的时间复杂度是$O(n^3)$</p><h2 id="暴力优化"><a href="#暴力优化" class="headerlink" title="暴力优化"></a>暴力优化</h2><p>显然所有的回文串都是对称的。长度为奇数回文串以最中间字符的位置为对称轴左右对称，而长度为偶数的回文串的对称轴在中间两个字符之间的空隙。可否利用这种对称性来提高算法效率呢？</p><p>答案是肯定的。我们知道整个字符串中的所有字符，以及字符间的空隙，都可能是某个回文子串的对称轴位置。可以遍历这些位置，在每个位置上同时向左和向右扩展，直到左右两边的字符不同，或者达到边界。对于一个长度为$n$的字符串，这样的位置一共有$n+n-1=2n-1$个，在每个位置上平均大约要进行$n\over 4$次字符比较，于是此算法的时间复杂度是$O(n^2)$</p><hr><h2 id="Manacher-算法"><a href="#Manacher-算法" class="headerlink" title="Manacher 算法"></a>Manacher 算法</h2><p>这就是这篇文章所重点介绍的了</p><p>下面介绍Manacher算法的原理与步骤</p><p>首先，Manacher算法提供了一种巧妙地办法，将长度为奇数的回文串和长度为偶数的回文串一起考虑，具体做法是，在原字符串的每个相邻两个字符中间<strong>插入分隔符</strong>，同时在首尾也要添加一个分隔符，分隔符的要求是不在原串中出现，一般情况下可以用<code>#</code>号。下面举一个栗子</p><table><thead><tr><th>原串</th><th>a</th><th>b</th><th>a</th><th>c</th><th>-</th><th>-</th><th>-</th><th>-</th><th>-</th></tr></thead><tbody><tr><td>变换后的串</td><td>#</td><td>a</td><td>#</td><td>b</td><td>#</td><td>a</td><td>#</td><td>c</td><td>#</td></tr></tbody></table><p>Manacher算法用一个辅助数组$Len[i]$表示以字符$T[i]$为中心的最长回文字串的最右字符到$T[i]$的长度，比如以$T[i]$为中心的最长回文字串是$T[l,r]$,那么$Len[i]=r-i+1$</p><table><thead><tr><th>$T[i]$</th><th>#</th><th>a</th><th>#</th><th>b</th><th>#</th><th>a</th><th>#</th><th>c</th><th>#</th></tr></thead><tbody><tr><td>$len[i]$</td><td>1</td><td>2</td><td>1</td><td>4</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td></tr></tbody></table><p>$Len$数组有一个性质，那就是$Len[i]-1$就是该回文子串在原字符串$S$中的长度，至于证明，首先在转换得到的字符串$T$中，所有的回文字串的长度都为奇数，那么对于以$T[i]$为中心的最长回文字串，其长度就为$2\times Len[i]-1$,经过观察可知，$T$中所有的回文子串，其中分隔符的数量一定比其他字符的数量多$1$，也就是有$Len[i]$个分隔符，剩下$Len[i]-1$个字符来自原字符串，所以该回文串在原字符串中的长度就为$Len[i]-1$</p><p>有了这个性质，那么原问题就转化为求所有的$Len[i]$</p><p>下面介绍如何在线性时间复杂度内求出所有的$Len$</p><p>首先从左往右依次计算$Len[i]$，当计算$Len[i]$时，$Len<a href="0&lt;j&lt;i">j</a>$已经计算完毕。设$P$为之前计算中最长回文子串的右端点的最大值，并且设取得这个最大值的位置为$po$，分两种情况：</p><p>第一种情况：$i&lt;=P$</p><p>那么找到$i$相对于$po$的对称位置，设为$j$，那么如果$Len[j]&lt;P-i$，如下图：</p><p><img src="http://img.blog.csdn.net/20141221160212654" alt="img"></p><p>那么说明以$j$为中心的回文串一定在以$po$为中心的回文串的内部，且$j$和$i$关于位置$po$对称，由回文串的定义可知，一个回文串反过来还是一个回文串，所以以$i$为中心的回文串的长度至少和以$j$为中心的回文串一样，即$Len[i]&gt;=Len[j]$。因为$Len[j]&lt;P-i$,所以说$i+Len[j]&lt;P$。由对称性可知$Len[i]=Len[j]$</p><p>如果$Len[j]&gt;=P-i$, 由对称性，说明以$i$为中心的回文串可能会延伸到$P$之外，而大于$P$的部分我们还没有进行匹配，所以要从$P+1$位置开始一个一个进行匹配，直到发生失配，从而更新$P$和对应的$po$以及$Len[i]$</p><p><img src="http://img.blog.csdn.net/20141221160232375" alt="img"></p><p>第二种情况: $i&gt;P$</p><p>如果$i$比$P$还要大，说明对于中点为$i$的回文串还一点都没有匹配，这个时候，就只能老老实实地一个一个匹配了，匹配完成后要更新P的位置和对应的$po$以及$Len[i]$</p><p><img src="http://img.blog.csdn.net/20141221160247614" alt="img"></p><p>Manacher算法的时间复杂度分析和Z算法类似，因为算法只有遇到还没有匹配的位置时才进行匹配，已经匹配过的位置不再进行匹配，所以对于$T$字符串中的每一个位置，只进行一次匹配，所以Manacher算法的总体时间复杂度为$O(n)$，其中$n$为$T$字符串的长度，由于$T$的长度事实上是$S$的两倍，所以时间复杂度依然是线性的</p><p>注意，为了避免更新$P$的时候导致越界，我们在字符串$T$的前增加一个特殊字符，比如说<code>$</code>,所以算法中字符串是从$1$开始的</p>]]></content>
@@ -204,13 +223,13 @@
             
             <tag> 树 </tag>
             
+            <tag> 线段树 </tag>
+            
             <tag> 树套树 </tag>
             
             <tag> Treap </tag>
             
             <tag> 数堆 </tag>
-            
-            <tag> 线段树 </tag>
             
             <tag> 模版 </tag>
             
@@ -383,13 +402,13 @@
             
             <tag> 算法 </tag>
             
+            <tag> 优化 </tag>
+            
             <tag> 图论 </tag>
             
             <tag> 并查集 </tag>
             
             <tag> 路径压缩 </tag>
-            
-            <tag> 优化 </tag>
             
         </tags>
       
@@ -497,9 +516,9 @@
             
             <tag> 随笔 </tag>
             
-            <tag> RP </tag>
-            
             <tag> NOIP </tag>
+            
+            <tag> RP </tag>
             
             <tag> NOI </tag>
             
@@ -696,9 +715,9 @@
             
             <tag> 树 </tag>
             
-            <tag> Treap </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> Treap </tag>
             
             <tag> 平衡树 </tag>
             
@@ -1071,9 +1090,9 @@
             
             <tag> 树 </tag>
             
-            <tag> 优化 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 优化 </tag>
             
         </tags>
       
@@ -1102,9 +1121,9 @@
             
             <tag> 树 </tag>
             
-            <tag> 优化 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 优化 </tag>
             
         </tags>
       
