@@ -429,9 +429,9 @@
       
         <tags>
             
-            <tag> 玄学 </tag>
-            
             <tag> 乱搞 </tag>
+            
+            <tag> 玄学 </tag>
             
             <tag> 常数优化 </tag>
             
@@ -709,9 +709,9 @@
       
         <tags>
             
-            <tag> 数据结构 </tag>
-            
             <tag> 模板 </tag>
+            
+            <tag> 数据结构 </tag>
             
             <tag> 树 </tag>
             
@@ -771,11 +771,11 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
+            
+            <tag> Algorithm </tag>
             
             <tag> 算法 </tag>
             
@@ -800,11 +800,11 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
+            
+            <tag> Algorithm </tag>
             
             <tag> 算法 </tag>
             
@@ -916,11 +916,11 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> 模板 </tag>
             
             <tag> 凸包 </tag>
+            
+            <tag> Algorithm </tag>
             
             <tag> 算法 </tag>
             
@@ -1082,11 +1082,11 @@
       
         <tags>
             
+            <tag> 模板 </tag>
+            
             <tag> Algorithm </tag>
             
             <tag> 数据结构 </tag>
-            
-            <tag> 模板 </tag>
             
             <tag> 树 </tag>
             
@@ -1113,11 +1113,11 @@
       
         <tags>
             
+            <tag> 模板 </tag>
+            
             <tag> Algorithm </tag>
             
             <tag> 数据结构 </tag>
-            
-            <tag> 模板 </tag>
             
             <tag> 树 </tag>
             
@@ -1424,9 +1424,9 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> dijkstra </tag>
+            
+            <tag> Algorithm </tag>
             
         </tags>
       
