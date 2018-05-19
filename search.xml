@@ -3,7 +3,7 @@
   
     
     <entry>
-      <title>「置顶」NOIP2018提高组爆零记</title>
+      <title>NOIP2018提高组爆零记</title>
       <link href="/articles/NOIP-2018-zero/"/>
       <url>/articles/NOIP-2018-zero/</url>
       <content type="html"><![CDATA[<p>先占个坑，希望到时候不要鸽掉　（逃</p>]]></content>
@@ -40,11 +40,11 @@
             
             <tag> 字符串 </tag>
             
-            <tag> 算法 </tag>
-            
             <tag> 最长回文子串 </tag>
             
             <tag> Manacher </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -65,9 +65,9 @@
       
         <tags>
             
-            <tag> 字符串 </tag>
-            
             <tag> hash </tag>
+            
+            <tag> 字符串 </tag>
             
         </tags>
       
@@ -90,9 +90,9 @@
             
             <tag> Algorithm </tag>
             
-            <tag> AC自动机 </tag>
-            
             <tag> 字符串 </tag>
+            
+            <tag> AC自动机 </tag>
             
             <tag> 自动机 </tag>
             
@@ -121,13 +121,13 @@
             
             <tag> Algorithm </tag>
             
+            <tag> 字符串 </tag>
+            
             <tag> KMP </tag>
             
             <tag> AC自动机 </tag>
             
             <tag> 前缀和 </tag>
-            
-            <tag> 字符串 </tag>
             
         </tags>
       
@@ -221,15 +221,15 @@
             
             <tag> Algorithm </tag>
             
-            <tag> 树 </tag>
-            
-            <tag> 线段树 </tag>
-            
             <tag> 树套树 </tag>
             
             <tag> Treap </tag>
             
             <tag> 数堆 </tag>
+            
+            <tag> 线段树 </tag>
+            
+            <tag> 树 </tag>
             
             <tag> 模版 </tag>
             
@@ -258,9 +258,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 树 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 树 </tag>
             
             <tag> zkw线段树 </tag>
             
@@ -402,13 +402,13 @@
             
             <tag> 算法 </tag>
             
-            <tag> 优化 </tag>
-            
             <tag> 图论 </tag>
             
             <tag> 并查集 </tag>
             
             <tag> 路径压缩 </tag>
+            
+            <tag> 优化 </tag>
             
         </tags>
       
@@ -429,9 +429,9 @@
       
         <tags>
             
-            <tag> 乱搞 </tag>
-            
             <tag> 玄学 </tag>
+            
+            <tag> 乱搞 </tag>
             
             <tag> 常数优化 </tag>
             
@@ -599,13 +599,13 @@
             
             <tag> 数学 </tag>
             
-            <tag> 数论 </tag>
-            
             <tag> 几何 </tag>
             
             <tag> 模板 </tag>
             
             <tag> 凸包 </tag>
+            
+            <tag> 数论 </tag>
             
         </tags>
       
@@ -626,11 +626,11 @@
       
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> 向量 </tag>
             
@@ -709,15 +709,15 @@
       
         <tags>
             
-            <tag> 模板 </tag>
-            
             <tag> 数据结构 </tag>
             
-            <tag> 树 </tag>
+            <tag> 模板 </tag>
+            
+            <tag> Treap </tag>
             
             <tag> 线段树 </tag>
             
-            <tag> Treap </tag>
+            <tag> 树 </tag>
             
             <tag> 平衡树 </tag>
             
@@ -771,11 +771,11 @@
       
         <tags>
             
+            <tag> Algorithm </tag>
+            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
-            
-            <tag> Algorithm </tag>
             
             <tag> 算法 </tag>
             
@@ -800,11 +800,11 @@
       
         <tags>
             
+            <tag> Algorithm </tag>
+            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
-            
-            <tag> Algorithm </tag>
             
             <tag> 算法 </tag>
             
@@ -837,9 +837,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 树 </tag>
-            
             <tag> Treap </tag>
+            
+            <tag> 树 </tag>
             
             <tag> 平衡树 </tag>
             
@@ -916,11 +916,11 @@
       
         <tags>
             
+            <tag> Algorithm </tag>
+            
             <tag> 模板 </tag>
             
             <tag> 凸包 </tag>
-            
-            <tag> Algorithm </tag>
             
             <tag> 算法 </tag>
             
@@ -1005,11 +1005,11 @@
             
             <tag> Problem </tag>
             
+            <tag> 树 </tag>
+            
             <tag> 动态规划 </tag>
             
             <tag> DP </tag>
-            
-            <tag> 树 </tag>
             
         </tags>
       
@@ -1082,17 +1082,17 @@
       
         <tags>
             
-            <tag> 模板 </tag>
-            
             <tag> Algorithm </tag>
             
             <tag> 数据结构 </tag>
             
+            <tag> 模板 </tag>
+            
             <tag> 树 </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 优化 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
       
@@ -1113,17 +1113,17 @@
       
         <tags>
             
-            <tag> 模板 </tag>
-            
             <tag> Algorithm </tag>
             
             <tag> 数据结构 </tag>
             
+            <tag> 模板 </tag>
+            
             <tag> 树 </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 优化 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
       
@@ -1148,9 +1148,9 @@
             
             <tag> 数据结构 </tag>
             
-            <tag> 树 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 树 </tag>
             
         </tags>
       
@@ -1171,9 +1171,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> python </tag>
+            
+            <tag> 教程 </tag>
             
         </tags>
       
@@ -1424,9 +1424,9 @@
       
         <tags>
             
-            <tag> dijkstra </tag>
-            
             <tag> Algorithm </tag>
+            
+            <tag> dijkstra </tag>
             
         </tags>
       
