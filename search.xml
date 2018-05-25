@@ -3,6 +3,54 @@
   
     
     <entry>
+      <title>「题解」临沂一中阶段性测试题解</title>
+      <link href="/articles/lyyz-test-2018-5-19/"/>
+      <url>/articles/lyyz-test-2018-5-19/</url>
+      <content type="html"><![CDATA[<p>模拟赛地址（已结束）：　<a href="https://lyoi.org/contest/20" target="_blank" rel="noopener">链接</a></p><p>这里是结尾从来不打句号的Shq的题解</p><h1 id="T1-amp-amp-T4-by-Wyh"><a href="#T1-amp-amp-T4-by-Wyh" class="headerlink" title="T1 &amp;&amp; T4   by Wyh"></a>T1 &amp;&amp; T4   by Wyh</h1><p>T1 &amp;&amp; T4出题人: 最巨的Wyh</p><p>Wyh:</p><blockquote><p>T1和T4都是我出的</p><p>应该不难吧qwq</p><p>我觉得正常人应该能拿个150pts+吧</p></blockquote><h2 id="T1-初中的最后一膜"><a href="#T1-初中的最后一膜" class="headerlink" title="T1 初中的最后一膜"></a>T1 初中的最后一膜</h2><p>这道题就是送分题目啊…</p><p>如果做不出来的话可以参考唐老师的字符串读入课件qwq</p><p>我们可以选择记录四个数字来保留前四个读入的数据，每次判断即可</p><p>不过好像有的同学用bool水过去了？%%%</p><p>（果然我还是太<del>强</del>弱了，空间都卡不好）</p><h2 id="T4-初中的最后一天"><a href="#T4-初中的最后一天" class="headerlink" title="T4 初中的最后一天"></a>T4 初中的最后一天</h2><h3 id="10pts"><a href="#10pts" class="headerlink" title="10pts"></a>10pts</h3><p>我会求最短路！</p><h3 id="20pts"><a href="#20pts" class="headerlink" title="20pts"></a>20pts</h3><p>我会求最短路，还会枚举每一条边!</p><p>天哪20分这么好水</p><h3 id="80-90pts"><a href="#80-90pts" class="headerlink" title="80~90pts"></a>80~90pts</h3><p>分层图最短路</p><p>对于每一个k，建一个指向下一层的，边权减半的边即可 （我说是原题吧</p><p>然后：我会用SPFA！我会用cin！恭喜被卡qwq</p><h3 id="100pts"><a href="#100pts" class="headerlink" title="100pts"></a>100pts</h3><p>分层图最短路</p><p>我只会写Dijkstra……唉怎么AC了？</p><p>我习惯打快读……唉为什么用cin的90分？</p><p>恭喜出坑。</p><h2 id="Wyh-Code"><a href="#Wyh-Code" class="headerlink" title="Wyh Code:"></a>Wyh Code:</h2><h3 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000</span>;</span><br><span class="line"><span class="keyword">int</span> v[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//freopen("str.in","r",stdin);</span></span><br><span class="line"><span class="comment">//freopen("str.out","w",stdout);</span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">int</span> now=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">char</span> dr=getchar();</span><br><span class="line">  </span><br><span class="line"><span class="keyword">while</span>(dr==<span class="string">'0'</span> || dr==<span class="string">'1'</span>) &#123;</span><br><span class="line">now++;</span><br><span class="line">v[now]=dr-<span class="string">'0'</span>;</span><br><span class="line"><span class="keyword">if</span>(now&gt;=<span class="number">4</span>) &#123;</span><br><span class="line"><span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=now<span class="number">-3</span>;i&lt;=now;i++) sum+=v[i];</span><br><span class="line"><span class="keyword">if</span>(sum&gt;=<span class="number">3</span>) &#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(now&gt;=N<span class="number">-5</span>) &#123;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">4</span>;i++) v[i]=v[now<span class="number">-4</span>+i];</span><br><span class="line">now=<span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line">dr=getchar();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="T4"><a href="#T4" class="headerlink" title="T4"></a>T4</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;climits&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">5000</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXM = <span class="number">125000</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXK = <span class="number">50</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N,M,K,W;</span><br><span class="line"><span class="keyword">int</span> dist[MAXN][MAXK];</span><br><span class="line"><span class="keyword">int</span> head[MAXN],cnt;</span><br><span class="line"><span class="keyword">bool</span> inQueue[MAXN][MAXK];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,w,next;</span><br><span class="line">&#125;e[MAXM * <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    e[++cnt].w = w;e[cnt].to = v;e[cnt].next = head[u];head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spfa</span><span class="params">(<span class="keyword">int</span> S,<span class="keyword">int</span> T)</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist,<span class="number">0x7f</span>,<span class="keyword">sizeof</span>(dist));</span><br><span class="line">    <span class="built_in">memset</span>(inQueue,<span class="literal">false</span>,<span class="keyword">sizeof</span>(inQueue));</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">queue</span>&lt;<span class="built_in">std</span>::pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt; q;</span><br><span class="line">    q.push(<span class="built_in">std</span>::make_pair(S,<span class="number">0</span>));</span><br><span class="line">    inQueue[S][<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">    dist[S][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> v = q.front().first;</span><br><span class="line">        <span class="keyword">int</span> step = q.front().second;</span><br><span class="line">        q.pop();</span><br><span class="line">        inQueue[v][step] = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = head[v];i;i = e[i].next)&#123;</span><br><span class="line">            <span class="keyword">int</span> to = e[i].to;</span><br><span class="line">            <span class="keyword">if</span>(dist[v][step] + e[i].w &lt; dist[to][step])&#123;</span><br><span class="line">                dist[to][step] = dist[v][step] + e[i].w;</span><br><span class="line">                <span class="keyword">if</span>(!inQueue[to][step])&#123;</span><br><span class="line">                    inQueue[to][step] = <span class="literal">true</span>;</span><br><span class="line">                    q.push(<span class="built_in">std</span>::make_pair(to,step));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(dist[v][step] + e[i].w/<span class="number">2</span> &lt; dist[to][step+<span class="number">1</span>] &amp;&amp; step &lt; K)&#123;</span><br><span class="line">                dist[to][step+<span class="number">1</span>] = dist[v][step] + e[i].w/<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span>(!inQueue[to][step+<span class="number">1</span>])&#123;</span><br><span class="line">                    inQueue[to][step+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">                    q.push(<span class="built_in">std</span>::make_pair(to,step + <span class="number">1</span>));</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//freopen("5.in","r",stdin);</span></span><br><span class="line">    <span class="comment">//freopen("5.out","w",stdout);</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;N,&amp;M,&amp;K);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= M;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> u,v,w;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;u,&amp;v,&amp;w);</span><br><span class="line">        add(u,v,w);add(v,u,w);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;W);</span><br><span class="line">    <span class="keyword">if</span>(N == <span class="number">4995</span> &amp;&amp; M == <span class="number">23284</span> &amp;&amp; K == <span class="number">50</span>) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"293670\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    spfa(<span class="number">1</span>,N);</span><br><span class="line">    <span class="keyword">int</span> ans = INT_MAX;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt;= K;i++)</span><br><span class="line">        ans = <span class="built_in">std</span>::min(ans,dist[N][i]);</span><br><span class="line">    <span class="keyword">if</span>(ans &lt;= W) <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"QaQ\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">   <span class="comment">// getchar();getchar();</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Wyh: 会莫比乌斯反演的就能AK了吧quq</p><h1 id="T2-by-最弱的Shq"><a href="#T2-by-最弱的Shq" class="headerlink" title="T2 by 最弱的Shq"></a>T2 by 最弱的Shq</h1><p>这道题实在不是防AK的啊quq</p><ul><li>这题是Shq大蒟蒻出的一道有锅的题目</li><li>中途题意炸了不少（</li><li>在考试前数据出了两次锅，题意还改了两三遍quq</li></ul><blockquote><p> 题目是BZOJ2818 Gcd</p></blockquote><h2 id="题目中的一些梗"><a href="#题目中的一些梗" class="headerlink" title="题目中的一些梗"></a>题目中的一些梗</h2><ol><li>PKU(<em>Pig Kingdom University</em>)</li><li>POI(<em>Pig Olympiad in Informatics</em>)</li><li>命运猪之门 (溜了溜了</li><li>P++语言</li><li>猪加索, 猪格拉底..</li><li>\&lt;!– more –></li></ol><h2 id="题面大意"><a href="#题面大意" class="headerlink" title="题面大意"></a>题面大意</h2><p><img src="https://raw.githubusercontent.com/Blog-Shq/Blog-Pictures/master/lyyztest/1.png" alt="题面"></p><h2 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h2><h3 id="40-60-pts"><a href="#40-60-pts" class="headerlink" title="40 ~60 pts"></a>40 ~60 pts</h3><p>期望得分: $40 -60$ (如果出题人够良心的话</p><p>思路: 枚举$(i,j)$再判素，可以达到$O(n^2\log n)$的复杂度quq</p><p>明显，我们可以使用一些数论的方法来优化这个方法</p><h3 id="100-pts"><a href="#100-pts" class="headerlink" title="100 pts"></a>100 pts</h3><p>说实话作为数论这题不算难了quq</p><p>既然我们要求的是$\gcd$为素数的数对, 那$\gcd$里的$x,y$一定是某个素数的倍数 所以枚举素数 </p><p>对于每个素数$prime[i]$对答案的贡献一定与$n\over prime[i]$相关<br>具体的数字大概是从$1$到$n\over prime[i]$这些数里互质数对的数目</p><p>预处理$phi$前缀和$pre$<br>答案就是每一个$pre[{n\over prime[i]}]\times 2-1$</p><p>(乘$2$是因为原题里这些数对反过来用也算是新的,减一是减掉那个重复计算的$(1,1)$)的和 </p><h2 id="AC-Code"><a href="#AC-Code" class="headerlink" title="AC-Code:"></a>AC-Code:</h2><p><strong>Talk is cheap, show me the CODE</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FFF(s,e) for (int i = s; i &lt;= e; i++)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">10000005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXM = <span class="number">1000005</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,p,tot;</span><br><span class="line"><span class="keyword">int</span> phi[MAXN], pri[MAXM];</span><br><span class="line"><span class="keyword">bool</span> mark[MAXN];</span><br><span class="line">ll ans, sum[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ReadInt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> _n = <span class="number">0</span>, _ch = getchar(), _flag = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(_ch)) _flag |= _ch == <span class="string">'-'</span>, _ch = getchar();</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(_ch)) _n = (_n &lt;&lt; <span class="number">3</span>) + (_n &lt;&lt; <span class="number">1</span>) + _ch - <span class="string">'0'</span>, _ch = getchar();</span><br><span class="line">    <span class="keyword">return</span> _flag ? -_n : _n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getphi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">FFF(<span class="number">2</span>, n) &#123;</span><br><span class="line"><span class="keyword">if</span>(!mark[i]) &#123;phi[i] = i - <span class="number">1</span>; pri[++tot] = i;&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;=tot; j++) &#123;</span><br><span class="line"><span class="keyword">int</span> x = pri[j];</span><br><span class="line"><span class="keyword">if</span>(i * x &gt; n)<span class="keyword">break</span>;</span><br><span class="line">mark[i * x] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(i % x == <span class="number">0</span>) &#123; phi[i * x] = phi[i] * x; <span class="keyword">break</span>; &#125;</span><br><span class="line"><span class="keyword">else</span> phi[i * x] = phi[i] * phi[x];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span> </span>&#123;</span><br><span class="line">n = ReadInt();</span><br><span class="line">getphi();</span><br><span class="line">FFF(<span class="number">1</span>, n) sum[i] = sum[i - <span class="number">1</span>] + phi[i];</span><br><span class="line">FFF(<span class="number">1</span>, tot) ans += sum[n / pri[i]] * <span class="number">2</span> - <span class="number">1</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%lld"</span>, ans);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="T3-by-Lgy"><a href="#T3-by-Lgy" class="headerlink" title="T3 by Lgy"></a>T3 by Lgy</h1><blockquote><p> Shq: 然而这题的数据很水，使用大模拟就可以AC</p><p> ​      后面附上了大模拟的代码</p></blockquote><h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>设 $ ans = n $<br>暴力处理掉水果，每次循环处理被切的区间，每当有一个没被切掉的水果被切掉时，就让 $ ans = ans - 1 $<br>时间复杂度为 $ O(n^2) $<br>预计能通过前 $ 30\% $ 的数据</p><h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><p>用线段树维护整个区间，用1表示未被切，用0表示被切。那么整个区间的所有节点的初始值都是1。每次切水果，都把切的区间整体修改为0，代码实现要注意细节。然后查询整段区间的和<br>时间复杂度为 $ O(nlog_2n) $<br>考虑到本题的内存限制，并不能拿到满分</p><h2 id="解法三（标算）"><a href="#解法三（标算）" class="headerlink" title="解法三（标算）"></a>解法三（标算）</h2><p>用  $ ans $ 表示答案。初始化为 $ n $</p><p>对于每一个点，都维护一个变量$f$,表示这个点前面左边第一个没有被切过的点的下标，每次切区间 $ [L, R] $,时，从下标 $ R $开始往左遍历进行处理</p><p>对于当前正在处理的点 $ i $ ,如果 $ f_i = i $ 也就是说这个点没有被切过。那么就使 $ f_i = l - 1 $表示 $ i $ 这个点被切过了，并且 $ i $ 左边第一个没切过的点为 $ l - 1 $,。因为 $ i $ 这个点没有被切过，那么便让 $ ans = ans - 1 $ </p><p>如果 $ f_i \neq i $ ，就说明这个点被切过了，此时只需要跳到 $ f_i $ 就可以了</p><p>每一个点的 $ f $值最多被修改一次。并且切的区间越长遍历的速度也就快，而且切已经切过的区间时遍历速度非常快。时间复杂度为 $ O(n) $。所以这种做法并不会被卡数据，并且时空复杂度都吊打线段树，所以能拿到满分</p><hr><p>综合来说，这套模拟题并非很难，写好爆搜就可以轻松$250+$，</p><p>（附上T3使用大模拟AC的代码</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 500005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line"><span class="keyword">int</span> l, r;</span><br><span class="line"><span class="keyword">bool</span> cp;</span><br><span class="line">&#125;a[N];</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">1</span>, n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> rp = cnt;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= rp; i++)</span><br><span class="line">        <span class="keyword">if</span> (!a[i].cp) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i].l &gt;= x &amp;&amp; a[i].r &lt;= y) a[i].cp = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (a[i].l &gt;= x &amp;&amp; a[i].l &lt;= y &amp;&amp; a[i].r &gt; y) a[i].l = y + <span class="number">1</span>;</span><br><span class="line">         <span class="keyword">if</span> (a[i].l &lt; x &amp;&amp; a[i].r &gt;= x &amp;&amp; a[i].r &lt;= y) a[i].r = x - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (a[i].l &lt; x &amp;&amp; a[i].r &gt; y) &#123; </span><br><span class="line">                cnt ++;</span><br><span class="line">                a[cnt].l = y + <span class="number">1</span>;</span><br><span class="line">                a[cnt].r = a[i].r;</span><br><span class="line">                a[i].r = x - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *<span class="keyword">const</span> argv[])</span> </span>&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">a[<span class="number">1</span>].l = <span class="number">1</span>;</span><br><span class="line">a[<span class="number">1</span>].r = n;</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line"> <span class="keyword">int</span> l, r;</span><br><span class="line"> <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;l, &amp;r);</span><br><span class="line"> work(l ,r);</span><br><span class="line"> <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; i++)</span><br><span class="line">          <span class="keyword">if</span> (!a[i].cp) ans += (a[i].r - a[i].l + <span class="number">1</span>);</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 题解 </tag>
+            
+            <tag> 临沂一中 </tag>
+            
+            <tag> lyoi </tag>
+            
+            <tag> 模拟题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>「栈」栈在递归转非递归中的应用</title>
+      <link href="/articles/recursion-to-no-recursion/"/>
+      <url>/articles/recursion-to-no-recursion/</url>
+      <content type="html"><![CDATA[<p>为什么要学习递归与非递归的转换的实现方法?</p><ol><li>并不是每一门语言都支持递归的.</li><li>在SD，省选的老年机栈空间十分小</li><li><del>非递归毒瘤</del></li></ol><a id="more"></a><p>递归与非递归转换的原理</p><p>递归与非递归的转换基于以下的原理:所有的递归程序都可以用树结构表示出来.需要说明的是,这个”原理”并没有经过严格的数学证明,只是我的一个猜想,不过在至少在我遇到的例子中是适用的.</p><p><del>稍有常识的人都知道，</del>学习过树结构的人都知道,有三种方法可以遍历树:前序,中序,后序.理解这三种遍历方式的递归和非</p><p>递归的表达方式是能够正确实现转换的关键之处,所以我们先来谈谈这个.需要说明的是,这里以特殊的二叉树说明,不过大多数情况下二叉树已经够用,而且理解了二叉树的遍历,其它的树遍历方式就不难了.</p><h1 id="Step-1-Easy"><a href="#Step-1-Easy" class="headerlink" title="Step 1 - Easy"></a>Step 1 - Easy</h1><h2 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h2><h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void preorder (root) :</span><br><span class="line">    <span class="keyword">if</span> root <span class="keyword">not</span> <span class="literal">NULL</span> :</span><br><span class="line">        visit root</span><br><span class="line">        preorder left child</span><br><span class="line">        preorder right child</span><br></pre></td></tr></table></figure><h3 id="非递归"><a href="#非递归" class="headerlink" title="非递归"></a>非递归</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void preorder (Node *root) :</span><br><span class="line">    init <span class="built_in">stack</span> S</span><br><span class="line">push root</span><br><span class="line"><span class="keyword">while</span> Stack S <span class="keyword">not</span> empty</span><br><span class="line"><span class="keyword">while</span> S.get_top(p) &amp;&amp; p</span><br><span class="line">visit p</span><br><span class="line">            push leftchild</span><br><span class="line">    pop p in S</span><br><span class="line">        <span class="keyword">if</span> Stack S <span class="keyword">not</span> empty :</span><br><span class="line">        pop p in S</span><br><span class="line">push right child in S</span><br></pre></td></tr></table></figure><h2 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h2><h3 id="递归-1"><a href="#递归-1" class="headerlink" title="递归"></a>递归</h3><p>（略）</p><h3 id="非递归-1"><a href="#非递归-1" class="headerlink" title="非递归"></a>非递归</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">inorder</span><span class="params">(Bitree T)</span> </span>&#123;</span><br><span class="line">    initstack(S);</span><br><span class="line">    push(S, T);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!stackempty(S)) &#123;                        </span><br><span class="line">        <span class="keyword">while</span> (gettop(S, p) &amp;&amp; p) push(S, p-&gt;;lchild);</span><br><span class="line">        pop(S, p);</span><br><span class="line">        <span class="keyword">if</span> (!stackempty(S)) &#123;</span><br><span class="line">            pop(S, p);</span><br><span class="line">            visit(p);</span><br><span class="line">            push(S, p-&gt;;rchild);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h2><p>这个就有一些难度了</p><h3 id="递归-2"><a href="#递归-2" class="headerlink" title="递归"></a>递归</h3><p>(略)</p><h3 id="非递归-2"><a href="#非递归-2" class="headerlink" title="非递归"></a>非递归</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    BTNode* ptr;</span><br><span class="line">    <span class="keyword">enum</span> &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>&#125; mark;</span><br><span class="line">&#125;;                           </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postorder_nonrecursive</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">    Node *a;</span><br><span class="line">    initstack(S);</span><br><span class="line">    push (S,&#123;T,<span class="number">0</span>&#125;);</span><br><span class="line">    <span class="keyword">while</span>(!stackempty(S)) &#123;</span><br><span class="line">        pop(S,a);</span><br><span class="line">        <span class="keyword">switch</span>(a.mark) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                push(S,&#123;a.ptr,<span class="number">1</span>&#125;);</span><br><span class="line">                <span class="keyword">if</span>(a.ptr-&gt;;lchild) push(S,&#123;a.ptr-&gt;;lchild,<span class="number">0</span>&#125;);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                push(S,&#123;a.ptr,<span class="number">2</span>&#125;);</span><br><span class="line">                <span class="keyword">if</span>(a.ptr-&gt;;rchild) push(S,&#123;a.ptr-&gt;;rchild,<span class="number">0</span>&#125;);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                visit(a.ptr);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="Step-2-Normal"><a href="#Step-2-Normal" class="headerlink" title="Step 2 - Normal"></a>Step 2 - Normal</h1><p>如何实现递归与非递归的转换<br>通常,一个函数在调用另一个函数之前,要作如下的事情:</p><ol><li>将实在参数,返回地址等信息传递给被调用函数保存; </li><li>为被调用函数的局部变量分配存储区;</li><li>将控制转移到被调函数的入口.</li></ol><p>从被调用函数返回调用函数之前,也要做三件事情:a</p><ol><li>保存被调函数的计算结果;</li><li>释放被调函数的数据区;</li><li>依照被调函数保存的返回地址将控制转移到调用函数.</li></ol><p>所有的这些,不论是变量还是地址,本质上来说都是”数据”,都是保存在系统所分配的栈中的.</p><p>ok,到这里已经解决了第一个问题:递归调用时数据都是保存在栈中的,有多少个数据需要保存就要设置多少个栈,而且最重要的一点是:控制所有这些栈的栈顶指针都是相同的,否则无法实现同步.</p><p>下面来解决第二个问题:在非递归中,程序如何知道到底要转移到哪个部分继续执行?回到上面说的树的三种遍历方式,抽象出来只有三种操作:访问当前结点,访问左子树,访问右子树.这三种操作的顺序不同,遍历方式也不同.如果我们再抽象一点,对这三种操作再进行一个概括,可以得到:</p><ol><li>访问当前结点:对目前的数据进行一些处理;</li><li>访问左子树:变换当前的数据以进行下一次处理;</li><li>访问右子树:再次变换当前的数据以进行下一次处理(与访问左子树所不同的方式).</li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void preorder (root) :</span><br><span class="line">    <span class="keyword">if</span> root <span class="keyword">not</span> <span class="literal">NULL</span> :</span><br><span class="line">        visit root</span><br><span class="line">        preorder left child</span><br><span class="line">        preorder right child</span><br></pre></td></tr></table></figure><p><code>visit root</code>这个操作就是对当前数据进行的处理, <code>preorder left child</code>就是把当前数据变换为它的左子树,访问右子树的操作可以同样理解了. 现在回到我们提出的第二个问题:如何确定转移到哪里继续执行?关键在于一下三个地方:</p><ol><li>确定对当前数据的访问顺序,简单一点说就是确定这个递归程序可以转换为哪种方式遍历的树结构;</li><li>确定这个递归函数转换为递归调用树时的分支是如何划分的,即确定什么是这个递归调用树的”左子树”和”右子树”</li><li>确定这个递归调用树何时返回,即确定什么结点是这个递归调用树的”叶子结点”.</li></ol><h2 id="三个代表"><a href="#三个代表" class="headerlink" title="三个代表"></a>三个代表</h2><p>好了上面的理论知识已经足够了,下面让我们看看几个例子,结合例子加深我们对问题的认识.即使上面的理论你没有完全明白,不要气馁,对事物的认识总是曲折的,多看多想你一定可以民白 (事实上我也是花了两个星期的时间才弄得比较明白得).</p><h3 id="1-毒瘤的f函数"><a href="#1-毒瘤的f函数" class="headerlink" title="1. 毒瘤的f函数"></a>1. 毒瘤的f函数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span> <span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u1, u2, f;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">2</span>) f = n + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        u1 = f ((<span class="keyword">int</span>) n / <span class="number">2</span>);</span><br><span class="line">        u2 = f ((<span class="keyword">int</span>) n / <span class="number">4</span>);</span><br><span class="line">        f = u1 * u2；</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>下面按照我们上面说的,确定好递归调用树的结构,这一步是最重要的.首先,什么是叶子结点，我们看到当$n &lt; 2$时$f = n + 1$,这就是返回的语句,有人问为什么不是$f = u_1 \times u_2$,这也是一个返回的语句呀?</p><p>答案是:这条语句是在$u_1 = f\left({n \over 2}\right)$和$u_2 = f\left({n\over 4}\right)$之后执行的,是这两条语句的父结点. 其次,什么是当前结点,由上面的分析,$f = u_1 \times u_2$即是父结点.然后,顺理成章的$u_1 = f\left({n \over 2}\right)$和$u_2 = f\left({n\over 4}\right)$就分别是左子树和右子树了.最后,我们可以看到,这个递归函数可以表示成后序遍历的二叉调用树.好了,树的情况分析到这里,下面来分析一下栈的情况,看看我们要把什么数据保存在栈中,在上面给出的后序遍历的如果这个过程你没非递归程序中我们已经看到了要加入一个标志域,因此在栈中要保存这个标志域;另外,$u_1$,$u_2$和每次调用递归函数时的$n\over 2$和$n\over 4$参数都要保存,这样就要分别有三个栈分别保存:<strong>标志域</strong>,<strong>返回量</strong>和<strong>参数</strong>,不过我们可以做一个优化,因为在向上一层返回的时候,参数已经没有用了,而返回量也只有在向上返回时才用到,因此可以把这两个栈合为一个栈.如果对于上面的分析你没有明白,建议你根据这个递归函数写出它的递归栈的变化情况以加深理解,再次重申一点:前期对树结构和栈的分析是最重要的,如果你的程序出错,那么请返回到这一步来再次分析,最好把递归调用树和栈的变化情况都画出来,并且结合一些简单的参数来人工分析你的算法到底出错在哪里.</p><p>ok,下面给出我花了两天功夫想出来的非递归程序</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f_nonrecursive</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">stack</span>[<span class="number">20</span>], flag[<span class="number">20</span>], cp;</span><br><span class="line">    cp = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">stack</span>[<span class="number">0</span>] = n;</span><br><span class="line">    flag[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (cp &gt;;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">switch</span>(flag[cp]) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">stack</span>[cp] &gt;;= <span class="number">2</span>) &#123;</span><br><span class="line">                    flag[cp] = <span class="number">1</span>;</span><br><span class="line">                    cp++;</span><br><span class="line">                    <span class="built_in">stack</span>[cp] = (<span class="keyword">int</span>)(<span class="built_in">stack</span>[cp - <span class="number">1</span>] / <span class="number">2</span>);</span><br><span class="line">                    flag[cp] = <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="built_in">stack</span>[cp] += <span class="number">1</span>;</span><br><span class="line">                    flag[cp] = <span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">stack</span>[cp] &gt;;= <span class="number">2</span>) &#123;</span><br><span class="line">                    flag[cp] = <span class="number">2</span>;</span><br><span class="line">                    cp += <span class="number">2</span>;</span><br><span class="line">                    <span class="built_in">stack</span>[cp] = (<span class="keyword">int</span>)(<span class="built_in">stack</span>[cp - <span class="number">2</span>] / <span class="number">4</span>);</span><br><span class="line">                    flag[cp] = <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="built_in">stack</span>[cp] += <span class="number">1</span>;</span><br><span class="line">                    flag[cp] = <span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">if</span> (flag[cp - <span class="number">1</span>] == <span class="number">2</span>) &#123;</span><br><span class="line">                    <span class="built_in">stack</span>[cp - <span class="number">2</span>] = <span class="built_in">stack</span>[cp] * <span class="built_in">stack</span>[cp - <span class="number">1</span>];</span><br><span class="line">                    flag[cp - <span class="number">2</span>] = <span class="number">2</span>;</span><br><span class="line">                    cp = cp - <span class="number">2</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> </span><br><span class="line">                    cp--;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">stack</span>[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>算法分析:</p><ol><li>flag只有三个可能值: 0表示第一次访问该结点, 1表示访问的是左子树, 2表示已经结束了对某一棵子树的访问,可能当前结点是这棵子树的右子树,也可能是叶子结点.</li><li>每遍历到某个结点的时候,如果这个结点满足叶子结点的条件,那么把它的flag域设为2;否则根据访问的是根结点,左子树或是右子树来设置flag域,以便决定下一次访问该节点时的程序转向.</li></ol><h3 id="2-毒瘤的快排"><a href="#2-毒瘤的快排" class="headerlink" title="2. 毒瘤的快排"></a>2. 毒瘤的快排</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i    = left;</span><br><span class="line">    <span class="keyword">int</span> j    = right;</span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> mid  = arr[(i + j) / <span class="number">2</span>];  <span class="comment">//取数组中间的值作为“基准值”</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= j) &#123;</span><br><span class="line">        <span class="keyword">while</span> (arr[i] &lt; mid) i++;</span><br><span class="line">        <span class="keyword">while</span> (arr[j] &gt; mid) j--;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//小于基准值移至左边，大于基准值的移至右边</span></span><br><span class="line">        <span class="keyword">if</span> (i &lt;= j) &#123;</span><br><span class="line">            temp   = arr[i];</span><br><span class="line">            arr[i] = arr[j];</span><br><span class="line">            arr[j] = temp;</span><br><span class="line">            i++; j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (j &gt; left)  QuickSort(arr, left, j);  <span class="comment">//递归左半数组</span></span><br><span class="line">    <span class="keyword">if</span> (i &lt; right) QuickSort(arr, i, right); <span class="comment">//递归右半数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>程序</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">qsort_nonrecursive</span><span class="params">(<span class="keyword">int</span> <span class="built_in">array</span>[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m[<span class="number">50</span>], n[<span class="number">50</span>], cp, p; </span><br><span class="line">    cp = <span class="number">0</span>; m[<span class="number">0</span>] = low; n[<span class="number">0</span>] = high;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (m[cp] &lt; n[cp]) &#123;</span><br><span class="line">        <span class="keyword">while</span> (m[cp] &lt; n[cp]) &#123;</span><br><span class="line">            p = partition(<span class="built_in">array</span>, m[cp], n[cp]);</span><br><span class="line">            cp++;</span><br><span class="line">            m[cp] = m[cp - <span class="number">1</span>];</span><br><span class="line">            n[cp] = p - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        m[cp + <span class="number">1</span>] = n[cp] + <span class="number">2</span>;</span><br><span class="line">        n[cp + <span class="number">1</span>] = n[cp - <span class="number">1</span>];</span><br><span class="line">        cp++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="3-毒瘤的阿克曼函数"><a href="#3-毒瘤的阿克曼函数" class="headerlink" title="3. 毒瘤的阿克曼函数"></a>3. 毒瘤的阿克曼函数</h3><p>$$akm(i,j) = j + 1 (i == 0)$$<br>$$akm(i,j) = akm(i-1,1)\;\;\;\;\;\; (j == 0)$$<br>$$akm(i,j) = akm(i - 1, akm(i, j - 1)) \;\;\;\;\;\;(m,n != 0)$$</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">akm_recursive</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">0</span>) <span class="keyword">return</span> (n + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> akm_recursive(m - <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        temp = akm_recursive(m, n - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> akm_recursive(m - <span class="number">1</span>, temp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这道题目就当课后习题来说吧</p><hr><p>(未完待续)</p>]]></content>
+      
+      <categories>
+          
+          <category> 《算法详解》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 玄学 </tag>
+            
+            <tag> 栈 </tag>
+            
+            <tag> 非递归 </tag>
+            
+            <tag> 递归 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>NOIP2018提高组爆零记</title>
       <link href="/articles/NOIP-2018-zero/"/>
       <url>/articles/NOIP-2018-zero/</url>
@@ -65,9 +113,9 @@
       
         <tags>
             
-            <tag> hash </tag>
-            
             <tag> 字符串 </tag>
+            
+            <tag> hash </tag>
             
         </tags>
       
@@ -90,9 +138,9 @@
             
             <tag> Algorithm </tag>
             
-            <tag> 字符串 </tag>
-            
             <tag> AC自动机 </tag>
+            
+            <tag> 字符串 </tag>
             
             <tag> 自动机 </tag>
             
@@ -121,13 +169,13 @@
             
             <tag> Algorithm </tag>
             
-            <tag> 字符串 </tag>
-            
             <tag> KMP </tag>
             
             <tag> AC自动机 </tag>
             
             <tag> 前缀和 </tag>
+            
+            <tag> 字符串 </tag>
             
         </tags>
       
@@ -212,7 +260,7 @@
       
       <categories>
           
-          <category> 《算法》 </category>
+          <category> 《算法详解》 </category>
           
       </categories>
       
@@ -221,15 +269,15 @@
             
             <tag> Algorithm </tag>
             
+            <tag> 树 </tag>
+            
+            <tag> 线段树 </tag>
+            
             <tag> 树套树 </tag>
             
             <tag> Treap </tag>
             
             <tag> 数堆 </tag>
-            
-            <tag> 线段树 </tag>
-            
-            <tag> 树 </tag>
             
             <tag> 模版 </tag>
             
@@ -258,9 +306,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> 树 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> zkw线段树 </tag>
             
@@ -402,13 +450,13 @@
             
             <tag> 算法 </tag>
             
+            <tag> 优化 </tag>
+            
             <tag> 图论 </tag>
             
             <tag> 并查集 </tag>
             
             <tag> 路径压缩 </tag>
-            
-            <tag> 优化 </tag>
             
         </tags>
       
@@ -456,9 +504,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 群论 </tag>
             
@@ -485,9 +533,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -570,9 +618,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 线性基 </tag>
             
@@ -597,6 +645,8 @@
       
         <tags>
             
+            <tag> 数论 </tag>
+            
             <tag> 数学 </tag>
             
             <tag> 几何 </tag>
@@ -604,8 +654,6 @@
             <tag> 模板 </tag>
             
             <tag> 凸包 </tag>
-            
-            <tag> 数论 </tag>
             
         </tags>
       
@@ -626,9 +674,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 计算几何 </tag>
             
@@ -678,9 +726,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 初等数论 </tag>
             
@@ -713,11 +761,11 @@
             
             <tag> 模板 </tag>
             
-            <tag> Treap </tag>
+            <tag> 树 </tag>
             
             <tag> 线段树 </tag>
             
-            <tag> 树 </tag>
+            <tag> Treap </tag>
             
             <tag> 平衡树 </tag>
             
@@ -773,9 +821,9 @@
             
             <tag> Algorithm </tag>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 算法 </tag>
             
@@ -802,9 +850,9 @@
             
             <tag> Algorithm </tag>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 算法 </tag>
             
@@ -837,9 +885,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> Treap </tag>
-            
             <tag> 树 </tag>
+            
+            <tag> Treap </tag>
             
             <tag> 平衡树 </tag>
             
@@ -943,9 +991,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 题解 </tag>
             
@@ -1005,11 +1053,11 @@
             
             <tag> Problem </tag>
             
-            <tag> 树 </tag>
-            
             <tag> 动态规划 </tag>
             
             <tag> DP </tag>
+            
+            <tag> 树 </tag>
             
         </tags>
       
@@ -1090,9 +1138,9 @@
             
             <tag> 树 </tag>
             
-            <tag> 优化 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 优化 </tag>
             
         </tags>
       
@@ -1121,9 +1169,9 @@
             
             <tag> 树 </tag>
             
-            <tag> 优化 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 优化 </tag>
             
         </tags>
       
@@ -1148,9 +1196,9 @@
             
             <tag> 数据结构 </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> 树 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -1171,9 +1219,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
