@@ -51,10 +51,10 @@
     </entry>
     
     <entry>
-      <title>NOIP2018提高组爆零记</title>
+      <title>NOIP2018提高组游记</title>
       <link href="/articles/NOIP-2018-zero/"/>
       <url>/articles/NOIP-2018-zero/</url>
-      <content type="html"><![CDATA[<p>先占个坑，希望到时候不要鸽掉　（逃</p>]]></content>
+      <content type="html"><![CDATA[<p>NOIP2018希望有个好成绩，先占坑qwq</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    rp++;　pts++;　rank--;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) AC();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
         <tags>
@@ -88,11 +88,11 @@
             
             <tag> 字符串 </tag>
             
+            <tag> 算法 </tag>
+            
             <tag> 最长回文子串 </tag>
             
             <tag> Manacher </tag>
-            
-            <tag> 算法 </tag>
             
         </tags>
       
@@ -138,11 +138,11 @@
             
             <tag> Algorithm </tag>
             
-            <tag> AC自动机 </tag>
-            
             <tag> 字符串 </tag>
             
             <tag> 自动机 </tag>
+            
+            <tag> AC自动机 </tag>
             
             <tag> Trie </tag>
             
@@ -169,13 +169,13 @@
             
             <tag> Algorithm </tag>
             
-            <tag> KMP </tag>
+            <tag> 字符串 </tag>
             
             <tag> AC自动机 </tag>
             
-            <tag> 前缀和 </tag>
+            <tag> KMP </tag>
             
-            <tag> 字符串 </tag>
+            <tag> 前缀和 </tag>
             
         </tags>
       
@@ -504,9 +504,9 @@
       
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 数论 </tag>
             
             <tag> 群论 </tag>
             
@@ -533,9 +533,9 @@
       
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 数论 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -618,9 +618,9 @@
       
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 数论 </tag>
             
             <tag> 线性基 </tag>
             
@@ -645,9 +645,9 @@
       
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 数论 </tag>
             
             <tag> 几何 </tag>
             
@@ -674,11 +674,11 @@
       
         <tags>
             
-            <tag> 数论 </tag>
+            <tag> 计算几何 </tag>
             
             <tag> 数学 </tag>
             
-            <tag> 计算几何 </tag>
+            <tag> 数论 </tag>
             
             <tag> 向量 </tag>
             
@@ -726,9 +726,9 @@
       
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 数论 </tag>
             
             <tag> 初等数论 </tag>
             
@@ -821,9 +821,9 @@
             
             <tag> Algorithm </tag>
             
-            <tag> 数论 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 数论 </tag>
             
             <tag> 算法 </tag>
             
@@ -850,9 +850,9 @@
             
             <tag> Algorithm </tag>
             
-            <tag> 数论 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 数论 </tag>
             
             <tag> 算法 </tag>
             
@@ -991,9 +991,9 @@
       
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 数论 </tag>
             
             <tag> 题解 </tag>
             
