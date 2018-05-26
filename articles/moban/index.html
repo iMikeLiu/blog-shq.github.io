@@ -90,7 +90,7 @@
 
 
 
-  <meta name="keywords" content="模板,数据结构,树,线段树,Treap,平衡树,Splay,二叉树,二叉搜索树,主席树," />
+  <meta name="keywords" content="数据结构,模板,树,Treap,线段树,平衡树,Splay,二叉树,二叉搜索树,主席树," />
 
 
 
@@ -104,7 +104,7 @@
 
 
 <meta name="description" content="这是是一些树型结构的模板">
-<meta name="keywords" content="模板,数据结构,树,线段树,Treap,平衡树,Splay,二叉树,二叉搜索树,主席树">
+<meta name="keywords" content="数据结构,模板,树,Treap,线段树,平衡树,Splay,二叉树,二叉搜索树,主席树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「模板」一些树的模板">
 <meta property="og:url" content="https://blog.ishq.site/articles/moban/index.html">
@@ -438,6 +438,17 @@
 
           
           
+             <span id="/articles/moban/" class="leancloud_visitors" data-flag-title="「模板」一些树的模板">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count">℃</span>
+             </span>
+          
 
           
 
@@ -618,15 +629,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/模板/" rel="tag"><i class="fa fa-tag"></i> 模板</a>
-          
             <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
+          
+            <a href="/tags/模板/" rel="tag"><i class="fa fa-tag"></i> 模板</a>
           
             <a href="/tags/树/" rel="tag"><i class="fa fa-tag"></i> 树</a>
           
-            <a href="/tags/线段树/" rel="tag"><i class="fa fa-tag"></i> 线段树</a>
-          
             <a href="/tags/Treap/" rel="tag"><i class="fa fa-tag"></i> Treap</a>
+          
+            <a href="/tags/线段树/" rel="tag"><i class="fa fa-tag"></i> 线段树</a>
           
             <a href="/tags/平衡树/" rel="tag"><i class="fa fa-tag"></i> 平衡树</a>
           
@@ -1343,6 +1354,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ssWeHOXgAePg3GspSbxWGK2V-gzGzoHsz", "bOKvkovuxFtYej4JXAtOBT3d");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
