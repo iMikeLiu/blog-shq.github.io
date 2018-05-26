@@ -271,13 +271,13 @@
             
             <tag> 树 </tag>
             
+            <tag> 线段树 </tag>
+            
             <tag> 树套树 </tag>
             
             <tag> Treap </tag>
             
             <tag> 数堆 </tag>
-            
-            <tag> 线段树 </tag>
             
             <tag> 模版 </tag>
             
@@ -537,11 +537,11 @@
             
             <tag> 数论 </tag>
             
+            <tag> 莫比乌斯反演 </tag>
+            
             <tag> 莫比乌斯 </tag>
             
             <tag> 证明 </tag>
-            
-            <tag> 莫比乌斯反演 </tag>
             
         </tags>
       
@@ -564,9 +564,9 @@
             
             <tag> 随笔 </tag>
             
-            <tag> NOIP </tag>
-            
             <tag> RP </tag>
+            
+            <tag> NOIP </tag>
             
             <tag> NOI </tag>
             
@@ -647,13 +647,13 @@
             
             <tag> 数学 </tag>
             
-            <tag> 数论 </tag>
-            
             <tag> 几何 </tag>
             
             <tag> 模板 </tag>
             
             <tag> 凸包 </tag>
+            
+            <tag> 数论 </tag>
             
         </tags>
       
@@ -674,11 +674,11 @@
       
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> 向量 </tag>
             
@@ -730,11 +730,11 @@
             
             <tag> 数论 </tag>
             
-            <tag> 莫比乌斯反演 </tag>
-            
             <tag> 初等数论 </tag>
             
             <tag> 卷积 </tag>
+            
+            <tag> 莫比乌斯反演 </tag>
             
             <tag> 欧拉筛 </tag>
             
@@ -763,9 +763,9 @@
             
             <tag> 树 </tag>
             
-            <tag> Treap </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> Treap </tag>
             
             <tag> 平衡树 </tag>
             
@@ -1020,9 +1020,9 @@
             
             <tag> 数学 </tag>
             
-            <tag> 题解 </tag>
-            
             <tag> Problem </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> 优化 </tag>
             
@@ -1049,9 +1049,9 @@
       
         <tags>
             
-            <tag> 题解 </tag>
-            
             <tag> Problem </tag>
+            
+            <tag> 题解 </tag>
             
             <tag> 动态规划 </tag>
             

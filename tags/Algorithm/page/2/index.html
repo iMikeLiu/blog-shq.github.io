@@ -924,7 +924,7 @@
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
-    var guest = '';
+    var guest = 'nick,mail,link';
     guest = guest.split(',').filter(item=>{
       return GUEST.indexOf(item)>-1;
     });
@@ -937,7 +937,7 @@
         placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
         avatar:'',
         guest_info:guest,
-        pageSize:'' || 10,
+        pageSize:'10' || 10,
     });
   </script>
 
@@ -1270,7 +1270,7 @@
 
   
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("ssWeHOXgAePg3GspSbxWGK2V-gzGzoHsz", "bOKvkovuxFtYej4JXAtOBT3d");</script>
+  <script>AV.initialize("", "");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
