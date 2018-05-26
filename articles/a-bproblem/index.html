@@ -90,7 +90,7 @@
 
 
 
-  <meta name="keywords" content="树剖,树链剖分,图论,并查集,邻接表," />
+  <meta name="keywords" content="图论,并查集,树剖,树链剖分,邻接表," />
 
 
 
@@ -104,7 +104,7 @@
 
 
 <meta name="description" content="洛谷P1001是道树链剖分的模板题 明显，这题是道好用的模板题，大家可以做一下">
-<meta name="keywords" content="树剖,树链剖分,图论,并查集,邻接表">
+<meta name="keywords" content="图论,并查集,树剖,树链剖分,邻接表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「题解」P1001 a + b problem">
 <meta property="og:url" content="https://blog.ishq.site/articles/a-bproblem/index.html">
@@ -173,7 +173,10 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+    <!--Leancloud 操作库:-->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!--Valine 的核心代码库-->
+    <script src="./dist/Valine.min.js"></script>
   
   
     
@@ -616,13 +619,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/树剖/" rel="tag"><i class="fa fa-tag"></i> 树剖</a>
-          
-            <a href="/tags/树链剖分/" rel="tag"><i class="fa fa-tag"></i> 树链剖分</a>
-          
             <a href="/tags/图论/" rel="tag"><i class="fa fa-tag"></i> 图论</a>
           
             <a href="/tags/并查集/" rel="tag"><i class="fa fa-tag"></i> 并查集</a>
+          
+            <a href="/tags/树剖/" rel="tag"><i class="fa fa-tag"></i> 树剖</a>
+          
+            <a href="/tags/树链剖分/" rel="tag"><i class="fa fa-tag"></i> 树链剖分</a>
           
             <a href="/tags/邻接表/" rel="tag"><i class="fa fa-tag"></i> 邻接表</a>
           
@@ -1498,7 +1501,21 @@ show_date_time();
 <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/c54d6cb0.js","daovoice")</script>
 <!--end-->
 
-
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="./dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+        av: AV,
+        el: '.comment',
+        app_id: 'ssWeHOXgAePg3GspSbxWGK2V-gzGzoHsz', // 这里填写上面得到的APP ID
+        app_key: 'bOKvkovuxFtYej4JXAtOBT3d', // 这里填写上面得到的APP KEY
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!', // 留言框占位提示文字
+    });
+</script>
 
 
 </body>
