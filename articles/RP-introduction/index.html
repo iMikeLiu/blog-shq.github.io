@@ -90,7 +90,7 @@
 
 
 
-  <meta name="keywords" content="随笔,RP,NOIP,NOI," />
+  <meta name="keywords" content="随笔,NOIP,RP,NOI," />
 
 
 
@@ -104,7 +104,7 @@
 
 
 <meta name="description" content="你的RP足够吗？  看看RP导论，也许就可以解释你最近的各种霉运了（RP守恒嘛）">
-<meta name="keywords" content="随笔,RP,NOIP,NOI">
+<meta name="keywords" content="随笔,NOIP,RP,NOI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「玄学」RP导论">
 <meta property="og:url" content="https://blog.ishq.site/articles/RP-introduction/index.html">
@@ -722,9 +722,9 @@
           
             <a href="/tags/随笔/" rel="tag"><i class="fa fa-tag"></i> 随笔</a>
           
-            <a href="/tags/RP/" rel="tag"><i class="fa fa-tag"></i> RP</a>
-          
             <a href="/tags/NOIP/" rel="tag"><i class="fa fa-tag"></i> NOIP</a>
+          
+            <a href="/tags/RP/" rel="tag"><i class="fa fa-tag"></i> RP</a>
           
             <a href="/tags/NOI/" rel="tag"><i class="fa fa-tag"></i> NOI</a>
           
@@ -904,6 +904,34 @@
         </div>
       </section>
 
+      <div id="days"></div>
+</script>
+<script language="javascript">
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("11/27/2017 15:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
       
       <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
@@ -921,7 +949,7 @@
         </section>
       <!--/noindex-->
       
-      
+
     </div>
   </aside>
 
