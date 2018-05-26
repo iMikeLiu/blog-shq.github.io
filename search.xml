@@ -113,9 +113,9 @@
       
         <tags>
             
-            <tag> 字符串 </tag>
-            
             <tag> hash </tag>
+            
+            <tag> 字符串 </tag>
             
         </tags>
       
@@ -504,9 +504,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 群论 </tag>
             
@@ -533,9 +533,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -618,9 +618,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 线性基 </tag>
             
@@ -645,6 +645,8 @@
       
         <tags>
             
+            <tag> 数论 </tag>
+            
             <tag> 数学 </tag>
             
             <tag> 几何 </tag>
@@ -652,8 +654,6 @@
             <tag> 模板 </tag>
             
             <tag> 凸包 </tag>
-            
-            <tag> 数论 </tag>
             
         </tags>
       
@@ -674,9 +674,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 计算几何 </tag>
             
@@ -726,9 +726,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 初等数论 </tag>
             
@@ -757,9 +757,9 @@
       
         <tags>
             
-            <tag> 模板 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 模板 </tag>
             
             <tag> 树 </tag>
             
@@ -819,11 +819,11 @@
       
         <tags>
             
-            <tag> 数学 </tag>
+            <tag> Algorithm </tag>
             
             <tag> 数论 </tag>
             
-            <tag> Algorithm </tag>
+            <tag> 数学 </tag>
             
             <tag> 算法 </tag>
             
@@ -848,11 +848,11 @@
       
         <tags>
             
-            <tag> 数学 </tag>
+            <tag> Algorithm </tag>
             
             <tag> 数论 </tag>
             
-            <tag> Algorithm </tag>
+            <tag> 数学 </tag>
             
             <tag> 算法 </tag>
             
@@ -964,11 +964,11 @@
       
         <tags>
             
+            <tag> Algorithm </tag>
+            
             <tag> 模板 </tag>
             
             <tag> 凸包 </tag>
-            
-            <tag> Algorithm </tag>
             
             <tag> 算法 </tag>
             
@@ -991,9 +991,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 题解 </tag>
             
@@ -1130,11 +1130,11 @@
       
         <tags>
             
-            <tag> 模板 </tag>
-            
             <tag> Algorithm </tag>
             
             <tag> 数据结构 </tag>
+            
+            <tag> 模板 </tag>
             
             <tag> 树 </tag>
             
@@ -1161,11 +1161,11 @@
       
         <tags>
             
-            <tag> 模板 </tag>
-            
             <tag> Algorithm </tag>
             
             <tag> 数据结构 </tag>
+            
+            <tag> 模板 </tag>
             
             <tag> 树 </tag>
             
@@ -1472,9 +1472,9 @@
       
         <tags>
             
-            <tag> dijkstra </tag>
-            
             <tag> Algorithm </tag>
+            
+            <tag> dijkstra </tag>
             
         </tags>
       
