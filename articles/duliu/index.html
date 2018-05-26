@@ -90,7 +90,7 @@
 
 
 
-  <meta name="keywords" content="乱搞,玄学,常数优化,技巧," />
+  <meta name="keywords" content="玄学,乱搞,常数优化,技巧," />
 
 
 
@@ -104,7 +104,7 @@
 
 
 <meta name="description" content="本文来讲一讲一些算法竞赛中的常用优化 优化在比赛中往往是十分有用的，他可能使你打的爆搜再过几个点，可能使你的朴素算法再A一题 (我就用一些玄学优化过了洛谷上的一些优化题">
-<meta name="keywords" content="乱搞,玄学,常数优化,技巧">
+<meta name="keywords" content="玄学,乱搞,常数优化,技巧">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「玄学」常数优化的一些技巧">
 <meta property="og:url" content="https://blog.ishq.site/articles/duliu/index.html">
@@ -633,9 +633,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/乱搞/" rel="tag"><i class="fa fa-tag"></i> 乱搞</a>
-          
             <a href="/tags/玄学/" rel="tag"><i class="fa fa-tag"></i> 玄学</a>
+          
+            <a href="/tags/乱搞/" rel="tag"><i class="fa fa-tag"></i> 乱搞</a>
           
             <a href="/tags/常数优化/" rel="tag"><i class="fa fa-tag"></i> 常数优化</a>
           
@@ -781,6 +781,8 @@
 
           </nav>
 
+
+          <!--这里是我配置的RSS-->
           
             <div class="feed-link motion-element">
               <a href="/rss2.xml" rel="alternate">
@@ -819,33 +821,6 @@
         </div>
       </section>
 
-      <div id="days"></div>
-</script>
-<script language="javascript">
-function show_date_time(){
-window.setTimeout("show_date_time()", 1000);
-BirthDay=new Date("11/27/2017 15:00:00");
-today=new Date();
-timeold=(today.getTime()-BirthDay.getTime());
-sectimeold=timeold/1000
-secondsold=Math.floor(sectimeold);
-msPerDay=24*60*60*1000
-e_daysold=timeold/msPerDay
-daysold=Math.floor(e_daysold);
-e_hrsold=(e_daysold-daysold)*24;
-hrsold=setzero(Math.floor(e_hrsold));
-e_minsold=(e_hrsold-hrsold)*60;
-minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
-seconds=setzero(Math.floor((e_minsold-minsold)*60));
-document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
-}
-function setzero(i){
-if (i<10)
-{i="0" + i};
-return i;
-}
-show_date_time();
-</script>
 
       
       <!--noindex-->

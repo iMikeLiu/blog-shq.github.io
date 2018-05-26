@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Shq&#39;s Blog">
 <meta property="og:description" content="我不知道能否会成功，但我仍想试一试，哪怕只有一线希望">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-06T01:33:32.060Z">
+<meta property="og:updated_time" content="2018-05-26T08:34:32.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="标签">
 <meta name="twitter:description" content="我不知道能否会成功，但我仍想试一试，哪怕只有一线希望">
@@ -388,15 +388,6 @@
 
           
 
-  
-    <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjgzNS8xMzM3MQ=="></div>
-    </div>
-
-  
-
-
-
         </div>
         
           
@@ -466,6 +457,8 @@
 
           </nav>
 
+
+          <!--这里是我配置的RSS-->
           
             <div class="feed-link motion-element">
               <a href="/rss2.xml" rel="alternate">
@@ -504,33 +497,6 @@
         </div>
       </section>
 
-      <div id="days"></div>
-</script>
-<script language="javascript">
-function show_date_time(){
-window.setTimeout("show_date_time()", 1000);
-BirthDay=new Date("11/27/2017 15:00:00");
-today=new Date();
-timeold=(today.getTime()-BirthDay.getTime());
-sectimeold=timeold/1000
-secondsold=Math.floor(sectimeold);
-msPerDay=24*60*60*1000
-e_daysold=timeold/msPerDay
-daysold=Math.floor(e_daysold);
-e_hrsold=(e_daysold-daysold)*24;
-hrsold=setzero(Math.floor(e_hrsold));
-e_minsold=(e_hrsold-hrsold)*60;
-minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
-seconds=setzero(Math.floor((e_minsold-minsold)*60));
-document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
-}
-function setzero(i){
-if (i<10)
-{i="0" + i};
-return i;
-}
-show_date_time();
-</script>
 
       
 
@@ -711,17 +677,6 @@ show_date_time();
 
 
 
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
   
 
 

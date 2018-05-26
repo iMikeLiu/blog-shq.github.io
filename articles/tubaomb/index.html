@@ -90,7 +90,7 @@
 
 
 
-  <meta name="keywords" content="Algorithm,模板,凸包,算法," />
+  <meta name="keywords" content="模板,凸包,Algorithm,算法," />
 
 
 
@@ -104,7 +104,7 @@
 
 
 <meta name="description" content="凸包（Convex Hull）是一个计算几何（图形学）中的概念。  在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造. 在二维欧几里得空间中，凸包可想象为一条刚好包着所有点的橡皮圈。 用不严谨的话来讲，给定二维平面上的点集，凸包就是将最外层的点连接起来构成的凸多边型，它能包含点集中所有的点。">
-<meta name="keywords" content="Algorithm,模板,凸包,算法">
+<meta name="keywords" content="模板,凸包,Algorithm,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="凸包「graham算法」">
 <meta property="og:url" content="https://blog.ishq.site/articles/tubaomb/index.html">
@@ -643,11 +643,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
-          
             <a href="/tags/模板/" rel="tag"><i class="fa fa-tag"></i> 模板</a>
           
             <a href="/tags/凸包/" rel="tag"><i class="fa fa-tag"></i> 凸包</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
           
             <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
@@ -782,6 +782,8 @@
 
           </nav>
 
+
+          <!--这里是我配置的RSS-->
           
             <div class="feed-link motion-element">
               <a href="/rss2.xml" rel="alternate">
@@ -820,33 +822,6 @@
         </div>
       </section>
 
-      <div id="days"></div>
-</script>
-<script language="javascript">
-function show_date_time(){
-window.setTimeout("show_date_time()", 1000);
-BirthDay=new Date("11/27/2017 15:00:00");
-today=new Date();
-timeold=(today.getTime()-BirthDay.getTime());
-sectimeold=timeold/1000
-secondsold=Math.floor(sectimeold);
-msPerDay=24*60*60*1000
-e_daysold=timeold/msPerDay
-daysold=Math.floor(e_daysold);
-e_hrsold=(e_daysold-daysold)*24;
-hrsold=setzero(Math.floor(e_hrsold));
-e_minsold=(e_hrsold-hrsold)*60;
-minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
-seconds=setzero(Math.floor((e_minsold-minsold)*60));
-document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
-}
-function setzero(i){
-if (i<10)
-{i="0" + i};
-return i;
-}
-show_date_time();
-</script>
 
       
 
