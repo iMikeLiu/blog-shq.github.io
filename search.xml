@@ -136,13 +136,13 @@
       
         <tags>
             
+            <tag> AC自动机 </tag>
+            
             <tag> Algorithm </tag>
             
             <tag> 字符串 </tag>
             
             <tag> 自动机 </tag>
-            
-            <tag> AC自动机 </tag>
             
             <tag> Trie </tag>
             
@@ -167,15 +167,15 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
-            <tag> 字符串 </tag>
+            <tag> KMP </tag>
             
             <tag> AC自动机 </tag>
             
-            <tag> KMP </tag>
+            <tag> Algorithm </tag>
             
             <tag> 前缀和 </tag>
+            
+            <tag> 字符串 </tag>
             
         </tags>
       
@@ -647,13 +647,13 @@
             
             <tag> 数学 </tag>
             
-            <tag> 数论 </tag>
-            
             <tag> 几何 </tag>
             
             <tag> 模板 </tag>
             
             <tag> 凸包 </tag>
+            
+            <tag> 数论 </tag>
             
         </tags>
       
@@ -674,11 +674,11 @@
       
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> 向量 </tag>
             
@@ -757,9 +757,9 @@
       
         <tags>
             
-            <tag> 数据结构 </tag>
-            
             <tag> 模板 </tag>
+            
+            <tag> 数据结构 </tag>
             
             <tag> 树 </tag>
             
@@ -819,11 +819,11 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
+            
+            <tag> Algorithm </tag>
             
             <tag> 算法 </tag>
             
@@ -848,11 +848,11 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
+            
+            <tag> Algorithm </tag>
             
             <tag> 算法 </tag>
             
@@ -964,11 +964,11 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> 模板 </tag>
             
             <tag> 凸包 </tag>
+            
+            <tag> Algorithm </tag>
             
             <tag> 算法 </tag>
             
@@ -1130,11 +1130,11 @@
       
         <tags>
             
+            <tag> 模板 </tag>
+            
             <tag> Algorithm </tag>
             
             <tag> 数据结构 </tag>
-            
-            <tag> 模板 </tag>
             
             <tag> 树 </tag>
             
@@ -1161,11 +1161,11 @@
       
         <tags>
             
+            <tag> 模板 </tag>
+            
             <tag> Algorithm </tag>
             
             <tag> 数据结构 </tag>
-            
-            <tag> 模板 </tag>
             
             <tag> 树 </tag>
             
@@ -1263,9 +1263,9 @@
       
         <tags>
             
-            <tag> 高精度 </tag>
-            
             <tag> Algorithm </tag>
+            
+            <tag> 高精度 </tag>
             
             <tag> 数据结构 </tag>
             
@@ -1472,9 +1472,9 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> dijkstra </tag>
+            
+            <tag> Algorithm </tag>
             
         </tags>
       

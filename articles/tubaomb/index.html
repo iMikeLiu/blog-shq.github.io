@@ -7,6 +7,8 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
+
+
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -88,7 +90,7 @@
 
 
 
-  <meta name="keywords" content="Algorithm,模板,凸包,算法," />
+  <meta name="keywords" content="模板,凸包,Algorithm,算法," />
 
 
 
@@ -102,7 +104,7 @@
 
 
 <meta name="description" content="凸包（Convex Hull）是一个计算几何（图形学）中的概念。  在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造. 在二维欧几里得空间中，凸包可想象为一条刚好包着所有点的橡皮圈。 用不严谨的话来讲，给定二维平面上的点集，凸包就是将最外层的点连接起来构成的凸多边型，它能包含点集中所有的点。">
-<meta name="keywords" content="Algorithm,模板,凸包,算法">
+<meta name="keywords" content="模板,凸包,Algorithm,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="凸包「graham算法」">
 <meta property="og:url" content="https://blog.ishq.site/articles/tubaomb/index.html">
@@ -425,6 +427,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/articles/tubaomb/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/articles/tubaomb/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -525,6 +537,52 @@
     
     
     
+    <!-------------------------------------------------------------------------->
+    
+    
+    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    
+    
+    
+    
+    
+    <!-------------------------------------------------------------------------->
+    
+    
+    
 
 <div>
   
@@ -598,11 +656,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
-          
             <a href="/tags/模板/" rel="tag"><i class="fa fa-tag"></i> 模板</a>
           
             <a href="/tags/凸包/" rel="tag"><i class="fa fa-tag"></i> 凸包</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
           
             <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
@@ -637,8 +695,9 @@
 
       
       
-    </footer>
-  </div>
+      
+      
+
   
   
   
@@ -658,6 +717,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -958,6 +1020,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = '';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: 'ssWeHOXgAePg3GspSbxWGK2V-gzGzoHsz',
+        appKey: 'bOKvkovuxFtYej4JXAtOBT3d',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'',
+        guest_info:guest,
+        pageSize:'' || 10,
+    });
+  </script>
 
 
 
@@ -1316,6 +1400,8 @@
 <!--This is "WeChat(233)"-->
 <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/c54d6cb0.js","daovoice")</script>
 <!--end-->
+
+
 
 
 </body>
