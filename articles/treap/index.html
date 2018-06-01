@@ -8,12 +8,12 @@
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
 
-
+<link href="//cdn.staticfile.org/KaTeX/0.7.1/katex.min.css"rel="stylesheet">
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
-
+<link href="//cdn.staticfile.org/KaTeX/0.7.1/katex.min.css"rel="stylesheet">
 
 
 
@@ -255,16 +255,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-paste"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-frlink">
           <a href="/frlink/" rel="section">
             
@@ -291,6 +281,16 @@
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
             
             OI日记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-comments">
+          <a href="/comments/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-comments"></i> <br />
+            
+            留言板
           </a>
         </li>
       
@@ -486,7 +486,8 @@
 <p>在说Treap前，我们来先说下二叉堆</p>
 <blockquote>
 <p>二叉堆是一种特殊的堆，二叉堆是完全二元树（二叉树）或者是近似完全二元树（二叉树）。二叉堆有两种：最大堆和最小堆。</p>
-<p>最大堆：父结点的键值总是大于或等于任何一个子节点的键值；<br>最小堆：父结点的键值总是小于或等于任何一个子节点的键值。</p>
+<p>最大堆：父结点的键值总是大于或等于任何一个子节点的键值；
+最小堆：父结点的键值总是小于或等于任何一个子节点的键值。</p>
 </blockquote>
 <p>图示:</p>
 <p><img src="http://cfanz.cn/uploads/png/2013/07/10/14/YBc7YdK34D.png" alt="二叉堆"></p>
@@ -495,11 +496,14 @@
 <hr>
 <p><code>Treap = Tree + Heap</code> </p>
 <p>Treap是一棵拥有键值和优先级的树. </p>
-<p>对于键值而言,   Treap是一棵排序二叉树<br>对于优先级而言,   Treap是堆.</p>
-<h2 id="旋转Treap"><a href="#旋转Treap" class="headerlink" title="旋转Treap"></a>旋转Treap</h2><p>因为Treap既要满足键值排序二叉树结构,又要满足优先级的堆结构.<br>旋转的Treap是通过<strong>旋转</strong>来维护性质的, </p>
+<p>对于键值而言,   Treap是一棵排序二叉树
+对于优先级而言,   Treap是堆.</p>
+<h2 id="旋转Treap"><a href="#旋转Treap" class="headerlink" title="旋转Treap"></a>旋转Treap</h2><p>因为Treap既要满足键值排序二叉树结构,又要满足优先级的堆结构. 
+旋转的Treap是通过<strong>旋转</strong>来维护性质的, </p>
 <p><img src="http://img.blog.csdn.net/20170105170607099?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVGhlX3VzZWxlc3M=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"></p>
 <p>如图所示,以右旋为例 </p>
-<p>若x优先级比u高,当前子树不满足堆性质,要将x旋上去.<br>将x旋到u处成为当前子树根,将u旋下去成为x的右儿子,那么x原来的左儿子b就空出来了,将键值b作为u的左儿子,旋转完毕.</p>
+<p>若x优先级比u高,当前子树不满足堆性质,要将x旋上去. 
+将x旋到u处成为当前子树根,将u旋下去成为x的右儿子,那么x原来的左儿子b就空出来了,将键值b作为u的左儿子,旋转完毕.</p>
 <p>代码:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 左旋操作</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Left_rotate</span><span class="params">(Node* root)</span></span>&#123;</span><br><span class="line">    Node* temp = root-&gt;right;</span><br><span class="line">    root-&gt;right = temp-&gt;left;</span><br><span class="line">    temp-&gt;left = root;</span><br><span class="line">    root = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 右旋操作</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Right_rotate</span><span class="params">(Node* root)</span></span>&#123;</span><br><span class="line">    Node* temp = root-&gt;left;</span><br><span class="line">    root-&gt;left = temp-&gt;right;</span><br><span class="line">    temp-&gt;right = root;</span><br><span class="line">    root = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
@@ -789,9 +793,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -813,7 +817,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">125</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -906,7 +910,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">82.3k</span>
+    <span title="Site words total count">82.5k</span>
   
 </div>
 

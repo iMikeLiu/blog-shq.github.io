@@ -8,12 +8,12 @@
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
 
-
+<link href="//cdn.staticfile.org/KaTeX/0.7.1/katex.min.css"rel="stylesheet">
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
-
+<link href="//cdn.staticfile.org/KaTeX/0.7.1/katex.min.css"rel="stylesheet">
 
 
 
@@ -103,18 +103,18 @@
 
 
 
-<meta name="description" content="今天下午数论专讲qwq 然而今天的内容并不是很难（ 先做个水题水一发Blog 洛谷链接–SDOI2008烧水问题">
+<meta name="description" content="今天下午数论专讲qwq 然而今天的内容并不是很难（ 先做个水题水一发Blog 洛谷链接--SDOI2008烧水问题">
 <meta name="keywords" content="数学,递推">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[SDOI2008]烧水问题">
 <meta property="og:url" content="https://blog.ishq.site/articles/P1984-SDOI2008-Water/index.html">
 <meta property="og:site_name" content="Shq&#39;s Blog">
-<meta property="og:description" content="今天下午数论专讲qwq 然而今天的内容并不是很难（ 先做个水题水一发Blog 洛谷链接–SDOI2008烧水问题">
+<meta property="og:description" content="今天下午数论专讲qwq 然而今天的内容并不是很难（ 先做个水题水一发Blog 洛谷链接--SDOI2008烧水问题">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-05-06T01:33:31.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[SDOI2008]烧水问题">
-<meta name="twitter:description" content="今天下午数论专讲qwq 然而今天的内容并不是很难（ 先做个水题水一发Blog 洛谷链接–SDOI2008烧水问题">
+<meta name="twitter:description" content="今天下午数论专讲qwq 然而今天的内容并不是很难（ 先做个水题水一发Blog 洛谷链接--SDOI2008烧水问题">
 
 
 
@@ -252,16 +252,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-paste"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-frlink">
           <a href="/frlink/" rel="section">
             
@@ -288,6 +278,16 @@
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
             
             OI日记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-comments">
+          <a href="/comments/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-comments"></i> <br />
+            
+            留言板
           </a>
         </li>
       
@@ -439,7 +439,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,091
+                  1,146
                 </span>
               
 
@@ -455,7 +455,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -479,9 +479,42 @@
         <p>今天下午数论专讲qwq</p>
 <p>然而今天的内容并不是很难（</p>
 <p>先做个水题水一发Blog</p>
-<p><a href="https://www.luogu.org/problemnew/show/P1984" target="_blank" rel="noopener">洛谷链接–SDOI2008烧水问题</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P1984" target="_blank" rel="noopener">洛谷链接--SDOI2008烧水问题</a></p>
 <a id="more"></a>
-<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>把总质量为$1kg$的水分装在$n$个杯子里，每杯水的质量均为$\left({1\over n}\right)kg$，初始温度均为$0℃$。现需要把每一杯水都烧开。我们可以对任意一杯水进行加热。把一杯水的温度升高$t℃$所需的能量为$\left({4200\times t \over n}\right)\;J$，其中，“$J$”是能量单位“焦耳”。如果一旦某杯水的温度达到$100℃$，那么这杯水的温度就不能再继续升高，此时我们认为这杯水已经被烧开。显然地，如果直接把水一杯一杯地烧开，所需的总能量为$(4200\times 100)J$。</p>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>把总质量为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi>k</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">1kg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord mathit" style="margin-right:0.03588em;">g</span></span></span></span>的水分装在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>个杯子里，每杯水的质量均为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">(</mo><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mi>n</mi></mrow></mfrac></mrow><mo fence="true">)</mo></mrow><mi>k</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">\left({1\over n}\right)kg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.85em;"></span><span class="strut bottom" style="height:1.20001em;vertical-align:-0.35001em;"></span><span class="base textstyle uncramped"><span class="minner textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord textstyle uncramped"><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">n</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord mathit" style="margin-right:0.03588em;">g</span></span></span></span>，初始温度均为<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.579ex" height="3.343ex" style="vertical-align: -1.171ex;" viewbox="0 -934.9 1110.5 1439.2" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMAIN-30" x="0" y="0"/>
+<g transform="translate(500,0)">
+<text font-family="monospace" stroke="none" transform="scale(71.759) matrix(1 0 0 -1 0 0)">℃</text>
+</g>
+</g>
+</svg>。现需要把每一杯水都烧开。我们可以对任意一杯水进行加热。把一杯水的温度升高<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.256ex" height="3.343ex" style="vertical-align: -1.171ex;" viewbox="0 -934.9 971.5 1439.2" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMATHI-74" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMATHI-74" x="0" y="0"/>
+<g transform="translate(361,0)">
+<text font-family="monospace" stroke="none" transform="scale(71.759) matrix(1 0 0 -1 0 0)">℃</text>
+</g>
+</g>
+</svg>所需的能量为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">(</mo><mrow><mfrac><mrow><mn>4</mn><mn>2</mn><mn>0</mn><mn>0</mn><mo>×</mo><mi>t</mi></mrow><mrow><mi>n</mi></mrow></mfrac></mrow><mo fence="true">)</mo></mrow><mspace width="0.277778em"></mspace><mi>J</mi></mrow><annotation encoding="application/x-tex">\left({4200\times t \over n}\right)\;J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.85em;"></span><span class="strut bottom" style="height:1.20001em;vertical-align:-0.35001em;"></span><span class="base textstyle uncramped"><span class="minner textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord textstyle uncramped"><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">n</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">4</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mbin">×</span><span class="mord mathit">t</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mord mspace thickspace"></span><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span>，其中，“<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span>”是能量单位“焦耳”。如果一旦某杯水的温度达到<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.904ex" height="3.343ex" style="vertical-align: -1.171ex;" viewbox="0 -934.9 2111.5 1439.2" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/>
+<path stroke-width="1" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMAIN-31"/>
+ <use xlink:href="#E1-MJMAIN-30" x="500" y="0"/>
+ <use xlink:href="#E1-MJMAIN-30" x="1001" y="0"/>
+<g transform="translate(1501,0)">
+<text font-family="monospace" stroke="none" transform="scale(71.759) matrix(1 0 0 -1 0 0)">℃</text>
+</g>
+</g>
+</svg>，那么这杯水的温度就不能再继续升高，此时我们认为这杯水已经被烧开。显然地，如果直接把水一杯一杯地烧开，所需的总能量为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mn>4</mn><mn>2</mn><mn>0</mn><mn>0</mn><mo>×</mo><mn>1</mn><mn>0</mn><mn>0</mn><mo>)</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">(4200\times 100)J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">(</span><span class="mord mathrm">4</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mbin">×</span><span class="mord mathrm">1</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mclose">)</span><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span>。</p>
 <p>在烧水的过程中，我们随时可以在两杯温度不同的水之间进行热传递操作。热量只能从温度较高的那杯水传递到温度较低的那杯水。由于两杯水的质量相同，所以进行热传递操作之后，原来温度较高的那杯水所降低的温度总是等于原来温度较低的那杯水所升高的温度。</p>
 <p>一旦两杯水的温度相同，热传递立刻停止。</p>
 <p>为了把问题简化，我们假设：</p>
@@ -491,12 +524,98 @@
 <li>热传递总是隔着杯子进行，n杯水永远不会互相混合。</li>
 <li>热传递符合能量守恒，而且没有任何的热量损耗。</li>
 </ol>
-<p>在这个问题里，只要求把每杯水都至少烧开一遍就可以了，而不要求最终每杯水的温度都是$100℃$。我们可以用如下操作把两杯水烧开：先把一杯水加热到$100℃$，花费能量$\left({4200 \times 100 \over 2}\right)J$，然后两杯水进行热传递，直到它们的温度都变成50℃为止，最后把原来没有加热到$100℃$的那杯水加热到$100℃$，花费能量$\left({4200\times50\over 2}\right)J$，此时两杯水都被烧开过了，当前温度一杯$100℃$，一杯$50℃$，花费的总能量为$(4200\times 75)J$，比直接烧开所需的$(4200\times 100)J$少花费了$25%$的能量。</p>
+<p>在这个问题里，只要求把每杯水都至少烧开一遍就可以了，而不要求最终每杯水的温度都是<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.904ex" height="3.343ex" style="vertical-align: -1.171ex;" viewbox="0 -934.9 2111.5 1439.2" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/>
+<path stroke-width="1" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMAIN-31"/>
+ <use xlink:href="#E1-MJMAIN-30" x="500" y="0"/>
+ <use xlink:href="#E1-MJMAIN-30" x="1001" y="0"/>
+<g transform="translate(1501,0)">
+<text font-family="monospace" stroke="none" transform="scale(71.759) matrix(1 0 0 -1 0 0)">℃</text>
+</g>
+</g>
+</svg>。我们可以用如下操作把两杯水烧开：先把一杯水加热到<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.904ex" height="3.343ex" style="vertical-align: -1.171ex;" viewbox="0 -934.9 2111.5 1439.2" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/>
+<path stroke-width="1" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMAIN-31"/>
+ <use xlink:href="#E1-MJMAIN-30" x="500" y="0"/>
+ <use xlink:href="#E1-MJMAIN-30" x="1001" y="0"/>
+<g transform="translate(1501,0)">
+<text font-family="monospace" stroke="none" transform="scale(71.759) matrix(1 0 0 -1 0 0)">℃</text>
+</g>
+</g>
+</svg>，花费能量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">(</mo><mrow><mfrac><mrow><mn>4</mn><mn>2</mn><mn>0</mn><mn>0</mn><mo>×</mo><mn>1</mn><mn>0</mn><mn>0</mn></mrow><mrow><mn>2</mn></mrow></mfrac></mrow><mo fence="true">)</mo></mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">\left({4200 \times 100 \over 2}\right)J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.85em;"></span><span class="strut bottom" style="height:1.20001em;vertical-align:-0.35001em;"></span><span class="base textstyle uncramped"><span class="minner textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord textstyle uncramped"><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm">2</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">4</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mbin">×</span><span class="mord mathrm">1</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span>，然后两杯水进行热传递，直到它们的温度都变成50℃为止，最后把原来没有加热到<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.904ex" height="3.343ex" style="vertical-align: -1.171ex;" viewbox="0 -934.9 2111.5 1439.2" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/>
+<path stroke-width="1" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMAIN-31"/>
+ <use xlink:href="#E1-MJMAIN-30" x="500" y="0"/>
+ <use xlink:href="#E1-MJMAIN-30" x="1001" y="0"/>
+<g transform="translate(1501,0)">
+<text font-family="monospace" stroke="none" transform="scale(71.759) matrix(1 0 0 -1 0 0)">℃</text>
+</g>
+</g>
+</svg>的那杯水加热到<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.904ex" height="3.343ex" style="vertical-align: -1.171ex;" viewbox="0 -934.9 2111.5 1439.2" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/>
+<path stroke-width="1" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMAIN-31"/>
+ <use xlink:href="#E1-MJMAIN-30" x="500" y="0"/>
+ <use xlink:href="#E1-MJMAIN-30" x="1001" y="0"/>
+<g transform="translate(1501,0)">
+<text font-family="monospace" stroke="none" transform="scale(71.759) matrix(1 0 0 -1 0 0)">℃</text>
+</g>
+</g>
+</svg>，花费能量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">(</mo><mrow><mfrac><mrow><mn>4</mn><mn>2</mn><mn>0</mn><mn>0</mn><mo>×</mo><mn>5</mn><mn>0</mn></mrow><mrow><mn>2</mn></mrow></mfrac></mrow><mo fence="true">)</mo></mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">\left({4200\times50\over 2}\right)J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.85em;"></span><span class="strut bottom" style="height:1.20001em;vertical-align:-0.35001em;"></span><span class="base textstyle uncramped"><span class="minner textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord textstyle uncramped"><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm">2</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">4</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mbin">×</span><span class="mord mathrm">5</span><span class="mord mathrm">0</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span>，此时两杯水都被烧开过了，当前温度一杯<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.904ex" height="3.343ex" style="vertical-align: -1.171ex;" viewbox="0 -934.9 2111.5 1439.2" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/>
+<path stroke-width="1" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMAIN-31"/>
+ <use xlink:href="#E1-MJMAIN-30" x="500" y="0"/>
+ <use xlink:href="#E1-MJMAIN-30" x="1001" y="0"/>
+<g transform="translate(1501,0)">
+<text font-family="monospace" stroke="none" transform="scale(71.759) matrix(1 0 0 -1 0 0)">℃</text>
+</g>
+</g>
+</svg>，一杯<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.742ex" height="3.343ex" style="vertical-align: -1.171ex;" viewbox="0 -934.9 1611 1439.2" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"/>
+<path stroke-width="1" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMAIN-35"/>
+ <use xlink:href="#E1-MJMAIN-30" x="500" y="0"/>
+<g transform="translate(1001,0)">
+<text font-family="monospace" stroke="none" transform="scale(71.759) matrix(1 0 0 -1 0 0)">℃</text>
+</g>
+</g>
+</svg>，花费的总能量为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mn>4</mn><mn>2</mn><mn>0</mn><mn>0</mn><mo>×</mo><mn>7</mn><mn>5</mn><mo>)</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">(4200\times 75)J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">(</span><span class="mord mathrm">4</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mbin">×</span><span class="mord mathrm">7</span><span class="mord mathrm">5</span><span class="mclose">)</span><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span>，比直接烧开所需的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mn>4</mn><mn>2</mn><mn>0</mn><mn>0</mn><mo>×</mo><mn>1</mn><mn>0</mn><mn>0</mn><mo>)</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">(4200\times 100)J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">(</span><span class="mord mathrm">4</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mbin">×</span><span class="mord mathrm">1</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mclose">)</span><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span>少花费了<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.325ex" height="2.176ex" style="vertical-align: -0.338ex;" viewbox="0 -791.3 1001 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/>
+<path stroke-width="1" id="E1-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMAIN-32"/>
+ <use xlink:href="#E1-MJMAIN-35" x="500" y="0"/>
+</g>
+</svg>的能量。</p>
 <p>你的任务是设计一个最佳的操作方案使得n杯水都至少被烧开一遍所需的总能量最少。</p>
 <h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入格式：</p>
-<p>输入文件只有一个数$n$。</p>
+<p>输入文件只有一个数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>。</p>
 <p>输出格式：</p>
-<p>输出$n$杯水都至少被烧开一遍所需的最少的总能量，单位为$J$，四舍五入到小数点后两位。</p>
+<p>输出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>杯水都至少被烧开一遍所需的最少的总能量，单位为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span>，四舍五入到小数点后两位。</p>
 <h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p>输入样例#1：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
 <p>输出样例#1：</p>
@@ -513,18 +632,19 @@
 <p>明显，我们应尽量进行2操作，才能得到最优解</p>
 <p>题目中还说了，<strong>至少被烧开一遍</strong>,　也就是说，我们可以在这个前提下进行这样的操作：</p>
 <ol>
-<li>烧开第$i$杯</li>
-<li>将第$i$杯传导导$i+1$杯</li>
+<li>烧开第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span>杯</li>
+<li>将第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span>杯传导导<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span><span class="mbin">+</span><span class="mord mathrm">1</span></span></span></span>杯</li>
 <li>重复以上步骤</li>
 </ol>
 <p>这就是这道题的精髓了</p>
 <p>现在，我们来看一下如何进行该操作</p>
 <p>推导：设沸腾温度为st</p>
-<p>则第一杯温度为$st$,需要加热$t_1=st$</p>
-<p>第二杯可以中和的最高温度为$st/2$,需要加热$t_2={st\over2}$</p>
+<p>则第一杯温度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">st</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.61508em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">s</span><span class="mord mathit">t</span></span></span></span>,需要加热<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>1</mn></msub><mo>=</mo><mi>s</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">t_1=st</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord mathit">s</span><span class="mord mathit">t</span></span></span></span></p>
+<p>第二杯可以中和的最高温度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">st/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">s</span><span class="mord mathit">t</span><span class="mord mathrm">/</span><span class="mord mathrm">2</span></span></span></span>,需要加热<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>2</mn></msub><mo>=</mo><mrow><mfrac><mrow><mi>s</mi><mi>t</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></mrow><annotation encoding="application/x-tex">t_2={st\over2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.824556em;"></span><span class="strut bottom" style="height:1.169556em;vertical-align:-0.345em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord textstyle uncramped"><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm">2</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">s</span><span class="mord mathit">t</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span></p>
 <p>第三杯可以中和的最高温度为t3=(a/4+a)/2=5a/8,需要加热t3=3a/8</p>
 <p>第四杯可以中和的最高温度为t4=((a/8+5a/8)/2+a)/2=11a/16,需要加热t4=5/16</p>
-<p>那么，明显地，t3/t2=3/4=1-1/4,  $t4/t3=5/6=1-1/6$<br>继续推导得t(n+1)/t(n)=1-1/2n</p>
+<p>那么，明显地，t3/t2=3/4=1-1/4,  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mn>4</mn><mi mathvariant="normal">/</mi><mi>t</mi><mn>3</mn><mo>=</mo><mn>5</mn><mi mathvariant="normal">/</mi><mn>6</mn><mo>=</mo><mn>1</mn><mo>−</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">t4/t3=5/6=1-1/6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">t</span><span class="mord mathrm">4</span><span class="mord mathrm">/</span><span class="mord mathit">t</span><span class="mord mathrm">3</span><span class="mrel">=</span><span class="mord mathrm">5</span><span class="mord mathrm">/</span><span class="mord mathrm">6</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mord mathrm">/</span><span class="mord mathrm">6</span></span></span></span>
+继续推导得t(n+1)/t(n)=1-1/2n</p>
 <p>代码:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// luogu-judger-enable-o2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">double</span> ans, a;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    a = <span class="number">420000.00</span> / n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        ans += a;</span><br><span class="line">        a *= (<span class="number">1</span> - <span class="number">0.5</span> / i);</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.2lf\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
@@ -765,9 +885,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -789,7 +909,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">125</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -882,7 +1002,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">82.3k</span>
+    <span title="Site words total count">82.5k</span>
   
 </div>
 

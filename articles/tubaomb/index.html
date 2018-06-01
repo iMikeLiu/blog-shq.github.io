@@ -8,12 +8,12 @@
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
 
-
+<link href="//cdn.staticfile.org/KaTeX/0.7.1/katex.min.css"rel="stylesheet">
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
-
+<link href="//cdn.staticfile.org/KaTeX/0.7.1/katex.min.css"rel="stylesheet">
 
 
 
@@ -103,20 +103,20 @@
 
 
 
-<meta name="description" content="凸包（Convex Hull）是一个计算几何（图形学）中的概念。  在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造. 在二维欧几里得空间中，凸包可想象为一条刚好包着所有点的橡皮圈。 用不严谨的话来讲，给定二维平面上的点集，凸包就是将最外层的点连接起来构成的凸多边型，它能包含点集中所有的点。">
+<meta name="description" content="凸包（Convex Hull）是一个计算几何（图形学）中的概念。  在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，...Xn)的凸组合来构造. 在二维欧几里得空间中，凸包可想象为一条刚好包着所有点的橡皮圈。 用不严谨的话来讲，给定二维平面上的点集，凸包就是将最外层的点连接起来构成的凸多边型，它能包含点集中所有的点。">
 <meta name="keywords" content="Algorithm,模板,凸包,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="凸包「graham算法」">
 <meta property="og:url" content="https://blog.ishq.site/articles/tubaomb/index.html">
 <meta property="og:site_name" content="Shq&#39;s Blog">
-<meta property="og:description" content="凸包（Convex Hull）是一个计算几何（图形学）中的概念。  在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造. 在二维欧几里得空间中，凸包可想象为一条刚好包着所有点的橡皮圈。 用不严谨的话来讲，给定二维平面上的点集，凸包就是将最外层的点连接起来构成的凸多边型，它能包含点集中所有的点。">
+<meta property="og:description" content="凸包（Convex Hull）是一个计算几何（图形学）中的概念。  在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，...Xn)的凸组合来构造. 在二维欧几里得空间中，凸包可想象为一条刚好包着所有点的橡皮圈。 用不严谨的话来讲，给定二维平面上的点集，凸包就是将最外层的点连接起来构成的凸多边型，它能包含点集中所有的点。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20150530151346608">
 <meta property="og:image" content="http://img.blog.csdn.net/20150530145453912">
 <meta property="og:updated_time" content="2018-05-06T01:33:30.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="凸包「graham算法」">
-<meta name="twitter:description" content="凸包（Convex Hull）是一个计算几何（图形学）中的概念。  在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造. 在二维欧几里得空间中，凸包可想象为一条刚好包着所有点的橡皮圈。 用不严谨的话来讲，给定二维平面上的点集，凸包就是将最外层的点连接起来构成的凸多边型，它能包含点集中所有的点。">
+<meta name="twitter:description" content="凸包（Convex Hull）是一个计算几何（图形学）中的概念。  在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，...Xn)的凸组合来构造. 在二维欧几里得空间中，凸包可想象为一条刚好包着所有点的橡皮圈。 用不严谨的话来讲，给定二维平面上的点集，凸包就是将最外层的点连接起来构成的凸多边型，它能包含点集中所有的点。">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20150530151346608">
 
 
@@ -255,16 +255,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-paste"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-frlink">
           <a href="/frlink/" rel="section">
             
@@ -291,6 +281,16 @@
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
             
             OI日记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-comments">
+          <a href="/comments/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-comments"></i> <br />
+            
+            留言板
           </a>
         </li>
       
@@ -482,12 +482,12 @@
         <blockquote>
 <p> 凸包（Convex Hull）是一个计算几何（图形学）中的概念。</p>
 </blockquote>
-<p>在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的<strong>凸包</strong>。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造.</p>
+<p>在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的<strong>凸包</strong>。X的凸包可以用X内所有点(X1，...Xn)的凸组合来构造.</p>
 <p>在二维欧几里得空间中，凸包可想象为一条刚好包着所有点的橡皮圈。</p>
 <p>用不严谨的话来讲，给定二维平面上的点集，凸包就是将最外层的点连接起来构成的凸多边型，它能包含点集中所有的点。</p>
 <a id="more"></a>
 <p>凸包最常用的凸包算法是Graham扫描法和Jarvis步进法</p>
-<p>Graham’s Scan法</p>
+<p>Graham&#39;s Scan法</p>
 <p>这个算法是由数学大师葛立恒（Graham）发明的，他曾经是美国数学学会（AMS）主席、AT&amp;T首席科学家以及国际杂技师协会（IJA）主席。</p>
 <p><strong>问题</strong></p>
 <p>给定平面上的二维点集，求解其凸包。</p>
@@ -501,9 +501,9 @@
 <li><p>计算各个点相对于 P0 的幅角 α ，按从小到大的顺序对各个点排序。当 α 相同时，距离 P0 比较近的排在前面。例如上图得到的结果为 P1，P2，P3，P4，P5，P6，P7，P8。我们由几何知识可以知道，结果中第一个点 P1 和最后一个点 P8 一定是凸包上的点。 </p>
 </li>
 </ol>
-<p>——（以上是准备步骤，以下开始求凸包）——- </p>
+<p>------（以上是准备步骤，以下开始求凸包）------- </p>
 <p>   以上，我们已经知道了凸包上的第一个点 P0 和第二个点 P1，我们把它们放在栈里面。现在从步骤3求得的那个结果里，把 P1 后面的那个点拿出来做当前点，即 P2 。接下来开始找第三个点：</p>
-<ol start="4">
+<ol>
 <li><p>连接P0和栈顶的那个点，得到直线 L 。看当前点是在直线 L 的右边还是左边。如果在直线的右边就执行步骤5；如果在直线上，或者在直线的左边就执行步骤6。</p>
 </li>
 <li><p>如果在右边，则栈顶的那个元素不是凸包上的点，把栈顶元素出栈。执行步骤4。</p>
@@ -750,9 +750,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -774,7 +774,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">125</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -851,7 +851,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">82.3k</span>
+    <span title="Site words total count">82.5k</span>
   
 </div>
 
