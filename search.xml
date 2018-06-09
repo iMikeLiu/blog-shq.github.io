@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>「Luogu P1801 黑匣子」 - Treap模版题</title>
+      <link href="/articles/P1801-%E9%BB%91%E5%8C%A3%E5%AD%90-NOI%E5%AF%BC%E5%88%8A2010%E6%8F%90%E9%AB%98/"/>
+      <url>/articles/P1801-%E9%BB%91%E5%8C%A3%E5%AD%90-NOI%E5%AF%BC%E5%88%8A2010%E6%8F%90%E9%AB%98/</url>
+      <content type="html"><![CDATA[<p>题目描述:</p><p>给你两种操作:</p><ul><li><code>ADD(x)</code> 把<code>x</code>这个元素放入序列中</li><li><code>GET</code> <code>i</code>加<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span></span></span></span>，然后输出序列中第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span>小的数</li></ul><a id="more"></a><p><img src="https://cdn.luogu.org/upload/pic/661.png" alt="题目描述"></p><p>明显，这是一道Treap的模版题</p><p>水题水题（那么水的题还写Blog.....</p><hr><p>代码:</p><p><strong>talk is cheap, show me the Code</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">400020</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> Add[MAXN], Get[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> m, n, k;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> key, priority;</span><br><span class="line">    Node *left, *right;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> size, cnt;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Node *root;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span> <span class="params">(Node *root)</span> </span>&#123;</span><br><span class="line">    root-&gt;size = root-&gt;left-&gt;size + root-&gt;right-&gt;size + root-&gt;cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Left_rotate</span> <span class="params">(Node *&amp;root)</span> </span>&#123;</span><br><span class="line">    Node *temp = root-&gt;right;</span><br><span class="line">    root-&gt;right = temp-&gt;left;</span><br><span class="line">    temp-&gt;left = root;</span><br><span class="line">    update (temp);</span><br><span class="line">    update (root);</span><br><span class="line">    root = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Right_rotate</span> <span class="params">(Node *&amp;root)</span> </span>&#123;</span><br><span class="line">    Node *temp = root-&gt;left;</span><br><span class="line">    root-&gt;left = temp-&gt;right;</span><br><span class="line">    temp-&gt;right = root;</span><br><span class="line">    update (temp);</span><br><span class="line">    update (root);</span><br><span class="line">    root = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">valueInsert</span><span class="params">(Node *&amp;root, Node *&amp;node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        root = node;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (root-&gt;key == node-&gt;key) &#123;</span><br><span class="line">        root-&gt;cnt++;</span><br><span class="line">        update (root);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (root-&gt;key &gt;= node-&gt;key) &#123;</span><br><span class="line">        valueInsert(root-&gt;left, node);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (root-&gt;key &lt;  node-&gt;key) &#123;</span><br><span class="line">        valueInsert(root-&gt;right, node);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> node;</span><br><span class="line">    update (root);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(Node *&amp;root, <span class="keyword">int</span> key, <span class="keyword">int</span> priority)</span></span>&#123;</span><br><span class="line">    Node* node = <span class="keyword">new</span> Node;</span><br><span class="line">    node-&gt;key = key;</span><br><span class="line">    node-&gt;priority = priority;</span><br><span class="line">    valueInsert(root, node);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Find_Value_By_Rank</span> <span class="params">(Node *&amp;root, <span class="keyword">const</span> <span class="keyword">int</span> &amp;K)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span> || K &lt;= <span class="number">0</span> || K &gt; root-&gt;size) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> shq = (root-&gt;left == <span class="literal">NULL</span> ? <span class="number">0</span> : root-&gt;left-&gt;size);</span><br><span class="line">    <span class="keyword">if</span> (K &gt;= shq + <span class="number">1</span> &amp;&amp; K &lt;= shq + root-&gt;cnt) <span class="keyword">return</span> root-&gt;key;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (K &lt;= shq) <span class="keyword">return</span> Find_Value_By_Rank (root-&gt;left, K);</span><br><span class="line">    <span class="keyword">return</span> Find_Value_By_Rank (root-&gt;right, K);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">SlowRead</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> data = <span class="number">0</span>, w = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (ch != <span class="string">'-'</span> &amp;&amp; (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>)) ch = getchar();</span><br><span class="line">    <span class="keyword">if</span>(ch == <span class="string">'-'</span>) w = <span class="number">-1</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) data = (data &lt;&lt; <span class="number">1</span>) + (data &lt;&lt; <span class="number">3</span>) + ch - <span class="string">'0'</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">return</span> data * w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span> </span>&#123;</span><br><span class="line">    srand (time (<span class="literal">NULL</span>));</span><br><span class="line">    m = SlowRead(); n = SlowRead();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) Add[i] = SlowRead();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) Get[i] = SlowRead();</span><br><span class="line">    <span class="built_in">std</span>::sort (Get + <span class="number">1</span>, Get + n + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>,j = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">        Insert (root, Add[i], rand());</span><br><span class="line">        <span class="keyword">while</span>(Get[j] == i)&#123;</span><br><span class="line">            <span class="built_in">printf</span> (<span class="string">"%d\n"</span>,Find_Value_By_Rank (root,++k));</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 平衡树 </tag>
+            
+            <tag> Treap </tag>
+            
+            <tag> Luogu </tag>
+            
+            <tag> NOI导刊 </tag>
+            
+            <tag> 模版题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>「LYOI2016 Summer」一次函数 - 线段树 + 数论</title>
       <link href="/articles/%E3%80%8CLYOI2016-Summer%E3%80%8D%E4%B8%80%E6%AC%A1%E5%87%BD%E6%95%B0/"/>
       <url>/articles/%E3%80%8CLYOI2016-Summer%E3%80%8D%E4%B8%80%E6%AC%A1%E5%87%BD%E6%95%B0/</url>
@@ -13,11 +38,11 @@
             
             <tag> 模拟赛 </tag>
             
-            <tag> 数据结构 </tag>
-            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
+            
+            <tag> 数据结构 </tag>
             
             <tag> 题解 </tag>
             
@@ -357,11 +382,11 @@
             
             <tag> 树 </tag>
             
+            <tag> Treap </tag>
+            
             <tag> 线段树 </tag>
             
             <tag> 树套树 </tag>
-            
-            <tag> Treap </tag>
             
             <tag> 数堆 </tag>
             
@@ -824,15 +849,15 @@
             
             <tag> 数据结构 </tag>
             
-            <tag> 树 </tag>
-            
             <tag> 模板 </tag>
             
-            <tag> 线段树 </tag>
+            <tag> 树 </tag>
+            
+            <tag> 平衡树 </tag>
             
             <tag> Treap </tag>
             
-            <tag> 平衡树 </tag>
+            <tag> 线段树 </tag>
             
             <tag> Splay </tag>
             
@@ -884,13 +909,13 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
-            <tag> 算法 </tag>
-            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
+            
+            <tag> Algorithm </tag>
+            
+            <tag> 算法 </tag>
             
             <tag> 素数 </tag>
             
@@ -913,13 +938,13 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
-            <tag> 算法 </tag>
-            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
+            
+            <tag> Algorithm </tag>
+            
+            <tag> 算法 </tag>
             
             <tag> 线性筛 </tag>
             
@@ -952,9 +977,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> Treap </tag>
-            
             <tag> 平衡树 </tag>
+            
+            <tag> Treap </tag>
             
         </tags>
       
@@ -1031,11 +1056,11 @@
             
             <tag> Algorithm </tag>
             
-            <tag> 算法 </tag>
-            
             <tag> 模板 </tag>
             
             <tag> 凸包 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -1199,9 +1224,9 @@
             
             <tag> 数据结构 </tag>
             
-            <tag> 树 </tag>
-            
             <tag> 模板 </tag>
+            
+            <tag> 树 </tag>
             
             <tag> 优化 </tag>
             
@@ -1230,9 +1255,9 @@
             
             <tag> 数据结构 </tag>
             
-            <tag> 树 </tag>
-            
             <tag> 模板 </tag>
+            
+            <tag> 树 </tag>
             
             <tag> 优化 </tag>
             
