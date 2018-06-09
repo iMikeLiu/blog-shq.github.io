@@ -90,7 +90,7 @@
 
 
 
-  <meta name="keywords" content="Algorithm,树,Treap,线段树,树套树,数堆,模版," />
+  <meta name="keywords" content="树,Algorithm,Treap,线段树,树套树,数堆,模版," />
 
 
 
@@ -103,18 +103,18 @@
 
 
 
-<meta name="description" content="线段树套平衡树 本文Shq将会介绍一种树套树 ---线段树套平衡树Treap 相对来说Treap是较为容易实现的平衡树，就用这个来实现我们的平衡树了. 当然，这个可以使用其他更为高级的数据结构">
-<meta name="keywords" content="Algorithm,树,Treap,线段树,树套树,数堆,模版">
+<meta name="description" content="线段树套平衡树 本文Shq将会介绍一种树套树 —线段树套平衡树Treap 相对来说Treap是较为容易实现的平衡树，就用这个来实现我们的平衡树了. 当然，这个可以使用其他更为高级的数据结构">
+<meta name="keywords" content="树,Algorithm,Treap,线段树,树套树,数堆,模版">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「树套树」线段树套平衡树">
 <meta property="og:url" content="https://blog.ishq.site/articles/Segt-in-Treap/index.html">
 <meta property="og:site_name" content="Shq&#39;s Blog">
-<meta property="og:description" content="线段树套平衡树 本文Shq将会介绍一种树套树 ---线段树套平衡树Treap 相对来说Treap是较为容易实现的平衡树，就用这个来实现我们的平衡树了. 当然，这个可以使用其他更为高级的数据结构">
+<meta property="og:description" content="线段树套平衡树 本文Shq将会介绍一种树套树 —线段树套平衡树Treap 相对来说Treap是较为容易实现的平衡树，就用这个来实现我们的平衡树了. 当然，这个可以使用其他更为高级的数据结构">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-05-19T03:26:31.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「树套树」线段树套平衡树">
-<meta name="twitter:description" content="线段树套平衡树 本文Shq将会介绍一种树套树 ---线段树套平衡树Treap 相对来说Treap是较为容易实现的平衡树，就用这个来实现我们的平衡树了. 当然，这个可以使用其他更为高级的数据结构">
+<meta name="twitter:description" content="线段树套平衡树 本文Shq将会介绍一种树套树 —线段树套平衡树Treap 相对来说Treap是较为容易实现的平衡树，就用这个来实现我们的平衡树了. 当然，这个可以使用其他更为高级的数据结构">
 
 
 
@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,200
+                  1,183
                 </span>
               
 
@@ -431,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  6
                 </span>
               
             </div>
@@ -453,17 +453,17 @@
 
       
         <p>线段树套平衡树</p>
-<p>本文Shq将会介绍一种树套树 ---线段树套平衡树Treap</p>
+<p>本文Shq将会介绍一种树套树 —线段树套平衡树Treap</p>
 <p>相对来说Treap是较为容易实现的平衡树，就用这个来实现我们的平衡树了.</p>
 <p>当然，这个可以使用其他更为高级的数据结构</p>
 <a id="more"></a>
 <p>这大概是没接触过树套树的同学接触的第一种树套树类型吧<del>(尤其是我)</del></p>
 <p>这种套法一般是用外层的树维护区间信息，在外层树的每一个节点放一棵内层树，内层的树维护权值信息。</p>
-<p>比如说<em>查区间第k大</em>，用套平衡树的做法就是二分权值<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>a</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">val</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.01968em;">l</span></span></span></span>     -&gt;      到这个区间对应的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">log</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span></span></span></span>个线段树节点上查<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>a</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">val</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.01968em;">l</span></span></span></span>的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>a</mi><mi>n</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">rank</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">a</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span>值，加起来与目标值进行比较</p>
-<p>这种做法的空间需求是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>的，由于每个元素都会在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">logn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span></span></span></span>个外层树节点中插入自己</p>
-<p>而时间复杂度上，除了查询区间第k大，每次操作是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlog_2n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>的，</p>
-<p>由于在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">logn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span></span></span></span>个外层树上都要用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>的时间查询</p>
-<p>查询第k大是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mn>3</mn><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlog3n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathrm">3</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>的，由于在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">logn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span></span></span></span>个外层树上都要用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>的时间查询</p>
+<p>比如说<em>查区间第k大</em>，用套平衡树的做法就是二分权值$val$     -&gt;      到这个区间对应的$log$个线段树节点上查$val$的$rank$值，加起来与目标值进行比较</p>
+<p>这种做法的空间需求是$O(nlogn)$的，由于每个元素都会在$logn$个外层树节点中插入自己</p>
+<p>而时间复杂度上，除了查询区间第k大，每次操作是$O(nlog_2n)$的，</p>
+<p>由于在$logn$个外层树上都要用$O(logn)$的时间查询</p>
+<p>查询第k大是$O(nlog3n)$的，由于在$logn$个外层树上都要用$O(logn)$的时间查询</p>
 <p>由于Treap和线段树我在上几篇文章中就详细介绍过，这里就不再介绍了</p>
 <blockquote>
 <p>传送阵:</p>
@@ -597,9 +597,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
-          
             <a href="/tags/树/" rel="tag"><i class="fa fa-tag"></i> 树</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
           
             <a href="/tags/Treap/" rel="tag"><i class="fa fa-tag"></i> Treap</a>
           
@@ -811,7 +811,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">90.9k</span>
+    <span title="Site words total count">89.3k</span>
   
 </div>
 

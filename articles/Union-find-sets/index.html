@@ -90,7 +90,7 @@
 
 
 
-  <meta name="keywords" content="Algorithm,算法,优化,图论,并查集,路径压缩," />
+  <meta name="keywords" content="算法,Algorithm,优化,图论,并查集,路径压缩," />
 
 
 
@@ -104,7 +104,7 @@
 
 
 <meta name="description" content="并查集（Union-find Sets）是一种非常精巧而实用的数据结构，它主要用于处理一些不相交集合的合并问题.一些常见的用途有求连通子图、求最小生成树的 Kruskal 算法和求最近公共祖先（Least Common Ancestors, LCA）等">
-<meta name="keywords" content="Algorithm,算法,优化,图论,并查集,路径压缩">
+<meta name="keywords" content="算法,Algorithm,优化,图论,并查集,路径压缩">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「图论」并查集">
 <meta property="og:url" content="https://blog.ishq.site/articles/Union-find-sets/index.html">
@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  625
+                  613
                 </span>
               
 
@@ -460,23 +460,24 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> fa[MAXN]</span><br></pre></td></tr></table></figure>
 <h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>并查集的基本操作有<strong>三个</strong>：</p>
 <ol>
-<li>初始化<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mord mathit">a</span></span></span></span></li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mi>e</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Get</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">G</span><span class="mord mathit">e</span><span class="mord mathit">t</span></span></span></span>操作</li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>e</mi><mi>r</mi><mi>g</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Merge</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">e</span></span></span></span>操作 </li>
+<li>初始化$fa$</li>
+<li>$Get$操作</li>
+<li>$Merge$操作 </li>
 </ol>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>并查集的初始化时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>的</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>并查集的初始化时间复杂度是$O(n)$的</p>
 <p>Code:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= size; i++) fa[i] = i;</span><br></pre></td></tr></table></figure>
-<h3 id="GetGetGet操作"><a href="#GetGetGet操作" class="headerlink" title="GetGetGet操作"></a><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mi>e</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Get</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">G</span><span class="mord mathit">e</span><span class="mord mathit">t</span></span></span></span>操作</h3><p>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>为树根，那么<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>就为集合的<strong>代表</strong>, 否则递归访问<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mo>[</mo><mi>x</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">fa[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mord mathit">a</span><span class="mopen">[</span><span class="mord mathit">x</span><span class="mclose">]</span></span></span></span>到根节点</p>
+<h3 id="Get-操作"><a href="#Get-操作" class="headerlink" title="$Get$操作"></a>$Get$操作</h3><p>设$x$为树根，那么$x$就为集合的<strong>代表</strong>, 否则递归访问$fa[x]$到根节点</p>
 <p>Code:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span> <span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">return</span> fa[x] = get(fa[x]); <span class="comment">// 路径压缩， fa直接复制为代表元素</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者，你可以换种更加毒瘤的方式：</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span> <span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x == fa[x] ? fa[x] = get(fa[x]) : x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="MergeMergeMerge-操作"><a href="#MergeMergeMerge-操作" class="headerlink" title="MergeMergeMerge 操作"></a><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>e</mi><mi>r</mi><mi>g</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Merge</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">e</span></span></span></span> 操作</h3><p>Code:</p>
+<h3 id="Merge-操作"><a href="#Merge-操作" class="headerlink" title="$Merge$ 操作"></a>$Merge$ 操作</h3><p>Code:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    fa[get(x)] = get(y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="按秩合并"><a href="#按秩合并" class="headerlink" title="按秩合并"></a>按秩合并</h2><p>这里也可以应用一个简单的启发式策略——按秩合并。该方法使用秩来表示树高度的上界，在合并时，总是将具有较小秩的树根指向具有较大秩的树根。简单的说，就是总是将比较矮的树作为子树，添加到较高的树中。为了保存秩，需要额外使用一个与 uset 同长度的数组，并将所有元素都初始化为 0</p>
 <p>代码就不贴了，自己想想就行了，这里我们使用路径压缩的并查集就行了</p>
 <hr>
 <p>先写到这吧</p>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="fraktur">S</mi><mi mathvariant="fraktur">h</mi><msup><mi mathvariant="fraktur">q</mi><mrow><mi mathvariant="normal">′</mi></mrow></msup><mi mathvariant="fraktur">s</mi><mspace width="0.277778em"></mspace><mi mathvariant="fraktur">B</mi><mi mathvariant="fraktur">l</mi><mi mathvariant="fraktur">o</mi><mi mathvariant="fraktur">g</mi></mrow></mrow><annotation encoding="application/x-tex">\mathfrak {Shq&#x27;s \; Blog}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.801892em;"></span><span class="strut bottom" style="height:0.990952em;vertical-align:-0.18906em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord displaystyle textstyle uncramped"><span class="mord mathfrak">S</span><span class="mord mathfrak">h</span><span class="mord"><span class="mord mathfrak">q</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">′</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathfrak">s</span><span class="mord mspace thickspace"></span><span class="mord mathfrak">B</span><span class="mord mathfrak">l</span><span class="mord mathfrak">o</span><span class="mord mathfrak">g</span></span></span></span></span></span>
+<p>$$\mathfrak {Shq’s \; Blog}$$</p>
+
       
     </div>
     
@@ -601,9 +602,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
-          
             <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
           
             <a href="/tags/优化/" rel="tag"><i class="fa fa-tag"></i> 优化</a>
           
@@ -804,7 +805,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集存储"><span class="nav-number">1.</span> <span class="nav-text">并查集存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">2.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">2.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GetGetGet操作"><span class="nav-number">2.2.</span> <span class="nav-text">GetGetGet操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MergeMergeMerge-操作"><span class="nav-number">2.3.</span> <span class="nav-text">MergeMergeMerge 操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按秩合并"><span class="nav-number">3.</span> <span class="nav-text">按秩合并</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集存储"><span class="nav-number">1.</span> <span class="nav-text">并查集存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">2.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">2.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-操作"><span class="nav-number">2.2.</span> <span class="nav-text">$Get$操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-操作"><span class="nav-number">2.3.</span> <span class="nav-text">$Merge$ 操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按秩合并"><span class="nav-number">3.</span> <span class="nav-text">按秩合并</span></a></li></ol></div>
             
 
           </div>
@@ -838,7 +839,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">90.9k</span>
+    <span title="Site words total count">89.3k</span>
   
 </div>
 
