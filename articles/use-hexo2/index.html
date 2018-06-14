@@ -464,7 +464,9 @@
 <h3 id="二、原理"><a href="#二、原理" class="headerlink" title="二、原理"></a>二、原理</h3><p>由于 Hexo 最终编译出来的文件是纯静态的，也就意味着文章的所有信息其实还是原封不动展示在页面中的，当你输入一篇文章的网址，所有的内容就已经跟随网络传输过来了。那我博客使用的加密是怎么实现的呢？</p>
 <p>这就要讲到 js 的阻塞机制了，在以往的经验中，当页面中有调用<code>alert();</code>函数的时候，整个页面会停止运行，直到你点击确定之后，页面的中的代码才会继续执行下去。我们这里需要的也是这样一个假象，阻止整个页面的渲染，直到你输入了正确的密码才能让页面继续渲染实际的文章。可是<code>alert</code>只有提醒的功能，没有输入的功能，所以这里要用到的是<code>promt</code>函数。例子参见如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> password = promt(<span class="string">'请输入文章密码'</span>);</span><br><span class="line">alert(password);</span><br></pre></td></tr></table></figure>
-<h3 id="三、实践"><a href="#三、实践" class="headerlink" title="三、实践"></a>三、实践</h3><p>究竟要把上述代码加在哪里呢？<br>找到<code>themes-&gt;next-&gt;layout-&gt;_partials-&gt;head.swig</code>文件。<br>按道理是添加在任何地方都行，但是推荐加在所有的<code>&lt;meta&gt;</code>标签之后，个人建议，<strong>仅做参考</strong>。以下是我加的代码：</p>
+<h3 id="三、实践"><a href="#三、实践" class="headerlink" title="三、实践"></a>三、实践</h3><p>究竟要把上述代码加在哪里呢？
+找到<code>themes-&gt;next-&gt;layout-&gt;_partials-&gt;head.swig</code>文件。
+按道理是添加在任何地方都行，但是推荐加在所有的<code>&lt;meta&gt;</code>标签之后，个人建议，<strong>仅做参考</strong>。以下是我加的代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	(function()&#123;</span><br><span class="line">		if(&apos;&#123;&#123; page.password &#125;&#125;&apos;)&#123;</span><br><span class="line">			if (prompt(&apos;请输入文章密码&apos;,&apos;&apos;) !== &apos;&#123;&#123; page.password &#125;&#125;&apos;)&#123;</span><br><span class="line">				alert(&apos;密码错误！&apos;);</span><br><span class="line">				history.back();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>如果你好奇<code>page.password</code>是什么东西，那么恭喜你，你对 Hexo 的结构还是很熟悉的。<code>page</code>这个变量就是你在<code>hexo new</code>的时候生成文件中最顶部的东西，以下我给出这篇文章的头部参考：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo文章简单加密访问</span><br><span class="line">date: 2016-12-01 10:45:29</span><br><span class="line">tags: hexo</span><br><span class="line">categories: 博客</span><br><span class="line">keywords:</span><br><span class="line"><span class="code">	- Hexo</span></span><br><span class="line"><span class="code">	- 加密</span></span><br><span class="line">description: 文章访问密码：password</span><br><span class="line">password: password</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
@@ -707,7 +709,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -718,7 +720,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -729,7 +731,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">132</span>
+                  <span class="site-state-item-count">134</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -822,7 +824,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">89.3k</span>
+    <span title="Site words total count">91.8k</span>
   
 </div>
 

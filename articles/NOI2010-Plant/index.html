@@ -475,12 +475,17 @@
 <hr>
 <p>首先看到这道题，作为一个数竞<del>dalao</del>蒟蒻，首先想到的就是建系，但是建系的话就更麻烦了，所以说我们需要搞到一个更好的方法</p>
 <blockquote>
-<p>|<br>|      o (4,2)<br>|     /<br>|   o (2,1)<br>|  /<br>o —- —————-</p>
+<p>|
+|      o (4,2)
+|     /
+|   o (2,1)
+|  /
+o ---- ----------------</p>
 </blockquote>
 <p>懒得画图再传了，就用这个将就一些吧</p>
 <p>注意，我们看到(4,2)这个点，它与原点构成的一次函数(正比例函数)的解析式为f(x) = 2x,那么说他一定经过(2,1)</p>
 <p>回到问题上来，我们要求的某个点能量损失事实上就是求他与原点构成的一次函数经过的整数点。</p>
-<p>一次函数经过的整数点怎么算呢?经过我们的一番严密的，细致的思索，终于得出—-gcd(x, y)。具体为什么呢，请自行推理</p>
+<p>一次函数经过的整数点怎么算呢?经过我们的一番严密的，细致的思索，终于得出----gcd(x, y)。具体为什么呢，请自行推理</p>
 <p>所以说，我们就写出了第一个暴力解法</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">            ans += gcd(i, j);</span><br><span class="line">    <span class="keyword">return</span> ans * <span class="number">2</span> - m * n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>但是，明显这样做不是出题人的意图。毕竟暴力就可以水过的题不会再NOI中出现</p>
@@ -728,7 +733,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -739,7 +744,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -750,7 +755,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">132</span>
+                  <span class="site-state-item-count">134</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -843,7 +848,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">89.3k</span>
+    <span title="Site words total count">91.8k</span>
   
 </div>
 

@@ -480,15 +480,17 @@
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><del>自己写</del></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">By - lyd</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span><span class="params">(u)</span> </span>&#123;</span><br><span class="line">	dfn[u]=low[u]=++index</span><br><span class="line">	<span class="built_in">stack</span>.push(u)</span><br><span class="line">	<span class="keyword">for</span> each (u, v) in E &#123;</span><br><span class="line">		<span class="keyword">if</span> (v is <span class="keyword">not</span> visted) &#123;</span><br><span class="line">			tarjan(v) </span><br><span class="line">			low[u] = min(low[u], low[v]) </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (v in <span class="built_in">stack</span>) &#123;</span><br><span class="line">			low[u] = min(low[u], dfn[v]) </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (dfn[u] == low[u]) &#123; <span class="comment">//u是一个强连通分量的根</span></span><br><span class="line">		repeat </span><br><span class="line">			v = <span class="built_in">stack</span>.pop </span><br><span class="line">			print v </span><br><span class="line">		until (u== v) </span><br><span class="line">	&#125; <span class="comment">//退栈，把整个强连通分量都弹出来</span></span><br><span class="line">&#125; <span class="comment">//复杂度是O(E+V)的</span></span><br><span class="line"><span class="comment">// 完美结束</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="双联通分量"><a href="#双联通分量" class="headerlink" title="双联通分量"></a>双联通分量</h2><h3 id="无向图的割点与桥"><a href="#无向图的割点与桥" class="headerlink" title="无向图的割点与桥"></a>无向图的割点与桥</h3><p>无向连通图中，如果删除某点后，图变成不连通，则称该点为割点。<br>无向连通图中，如果删除某边后，图变成不连通，则称该边为桥。</p>
+<h2 id="双联通分量"><a href="#双联通分量" class="headerlink" title="双联通分量"></a>双联通分量</h2><h3 id="无向图的割点与桥"><a href="#无向图的割点与桥" class="headerlink" title="无向图的割点与桥"></a>无向图的割点与桥</h3><p>无向连通图中，如果删除某点后，图变成不连通，则称该点为割点。
+无向连通图中，如果删除某边后，图变成不连通，则称该边为桥。</p>
 <h3 id="双联通分量-1"><a href="#双联通分量-1" class="headerlink" title="双联通分量"></a>双联通分量</h3><p>如果一个连通图，如果任意两点至少存在两条“点不重复”的路径，则说明这个图是点-双联通的，同时这个条件等价于任意两条边都在同一个简单环内，图内无割点（简称双连通）点双连通分量——一个图点-双联通的极大联通子图如果任意两点至少存在两条“边不重复”的路径，我们认为这个图是边-双联通的，即每条边都在一个简单环内，所有边都不是桥边双联通分量——一个图边-双联通的极大联通子图</p>
 <h3 id="边双连通"><a href="#边双连通" class="headerlink" title="边双连通"></a>边双连通</h3><p>只需在求出所有的桥以后，把桥边删除，原图变成了多个连通块，则每个连通块就是一个边双连通分支。桥不属于任何一个边双连通分支，其余的边和每个顶点都属于且只属于一个边双连通分支。</p>
 <hr>
 <h2 id="Tarjan-求割点与桥"><a href="#Tarjan-求割点与桥" class="headerlink" title="Tarjan 求割点与桥"></a>Tarjan 求割点与桥</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>和有向图求强连通分量类似</p>
 <p>在深度优先遍历整个图过程中形成的一棵搜索树    </p>
 <p> 一个顶点u是割点，当且仅当满足以下两个条件之一 </p>
-<pre><code>1. u为树根，且u有多于一个子树。
-2. u不为树根，且满足存在(u,v)为树枝边(或称父子边，即u为v在搜索树中的父亲)，使得dfn(u)&lt;=low(v).
+<pre><code><div class="highlight"><pre><span class="pl-mi">1</span><span class="pl-p">.</span> <span class="pl-nx">u</span><span class="pl-err">为树根，且</span><span class="pl-nx">u</span><span class="pl-err">有多于一个子树。</span>
+<span class="pl-mi">2</span><span class="pl-p">.</span> <span class="pl-nx">u</span><span class="pl-err">不为树根，且满足存在</span><span class="pl-p">(</span><span class="pl-nx">u</span><span class="pl-p">,</span><span class="pl-nx">v</span><span class="pl-p">)</span><span class="pl-err">为树枝边</span><span class="pl-p">(</span><span class="pl-err">或称父子边，即</span><span class="pl-nx">u</span><span class="pl-err">为</span><span class="pl-nx">v</span><span class="pl-err">在搜索树中的父亲</span><span class="pl-p">)</span><span class="pl-err">，使得</span><span class="pl-nx">dfn</span><span class="pl-p">(</span><span class="pl-nx">u</span><span class="pl-p">)</span><span class="pl-o">&lt;=</span><span class="pl-nx">low</span><span class="pl-p">(</span><span class="pl-nx">v</span><span class="pl-p">).</span>
+</pre></div>
 </code></pre><p>一条无向边(u,v)是桥，当且仅当(u,v)为树枝边，且满足dfn(u)&lt;low(v)（前提是其没有重边）。</p>
 <p>low[u]为u与u的子树中能够通过非父子边追溯到的最早节点的DFS序</p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> father)</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="keyword">int</span> i,j,k;</span><br><span class="line">	low[u] = dfn[u] = nTime ++;</span><br><span class="line">	<span class="keyword">for</span>( i = <span class="number">0</span>;i &lt; G[u].size() ;i ++ ) &#123;</span><br><span class="line">		<span class="keyword">int</span> v = G[u][i];</span><br><span class="line">		<span class="keyword">if</span>( ! dfn[v]) &#123; <span class="comment">//v没有访问过</span></span><br><span class="line">			<span class="comment">//树边要入栈</span></span><br><span class="line">			Edges.push_back(Edge2(u,v));</span><br><span class="line">			Tarjan(v,u);</span><br><span class="line">			low[u] = min(low[u],low[v]);</span><br><span class="line">			<span class="function">Edge2 <span class="title">tmp</span><span class="params">(<span class="number">0</span>,<span class="number">0</span>)</span></span>;</span><br><span class="line">			<span class="keyword">if</span>(dfn[u] &lt;= low[v]) &#123; </span><br><span class="line">			<span class="comment">//从一条边往下走，走完后发现自己是割点，则栈中的边一定全是和自己在一个双连通分量里面</span></span><br><span class="line">	        <span class="comment">//根节点总是和其下的某些点在同一个双连通分量里面</span></span><br><span class="line">			      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Block No: "</span> &lt;&lt; ++ nBlockNo &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
@@ -740,7 +742,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -751,7 +753,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -762,7 +764,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">132</span>
+                  <span class="site-state-item-count">134</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -855,7 +857,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">89.3k</span>
+    <span title="Site words total count">91.8k</span>
   
 </div>
 
