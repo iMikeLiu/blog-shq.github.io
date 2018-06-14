@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>「学习笔记」可持久化并查集 / rope</title>
+      <link href="/articles/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E5%B9%B6%E6%9F%A5%E9%9B%86-rope/"/>
+      <url>/articles/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E5%B9%B6%E6%9F%A5%E9%9B%86-rope/</url>
+      <content type="html"><![CDATA[<p>我们来看一下可持久化并查集</p><p>（有是玄学数据结构</p><p>（其实用STL里面的<code>rope</code>就可以了quq<a id="more"></a></p><hr><p>我们来看看一种基于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>h</mi><mi>e</mi><mi>a</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cheat</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">c</span><span class="mord mathit">h</span><span class="mord mathit">e</span><span class="mord mathit">a</span><span class="mord mathit">t</span></span></span></span>的思想：</p><h2 id="UVA-11987-Almost-Union-Find"><a href="#UVA-11987-Almost-Union-Find" class="headerlink" title="UVA 11987 Almost Union-Find"></a>UVA 11987 Almost Union-Find</h2><p>要求把一个元素从一个集合中剥离的情况，我们只需要新建一个节点然后………乱搞即可</p><p>还是看代码吧：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span>     <span class="comment">// 把x从y集合中剥离</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fx = find(id[x]),fy = find(id[y]);</span><br><span class="line">    <span class="keyword">if</span>(fx == fy)  <span class="keyword">return</span> ;</span><br><span class="line">    cnt[fx] --,sum[fx] -= x;</span><br><span class="line">    id[x] = ++ tot;     <span class="comment">// 可持久化</span></span><br><span class="line">    f[id[x]] = fy;  cnt[fy] ++,sum[fy] += x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这种方法主要是利用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">id</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span><span class="mord mathit">d</span></span></span></span>，在最初时<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><msub><mi>d</mi><mi>i</mi></msub><mo>=</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">id_i = i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span><span class="mord"><span class="mord mathit">d</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord mathit">i</span></span></span></span>，随着移动<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><msub><mi>d</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">id_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span><span class="mord"><span class="mord mathit">d</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>也在变化，在访问<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span>时，我们需直接用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><msub><mi>d</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">id_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span><span class="mord"><span class="mord mathit">d</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>代替。</p><p>于是我们带着这个思路看到了<code>BZOJ 3673</code>这道题</p><p>看到题目 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.36687em;"></span><span class="strut bottom" style="height:0.36687em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">→</span></span></span></span> <code>mengbier</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.36687em;"></span><span class="strut bottom" style="height:0.36687em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">→</span></span></span></span> ......试图乱搞 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.36687em;"></span><span class="strut bottom" style="height:0.36687em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">→</span></span></span></span> 爆炸</p><p>可持久化并查集加强版 我们就不能<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>h</mi><mi>e</mi><mi>a</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cheat</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">c</span><span class="mord mathit">h</span><span class="mord mathit">e</span><span class="mord mathit">a</span><span class="mord mathit">t</span></span></span></span>了，我们需要真的可持久化了</p><p>因为并查集的所有信息都保存在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mord mathit">a</span></span></span></span>里，所以，我们只需要用可持久化线段树实现一个可持久化数组并使其启发式合并就可以了</p><p>并查集的启发式合并就是按秩合并，初始所有集合秩为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span></p><p>合并把秩小的树根的父亲设为秩大的树根</p><p>如果秩相同，则随便选取一个作为父节点并将它的秩<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord">+</span><span class="mord mathrm">1</span></span></span></span>,秩和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mord mathit">a</span></span></span></span>一样维护</p><p>但是其实这题数据随机的话随便合并就行了，根本不用按秩合并什么的</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Code from hzwer.com</span></span><br><span class="line"><span class="comment">// http://hzwer.com/3951.html</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>;<span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>)ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)&#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;ch=getchar();&#125;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,m,sz;</span><br><span class="line"><span class="keyword">int</span> root[<span class="number">200005</span>],ls[<span class="number">2000005</span>],rs[<span class="number">2000005</span>],v[<span class="number">2000005</span>],deep[<span class="number">2000005</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> &amp;k,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(!k)k=++sz;</span><br><span class="line"><span class="keyword">if</span>(l==r)&#123;v[k]=l;<span class="keyword">return</span>;&#125;</span><br><span class="line"><span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">build(ls[k],l,mid);</span><br><span class="line">build(rs[k],mid+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> &amp;y,<span class="keyword">int</span> pos,<span class="keyword">int</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">y=++sz;</span><br><span class="line"><span class="keyword">if</span>(l==r)&#123;v[y]=val;deep[y]=deep[x];<span class="keyword">return</span>;&#125;</span><br><span class="line">ls[y]=ls[x];rs[y]=rs[x];</span><br><span class="line"><span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(pos&lt;=mid)</span><br><span class="line">modify(l,mid,ls[x],ls[y],pos,val);</span><br><span class="line"><span class="keyword">else</span> modify(mid+<span class="number">1</span>,r,rs[x],rs[y],pos,val);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(l==r)<span class="keyword">return</span> k;</span><br><span class="line"><span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(pos&lt;=mid)<span class="keyword">return</span> query(ls[k],l,mid,pos);</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> query(rs[k],mid+<span class="number">1</span>,r,pos);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(l==r)&#123;deep[k]++;<span class="keyword">return</span>;&#125;</span><br><span class="line"><span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(pos&lt;=mid)add(ls[k],l,mid,pos);</span><br><span class="line"><span class="keyword">else</span> add(rs[k],mid+<span class="number">1</span>,r,pos);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p=query(k,<span class="number">1</span>,n,x);</span><br><span class="line"><span class="keyword">if</span>(x==v[p])<span class="keyword">return</span> p;</span><br><span class="line">    <span class="keyword">return</span> find(k,v[p]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">n=read();m=read();</span><br><span class="line">build(root[<span class="number">0</span>],<span class="number">1</span>,n);</span><br><span class="line"><span class="keyword">int</span> f,k,a,b;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">&#123;</span><br><span class="line">f=read();</span><br><span class="line"><span class="keyword">if</span>(f==<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">root[i]=root[i<span class="number">-1</span>];</span><br><span class="line">a=read();b=read();</span><br><span class="line"><span class="keyword">int</span> p=find(root[i],a),q=find(root[i],b);</span><br><span class="line"><span class="keyword">if</span>(v[p]==v[q])<span class="keyword">continue</span>;</span><br><span class="line"><span class="keyword">if</span>(deep[p]&gt;deep[q])swap(p,q);</span><br><span class="line">modify(<span class="number">1</span>,n,root[i<span class="number">-1</span>],root[i],v[p],v[q]);</span><br><span class="line"><span class="keyword">if</span>(deep[p]==deep[q])add(root[i],<span class="number">1</span>,n,v[q]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(f==<span class="number">2</span>)</span><br><span class="line">&#123;k=read();root[i]=root[k];&#125;</span><br><span class="line"><span class="keyword">if</span>(f==<span class="number">3</span>)</span><br><span class="line">&#123;</span><br><span class="line">root[i]=root[i<span class="number">-1</span>];</span><br><span class="line">a=read();b=read();</span><br><span class="line">    <span class="keyword">int</span> p=find(root[i],a),q=find(root[i],b);</span><br><span class="line"><span class="keyword">if</span>(v[p]==v[q])<span class="built_in">puts</span>(<span class="string">"1"</span>);</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"0"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><p>但是这样就够了吗？</p><p>想象一下你在考场里，</p><ol><li>时间不够，写不出可持久化并查集的正解</li><li>在短时间内写出暴力对拍程序</li><li><del>给不会<code>STL</code>,<code>rope</code>,可持久化并查集的人(学弟/学妹)装逼</del></li></ol><p>这时候你就需要<code>rope</code>这种神奇的东西了</p><p>Code:</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ext/rope&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> __gnu_cxx;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">120010</span>;</span><br><span class="line"></span><br><span class="line">rope&lt;<span class="keyword">int</span>&gt; *fa[maxm];</span><br><span class="line"><span class="keyword">int</span> a[maxm],lastans;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(fa[i]-&gt;at(x) == x)   <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">int</span> f = find(i,fa[i]-&gt;at(x));</span><br><span class="line">    <span class="keyword">if</span>(f == fa[i]-&gt;at(x))   <span class="keyword">return</span> f;</span><br><span class="line">    fa[i]-&gt;replace(x,f);</span><br><span class="line">    <span class="keyword">return</span> fa[i]-&gt;at(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    x = find(i,x),y = find(i,y);</span><br><span class="line">    <span class="keyword">if</span>(x != y)  fa[i]-&gt;replace(y,x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SlowRead</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> data = <span class="number">0</span>, w = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (ch != <span class="string">'-'</span> &amp;&amp; (ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>)) ch = getchar();</span><br><span class="line">    <span class="keyword">if</span>(ch == <span class="string">'-'</span>) w = <span class="number">-1</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">while</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) data = (data &lt;&lt; <span class="number">1</span>) + (data &lt;&lt; <span class="number">3</span>) + ch - <span class="string">'0'</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">return</span> data * w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)  a[i] = i;</span><br><span class="line">    fa[<span class="number">0</span>] = <span class="keyword">new</span> rope&lt;<span class="keyword">int</span>&gt; (a, a + n + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        fa[i] = <span class="keyword">new</span> rope&lt;<span class="keyword">int</span>&gt; (*fa[i - <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">int</span> opt = SlowRead();</span><br><span class="line">        <span class="keyword">if</span>(opt == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> a = SlowRead(),b = SlowRead();</span><br><span class="line">            merge(i, a, b);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> k = SlowRead();</span><br><span class="line">            fa[i] = fa[k];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> a = SlowRead(),b = SlowRead();</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,lastans = (find (i, a) == find (i, b)));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 玄学 </tag>
+            
+            <tag> 并查集 </tag>
+            
+            <tag> 可持久化 </tag>
+            
+            <tag> rope </tag>
+            
+            <tag> STL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>「P3391 文艺平衡树」 - 无旋Treap模版题</title>
       <link href="/articles/fhq-treap/"/>
       <url>/articles/fhq-treap/</url>
@@ -17,15 +42,15 @@
       
         <tags>
             
+            <tag> 平衡树 </tag>
+            
             <tag> Treap </tag>
+            
+            <tag> 模版题 </tag>
             
             <tag> fhq treap </tag>
             
             <tag> 非旋Treap </tag>
-            
-            <tag> 模版题 </tag>
-            
-            <tag> 平衡树 </tag>
             
         </tags>
       
@@ -42,15 +67,15 @@
             
             <tag> 数据结构 </tag>
             
-            <tag> Treap </tag>
-            
-            <tag> 模版题 </tag>
-            
             <tag> 平衡树 </tag>
+            
+            <tag> Treap </tag>
             
             <tag> Luogu </tag>
             
             <tag> NOI导刊 </tag>
+            
+            <tag> 模版题 </tag>
             
         </tags>
       
@@ -65,13 +90,13 @@
       
         <tags>
             
-            <tag> 模拟赛 </tag>
-            
             <tag> 数据结构 </tag>
             
-            <tag> 数学 </tag>
+            <tag> 模拟赛 </tag>
             
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 题解 </tag>
             
@@ -94,15 +119,15 @@
       
         <tags>
             
-            <tag> 优化 </tag>
-            
-            <tag> 玄学 </tag>
-            
             <tag> 乱搞 </tag>
             
             <tag> 常数优化 </tag>
             
+            <tag> 优化 </tag>
+            
             <tag> 卡常 </tag>
+            
+            <tag> 玄学 </tag>
             
         </tags>
       
@@ -278,11 +303,11 @@
             
             <tag> Algorithm </tag>
             
-            <tag> AC自动机 </tag>
-            
             <tag> 字符串 </tag>
             
             <tag> 自动机 </tag>
+            
+            <tag> AC自动机 </tag>
             
             <tag> Trie </tag>
             
@@ -309,13 +334,13 @@
             
             <tag> Algorithm </tag>
             
-            <tag> KMP </tag>
+            <tag> 字符串 </tag>
             
             <tag> AC自动机 </tag>
             
-            <tag> 前缀和 </tag>
+            <tag> KMP </tag>
             
-            <tag> 字符串 </tag>
+            <tag> 前缀和 </tag>
             
         </tags>
       
@@ -411,13 +436,13 @@
             
             <tag> 树 </tag>
             
-            <tag> 线段树 </tag>
+            <tag> Treap </tag>
             
             <tag> 树套树 </tag>
             
-            <tag> Treap </tag>
-            
             <tag> 数堆 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 模版 </tag>
             
@@ -557,13 +582,13 @@
       
         <tags>
             
-            <tag> 树剖 </tag>
-            
-            <tag> 树链剖分 </tag>
-            
             <tag> 图论 </tag>
             
             <tag> 并查集 </tag>
+            
+            <tag> 树剖 </tag>
+            
+            <tag> 树链剖分 </tag>
             
             <tag> 邻接表 </tag>
             
@@ -617,11 +642,11 @@
       
         <tags>
             
-            <tag> 玄学 </tag>
-            
             <tag> 乱搞 </tag>
             
             <tag> 常数优化 </tag>
+            
+            <tag> 玄学 </tag>
             
             <tag> 技巧 </tag>
             
@@ -644,9 +669,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 群论 </tag>
             
@@ -673,9 +698,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -758,9 +783,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 线性基 </tag>
             
@@ -785,9 +810,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 几何 </tag>
             
@@ -814,11 +839,11 @@
       
         <tags>
             
-            <tag> 计算几何 </tag>
+            <tag> 数论 </tag>
             
             <tag> 数学 </tag>
             
-            <tag> 数论 </tag>
+            <tag> 计算几何 </tag>
             
             <tag> 向量 </tag>
             
@@ -845,9 +870,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 初等数论 </tag>
             
@@ -878,15 +903,15 @@
             
             <tag> 数据结构 </tag>
             
-            <tag> 模板 </tag>
-            
             <tag> 树 </tag>
             
-            <tag> 线段树 </tag>
+            <tag> 模板 </tag>
+            
+            <tag> 平衡树 </tag>
             
             <tag> Treap </tag>
             
-            <tag> 平衡树 </tag>
+            <tag> 线段树 </tag>
             
             <tag> Splay </tag>
             
@@ -940,11 +965,11 @@
             
             <tag> Algorithm </tag>
             
-            <tag> 数学 </tag>
+            <tag> 算法 </tag>
             
             <tag> 数论 </tag>
             
-            <tag> 算法 </tag>
+            <tag> 数学 </tag>
             
             <tag> 素数 </tag>
             
@@ -969,11 +994,11 @@
             
             <tag> Algorithm </tag>
             
-            <tag> 数学 </tag>
+            <tag> 算法 </tag>
             
             <tag> 数论 </tag>
             
-            <tag> 算法 </tag>
+            <tag> 数学 </tag>
             
             <tag> 线性筛 </tag>
             
@@ -1006,9 +1031,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> Treap </tag>
-            
             <tag> 平衡树 </tag>
+            
+            <tag> Treap </tag>
             
         </tags>
       
@@ -1085,11 +1110,11 @@
             
             <tag> Algorithm </tag>
             
+            <tag> 算法 </tag>
+            
             <tag> 模板 </tag>
             
             <tag> 凸包 </tag>
-            
-            <tag> 算法 </tag>
             
         </tags>
       
@@ -1110,9 +1135,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 题解 </tag>
             
@@ -1253,13 +1278,13 @@
             
             <tag> 数据结构 </tag>
             
-            <tag> 模板 </tag>
-            
             <tag> 树 </tag>
             
-            <tag> 树状数组 </tag>
+            <tag> 模板 </tag>
             
             <tag> 优化 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
       
@@ -1284,13 +1309,13 @@
             
             <tag> 数据结构 </tag>
             
-            <tag> 模板 </tag>
-            
             <tag> 树 </tag>
             
-            <tag> 树状数组 </tag>
+            <tag> 模板 </tag>
             
             <tag> 优化 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
       

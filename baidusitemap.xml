@@ -4,6 +4,33 @@
 
     
   <url>
+    <loc>https://blog.ishq.site/articles/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E5%B9%B6%E6%9F%A5%E9%9B%86-rope/</loc>
+    <lastmod>2018-06-14T10:57:30.826Z</lastmod>
+    <data>
+        <display>
+        <title>「学习笔记」可持久化并查集 / rope</title>
+        <pubTime>2018-06-14T10:32:06.000Z</pubTime>
+        
+        <tag>数据结构</tag>
+         
+        <tag>玄学</tag>
+         
+        <tag>并查集</tag>
+         
+        <tag>可持久化</tag>
+         
+        <tag>rope</tag>
+         
+        <tag>STL</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.ishq.site/articles/fhq-treap/</loc>
     <lastmod>2018-06-14T03:57:33.690Z</lastmod>
     <data>
@@ -11,15 +38,15 @@
         <title>「P3391 文艺平衡树」 - 无旋Treap模版题</title>
         <pubTime>2018-06-14T03:38:29.000Z</pubTime>
         
+        <tag>平衡树</tag>
+         
         <tag>Treap</tag>
+         
+        <tag>模版题</tag>
          
         <tag>fhq treap</tag>
          
         <tag>非旋Treap</tag>
-         
-        <tag>模版题</tag>
-         
-        <tag>平衡树</tag>
          
          
            
@@ -39,9 +66,9 @@
         <title>「数学」群论笔记</title>
         <pubTime>2018-04-04T12:34:04.000Z</pubTime>
         
-        <tag>数学</tag>
-         
         <tag>数论</tag>
+         
+        <tag>数学</tag>
          
         <tag>群论</tag>
          
@@ -92,15 +119,15 @@
         
         <tag>数据结构</tag>
          
-        <tag>Treap</tag>
-         
-        <tag>模版题</tag>
-         
         <tag>平衡树</tag>
+         
+        <tag>Treap</tag>
          
         <tag>Luogu</tag>
          
         <tag>NOI导刊</tag>
+         
+        <tag>模版题</tag>
          
          
            
@@ -117,13 +144,13 @@
         <title>「LYOI2016 Summer」一次函数 - 线段树 + 数论</title>
         <pubTime>2018-06-09T02:50:04.000Z</pubTime>
         
-        <tag>模拟赛</tag>
-         
         <tag>数据结构</tag>
          
-        <tag>数学</tag>
+        <tag>模拟赛</tag>
          
         <tag>数论</tag>
+         
+        <tag>数学</tag>
          
         <tag>题解</tag>
          
@@ -148,15 +175,15 @@
         <title>OI常数优化之从入门到进阶</title>
         <pubTime>2018-06-03T09:22:34.000Z</pubTime>
         
-        <tag>优化</tag>
-         
-        <tag>玄学</tag>
-         
         <tag>乱搞</tag>
          
         <tag>常数优化</tag>
          
+        <tag>优化</tag>
+         
         <tag>卡常</tag>
+         
+        <tag>玄学</tag>
          
          
            
@@ -294,9 +321,9 @@
         <title>「数论」从数学的角度来看莫比乌斯反演</title>
         <pubTime>2018-03-31T11:06:03.000Z</pubTime>
         
-        <tag>数学</tag>
-         
         <tag>数论</tag>
+         
+        <tag>数学</tag>
          
         <tag>莫比乌斯反演</tag>
          
@@ -352,13 +379,13 @@
          
         <tag>树</tag>
          
-        <tag>线段树</tag>
+        <tag>Treap</tag>
          
         <tag>树套树</tag>
          
-        <tag>Treap</tag>
-         
         <tag>数堆</tag>
+         
+        <tag>线段树</tag>
          
         <tag>模版</tag>
          
@@ -404,11 +431,11 @@
         
         <tag>Algorithm</tag>
          
-        <tag>AC自动机</tag>
-         
         <tag>字符串</tag>
          
         <tag>自动机</tag>
+         
+        <tag>AC自动机</tag>
          
         <tag>Trie</tag>
          
@@ -584,15 +611,15 @@
         
         <tag>数据结构</tag>
          
-        <tag>模板</tag>
-         
         <tag>树</tag>
          
-        <tag>线段树</tag>
+        <tag>模板</tag>
+         
+        <tag>平衡树</tag>
          
         <tag>Treap</tag>
          
-        <tag>平衡树</tag>
+        <tag>线段树</tag>
          
         <tag>Splay</tag>
          
@@ -668,11 +695,11 @@
         
         <tag>Algorithm</tag>
          
-        <tag>数学</tag>
+        <tag>算法</tag>
          
         <tag>数论</tag>
          
-        <tag>算法</tag>
+        <tag>数学</tag>
          
         <tag>线性筛</tag>
          
@@ -696,9 +723,9 @@
         <title>「数论」线性基</title>
         <pubTime>2018-03-27T12:56:25.000Z</pubTime>
         
-        <tag>数学</tag>
-         
         <tag>数论</tag>
+         
+        <tag>数学</tag>
          
         <tag>线性基</tag>
          
@@ -750,13 +777,13 @@
         
         <tag>Algorithm</tag>
          
-        <tag>KMP</tag>
+        <tag>字符串</tag>
          
         <tag>AC自动机</tag>
          
-        <tag>前缀和</tag>
+        <tag>KMP</tag>
          
-        <tag>字符串</tag>
+        <tag>前缀和</tag>
          
          
            
@@ -906,11 +933,11 @@
         
         <tag>Algorithm</tag>
          
+        <tag>算法</tag>
+         
         <tag>模板</tag>
          
         <tag>凸包</tag>
-         
-        <tag>算法</tag>
          
          
            
@@ -934,13 +961,13 @@
          
         <tag>数据结构</tag>
          
-        <tag>模板</tag>
-         
         <tag>树</tag>
          
-        <tag>树状数组</tag>
+        <tag>模板</tag>
          
         <tag>优化</tag>
+         
+        <tag>树状数组</tag>
          
          
            
@@ -964,13 +991,13 @@
          
         <tag>数据结构</tag>
          
-        <tag>模板</tag>
-         
         <tag>树</tag>
          
-        <tag>树状数组</tag>
+        <tag>模板</tag>
          
         <tag>优化</tag>
+         
+        <tag>树状数组</tag>
          
          
            
@@ -998,9 +1025,9 @@
          
         <tag>算法</tag>
          
-        <tag>Treap</tag>
-         
         <tag>平衡树</tag>
+         
+        <tag>Treap</tag>
          
          
            
@@ -1020,9 +1047,9 @@
         <title>「题解」多段线(polyline)</title>
         <pubTime>2018-02-22T07:39:05.000Z</pubTime>
         
-        <tag>数学</tag>
-         
         <tag>数论</tag>
+         
+        <tag>数学</tag>
          
         <tag>题解</tag>
          
@@ -1218,11 +1245,11 @@
         
         <tag>Algorithm</tag>
          
-        <tag>数学</tag>
+        <tag>算法</tag>
          
         <tag>数论</tag>
          
-        <tag>算法</tag>
+        <tag>数学</tag>
          
         <tag>素数</tag>
          
@@ -1356,11 +1383,11 @@
         <title>「玄学」常数优化的一些技巧</title>
         <pubTime>2018-04-05T05:02:02.000Z</pubTime>
         
-        <tag>玄学</tag>
-         
         <tag>乱搞</tag>
          
         <tag>常数优化</tag>
+         
+        <tag>玄学</tag>
          
         <tag>技巧</tag>
          
@@ -1382,9 +1409,9 @@
         <title>狄利克雷(Dirichle)卷积</title>
         <pubTime>2018-03-24T02:35:02.000Z</pubTime>
         
-        <tag>数学</tag>
-         
         <tag>数论</tag>
+         
+        <tag>数学</tag>
          
         <tag>初等数论</tag>
          
@@ -1454,9 +1481,9 @@
         <title>「总结」计算几何一些常用模板</title>
         <pubTime>2018-03-25T01:20:56.000Z</pubTime>
         
-        <tag>数学</tag>
-         
         <tag>数论</tag>
+         
+        <tag>数学</tag>
          
         <tag>几何</tag>
          
@@ -1482,11 +1509,11 @@
         <title>「笔记」计算几何笔记</title>
         <pubTime>2018-03-24T12:44:59.000Z</pubTime>
         
-        <tag>计算几何</tag>
+        <tag>数论</tag>
          
         <tag>数学</tag>
          
-        <tag>数论</tag>
+        <tag>计算几何</tag>
          
         <tag>向量</tag>
          
@@ -1637,13 +1664,13 @@
         <title>「题解」P1001 a + b problem</title>
         <pubTime>2018-04-14T12:16:29.000Z</pubTime>
         
-        <tag>树剖</tag>
-         
-        <tag>树链剖分</tag>
-         
         <tag>图论</tag>
          
         <tag>并查集</tag>
+         
+        <tag>树剖</tag>
+         
+        <tag>树链剖分</tag>
          
         <tag>邻接表</tag>
          
