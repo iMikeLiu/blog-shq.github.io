@@ -1980,7 +1980,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8ed70e;
+  background: #0f5249;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3175,4 +3175,12 @@ pre .javascript .function {
 }
 .main-inner {
   opacity: 0.789;
+}
+.heimu {
+  background-color: Black;
+  color: Black;
+}
+.heimu:hover {
+  cursor: help;
+  color: White;
 }

@@ -4,6 +4,56 @@
 
     
   <url>
+    <loc>https://blog.ishq.site/articles/%E5%88%86%E5%9D%97-P1471/</loc>
+    <lastmod>2018-06-16T14:32:27.683Z</lastmod>
+    <data>
+        <display>
+        <title>「Luogu P1471 方差」 - 分块 + 区间查询方差 + 区间查询平均数</title>
+        <pubTime>2018-06-16T13:03:41.000Z</pubTime>
+        
+        <tag>数学</tag>
+         
+        <tag>Luogu</tag>
+         
+        <tag>分块</tag>
+         
+        <tag>暴力</tag>
+         
+        <tag>方差</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.ishq.site/articles/css-QWQ/</loc>
+    <lastmod>2018-06-16T13:06:48.741Z</lastmod>
+    <data>
+        <display>
+        <title>「css/html」一些常用的css语法</title>
+        <pubTime>2018-06-16T11:36:05.000Z</pubTime>
+        
+        <tag>颓废</tag>
+         
+        <tag>瞎搞</tag>
+         
+        <tag>css</tag>
+         
+        <tag>Blog</tag>
+         
+        <tag>html</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.ishq.site/articles/%E4%B8%BB%E5%B8%AD%E6%A0%91%E8%AF%A6%E8%A7%A3/</loc>
     <lastmod>2018-06-15T00:46:04.524Z</lastmod>
     <data>
@@ -17,9 +67,9 @@
          
         <tag>线段树</tag>
          
-        <tag>主席树</tag>
-         
         <tag>模版</tag>
+         
+        <tag>主席树</tag>
          
         <tag>可持久化</tag>
          
@@ -171,9 +221,9 @@
         <title>「LYOI2016 Summer」一次函数 - 线段树 + 数论</title>
         <pubTime>2018-06-09T02:50:04.000Z</pubTime>
         
-        <tag>模拟赛</tag>
-         
         <tag>数据结构</tag>
+         
+        <tag>模拟赛</tag>
          
         <tag>数学</tag>
          
@@ -696,11 +746,11 @@
         <title>一些写文章用的Html语法</title>
         <pubTime>2018-01-20T07:10:22.000Z</pubTime>
         
+        <tag>html</tag>
+         
         <tag>markdown</tag>
          
         <tag>blog</tag>
-         
-        <tag>html</tag>
          
          
            
@@ -722,11 +772,11 @@
         
         <tag>Algorithm</tag>
          
-        <tag>算法</tag>
-         
         <tag>数学</tag>
          
         <tag>数论</tag>
+         
+        <tag>算法</tag>
          
         <tag>线性筛</tag>
          
@@ -1272,11 +1322,11 @@
         
         <tag>Algorithm</tag>
          
-        <tag>算法</tag>
-         
         <tag>数学</tag>
          
         <tag>数论</tag>
+         
+        <tag>算法</tag>
          
         <tag>素数</tag>
          
@@ -1324,9 +1374,9 @@
         <title>[Shq]等差数列?</title>
         <pubTime>2018-03-17T01:16:12.000Z</pubTime>
         
-        <tag>problem</tag>
-         
         <tag>题目</tag>
+         
+        <tag>problem</tag>
          
          
            
@@ -1691,13 +1741,13 @@
         <title>「题解」P1001 a + b problem</title>
         <pubTime>2018-04-14T12:16:29.000Z</pubTime>
         
-        <tag>树剖</tag>
-         
-        <tag>树链剖分</tag>
-         
         <tag>图论</tag>
          
         <tag>并查集</tag>
+         
+        <tag>树剖</tag>
+         
+        <tag>树链剖分</tag>
          
         <tag>邻接表</tag>
          
