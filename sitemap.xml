@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.ishq.site/articles/dijkstra-spfa/</loc>
+    
+    <lastmod>2018-06-22T15:26:22.143Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.ishq.site/OI-diary/index.html</loc>
+    
+    <lastmod>2018-06-22T14:04:48.332Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.ishq.site/articles/bzoj-3337/</loc>
     
     <lastmod>2018-06-18T03:04:12.463Z</lastmod>
@@ -54,13 +68,6 @@
     <loc>https://blog.ishq.site/articles/HeatWave/</loc>
     
     <lastmod>2018-06-14T03:44:15.454Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.ishq.site/OI-diary/index.html</loc>
-    
-    <lastmod>2018-06-09T12:11:21.790Z</lastmod>
     
   </url>
   
