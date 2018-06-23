@@ -449,7 +449,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  397
+                  384
                 </span>
               
 
@@ -496,21 +496,22 @@
 <p>可以看到，<code>i++</code>被执行了两次，就会凉凉</p>
 <h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><p>注意，我们再使用<code>Dev-c++</code>的时候，我们所使用的<code>freopen</code>流是包含在<code>iostream</code>库中的！</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> number;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> FILE</span></span><br><span class="line">    freopen (<span class="string">"Input.in"</span>  , <span class="string">"r"</span>, <span class="built_in">stdin</span> );</span><br><span class="line">    freopen (<span class="string">"Output.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; number;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; (number + <span class="number">1</span>) * number / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如图，这是求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>3</mn><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 + 2 + 3 + ... + n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mbin">+</span><span class="mord mathrm">2</span><span class="mbin">+</span><span class="mord mathrm">3</span><span class="mbin">+</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mbin">+</span><span class="mord mathit">n</span></span></span></span>的程序</p>
+<p>如图，这是求$1 + 2 + 3 + … + n$的程序</p>
 <p>我们在本地用<code>Dev-c++</code>时，会成功编译</p>
 <p>但是，到了<code>Lemon</code> , <code>Cena</code> 等评测机上，就会爆零</p>
 <h3 id="文件freopen"><a href="#文件freopen" class="headerlink" title="文件freopen"></a>文件freopen</h3><p>很多选手都经常会在第一次考试中忘写freopen</p>
 <h3 id="stdout-还是-stdin"><a href="#stdout-还是-stdin" class="headerlink" title="stdout 还是 stdin??"></a>stdout 还是 stdin??</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">freopen (<span class="string">"Input.in"</span>  , <span class="string">"r"</span>, <span class="built_in">stdout</span>);</span><br><span class="line">freopen (<span class="string">"Output.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdin</span> );</span><br></pre></td></tr></table></figure>
 <p>上述代码<code>stdin</code>和<code>stdout</code>弄反了，爆零</p>
 <p>再考试中一定要注意这些细节问题</p>
-<h2 id="算法错误"><a href="#算法错误" class="headerlink" title="算法错误"></a>算法错误</h2><h3 id="memset"><a href="#memset" class="headerlink" title="memset"></a>memset</h3><p><code>memset</code>函数只能对<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord">−</span><span class="mord mathrm">1</span></span></span></span> 和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span> (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mo>×</mo><mn>3</mn><mi>f</mi></mrow><annotation encoding="application/x-tex">0\times3f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span><span class="mbin">×</span><span class="mord mathrm">3</span><span class="mord mathit" style="margin-right:0.10764em;">f</span></span></span></span>)进行全体赋值！</p>
+<h2 id="算法错误"><a href="#算法错误" class="headerlink" title="算法错误"></a>算法错误</h2><h3 id="memset"><a href="#memset" class="headerlink" title="memset"></a>memset</h3><p><code>memset</code>函数只能对$-1$ 和$0$ ($0\times3f$)进行全体赋值！</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">memset</span> (Array, <span class="number">19260817</span>, <span class="keyword">sizeof</span>(Array));</span><br></pre></td></tr></table></figure>
-<p>这样不会江<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>r</mi><mi>r</mi><mi>a</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">Array</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">A</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span></span>进行全体赋值为<code>19260817</code> !</p>
+<p>这样不会江$Array$进行全体赋值为<code>19260817</code> !</p>
 <h3 id="死循环"><a href="#死循环" class="headerlink" title="死循环"></a>死循环</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = start_i; i &gt;= <span class="number">0</span>; i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = start_j; i &gt;= <span class="number">0</span>; i++)</span><br></pre></td></tr></table></figure>
 <p>上述代码明显会炸</p>
 <hr>
 <p>未完待续</p>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="fraktur">S</mi><mi mathvariant="fraktur">h</mi><msup><mi mathvariant="fraktur">q</mi><mrow><mi mathvariant="normal">′</mi></mrow></msup><mi mathvariant="fraktur">s</mi><mspace width="0.277778em"></mspace><mi mathvariant="fraktur">B</mi><mi mathvariant="fraktur">l</mi><mi mathvariant="fraktur">o</mi><mi mathvariant="fraktur">g</mi></mrow></mrow><annotation encoding="application/x-tex">\mathfrak {Shq&#x27;s \; Blog}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.801892em;"></span><span class="strut bottom" style="height:0.990952em;vertical-align:-0.18906em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord displaystyle textstyle uncramped"><span class="mord mathfrak">S</span><span class="mord mathfrak">h</span><span class="mord"><span class="mord mathfrak">q</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">′</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathfrak">s</span><span class="mord mspace thickspace"></span><span class="mord mathfrak">B</span><span class="mord mathfrak">l</span><span class="mord mathfrak">o</span><span class="mord mathfrak">g</span></span></span></span></span></span>
+<p>$$\mathfrak {Shq’s \; Blog}$$</p>
+
       
     </div>
     
@@ -854,7 +855,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <!--<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
@@ -870,7 +871,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">104.5k</span>
+    <span title="Site words total count">102.2k</span>
   
 </div>
 
@@ -892,7 +893,7 @@
   <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
 
 
--->
+
 
         
 
