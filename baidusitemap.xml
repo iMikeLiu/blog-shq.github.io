@@ -3,6 +3,91 @@
 
 
     
+    
+  <url>
+    <loc>https://blog.ishq.site/articles/dinic/</loc>
+    <lastmod>2018-07-07T13:27:53.076Z</lastmod>
+    <data>
+        <display>
+        <title>「网络流」Dinic算法学习笔记</title>
+        <pubTime>2018-07-07T08:58:11.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+        <tag>网络流</tag>
+         
+        <tag>增广路</tag>
+         
+        <tag>图论</tag>
+         
+        <tag>dinic</tag>
+         
+        <tag>费用流</tag>
+         
+        <tag>最大流</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.ishq.site/articles/%E8%87%AA%E7%84%B6%E6%95%B0%E7%9A%84%E5%92%8C/</loc>
+    <lastmod>2018-07-07T12:53:30.051Z</lastmod>
+    <data>
+        <display>
+        <title>「玄学」为什么全体自然数的和为-12</title>
+        <pubTime>2018-07-07T05:41:56.000Z</pubTime>
+        
+        <tag>数学</tag>
+         
+        <tag>玄学</tag>
+         
+        <tag>毒瘤</tag>
+         
+        <tag>瞎搞</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>https://blog.ishq.site/articles/%E7%BD%91%E7%BB%9C%E6%B5%81-%E4%BA%8C%E5%88%86%E5%9B%BE%E6%9C%80%E5%A4%A7%E5%8C%B9%E9%85%8D/</loc>
+    <lastmod>2018-07-06T03:31:06.863Z</lastmod>
+    <data>
+        <display>
+        <title>「二分图最大匹配」网络流做法</title>
+        <pubTime>2018-07-05T08:09:47.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+        <tag>二分图</tag>
+         
+        <tag>网络流</tag>
+         
+        <tag>二分图最大匹配</tag>
+         
+        <tag>增广路</tag>
+         
+        <tag>图论</tag>
+         
+        <tag>dinic</tag>
+         
+        <tag>最大流</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>https://blog.ishq.site/articles/ZJOI2007-%E7%9F%A9%E9%98%B5%E6%B8%B8%E6%88%8F/</loc>
     <lastmod>2018-07-04T13:42:48.007Z</lastmod>
@@ -95,7 +180,6 @@
     </url>
 
     
-    
   <url>
     <loc>https://blog.ishq.site/articles/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/</loc>
     <lastmod>2018-07-03T11:27:16.135Z</lastmod>
@@ -130,7 +214,6 @@
     </data>
     </url>
 
-    
     
     
   <url>
@@ -412,11 +495,11 @@
         
         <tag>模拟赛</tag>
          
+        <tag>数据结构</tag>
+         
         <tag>数学</tag>
          
         <tag>数论</tag>
-         
-        <tag>数据结构</tag>
          
         <tag>题解</tag>
          
@@ -957,13 +1040,13 @@
         <title>线性筛</title>
         <pubTime>2018-03-16T22:18:26.000Z</pubTime>
         
-        <tag>数学</tag>
-         
-        <tag>数论</tag>
-         
         <tag>Algorithm</tag>
          
         <tag>算法</tag>
+         
+        <tag>数学</tag>
+         
+        <tag>数论</tag>
          
         <tag>线性筛</tag>
          
@@ -1507,13 +1590,13 @@
         <title>Sandaram筛法</title>
         <pubTime>2018-03-17T00:54:23.000Z</pubTime>
         
-        <tag>数学</tag>
-         
-        <tag>数论</tag>
-         
         <tag>Algorithm</tag>
          
         <tag>算法</tag>
+         
+        <tag>数学</tag>
+         
+        <tag>数论</tag>
          
         <tag>素数</tag>
          
@@ -1930,11 +2013,11 @@
         
         <tag>图论</tag>
          
-        <tag>并查集</tag>
-         
         <tag>树剖</tag>
          
         <tag>树链剖分</tag>
+         
+        <tag>并查集</tag>
          
         <tag>邻接表</tag>
          

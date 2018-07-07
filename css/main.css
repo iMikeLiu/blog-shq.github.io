@@ -1980,7 +1980,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6bcf25;
+  background: #a7c8e4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3344,4 +3344,37 @@ span#inline-toc {
   border-bottom: 8px solid transparent;
   border-left: 12px solid transparent;
   border-right: 12px solid #fff159;
+}
+.checkbox-wrapper {
+  width: 58px;
+  height: 32px;
+  position: relative;
+  display: inline-block;
+  background: #fff;
+  border-radius: 16px;
+  transition: all 0.3s ease-out;
+  box-shadow: 0px 0px 0px 2px #ddd;
+}
+.checkbox {
+  display: none;
+}
+.checkbox-label {
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-out;
+}
+.checkbox:checked + .checkbox-wrapper {
+  background: #0bd318;
+  box-shadow: 0px 0px 0px 2px #0bd318;
+}
+.checkbox:checked + .checkbox-wrapper .checkbox-label {
+  left: 26px;
 }
