@@ -3,10 +3,42 @@
 
 
     
+  <url>
+    <loc>https://blog.ishq.site/articles/Network-flow-Algorithms/</loc>
+    <lastmod>2018-07-08T10:56:33.052Z</lastmod>
+    <data>
+        <display>
+        <title>「网络流」常用的几种最大流算法</title>
+        <pubTime>2018-07-08T08:53:23.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+        <tag>网络流</tag>
+         
+        <tag>增广路</tag>
+         
+        <tag>最大流</tag>
+         
+        <tag>dinic</tag>
+         
+        <tag>EK</tag>
+         
+        <tag>图论</tag>
+         
+        <tag>图</tag>
+         
+        <tag>费用流</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
     
   <url>
     <loc>https://blog.ishq.site/articles/dinic/</loc>
-    <lastmod>2018-07-07T13:27:53.076Z</lastmod>
+    <lastmod>2018-07-08T10:00:26.432Z</lastmod>
     <data>
         <display>
         <title>「网络流」Dinic算法学习笔记</title>
@@ -18,13 +50,13 @@
          
         <tag>增广路</tag>
          
-        <tag>图论</tag>
+        <tag>最大流</tag>
          
         <tag>dinic</tag>
          
-        <tag>费用流</tag>
+        <tag>图论</tag>
          
-        <tag>最大流</tag>
+        <tag>费用流</tag>
          
          
            
@@ -35,10 +67,10 @@
     
   <url>
     <loc>https://blog.ishq.site/articles/%E8%87%AA%E7%84%B6%E6%95%B0%E7%9A%84%E5%92%8C/</loc>
-    <lastmod>2018-07-07T12:53:30.051Z</lastmod>
+    <lastmod>2018-07-07T23:36:37.633Z</lastmod>
     <data>
         <display>
-        <title>「玄学」为什么全体自然数的和为-12</title>
+        <title>「玄学」为什么全体自然数的和为1/-12</title>
         <pubTime>2018-07-07T05:41:56.000Z</pubTime>
         
         <tag>数学</tag>
@@ -55,6 +87,7 @@
     </data>
     </url>
 
+    
     
     
   <url>
@@ -75,11 +108,11 @@
          
         <tag>增广路</tag>
          
-        <tag>图论</tag>
+        <tag>最大流</tag>
          
         <tag>dinic</tag>
          
-        <tag>最大流</tag>
+        <tag>图论</tag>
          
          
            
@@ -152,7 +185,6 @@
     </url>
 
     
-    
   <url>
     <loc>https://blog.ishq.site/articles/Lucas/</loc>
     <lastmod>2018-07-03T12:16:54.403Z</lastmod>
@@ -165,13 +197,13 @@
          
         <tag>数论</tag>
          
-        <tag>卢卡斯定理</tag>
-         
-        <tag>Lucas</tag>
-         
         <tag>模版</tag>
          
         <tag>教程</tag>
+         
+        <tag>卢卡斯定理</tag>
+         
+        <tag>Lucas</tag>
          
          
            
@@ -192,11 +224,11 @@
          
         <tag>数论</tag>
          
-        <tag>教程</tag>
-         
         <tag>乱搞</tag>
          
         <tag>毒瘤</tag>
+         
+        <tag>教程</tag>
          
         <tag>函数</tag>
          
@@ -228,9 +260,9 @@
          
         <tag>dijkstra</tag>
          
-        <tag>模版</tag>
-         
         <tag>图论</tag>
+         
+        <tag>模版</tag>
          
         <tag>spfa</tag>
          
@@ -334,13 +366,13 @@
         <title>「数据结构」主席树(可持久化线段树)算法笔记</title>
         <pubTime>2018-06-14T23:35:24.000Z</pubTime>
         
-        <tag>数据结构</tag>
-         
         <tag>树</tag>
          
-        <tag>模版</tag>
+        <tag>数据结构</tag>
          
         <tag>线段树</tag>
+         
+        <tag>模版</tag>
          
         <tag>主席树</tag>
          
@@ -493,9 +525,9 @@
         <title>「LYOI2016 Summer」一次函数 - 线段树 + 数论</title>
         <pubTime>2018-06-09T02:50:04.000Z</pubTime>
         
-        <tag>模拟赛</tag>
-         
         <tag>数据结构</tag>
+         
+        <tag>模拟赛</tag>
          
         <tag>数学</tag>
          
@@ -599,9 +631,9 @@
         <title>Manacher算法学习笔记</title>
         <pubTime>2018-05-12T00:05:34.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>算法</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>字符串</tag>
          
@@ -627,13 +659,13 @@
         <title>「数据结构」珂朵莉树 Chtholly Tree</title>
         <pubTime>2018-06-02T02:59:21.000Z</pubTime>
         
-        <tag>数据结构</tag>
-         
         <tag>珂朵莉</tag>
          
         <tag>Chtholly</tag>
          
         <tag>树</tag>
+         
+        <tag>数据结构</tag>
          
         <tag>算法</tag>
          
@@ -722,11 +754,9 @@
         <title>「树套树」线段树套平衡树</title>
         <pubTime>2018-04-29T12:42:37.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>树</tag>
          
-        <tag>模版</tag>
+        <tag>Algorithm</tag>
          
         <tag>Treap</tag>
          
@@ -735,6 +765,8 @@
         <tag>树套树</tag>
          
         <tag>数堆</tag>
+         
+        <tag>模版</tag>
          
          
            
@@ -776,9 +808,9 @@
         <title>「字符串算法」AC自动机&&KMP自动机入门</title>
         <pubTime>2018-05-05T03:25:53.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>AC自动机</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>字符串</tag>
          
@@ -956,15 +988,15 @@
         <title>「模板」一些树的模板</title>
         <pubTime>2018-03-17T07:01:12.000Z</pubTime>
         
-        <tag>数据结构</tag>
-         
         <tag>树</tag>
          
-        <tag>模板</tag>
+        <tag>数据结构</tag>
          
         <tag>平衡树</tag>
          
         <tag>Treap</tag>
+         
+        <tag>模板</tag>
          
         <tag>线段树</tag>
          
@@ -1040,13 +1072,13 @@
         <title>线性筛</title>
         <pubTime>2018-03-16T22:18:26.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>算法</tag>
          
         <tag>数学</tag>
          
         <tag>数论</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>线性筛</tag>
          
@@ -1122,11 +1154,11 @@
         <title>「字符串算法」KMP算法</title>
         <pubTime>2018-05-05T01:30:25.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>KMP</tag>
          
         <tag>AC自动机</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>前缀和</tag>
          
@@ -1178,13 +1210,13 @@
         <title>zkw线段树</title>
         <pubTime>2018-04-29T04:54:29.000Z</pubTime>
         
-        <tag>Algorithm</tag>
+        <tag>树</tag>
          
         <tag>数据结构</tag>
          
-        <tag>树</tag>
-         
         <tag>算法</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>线段树</tag>
          
@@ -1248,13 +1280,13 @@
         <title>「图论」并查集</title>
         <pubTime>2018-04-13T14:38:27.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>算法</tag>
          
-        <tag>优化</tag>
+        <tag>Algorithm</tag>
          
         <tag>图论</tag>
+         
+        <tag>优化</tag>
          
         <tag>并查集</tag>
          
@@ -1278,9 +1310,9 @@
         <title>凸包「graham算法」</title>
         <pubTime>2018-02-24T07:23:39.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>算法</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>模板</tag>
          
@@ -1304,15 +1336,15 @@
         <title>二维树状数组</title>
         <pubTime>2018-02-08T17:17:53.000Z</pubTime>
         
-        <tag>Algorithm</tag>
+        <tag>树</tag>
          
         <tag>数据结构</tag>
          
-        <tag>树</tag>
-         
-        <tag>模板</tag>
+        <tag>Algorithm</tag>
          
         <tag>优化</tag>
+         
+        <tag>模板</tag>
          
         <tag>树状数组</tag>
          
@@ -1334,15 +1366,15 @@
         <title>树状数组</title>
         <pubTime>2018-02-06T09:16:16.000Z</pubTime>
         
-        <tag>Algorithm</tag>
+        <tag>树</tag>
          
         <tag>数据结构</tag>
          
-        <tag>树</tag>
-         
-        <tag>模板</tag>
+        <tag>Algorithm</tag>
          
         <tag>优化</tag>
+         
+        <tag>模板</tag>
          
         <tag>树状数组</tag>
          
@@ -1364,13 +1396,13 @@
         <title>「算法」Treap算法</title>
         <pubTime>2018-02-28T06:18:40.000Z</pubTime>
         
-        <tag>Algorithm</tag>
+        <tag>树</tag>
          
         <tag>数据结构</tag>
          
-        <tag>树</tag>
-         
         <tag>算法</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>平衡树</tag>
          
@@ -1424,9 +1456,9 @@
          
         <tag>题解</tag>
          
-        <tag>优化</tag>
-         
         <tag>Problem</tag>
+         
+        <tag>优化</tag>
          
         <tag>测试题</tag>
          
@@ -1536,11 +1568,11 @@
         <title>SegmentTree线段树</title>
         <pubTime>2018-02-05T07:26:24.000Z</pubTime>
         
-        <tag>Algorithm</tag>
+        <tag>树</tag>
          
         <tag>数据结构</tag>
          
-        <tag>树</tag>
+        <tag>Algorithm</tag>
          
         <tag>线段树</tag>
          
@@ -1566,11 +1598,11 @@
          
         <tag>图论</tag>
          
+        <tag>图</tag>
+         
         <tag>Tarjian</tag>
          
         <tag>强联通</tag>
-         
-        <tag>图</tag>
          
          
            
@@ -1590,13 +1622,13 @@
         <title>Sandaram筛法</title>
         <pubTime>2018-03-17T00:54:23.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>算法</tag>
          
         <tag>数学</tag>
          
         <tag>数论</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>素数</tag>
          
@@ -1903,11 +1935,11 @@
         <title>BigInt</title>
         <pubTime>2018-01-27T03:02:02.000Z</pubTime>
         
-        <tag>高精度</tag>
+        <tag>数据结构</tag>
          
         <tag>Algorithm</tag>
          
-        <tag>数据结构</tag>
+        <tag>高精度</tag>
          
          
            
@@ -2013,11 +2045,11 @@
         
         <tag>图论</tag>
          
+        <tag>并查集</tag>
+         
         <tag>树剖</tag>
          
         <tag>树链剖分</tag>
-         
-        <tag>并查集</tag>
          
         <tag>邻接表</tag>
          

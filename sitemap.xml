@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.ishq.site/OI-diary/index.html</loc>
+    <loc>https://blog.ishq.site/articles/Network-flow-Algorithms/</loc>
     
-    <lastmod>2018-07-07T13:48:41.864Z</lastmod>
+    <lastmod>2018-07-08T10:56:33.052Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.ishq.site/articles/dinic/</loc>
     
-    <lastmod>2018-07-07T13:27:53.076Z</lastmod>
+    <lastmod>2018-07-08T10:00:26.432Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.ishq.site/articles/%E8%87%AA%E7%84%B6%E6%95%B0%E7%9A%84%E5%92%8C/</loc>
     
-    <lastmod>2018-07-07T12:53:30.051Z</lastmod>
+    <lastmod>2018-07-07T23:36:37.633Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.ishq.site/OI-diary/index.html</loc>
+    
+    <lastmod>2018-07-07T13:48:41.864Z</lastmod>
     
   </url>
   
@@ -47,13 +54,6 @@
     <loc>https://blog.ishq.site/articles/JSOI2009-%E6%B8%B8%E6%88%8F/</loc>
     
     <lastmod>2018-07-04T13:12:31.205Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.ishq.site/404/index.html</loc>
-    
-    <lastmod>2018-07-04T12:12:51.172Z</lastmod>
     
   </url>
   

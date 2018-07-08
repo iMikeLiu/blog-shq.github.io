@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[「网络流」Dinic算法学习笔记]]></title>
-    <url>%2Farticles%2Fdinic%2F</url>
-    <content type="text"><![CDATA[最近大蒟蒻Shq学习了最大流Dinic算法，但是毕竟他太弱辣，于是他只能水一发Blog防止自己忘记 Dinic算法是一个十分常用的算法，但是在这之前，我们先来简单介绍一下网络流的基本知识 网络流介绍什么是网络流？ 不知道不知道，此篇完....... 网络流就是在一个有向图上选择一个源点，一个汇点 你：网络流那么简单qwq！ 当然不是qwq 网络流还有一些性质没有说 容量：capacity(e)\mathrm{capacity}(e)capacity(e) 表示一条有向边 e(u,v)e(u, v)e(u,v) 的最大允许的流量 流量：flow(e)\mathrm{flow}(e)flow(e) 表示一条有向边 e(u,v)e(u, v)e(u,v) 总容量中已被占用的流量 剩余容量：即 capacity(e)−flow(e)\mathrm{capacity}(e) - \mathrm{flow}(e)capacity(e)−flow(e)，表示当前时刻某条有向边 e(u,v)\mathrm{e}(u, v)e(u,v) 总流量中未被占用的部分 反向边：原图中每一条有向边在残量网络中都有对应的反向边，反向边的容量为 ∞\infty∞，容量的变化与原边相反；『反向边』的概念是相对的，即一条边的反向边的反向边是它本身 残量网络：在原图的基础之上，添加每条边对应的反向边，并储存每条边的当前流量。残量网络会在算法进行的过程中被修改 增广路（augmenting path）：残量网络中从源点到汇点的一条路径，增广路上所有边中最小的剩余容量为增广流量 增广（augmenting）：在残量网络中寻找一条增广路，并将增广路上所有边的流量加上增广流量的过程 层次：level(u)\mathrm{level}(u)level(u)表示节点 uuu 在层次图中与源点的距离 层次图：在原残量网络中按照每个节点的层次来分层，只保留相邻两层的节点的图，满载（即流量等于容量）的边不存在于层次图中 比如这个，就是网络的一个流 共有源点 SSS ,汇点TTT，和其余 555 个点组成，在有向图上以 undefined$表示qwq 一些结论我们可以得出一些结论: 对于任意一条边 e(u,v)e(u,v)e(u,v)，都有 0≤capacity(e)−flow(e)0\le\mathrm{capacity}(e) - \mathrm{flow}(e) 0≤capacity(e)−flow(e) 对于任意的点sss，有undefined$ flow(u,v)=−flow(v,u)\text{flow}(u,v)=-\text{flow}(v,u)flow(u,v)=−flow(v,u) 那么，问题来了，挖掘机技术那家强？ 什么叫做最大流呢qwq? 最大流就是起点到终点的最大流量 我们来看这样一个网路（才不是懒得画图呢qwq DinicDinicDinic 算法的过程: 遍历残量网络，建立层次图； 在层次图上寻找任意一条增广路，进行增广，并将答案加上增广流量； 重复第 2 步，直至层次图中不存在增广路，回到第 1 步重新建立层次图； 直到层次图无法建立，则当前流量即为最大流量。 每次建立层次图后都可以进行多次增广，无法增广时重新建立层次图，此时的层次图不再包含之前进行增广后满载的边。无法建立层次图时，说明源点到汇点的任意一条简单路径中，都至少有一条边满载，这也在直观上验证了最小割最大流定理 编程实现技巧虽然说我们已经想明白了为什么要加反向边，但反向边如何具体实现呢？笔者在学习网络流的时候在这里困扰了好久，现在简要的总结在这里 首先讲一下邻接矩阵的做法，对于G[u][v]G[u][v]G[u][v]，如果我们要对其反向边进行处理，直接修改 G[v][u]G[v][u]G[v][u] 即可 但有时会出现 u→vu\to vu→v 和 v→uv\to uv→u 同时本来就有边的情况，一种方法是加入一个新点 ppp ，使 u→vu\to vu→v，而 v→uv\to uv→u 变成 v→pv\to pv→p, p→up\to up→u 另一种方法就是使用邻接表，我们把边从 000 开始编号，每加入一条原图中的边 u→vu\to vu→v 时，加入边 v→uv\to uv→u 流量设为 000，那么这时对于编号为 iii 的边 u→vu\to vu→v，我们就可以知道i&nbsp;xor&nbsp;1i \text{ xor } 1i&nbsp;xor&nbsp;1就是其反向边 v→uv\to uv→u 当前弧优化DinicDinicDinic 有一个常见的优化——当前弧优化 该优化基于一个显而易见的事实，每次建立层次图后，如果在某一次增广前，某个点有一条边增广过了，则这条边在当前的层次图中不会再用到了，即下一次 DFSDFSDFS 这个点的时候直接可以从这条边的下一条边开始 Code某网络流二十四题代码: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115#include &lt;cstdio&gt;#include &lt;climits&gt;#include &lt;algorithm&gt;#include &lt;queue&gt;const int MAXN = 100 + 10;struct Node;struct Edge;struct Node &#123; Edge *firstEdge; int level;&#125; nodes[MAXN + 2];struct Edge &#123; Node *from, *to; int capacity, flow; Edge *next, *reversedEdge; Edge(Node *from, Node *to, int capacity) : from(from), to(to), capacity(capacity), flow(0), next(from-&gt;firstEdge) &#123;&#125;&#125;;int n, n1;inline void addEdge(int from, int to, int capacity) &#123; nodes[from].firstEdge = new Edge(&amp;nodes[from], &amp;nodes[to], capacity); nodes[to].firstEdge = new Edge(&amp;nodes[to], &amp;nodes[from], 0); nodes[from].firstEdge-&gt;reversedEdge = nodes[to].firstEdge, nodes[to].firstEdge-&gt;reversedEdge = nodes[from].firstEdge;&#125;struct Dinic &#123; bool makeLevelGraph(Node *s, Node *t) &#123; for (int i = 0; i &lt; n + 1; i++) nodes[i].level = 0; std::queue&lt;Node *&gt; q; q.push(s); s-&gt;level = 1; while (!q.empty()) &#123; Node *v = q.front(); q.pop(); for (Edge *e = v-&gt;firstEdge; e; e = e-&gt;next) &#123; if (e-&gt;flow &lt; e-&gt;capacity &amp;&amp; e-&gt;to-&gt;level == 0) &#123; e-&gt;to-&gt;level = v-&gt;level + 1; if (e-&gt;to == t) return true; else q.push(e-&gt;to); &#125; &#125; &#125; return false; &#125; int findPath(Node *s, Node *t, int limit = INT_MAX) &#123; if (s == t) return limit; for (Edge *e = s-&gt;firstEdge; e; e = e-&gt;next) &#123; if (e-&gt;to-&gt;level == s-&gt;level + 1 &amp;&amp; e-&gt;capacity &gt; e-&gt;flow) &#123; int flow = findPath(e-&gt;to, t, std::min(limit, e-&gt;capacity - e-&gt;flow)); if (flow &gt; 0) &#123; e-&gt;flow += flow; e-&gt;reversedEdge-&gt;flow -= flow; return flow; &#125; &#125; &#125; return 0; &#125; int operator()(int s, int t) &#123; int ans = 0; while (makeLevelGraph(&amp;nodes[s], &amp;nodes[t])) &#123; int flow; while ((flow = findPath(&amp;nodes[s], &amp;nodes[t])) &gt; 0) ans += flow; &#125; return ans; &#125;&#125; dinic;int main(int argc, char *const argv[]) &#123;#ifndef FILE freopen("flyer.in", "r", stdin); freopen("flyer.out", "w", stdout);#endif scanf("%d %d", &amp;n, &amp;n1); const int s = 0, t = n + 1; for (int i = 1; i &lt;= n1; i++) addEdge(s, i, 1); for (int i = n1 + 1; i &lt;= n; i++) addEdge(i, t, 1); while (!feof(stdin)) &#123; int u, v; scanf("%d %d", &amp;u, &amp;v); if (u &gt; v) std::swap(u, v); addEdge(u, v, 1); &#125; printf("%d\n", dinic(s, t));#ifndef FILE fclose(stdin); fclose(stdout);#endif return 0;&#125; 参考资料一些好用的参考资料qwq Dinic 学习笔记 | Menci's Blog Dinic算法（研究总结，网络流）by SYCstdio 最大流问题：增广路径算法的比较]]></content>
+    <title><![CDATA[「网络流」常用的几种最大流算法]]></title>
+    <url>%2Farticles%2FNetwork-flow-Algorithms%2F</url>
+    <content type="text"><![CDATA[今天把网络流的几种算法肝完了qwq 然后写炸了qwq，调了一下午网络流.......快读中间也写炸过一次.......看来以后应该多打代码...... 我们上一篇Blog讲了讲Dinic算法，其实求最大流并非只有Dinic一种算法，也并非最有，这一篇我们来讲讲网络流的其他算法qwq 不知道网络流的基本知识的同学可以去看看我的上一篇qwq Ford-Fulkerson方法Ford−FulkersonFord-FulkersonFord−Fulkerson 方法是一种十分有效的求最大流的算法 但不是最快的qwq Ford-Fulkerson伪代码: Ford-Fulkerson-Method(G,S,T)\text {Ford-Fulkerson-Method}(G,S,T)Ford-Fulkerson-Method(G,S,T) initialize flowf to 0\text{initialize flow}f \text{ to } 0initialize flowf to 0 while\text{while}while have an augmenting path \text{have an augmenting path }have an augmenting path ppp in\text{in}in GfG_fG​f​​ augment flow f along p\ \ \ \ \text{augment flow }f \text{ along } p augment flow f along p return f\text{return }freturn f Edmond-Karp算法Edmond−KarpEdmond-KarpEdmond−Karp 算法是 Ford-Fulkerson\text{Ford-Fulkerson}Ford-Fulkerson 方法的一种.. Edmond−KarpEdmond-KarpEdmond−Karp 算法思路： 通过 BFSBFSBFS 拓展合法节点，找到汇点，并记录每个节点的前面节点 preipre_ipre​i​​ 通过preipre_ipre​i​​，从汇点回溯回源点，记录下每条弧流量的最小值 minf\min fminf, ans=ans+minfans = ans+ \min fans=ans+minf（否则就会超出某条边的限制流量 将所有经过的边的流量减去 minf\min fminf，反向边加上 重复上述步骤，直到找不到增广路，算法结束 伪代码:咕咕咕 朴素版EK： 最为简单的写法，通过邻接矩阵存储 优点：代码简单，一目了然。 缺点：轻易爆内存，(n2)(n^2)(n​2​​)的空间太大，n&gt;10000n &gt;10000n&gt;10000 基本就废了（MLE预定） 评测：洛谷模版题 505050 分 邻接表EK 时间复杂度：O(m2n)O(m^2n)O(m​2​​n) Code: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102#include &lt;algorithm&gt;#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;stack&gt;#include &lt;queue&gt;const int MAXN = 10000 + 10;const int MAXM = 100000 + 20;#define DEBUG(x) std::cerr &lt;&lt; "#DEBUG (" &lt;&lt; #x &lt;&lt; "):" &lt;&lt; #x &lt;&lt; " is " &lt;&lt; x &lt;&lt; '\n';int m, n;int S, T;int maxflow;int tot;int head[MAXN];int ver[MAXM], next[MAXM], edge[MAXM];int flow[MAXM];int pre[MAXM];int v[MAXN];inline int min (const int &amp;a, const int &amp;b) &#123; return a &gt; b ? b : a;&#125;inline void addedge (int from, int to, int dist) &#123; ver[++tot] = to, edge[tot] = dist, next[tot] = head[from], head[from] = tot; ver[++tot] = from, edge[tot] = 0, next[tot] = head[to], head[to] = tot;&#125;bool bfs () &#123; std::queue &lt;int&gt; q; memset (v, 0, sizeof (v)); v[S] = 1; q.push(S); flow[S] = 1 &lt;&lt; 29; while (q.size()) &#123; int from = q.front(); q.pop(); for (int i = head[from]; i; i = next[i]) &#123; if (edge[i]) &#123; int to = ver[i]; if (v[to]) continue; pre[to] = i; flow[to] = min (flow[from], edge[i]); // this is "edge[i]" , not "edge[from]"!!!! v[to] = 1; q.push(to); if (to == T) return 1; &#125; &#125; &#125; return 0;&#125;void update () &#123; int x = T; while (x != S) &#123; int i = pre[x]; edge[i] -= flow[T]; edge[i ^ 1] += flow[T]; x = ver[i ^ 1]; &#125; maxflow += flow[T];&#125;inline int SlowRead () &#123; char ch = 0; int data = 0, f = 1; while (ch != '-' &amp;&amp; (ch &lt; '0' || ch &gt; '9')) ch = getchar(); if (ch == '-') f = -1, ch = getchar(); while (ch &gt;= '0' &amp;&amp; ch &lt;= '9') &#123; data = data * 10 + ch - '0'; ch = getchar(); &#125; return data * f;&#125;int main(int argc, char const *argv[]) &#123; n = SlowRead(); m = SlowRead(); S = SlowRead(); T = SlowRead(); tot = 1; for (int i = 1; i &lt;= m; i++) &#123; int x = SlowRead(), y = SlowRead(), z = SlowRead(); addedge(x, y, z); &#125; while (bfs()) update(); // Edmond-Karp printf("%d", maxflow); return 0;&#125; Dinic 算法DinicDinicDinic 算法的过程: 遍历残量网络，建立层次图； 在层次图上寻找任意一条增广路，进行增广，并将答案加上增广流量； 重复第 2 步，直至层次图中不存在增广路，回到第 1 步重新建立层次图； 直到层次图无法建立，则当前流量即为最大流量。 每次建立层次图后都可以进行多次增广，无法增广时重新建立层次图，此时的层次图不再包含之前进行增广后满载的边。无法建立层次图时，说明源点到汇点的任意一条简单路径中，都至少有一条边满载，这也在直观上验证了最小割最大流定理 Dinic(G,S,T)\text{Dinic}(G,S,T)Dinic(G,S,T) make Layered graph in G\text{make Layered graph in }Gmake Layered graph in G do\text{do}do augment flow f along p\ \ \ \ \text{augment flow }f \text{ along } p augment flow f along p until there do not any augmenting flow in G\text{until there do not any augmenting flow in } Guntil there do not any augmenting flow in G goto 1 remake Layered graph until cannot make Layered graph\text{goto 1 remake Layered graph until cannot make Layered graph}goto 1 remake Layered graph until cannot make Layered graph DinicDinicDinic 有一个常见的优化—当前弧优化 该优化基于一个显而易见的事实，每次建立层次图后，如果在某一次增广前，某个点有一条边增广过了，则这条边在当前的层次图中不会再用到了，即下一次 DFSDFSDFS 这个点的时候直接可以从这条边的下一条边开始 时间复杂度：O(n2m)O(n^2m)O(n​2​​m) 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116#include &lt;cstdio&gt;#include &lt;climits&gt;#include &lt;algorithm&gt;#include &lt;queue&gt;const int MAXN = 100 + 10;struct Node;struct Edge;struct Node &#123; Edge *firstEdge; int level;&#125; nodes[MAXN + 2];struct Edge &#123; Node *from, *to; int capacity, flow; Edge *next, *reversedEdge; Edge(Node *from, Node *to, int capacity) : from(from), to(to), capacity(capacity), flow(0), next(from-&gt;firstEdge) &#123;&#125;&#125;;int n, n1;inline void addEdge(int from, int to, int capacity) &#123; nodes[from].firstEdge = new Edge(&amp;nodes[from], &amp;nodes[to], capacity); nodes[to].firstEdge = new Edge(&amp;nodes[to], &amp;nodes[from], 0); nodes[from].firstEdge-&gt;reversedEdge = nodes[to].firstEdge, nodes[to].firstEdge-&gt;reversedEdge = nodes[from].firstEdge;&#125;struct Dinic &#123; bool makeLevelGraph(Node *s, Node *t) &#123; for (int i = 0; i &lt; n + 1; i++) nodes[i].level = 0; std::queue&lt;Node *&gt; q; q.push(s); s-&gt;level = 1; while (!q.empty()) &#123; Node *v = q.front(); q.pop(); for (Edge *e = v-&gt;firstEdge; e; e = e-&gt;next) &#123; if (e-&gt;flow &lt; e-&gt;capacity &amp;&amp; e-&gt;to-&gt;level == 0) &#123; e-&gt;to-&gt;level = v-&gt;level + 1; if (e-&gt;to == t) return true; else q.push(e-&gt;to); &#125; &#125; &#125; return false; &#125; int findPath(Node *s, Node *t, int limit = INT_MAX) &#123; if (s == t) return limit; for (Edge *e = s-&gt;firstEdge; e; e = e-&gt;next) &#123; if (e-&gt;to-&gt;level == s-&gt;level + 1 &amp;&amp; e-&gt;capacity &gt; e-&gt;flow) &#123; int flow = findPath(e-&gt;to, t, std::min(limit, e-&gt;capacity - e-&gt;flow)); if (flow &gt; 0) &#123; e-&gt;flow += flow; e-&gt;reversedEdge-&gt;flow -= flow; return flow; &#125; &#125; &#125; return 0; &#125; int operator()(int s, int t) &#123; int ans = 0; while (makeLevelGraph(&amp;nodes[s], &amp;nodes[t])) &#123; int flow; while ((flow = findPath(&amp;nodes[s], &amp;nodes[t])) &gt; 0) ans += flow; &#125; return ans; &#125;&#125; dinic;int main(int argc, char *const argv[]) &#123;#ifndef FILE freopen("flyer.in", "r", stdin); freopen("flyer.out", "w", stdout);#endif scanf("%d %d", &amp;n, &amp;n1); const int s = 0, t = n + 1; for (int i = 1; i &lt;= n1; i++) addEdge(s, i, 1); for (int i = n1 + 1; i &lt;= n; i++) addEdge(i, t, 1); while (!feof(stdin)) &#123; int u, v; scanf("%d %d", &amp;u, &amp;v); if (u &gt; v) std::swap(u, v); addEdge(u, v, 1); &#125; printf("%d\n", dinic(s, t));#ifndef FILE fclose(stdin); fclose(stdout);#endif return 0;&#125;// 完美结束qwq SAP 算法1、距离标号： 所谓距离标号 ，就是某个点到汇点的最少的弧的数量（即边权值为1时某个点到汇点的最短路径长度） 设点 iii 的标号为 levelilevel_ilevel​i​​，那么如果将满足 leveli=levelj+1level_i=level_j+1level​i​​=level​j​​+1 的弧 (i,j)(i,j)(i,j) 叫做允许弧 ，且增广时只走允许弧 2、断层（本算法的 GapGapGap 优化思想） gapigap_igap​i​​ 数组表示距离标号为 iii 的点有多少个，如果到某一点没有符合距离标号的允许弧，我那么需要修改距离标号来找到增广路 如果重标号使得 gapgapgap 数组中原标号数目变为 000 ，则算法结束 我们学过毒瘤的EKEKEK算法，我们想想优化－如果能让每次寻找增广路时的时间复杂度降下来，那么就能提高算法效率了，使用距离标号的最短增广路算法就是这样的 SAP(G,S,T)\text{SAP}(G,S,T)SAP(G,S,T) initialize level, gap \text{initialize} \text{ level, gap } initialize level, gap find e(u,v) with leveli=levelj+1\text{find }e(u,v)\text{ with level}_i=\text{level}_j+1find e(u,v) with level​i​​=level​j​​+1 find augmenting path along e(u,v)\text {find augmenting path along e}(u,v)find augmenting path along e(u,v) SAPSAPSAP Code: from:https://blog.csdn.net/txl199106/article/details/656320021234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;#define MAXN 222#define inf 100000000+1000int map[MAXN][MAXN];//存图int pre[MAXN];//记录当前点的前驱int level[MAXN];//记录距离标号int gap[MAXN];//gap常数优化int NV,NE; //入口参数vs源点，vt汇点int SAP(int vs,int vt)&#123; memset(pre,-1,sizeof(pre)); memset(level,0,sizeof(level)); memset(gap,0,sizeof(gap)); gap[0]=vt; int v,u=pre[vs]=vs,maxflow=0,aug=inf; while(level[vs]&lt;vt) &#123; //寻找可行弧 for(v=1;v&lt;=vt;v++) &#123; if(map[u][v]&gt;0&amp;&amp;level[u]==level[v]+1)&#123; break; &#125; &#125; if(v&lt;=vt) &#123; pre[v]=u; u=v; if(v==vt) &#123; int neck=0; aug=inf; //寻找当前找到的一条路径上的最大流 , (瓶颈边) for(int i=v;i!=vs;i=pre[i]) &#123; if(aug&gt;map[pre[i]][i]) &#123; aug=map[pre[i]][i]; neck=i; &#125; &#125; maxflow+=aug; //更新残留网络 for(int i=v;i!=vs;i=pre[i])&#123; map[pre[i]][i]-=aug; map[i][pre[i]]+=aug; &#125; u=vs; //从源点开始继续搜 // u=neck; // Dnic 多路增广优化，下次增广时，从瓶颈边(后面)开始 &#125; &#125; else &#123; //找不到可行弧 int minlevel=vt; //寻找与当前点相连接的点中最小的距离标号 for(v=1;v&lt;=vt;v++)&#123; if(map[u][v]&gt;0&amp;&amp;minlevel&gt;level[v])&#123; minlevel=level[v]; &#125; &#125; gap[level[u]]--;//(更新gap数组）当前标号的数目减1； if(gap[level[u]]==0)break;//出现断层 level[u]=minlevel+1; gap[level[u]]++; u=pre[u]; &#125; &#125; return maxflow;&#125; int main()&#123; int n,m,u,v,cap; while(~scanf("%d%d",&amp;m,&amp;n)) &#123; memset(map,0,sizeof(map)); for(int i=1;i&lt;=m;i++) &#123; scanf("%d%d%d",&amp;u,&amp;v,&amp;cap); map[u][v]+=cap; &#125; printf("%d\n",SAP(1,n)); &#125; return 0;&#125; ISAP算法原图存在两种子图，一个是残量网络，一个是允许弧组成的图 残量网络保证可增广，允许弧保证最短路（时间界较优） 所以，在寻找增广路的过程中，一直是在残量网络中沿着允许弧寻找。因此，允许弧应该是属于残量网络的，而非原图的 换句话说，我们沿着允许弧，走的是残量网络（而非原图）中的最短路径 当我们找到沿着残量网络找到一条增广路，增广后，残量网络肯定会变化（至少少了一条边），因此决定允许弧的 ddd 数组要进行相应的更新（顺便提一句，DinicDinicDinic 的做法就是每次增广都重新计算 ddd 数组） 然而，ISAP 「改进」的地方之一就是，其实没有必要马上更新 ddd 数组。这是因为，去掉一条边只可能令路径变得更长，而如果增广之前的残量网络存在另一条最短路，并且在增广后的残量网络中仍存在，那么这条路径毫无疑问是最短的。所以，ISAP 的做法是继续增广，直到遇到死路，才执行 retreat\text{retreat}retreat 操作 说到这里，大家应该都猜到了，retreat\text{retreat}retreat 操作的主要任务就是更新 ddd 数组。那么怎么更新呢？ 非常简单：假设是从节点 uuu 找遍了邻接边也没找到允许弧的；再设一变量 mmm，令 mmm 等于残量网络中 uuu 的所有邻接点的 ddd 数组的最小值，然后令 d[u]d[u]d[u] 等于 m+1m+1m+1 即可。这是因为，进入 retreat\text{retreat}retreat 环节说明残量网络中 uuu 和 ttt 已经不能通过（已过时）的允许弧相连 那么 uuu 和 ttt 实际上在残量网络中的最短路的长是多少呢？（这正是 ddd 的定义！） 显然是残量网络中 uuu 的所有邻接点和 ttt 的距离加 111 的最小情况。特殊情况是，残量网络中 uuu 根本没有邻接点。 如果是这样，只需要把 d[u]d[u]d[u] 设为一个比较大的数即可，这会导致任何点到 uuu 的边被排除到残量网络以外 （严格来说只要大于等于 ∣V∣|V|∣V∣ 即可。由于最短路一定是无环的，因此任意路径长最大是 ∣V∣|V|∣V∣ ）修改之后，只需要把正在研究的节点 uuu 沿着刚才走的路退一步，然后继续搜索即可 Code : 参考http://www.renfei.org/blog/isap.html1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586int source; // 源点int sink; // 汇点int p[max_nodes]; // 可增广路上的上一条弧的编号int num[max_nodes]; // 和 t 的最短距离等于 i 的节点数量int cur[max_nodes]; // 当前弧下标int d[max_nodes]; // 残量网络中节点 i 到汇点 t 的最短距离bool visited[max_nodes];// 预处理, 反向 BFS 构造 d 数组bool bfs() &#123; memset(visited, 0, sizeof(visited)); queue&lt;int&gt; Q; Q.push(sink); visited[sink] = 1; d[sink] = 0; while (!Q.empty()) &#123; int u = Q.front(); Q.pop(); for (iterator_t ix = G[u].begin(); ix != G[u].end(); ++ix) &#123; Edge &amp;e = edges[(*ix)^1]; if (!visited[e.from] &amp;&amp; e.capacity &gt; e.flow) &#123; visited[e.from] = true; d[e.from] = d[u] + 1; Q.push(e.from); &#125; &#125; &#125; return visited[source];&#125;// 增广int augment() &#123; int u = sink, df = __inf; // 从汇点到源点通过 p 追踪增广路径, df 为一路上最小的残量 while (u != source) &#123; Edge &amp;e = edges[p[u]]; df = min(df, e.capacity - e.flow); u = edges[p[u]].from; &#125; u = sink; // 从汇点到源点更新流量 while (u != source) &#123; edges[p[u]].flow += df; edges[p[u]^1].flow -= df; u = edges[p[u]].from; &#125; return df;&#125;int max_flow() &#123; int flow = 0; bfs(); memset(num, 0, sizeof(num)); for (int i = 0; i &lt; num_nodes; i++) num[d[i]]++; int u = source; memset(cur, 0, sizeof(cur)); while (d[source] &lt; num_nodes) &#123; if (u == sink) &#123; flow += augment(); u = source; &#125; bool advanced = false; for (int i = cur[u]; i &lt; G[u].size(); i++) &#123; Edge&amp; e = edges[G[u][i]]; if (e.capacity &gt; e.flow &amp;&amp; d[u] == d[e.to] + 1) &#123; advanced = true; p[e.to] = G[u][i]; cur[u] = i; u = e.to; break; &#125; &#125; if (!advanced) &#123; // retreat int m = num_nodes - 1; for (iterator_t ix = G[u].begin(); ix != G[u].end(); ++ix) if (edges[*ix].capacity &gt; edges[*ix].flow) m = min(m, d[edges[*ix].to]); if (--num[d[u]] == 0) break; // gap 优化 num[d[u] = m+1]++; cur[u] = 0; if (u != source) u = edges[p[u]].from; &#125; &#125; return flow;&#125; Other 方法以上介绍的方法都是基于增广路算法qwq 最高标号预流推进(HLPP) 算法 算法思想 预流推进算法将每个点看做一个可以存储流的“水池”，其中存有流的点称为活动节点 对于每个非s或t的点，流入该点的流只可能有两个去向：流入汇点t，流回源点s; 预流推进算法从源点开始沿边向其它点推流，之后每次选一个活动节点通过推流，试图使其变得不活动。当所有节点都是不活动节点时，算法就结束了; 以上是传统预流推进算法的主要思想。而最高标号预流推进算法就是先预处理了一个距离标号h，通过堆或优先队列，没次选出h最大的点进行推流，以减少重复操作，降低了复杂度。 算法步骤 通过bfs预处理出距离标号h，即到达汇点t的最短距离; 将从源点s出发的边设为满流，到达的点v标记为活动节点并加入到优先队列中; 从优先队列中不断取出点u进行推流操作，要求到达点v的必须满足h(u)==h(v)+1; 若推流后u中仍有余流，则进行重标号。将h(u)设为min{h(v)}，再次加入优先队列并重复步骤3; 当优先队列为空时，结束算法。 算法复杂度：O(n2m)O(n^2\sqrt m)O(n​2​​√​m​​​)！！！ qwq1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283struct line &#123; int to,next,cap; line() &#123; next=-1; &#125;&#125;edge[MAXM];struct data &#123; int x,h,ef; friend bool operator&lt; (const data &amp;a,const data &amp;b)&#123; return a.h&lt;b.h; &#125;&#125;node[MAXN];priority_queue&lt;data&gt; q;queue&lt;int&gt; tmpq;inline void add(int u,int v,int w) &#123; edge[cnt].next=head[u]; head[u]=cnt; edge[cnt].to=v; edge[cnt].cap=w; ++cnt;&#125;void bfs(int t) &#123; tmpq.push(t); vis[t]=true; int u,v; while(tmpq.size()) &#123; u=tmpq.front(); for(int i=head[u];i!=-1;i=edge[i].next) &#123; v=edge[i].to; if(!vis[v]) &#123; node[v].h=node[u].h+1; tmpq.push(v); vis[v]=true; &#125; &#125; tmpq.pop(); &#125;&#125;int hlpp(int n,int s,int t) &#123; for(int i=1;i&lt;=n;++i) node[i].x=i; bfs(); data tmp; int u,v,f,tmph; for(int i=head[s];i!=-1;i=edge[i].next) &#123; v=edge[i].to; edge[i^1].cap+=edge[i].cap; node[v].ef+=edge[i].cap; edge[i].cap=0; q.push(node[v]); &#125; node[s].h=n; while(q.size()) &#123; tmp=q.top(); q.pop(); u=tmp.x; tmph=INF; for(int i=head[u];i!=-1 &amp;&amp; node[u].ef;i=edge[i].next) &#123; v=edge[i].to; if(edge[i].cap) &#123; if(node[u].h==node[v].h+1) &#123; if(v!=s &amp;&amp; v!=t &amp;&amp; node[v].ef==0) q.push(node[v]); f=min(edge[i].cap,node[u].ef); edge[i].cap-=f; edge[i^1].cap+=f; node[u].ef-=f; node[v].ef+=f; &#125; else tmph=min(tmph,node[v].h); &#125; if(node[u].ef) &#123; node[u].h=tmph+1; q.push(node[u]); &#125; &#125; return node[t].ef;&#125; 参考资料: 网络流－最大流问题 ISAP 算法解释 图论专题小结：最大流算法之ISAP算法 Dinic pk ISAP 网络流 最大流—最小割 之SAP算法 详解 网络流最大流之SAP算法 详解 最大流算法-最高标号预流推进(HLPP) 最大流——HLPP算法 最大流算法之EK（最短路径增广算法） Dinic学习笔记]]></content>
       <tags>
         <tag>Algorithm</tag>
         <tag>网络流</tag>
         <tag>增广路</tag>
-        <tag>图论</tag>
-        <tag>dinic</tag>
-        <tag>费用流</tag>
         <tag>最大流</tag>
+        <tag>dinic</tag>
+        <tag>EK</tag>
+        <tag>图论</tag>
+        <tag>图</tag>
+        <tag>费用流</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[「玄学」为什么全体自然数的和为-12]]></title>
+    <title><![CDATA[「网络流」Dinic算法学习笔记]]></title>
+    <url>%2Farticles%2Fdinic%2F</url>
+    <content type="text"><![CDATA[最近大蒟蒻Shq学习了最大流Dinic算法，但是毕竟他太弱辣，于是他只能水一发Blog防止自己忘记 Dinic算法是一个十分常用的算法，但是在这之前，我们先来简单介绍一下网络流的基本知识 网络流介绍什么是网络流？ 不知道不知道，此篇完....... 网络流就是在一个有向图上选择一个源点，一个汇点 你：网络流那么简单qwq！ 当然不是qwq 网络流还有一些性质没有说 容量：capacity(e)\mathrm{capacity}(e)capacity(e) 表示一条有向边 e(u,v)e(u, v)e(u,v) 的最大允许的流量 流量：flow(e)\mathrm{flow}(e)flow(e) 表示一条有向边 e(u,v)e(u, v)e(u,v) 总容量中已被占用的流量 剩余容量：即 capacity(e)−flow(e)\mathrm{capacity}(e) - \mathrm{flow}(e)capacity(e)−flow(e)，表示当前时刻某条有向边 e(u,v)\mathrm{e}(u, v)e(u,v) 总流量中未被占用的部分 反向边：原图中每一条有向边在残量网络中都有对应的反向边，反向边的容量为 ∞\infty∞，容量的变化与原边相反；『反向边』的概念是相对的，即一条边的反向边的反向边是它本身 残量网络：在原图的基础之上，添加每条边对应的反向边，并储存每条边的当前流量。残量网络会在算法进行的过程中被修改 增广路（augmenting path）：残量网络中从源点到汇点的一条路径，增广路上所有边中最小的剩余容量为增广流量 增广（augmenting）：在残量网络中寻找一条增广路，并将增广路上所有边的流量加上增广流量的过程 层次：level(u)\mathrm{level}(u)level(u)表示节点 uuu 在层次图中与源点的距离 层次图：在原残量网络中按照每个节点的层次来分层，只保留相邻两层的节点的图，满载（即流量等于容量）的边不存在于层次图中 比如这个，就是网络的一个流 共有源点 SSS ,汇点TTT，和其余 555 个点组成，在有向图上以 undefined$表示qwq 一些结论我们可以得出一些结论: 对于任意一条边 e(u,v)e(u,v)e(u,v)，都有 0≤capacity(e)−flow(e)0\le\mathrm{capacity}(e) - \mathrm{flow}(e) 0≤capacity(e)−flow(e) 对于任意的点sss，有undefined$ flow(u,v)=−flow(v,u)\text{flow}(u,v)=-\text{flow}(v,u)flow(u,v)=−flow(v,u) 那么，问题来了，挖掘机技术那家强？ 什么叫做最大流呢qwq? 最大流就是起点到终点的最大流量 我们来看这样一个网路（才不是懒得画图呢qwq DinicDinicDinic 算法的过程: 遍历残量网络，建立层次图； 在层次图上寻找任意一条增广路，进行增广，并将答案加上增广流量； 重复第 2 步，直至层次图中不存在增广路，回到第 1 步重新建立层次图； 直到层次图无法建立，则当前流量即为最大流量。 每次建立层次图后都可以进行多次增广，无法增广时重新建立层次图，此时的层次图不再包含之前进行增广后满载的边。无法建立层次图时，说明源点到汇点的任意一条简单路径中，都至少有一条边满载，这也在直观上验证了最小割最大流定理 编程实现技巧虽然说我们已经想明白了为什么要加反向边，但反向边如何具体实现呢？笔者在学习网络流的时候在这里困扰了好久，现在简要的总结在这里 首先讲一下邻接矩阵的做法，对于 ，如果我们要对其反向边进行处理，直接修改 即可 但有时会出现 u→vu\to vu→v 和 v→uv\to uv→u 同时本来就有边的情况，一种方法是加入一个新点 ppp ，使 u→vu\to vu→v，而 v→uv\to uv→u 变成 v→pv\to pv→p, p→up\to up→u 另一种方法就是使用邻接表，我们把边从 000 开始编号，每加入一条原图中的边 u→vu\to vu→v 时，加入边 v→uv\to uv→u 流量设为 000，那么这时对于编号为 iii 的边 u→vu\to vu→v，我们就可以知道i&nbsp;xor&nbsp;1i \text{ xor } 1i&nbsp;xor&nbsp;1就是其反向边 v→uv\to uv→u 当前弧优化DinicDinicDinic 有一个常见的优化——当前弧优化 该优化基于一个显而易见的事实，每次建立层次图后，如果在某一次增广前，某个点有一条边增广过了，则这条边在当前的层次图中不会再用到了，即下一次 DFSDFSDFS 这个点的时候直接可以从这条边的下一条边开始 Code某网络流二十四题代码: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115#include &lt;cstdio&gt;#include &lt;climits&gt;#include &lt;algorithm&gt;#include &lt;queue&gt;const int MAXN = 100 + 10;struct Node;struct Edge;struct Node &#123; Edge *firstEdge; int level;&#125; nodes[MAXN + 2];struct Edge &#123; Node *from, *to; int capacity, flow; Edge *next, *reversedEdge; Edge(Node *from, Node *to, int capacity) : from(from), to(to), capacity(capacity), flow(0), next(from-&gt;firstEdge) &#123;&#125;&#125;;int n, n1;inline void addEdge(int from, int to, int capacity) &#123; nodes[from].firstEdge = new Edge(&amp;nodes[from], &amp;nodes[to], capacity); nodes[to].firstEdge = new Edge(&amp;nodes[to], &amp;nodes[from], 0); nodes[from].firstEdge-&gt;reversedEdge = nodes[to].firstEdge, nodes[to].firstEdge-&gt;reversedEdge = nodes[from].firstEdge;&#125;struct Dinic &#123; bool makeLevelGraph(Node *s, Node *t) &#123; for (int i = 0; i &lt; n + 1; i++) nodes[i].level = 0; std::queue&lt;Node *&gt; q; q.push(s); s-&gt;level = 1; while (!q.empty()) &#123; Node *v = q.front(); q.pop(); for (Edge *e = v-&gt;firstEdge; e; e = e-&gt;next) &#123; if (e-&gt;flow &lt; e-&gt;capacity &amp;&amp; e-&gt;to-&gt;level == 0) &#123; e-&gt;to-&gt;level = v-&gt;level + 1; if (e-&gt;to == t) return true; else q.push(e-&gt;to); &#125; &#125; &#125; return false; &#125; int findPath(Node *s, Node *t, int limit = INT_MAX) &#123; if (s == t) return limit; for (Edge *e = s-&gt;firstEdge; e; e = e-&gt;next) &#123; if (e-&gt;to-&gt;level == s-&gt;level + 1 &amp;&amp; e-&gt;capacity &gt; e-&gt;flow) &#123; int flow = findPath(e-&gt;to, t, std::min(limit, e-&gt;capacity - e-&gt;flow)); if (flow &gt; 0) &#123; e-&gt;flow += flow; e-&gt;reversedEdge-&gt;flow -= flow; return flow; &#125; &#125; &#125; return 0; &#125; int operator()(int s, int t) &#123; int ans = 0; while (makeLevelGraph(&amp;nodes[s], &amp;nodes[t])) &#123; int flow; while ((flow = findPath(&amp;nodes[s], &amp;nodes[t])) &gt; 0) ans += flow; &#125; return ans; &#125;&#125; dinic;int main(int argc, char *const argv[]) &#123;#ifndef FILE freopen("flyer.in", "r", stdin); freopen("flyer.out", "w", stdout);#endif scanf("%d %d", &amp;n, &amp;n1); const int s = 0, t = n + 1; for (int i = 1; i &lt;= n1; i++) addEdge(s, i, 1); for (int i = n1 + 1; i &lt;= n; i++) addEdge(i, t, 1); while (!feof(stdin)) &#123; int u, v; scanf("%d %d", &amp;u, &amp;v); if (u &gt; v) std::swap(u, v); addEdge(u, v, 1); &#125; printf("%d\n", dinic(s, t));#ifndef FILE fclose(stdin); fclose(stdout);#endif return 0;&#125; 参考资料一些好用的参考资料qwq Dinic 学习笔记 | Menci's Blog Dinic算法（研究总结，网络流）by SYCstdio 最大流问题：增广路径算法的比较]]></content>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>网络流</tag>
+        <tag>增广路</tag>
+        <tag>最大流</tag>
+        <tag>dinic</tag>
+        <tag>图论</tag>
+        <tag>费用流</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「玄学」为什么全体自然数的和为1/-12]]></title>
     <url>%2Farticles%2F%E8%87%AA%E7%84%B6%E6%95%B0%E7%9A%84%E5%92%8C%2F</url>
     <content type="text"><![CDATA[1+2+3+⋯=−1121+2+3+\cdots=-\frac{1}{12}1+2+3+⋯=−​12​​1​​阅读本文，你至少需要具备以下的数学水平：数学分析/高等数学、一些复数的基本知识（复变函数前三章即可）、知道Fourier级数、听说过Fourier变换、听说过 Γ\GammaΓ 函数与 ζ\zetaζ 函数 1. Riemann ζ\zetaζ 函数我们知道，一个级数 ∑n=1∞an\sum_{n=1}^\infty a_n​n=1​∑​∞​​a​n​​的值，定义为部分和的极限 limN→∞∑n=1Nan\lim_{N\rightarrow\infty}\sum_{n=1}^Na_n ​N→∞​lim​​​n=1​∑​N​​a​n​​因此自然数的和 ∑n=1∞n=limN→∞∑n=1Nn=limN→∞N(N+1)2=+∞\sum_{n=1}^\infty n=\lim_{N\rightarrow\infty}\sum_{n=1}^Nn=\lim_{N\rightarrow\infty}\frac{N(N+1)}{2}=+\infty ​n=1​∑​∞​​n=​N→∞​lim​​​n=1​∑​N​​n=​N→∞​lim​​​2​​N(N+1)​​=+∞是正无穷。所以 ∑n=1∞n=−112\sum_{n=1}^\infty n=-\frac{1}{12}​n=1​∑​∞​​n=−​12​​1​​是错的，本文完结 骗你的 数学上经常有这样的操作 如果定义不够使用，就推广定义；如果推广以后仍然不能满足数学家的野心，那就修改定义；如果还不行，就抛弃这个定义。现在我们就抛弃级数 考虑RiemannRiemannRiemann ζ\zetaζ 函数： ζ(z)=∑n=1∞1nz(Re(z)&gt;1) \zeta(z)=\sum_{n=1}^\infty\frac{1}{n^z}\quad(Re(z)&gt;1)ζ(z)=​n=1​∑​∞​​​n​z​​​​1​​(Re(z)&gt;1)设 z=x+iyz=x+iyz=x+iy ，若 x&gt;1x&gt;1x&gt;1 ，则 ∑n=1∞∣1nz∣≤∑n=1∞1nx&lt;+∞\sum_{n=1}^\infty\left|\frac{1}{n^z}\right|\leq\sum_{n=1}^\infty\frac{1}{n^x}&lt;+\infty​n=1​∑​∞​​​∣​∣​∣​∣​​​n​z​​​​1​​​∣​∣​∣​∣​​≤​n=1​∑​∞​​​n​x​​​​1​​&lt;+∞故 ζ(z)\zeta(z)ζ(z) 收敛。且 ζ(z)\zeta(z)ζ(z) 在 {z∈C:Re(z)&gt;1}\{z\in\mathbb{C}:Re(z)&gt;1\}{z∈C:Re(z)&gt;1} 的紧子集上一致收敛。 原因：对于 {z∈C:Re(z)&gt;1}\{z\in\mathbb{C}:Re(z)&gt;1\}{z∈C:Re(z)&gt;1} 的紧子集 KKK ，存在 ε&gt;0\varepsilon&gt;0ε&gt;0 ，使得在 KKK 上恒有 Re(z)&gt;1+εRe(z)&gt;1+\varepsilonRe(z)&gt;1+ε ，从而在 KKK 上有控制级数 ∑n=1∞1n1+ε\sum_{n=1}^\infty\frac{1}{n^{1+\varepsilon}}​n=1​∑​∞​​​n​1+ε​​​​1​​用Weierstrass控制收敛定理 进一步地， ζ(z)\zeta(z)ζ(z) 在 {z∈C:Re(z)&gt;1}\{z\in\mathbb{C}:Re(z)&gt;1\}{z∈C:Re(z)&gt;1} 上解析。 我们想知道 ζ(−1)\zeta(-1)ζ(−1) 的值，因为按照定义: ζ(−1)∼∑n=1∞1n−1=∑n=1∞n\zeta(-1)\sim\sum_{n=1}^\infty\frac{1}{n^{-1}}=\sum_{n=1}^\infty nζ(−1)∼​n=1​∑​∞​​​n​−1​​​​1​​=​n=1​∑​∞​​n注意：这里及以后，用 === 表示真正的相等，用 ∼\sim∼ 表示“形式上的”相等 目前， ζ\zetaζ 函数只对满足 Re(z)&gt;1Re(z)&gt;1Re(z)&gt;1 的复数 zzz 有定义， ζ(−1)\zeta(-1)ζ(−1) 是没有定义的。我们接下来的目标，就是用合理的方式，把 ζ\zetaζ 函数的定义扩展到整个复平面 肯定不能再按照 ∑n=1∞1nz\sum_{n=1}^\infty\frac{1}{n^z}​n=1​∑​∞​​​n​z​​​​1​​定义，因为不收敛 2. MellinMellinMellin 变换首先回顾一下 FourierFourierFourier 变换。设 f:R→Cf:\mathbb{R}\rightarrow\mathbb{C}f:R→C是一个函数，定义 Ff(x)=∫−∞+∞f(t)eixtdt\mathcal{F}f(x)=\int_{-\infty}^{+\infty}f(t)e^{ixt}dtFf(x)=∫​−∞​+∞​​f(t)e​ixt​​dt称 Ff:R→C\mathcal{F}f:\mathbb{R}\rightarrow\mathbb{C}Ff:R→C为 fff 的 FourierFourierFourier 变换。 MellinMellinMellin 变换和 FourierFourierFourier 变换类似，是一个积分变换 它把一个正实数 R+\mathbb{R}^+R​+​​ 上的函数变换为一个 C\mathbb{C}C 上的函数 设 f:R+→Cf:\mathbb{R}^+\rightarrow\mathbb{C}f:R​+​​→C是一个函数，定义 Mf(z)=∫0+∞f(s)szdss\mathcal{M}f(z)=\int_0^{+\infty}f(s)s^z\frac{ds}{s}Mf(z)=∫​0​+∞​​f(s)s​z​​​s​​ds​​称 Mf:C→C\mathcal{M}f:\mathbb{C}\rightarrow\mathbb{C}Mf:C→C为 fff 的 MellinMellinMellin 变换 为什么要这么定义呢？考虑复 FourierFourierFourier 变换（注意与之前的Fourier变换的区别和联系） F^f(z)=∫−∞+∞f(t)eztdx\hat{\mathcal{F}}f(z)=\int_{-\infty}^{+\infty}f(t)e^{zt}dx​F​^​​f(z)=∫​−∞​+∞​​f(t)e​zt​​dx它把一个函数 f:R→Cf:\mathbb{R}\rightarrow\mathbb{C}f:R→C变换为 F^f:C→C\hat{\mathcal{F}}f:\mathbb{C}\rightarrow\mathbb{C}​F​^​​f:C→C设 s=φ(t)=ets=\varphi(t)=e^ts=φ(t)=e​t​​ 是从加法群 R\mathbb{R}R 到乘法群 R+\mathbb{R}^+R​+​​ 的群同构，它把 R\mathbb{R}R 上的测度推到 R+\mathbb{R}^+R​+​​ 上（ dt=dssdt=\frac{ds}{s}dt=​s​​ds​​ ） 注意下面的图表： 我们可以计算 因此 F^(f∘φ)=Mf\hat{\mathcal{F}}(f\circ\varphi)=\mathcal{M}f​F​^​​(f∘φ)=Mf这样看来，MellinMellinMellin变换只不过是“ R+\mathbb{R}^+R​+​​ 上函数的 FourierFourierFourier 变换”而已。 我们找几个函数，来算一算他们的Mellin变换把。 1、fλ(s)=e−λsf_{\lambda}(s)=e^{-\lambda s}f​λ​​(s)=e​−λs​​ 取 λ=1\lambda=1λ=1 我们就得到了著名的 Γ\GammaΓ 函数。 2、 f(s)=∑n=1∞fπn2(s)=∑n=1∞e−πn2sf(s)=\sum_{n=1}^\infty f_{\pi n^2}(s)=\sum_{n=1}^\infty e^{-\pi n^2s}f(s)=​n=1​∑​∞​​f​πn​2​​​​(s)=​n=1​∑​∞​​e​−πn​2​​s​​ 这里牵扯到收敛性的问题。对于第二个 ∼\sim∼ ，只要 Re(z)&gt;12Re(z)&gt;\frac{1}{2}Re(z)&gt;​2​​1​​ 就能变成 === 。对于第一个 ∼\sim∼ ，考虑 这里的积分与极限实际上是可交换的,原因： 假设 Re(z)=x&gt;12Re(z)=x&gt;\frac{1}{2}Re(z)=x&gt;​2​​1​​ ，那么 ∫0+∞∣∑n=1Ne−πn2ssz−1∣ds≤∫0+∞∑n=1Ne−πn2ssx−1ds\int_0^{+\infty}\left|\sum_{n=1}^Ne^{-\pi n^2s}s^{z-1}\right|ds\leq\int_0^{+\infty}\sum_{n=1}^Ne^{-\pi n^2s}s^{x-1}ds ∫​0​+∞​​​∣​∣​∣​∣​∣​​​n=1​∑​N​​e​−πn​2​​s​​s​z−1​​​∣​∣​∣​∣​∣​​ds≤∫​0​+∞​​​n=1​∑​N​​e​−πn​2​​s​​s​x−1​​ds而 故 ∫0+∞∑n=1Ne−πn2ssx−1ds≤∫01∑n=1Ne−πn2ssx−1ds+C∫1+∞sx−1−12ds&lt;+∞\int_0^{+\infty}\sum_{n=1}^Ne^{-\pi n^2s}s^{x-1}ds\leq\int_0^1\sum_{n=1}^Ne^{-\pi n^2s}s^{x-1}ds+C\int_1^{+\infty}s^{x-1-\frac{1}{2}}ds&lt;+\infty∫​0​+∞​​​n=1​∑​N​​e​−πn​2​​s​​s​x−1​​ds≤∫​0​1​​​n=1​∑​N​​e​−πn​2​​s​​s​x−1​​ds+C∫​1​+∞​​s​x−1−​2​​1​​​​ds&lt;+∞控制收敛 这样我们就得到了这部分的最重要的等式，也是我们需要用到的结论： π−zζ(2z)Γ(z)=∫0+∞(∑n=1∞e−πn2s)sz−1dsRe(z)&gt;12\pi^{-z}\zeta(2z)\Gamma(z)=\int_0^{+\infty}\left(\sum_{n=1}^\infty e^{-\pi n^2s}\right)s^{z-1}ds\;\;\;\;Re(z)&gt;\frac{1}{2} π​−z​​ζ(2z)Γ(z)=∫​0​+∞​​(​n=1​∑​∞​​e​−πn​2​​s​​)s​z−1​​dsRe(z)&gt;​2​​1​​3. PoissonPoissonPoisson求和公式再来看一下FourierFourierFourier变换 Ff(x)=∫−∞+∞f(t)eixtdt\mathcal{F}f(x)=\int_{-\infty}^{+\infty}f(t)e^{ixt}dtFf(x)=∫​−∞​+∞​​f(t)e​ixt​​dt对于足够“好”的函数 f ，可以证明 PoissonPoissonPoisson 求和公式 ∑n∈Zf(n)=∑n∈ZFf(n)\sum_{n\in\mathbb{Z}}f(n)=\sum_{n\in\mathbb{Z}}\mathcal{F}f(n)​n∈Z​∑​​f(n)=​n∈Z​∑​​Ff(n)这部分我们就证明这个公式 假设 fff 足够“好”（要多好有多好），定义 F(t)=∑n∈Zf(n+t)F(t)=\sum_{n\in\mathbb{Z}}f(n+t)F(t)=​n∈Z​∑​​f(n+t)则 FFF 是 R\mathbb{R}R 上周期为 111 的函数，于是可以构造 FFF 的 FourierFourierFourier 级数：令 ck=∫01F(t)e−2πiktdtc_k=\int_0^1F(t)e^{-2\pi ikt}dtc​k​​=∫​0​1​​F(t)e​−2πikt​​dt是第 kkk 个 FourierFourierFourier 系数，则 F(t)∼∑k∈Zcke2πiktF(t)\sim\sum_{k\in\mathbb{Z}}c_ke^{2\pi ikt}F(t)∼​k∈Z​∑​​c​k​​e​2πikt​​而这个系数 从而 ∑n∈Zf(n)=F(0)∼∑k∈Zck=∑k∈ZFf(k)\sum_{n\in\mathbb{Z}}f(n)=F(0)\sim\sum_{k\in\mathbb{Z}}c_k=\sum_{k\in\mathbb{Z}}\mathcal{F}f(k)​n∈Z​∑​​f(n)=F(0)∼​k∈Z​∑​​c​k​​=​k∈Z​∑​​Ff(k)就得到了 PoissonPoissonPoisson 求和公式形式上的“证明” 那么 fff 究竟要满足什么条件呢？ 如果周期函数 F∈C2[0,1]F\in C^2[0,1]F∈C​2​​[0,1] ，就有 F(t)=∑k∈Zcke2πiktF(t)=\sum_{k\in\mathbb{Z}}c_ke^{2\pi ikt} F(t)=​k∈Z​∑​​c​k​​e​2πikt​​因此，我们要求 fff 二阶连续可导，并且 ∑n∈Z∣∣f∣∣[n.n+1],∞+∣∣f′∣∣[n.n+1],∞+∣∣f′′∣∣[n.n+1],∞&lt;+∞\sum_{n\in\mathbb{Z}}||f||_{[n.n+1],\infty}+||f'||_{[n.n+1],\infty}+||f''||_{[n.n+1],\infty}&lt;+\infty​n∈Z​∑​​∣∣f∣∣​[n.n+1],∞​​+∣∣f​′​​∣∣​[n.n+1],∞​​+∣∣f​′′​​∣∣​[n.n+1],∞​​&lt;+∞使用导数一致收敛的判别法则，就得到 F∈C2[0,1]F\in C^2[0,1]F∈C​2​​[0,1] 啦qwq 也就是说，如果 f∈C2(R)f\in C^2(\mathbb{R})f∈C​2​​(R) ，并且 ∑n∈Z∣∣f∣∣[n.n+1],∞+∣∣f′∣∣[n.n+1],∞+∣∣f′′∣∣[n.n+1],∞&lt;+∞\sum_{n\in\mathbb{Z}}||f||_{[n.n+1],\infty}+||f'||_{[n.n+1],\infty}+||f''||_{[n.n+1],\infty}&lt;+\infty ​n∈Z​∑​​∣∣f∣∣​[n.n+1],∞​​+∣∣f​′​​∣∣​[n.n+1],∞​​+∣∣f​′′​​∣∣​[n.n+1],∞​​&lt;+∞就有 PoissonPoissonPoisson 求和公式 ∑n∈Zf(n)=∑n∈ZFf(n)\sum_{n\in\mathbb{Z}}f(n)=\sum_{n\in\mathbb{Z}}\mathcal{F}f(n) ​n∈Z​∑​​f(n)=​n∈Z​∑​​Ff(n)4. End前面已经做了充分的准备工作，是时候向目标发起最后冲刺了。 设 λ&gt;0\lambda&gt;0λ&gt;0 ，令 θ(λ)=∑n∈Ze−πn2λψ(λ)=∑n=1∞e−πn2λ\theta(\lambda)=\sum_{n\in\mathbb{Z}}e^{-\pi n^2\lambda} \psi(\lambda)=\sum_{n=1}^\infty e^{-\pi n^2\lambda} θ(λ)=​n∈Z​∑​​e​−πn​2​​λ​​ψ(λ)=​n=1​∑​∞​​e​−πn​2​​λ​​很显然 θ(λ)=2ψ(λ)+1\theta(\lambda)=2\psi(\lambda)+1θ(λ)=2ψ(λ)+1考虑 f(t)=e−πt2λf(t)=e^{-\pi t^2\lambda} f(t)=e​−πt​2​​λ​​，计算得 Ff(x)=1λe−πx2λ\mathcal{F}f(x)=\frac{1}{\sqrt{\lambda}}e^{-\pi\frac{x^2}{\lambda}}Ff(x)=​√​λ​​​​​1​​e​−π​λ​​x​2​​​​​​而且满足相应条件，因此用 PoissonPoissonPoisson 求和公式 ∑n∈Ze−πn2λ=1λ∑n∈Ze−πn2λ\sum_{n\in\mathbb{Z}}e^{-\pi n^2\lambda}=\frac{1}{\sqrt{\lambda}}\sum_{n\in\mathbb{Z}}e^{-\pi\frac{n^2}{\lambda}}​n∈Z​∑​​e​−πn​2​​λ​​=​√​λ​​​​​1​​​n∈Z​∑​​e​−π​λ​​n​2​​​​​​即 θ(λ)=1λθ(1λ)\theta(\lambda)=\frac{1}{\sqrt{\lambda}}\theta\left(\frac{1}{\lambda}\right)θ(λ)=​√​λ​​​​​1​​θ(​λ​​1​​)换成 ψ\psiψ 就是 ψ(1λ)=λψ(λ)+λ−12\psi\left(\frac{1}{\lambda}\right)=\sqrt{\lambda}\psi(\lambda)+\frac{\sqrt{\lambda}-1}{2}ψ(​λ​​1​​)=√​λ​​​ψ(λ)+​2​​√​λ​​​−1​​第二部分的最后，得到了 以上计算的前提是 Re(z)&gt;12Re(z)&gt;\frac{1}{2}Re(z)&gt;​2​​1​​ 令 w=2zw=2zw=2z ，则当 Re(w)&gt;1Re(w)&gt;1Re(w)&gt;1 时 π−wζ(w)Γ(w2)=∫1+∞ψ(s)(sw−2+s−w−1)ds−1w(1−w)\sqrt{\pi}^{-w}\zeta(w)\Gamma\left(\frac{w}{2}\right)=\int_1^{+\infty}\psi(s)(\sqrt{s}^{w-2}+\sqrt{s}^{-w-1})ds-\frac{1}{w(1-w)}√​π​​​​−w​​ζ(w)Γ(​2​​w​​)=∫​1​+∞​​ψ(s)(√​s​​​​w−2​​+√​s​​​​−w−1​​)ds−​w(1−w)​​1​​现在观察：等号右边是一个亚纯函数（亚纯函数就是“能表示成两个解析函数的商 ”的函数，或者“没有本性奇点”的函数，两个亚纯函数经过四则运算仍然是亚纯函数），而等号左边的 π−w\sqrt{\pi}^{-w}√​π​​​​−w​​ 、 Γ(w2)\Gamma\left(\frac{w}{2}\right)Γ(​2​​w​​) 也都是亚纯函数。这样，上式相当于给出了 ζ(w)\zeta(w)ζ(w) 在 w∈Cw\in\mathbb{C}w∈C 上的定义！ 这还没完，试试在等号右边把 w 换为 1-w ，你会发现式子根本没变。这就说明： π−wζ(w)Γ(w2)=πw−1ζ(1−w)Γ(1−w2)\sqrt{\pi}^{-w}\zeta(w)\Gamma\left(\frac{w}{2}\right)=\sqrt{\pi}^{w-1}\zeta(1-w)\Gamma\left(\frac{1-w}{2}\right)√​π​​​​−w​​ζ(w)Γ(​2​​w​​)=√​π​​​​w−1​​ζ(1−w)Γ(​2​​1−w​​)现在让 w=−1w=-1w=−1 ，就有 πζ(−1)Γ(−12)=π−2ζ(2)Γ(1)\sqrt{\pi}\zeta(-1)\Gamma\left(-\frac{1}{2}\right)=\sqrt{\pi}^{-2}\zeta(2)\Gamma(1)√​π​​​ζ(−1)Γ(−​2​​1​​)=√​π​​​​−2​​ζ(2)Γ(1)我们知道 ， ， ， 因此： ζ(−1)=π−2ζ(2)Γ(1)πΓ(−12)=π26π3(−2)π=−112\zeta(-1)=\frac{\sqrt{\pi}^{-2}\zeta(2)\Gamma(1)}{\sqrt{\pi}\Gamma\left(-\frac{1}{2}\right)}=\frac{\frac{\pi^2}{6}}{\sqrt{\pi}^3(-2)\sqrt{\pi}}=-\frac{1}{12}ζ(−1)=​√​π​​​Γ(−​2​​1​​)​​√​π​​​​−2​​ζ(2)Γ(1)​​=​√​π​​​​3​​(−2)√​π​​​​​​6​​π​2​​​​​​=−​12​​1​​证明完结 #\##]]></content>
       <tags>
@@ -35,9 +51,9 @@
         <tag>网络流</tag>
         <tag>二分图最大匹配</tag>
         <tag>增广路</tag>
-        <tag>图论</tag>
-        <tag>dinic</tag>
         <tag>最大流</tag>
+        <tag>dinic</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -78,9 +94,9 @@
       <tags>
         <tag>数学</tag>
         <tag>数论</tag>
-        <tag>教程</tag>
         <tag>乱搞</tag>
         <tag>毒瘤</tag>
+        <tag>教程</tag>
         <tag>函数</tag>
         <tag>生成函数</tag>
         <tag>FFT</tag>
@@ -95,10 +111,10 @@
       <tags>
         <tag>数学</tag>
         <tag>数论</tag>
-        <tag>卢卡斯定理</tag>
-        <tag>Lucas</tag>
         <tag>模版</tag>
         <tag>教程</tag>
+        <tag>卢卡斯定理</tag>
+        <tag>Lucas</tag>
       </tags>
   </entry>
   <entry>
@@ -108,8 +124,8 @@
       <tags>
         <tag>算法</tag>
         <tag>dijkstra</tag>
-        <tag>模版</tag>
         <tag>图论</tag>
+        <tag>模版</tag>
         <tag>spfa</tag>
         <tag>Ford</tag>
         <tag>最短路</tag>
@@ -159,10 +175,10 @@
     <url>%2Farticles%2F%E4%B8%BB%E5%B8%AD%E6%A0%91%E8%AF%A6%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[上一篇「学习笔记」可持久化并查集 / rope讲了两种思路 - Cheat和可持久化线段树，这里，我们就再讲一下主席树吧quq 主席树是用来解决第k大问题的一种好用的数据结构，用的就是函数式的权值线段树来实现 函数式是实现可持久化的一种方法 一天，你愉快的打着暴力，吸氧暴力过紫题? , 你看到了这样一道题目: 给定 NNN 个数（ intintint 范围内），一共 MMM 次询问，每次都要询问区间 [l,r][l,r][l,r] 的第 kkk 大的数，滋瓷修改操作 其中 N,M,l,rN,M,l,rN,M,l,r 均不超过2×1052 \times 10^52×10​5​​，保证询问有答案 暴力做法显而易见，最暴力的办法就是区间排序然后输出排序后第 kkk 个数。最坏情况的时间复杂度是O(nmlogn)O(nm\log n)O(nmlogn)，不超时才怪.... 主席树做法你看了看题目的标签，发现有一个线段树的标签，于是开始想建 nnn 个线段树... 但是线段树的空间本来就是非常蛋疼的 假如开n个，就不用活了，直接MLEMLEMLE告辞，可能比暴力分还低.... 于是我们看一看修改前后的线段树，试图找到什么规律... 这是一个too young的不滋瓷可持久化的线段树 我们看到了，修改某一个节点，就只改动了该节点到树根的一条链，链上的每一个节点都被增加了333. 所以，对于每一次修改，只需要建一条 logn\log nlogn 的链就行了quq 我们只要每次记录一下她所更改的节点就可以了quq 一道裸题 - poj2104 给定数列于区间，求区间第k大的数 简化版本 假如就给你n个数，让你求第k大怎么求 首先排序，离散化一下（离线 让后用离散后的数建立一颗线段树 但是这颗线段树不行以权值为节点储存的 它的每个节点存储的就是当前下标数字在范围内出现的次数 例如离散后为 4 2 1 3 2 那么我们建出的线段树为 假如我们查询第kkk大的话 那么从根开始 假如他的右孩子的权值大于等于 kkk 的话，走到右儿子 假如小于的话，走到左儿子，并 kkk 等于这个权值减 kkk 假如我们要查询第 333 大的数 那么假如我们要求区间 ， 的k大的话，就可以在区间 [i−1,j][i-1,j][i−1,j] 分别构建两棵优美的线段树然后差分，查出第 kkk 大的即可。 那这样的话，我们就可以对于每一个数列中的点建立一颗线段树，就可以求区间了 于是就变成了一道主席树的裸题 对于每一个点插入总线段树，都建一条链，存一个点，就能随时提取区间了 我们可以具体看一下动态开点的代码 123456789void update(int num, int &amp;rt, int l, int r) &#123; Tree[cnt++] = Tree[rt]; rt = cnt - 1; Tree[rt].sum++; if(l == r) return; int mid = (l + r)&gt;&gt;1; if(num &lt;= mid) update(num, Tree[rt].L, l, mid); else update(num, Tree[rt].R, mid + 1, r);&#125; 我们该怎么理解呢？ 我们原先带进去的那个 rtrtrt，其实是原来的节点，numnumnum 是我们要把它改变成哪个数。 我们一开始的语句 1Tree[cnt++] = Tree[rt]; 就是把它变成原来的节点，这样的话我们只要修改需要修改的左儿子或者右儿子就可以了。其实就是加新链的过程。 1rt = cnt - 1; 而这一句我们就改变了 nownownow 的值，别忘了上面的 nownownow 带的是地址，这样上一层就直接修改了 (因为不传引用 爆零 就不怪我了quq 明白这些就可以开始码了 一定不要忘记离散化! 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;const int maxn = 1e5 + 10;int n, m;int cnt;struct node&#123; int L, R;//分别指向左右子树 int sum;//该节点所管辖区间范围内数的个数 node()&#123; sum = 0; &#125;&#125; Tree[maxn * 20];struct value &#123; int x; int id;&#125; Value[maxn];bool cmp(value v1, value v2) &#123; return v1.x &lt; v2.x;&#125;int root[maxn];int rank[maxn];void init() &#123; cnt = 1; root[0] = 0; Tree[0].L = Tree[0].R = Tree[0].sum = 0;&#125;void update(int num, int &amp;rt, int l, int r) &#123; Tree[cnt++] = Tree[rt]; rt = cnt - 1; Tree[rt].sum++; if(l == r) return; int mid = (l + r)&gt;&gt;1; if(num &lt;= mid) update(num, Tree[rt].L, l, mid); else update(num, Tree[rt].R, mid + 1, r);&#125;int query(int i, int j, int k, int l, int r) &#123; int d = Tree[Tree[j].L].sum - Tree[Tree[i].L].sum; if(l == r) return l; int mid = (l + r)&gt;&gt;1; if(k &lt;= d) return query(Tree[i].L, Tree[j].L, k, l, mid); else return query(Tree[i].R, Tree[j].R, k - d, mid + 1, r);&#125;int main (int argc, char const *argv[]) &#123; scanf ("%d%d", &amp;n, &amp;m); for(int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;Value[i].x); Value[i].id = i; &#125; //进行离散化 std::sort(Value + 1, Value + n + 1, cmp); for(int i = 1; i &lt;= n; i++) rank [ Value[i].id ] = i; init(); for(int i = 1; i &lt;= n; i++) &#123; root[i] = root[i - 1]; update (rank[i], root[i], 1, n); &#125; int left, right, k; for(int i = 1; i &lt;= m; i++) &#123; scanf("%d%d%d", &amp;left, &amp;right, &amp;k); printf("%d\n", Value[query(root[left - 1], root[right], k, 1, n)].x); &#125; return 0;&#125;//完美结束 进阶假如要在数列中更改节点的数值改怎么办呢 bzoj1901（权限题，交不了就用 zoj2112 但是zoj的内存限制非常蛋疼 题目 给定一个含有nnn个数的序列 程序必须回答这样的询问：对于给定的i,j,ki,j,ki,j,k，在 中第k小的数是多少(1≤k≤j−i+11\le k\le j-i+11≤k≤j−i+1)，并且，你可以改变一些aia_ia​i​​的值，改变后，程序还能针对改变后的aaa继续回答上面的问题 你需要编一个这样的程序，从输入文件中读入序列aaa，然后读入一系列的指令，包括询问指令和修改指令。对于每一个询问指令，你必须输出正确的回答 第一行有两个正整数n(1≤n≤10000)n(1\le n\le 10000)n(1≤n≤10000)，m(1≤m≤10000)m(1\le m\le 10000)m(1≤m≤10000)。分别表示序列的长度和指令的个数。第二行有nnn个数，表示 ，这些数都小于10910^910​9​​ 接下来的mmm行描述每条指令，每行的格式是下面两种格式中的一种。 Q i j k 或者 C i t Q i j k （i,j,ki,j,ki,j,k是数字，1≤i≤j≤n1\le i\le j\le n1≤i≤j≤n, 1≤k≤j−i+11\le k\le j-i+11≤k≤j−i+1）表示询问指令，询问 中第k小的数 C i t ， 表示把aia_ia​i​​改变成为ttt 对于每一次询问，你都需要输出他的答案，每一个输出占单独的一行。 输入样例: 123455 33 2 1 4 7Q 1 4 3C 2 6Q 2 5 3 输出样例: 1236 数据范围 20%20\%20% 的数据中，m,n≤102m,n\le10^2m,n≤10​2​​; 40%40\%40% 的数据中，m,n≤103m,n\le10^3m,n≤10​3​​; 100%100\%100% 的数据中，m,n≤105m,n\le10^5m,n≤10​5​​; 大意就是可以随时改变区间中数的值，询问区间的第k大的值 现在我们若是按着上面的思路：仍然是做桶，仍然是利用前缀和相减。但是对某个元素的修改，会影响到其后面所有的前缀和，于是对后面的也都进行一次修改。[可这每个操作都是 nlognnlognnlogn 的...明显太慢] 于是我们想起了一种可以快速修改和获得前缀和的数据结构——树状数组。 每次修改时只需要修改[ j+lowbit(j)j+lowbit(j)j+lowbit(j) ]等等的元素，每次二分下去时需要对 x,yx,yx,y 两棵子树分别求前缀和 [j−lowbit(j)j-lowbit(j)j−lowbit(j)] 等等的和 这样修改和获取前缀和的复杂度都是 lognlognlogn 的，所以每次操作都是 log2n\log^2nlog​2​​n 的 再分析一下空间复杂度： 回顾之前，我们虽然建了 nnn 棵树但事实上很多部分是相同的，所以那些部分我们都没有管，只是将节点与上一个节点定为相同，然后对于变化的部分再操作 那么我们这道题如果按照上面的方法大概是不太可行的，因为现在我们每棵线段树表示的是树状数组中的含义[例如 666 表示 5+65+65+6 , 121212 表示 9+10+11+129+10+11+129+10+11+12 等等...] 也就是说每次修改的前一个是可能不同的，不能将当前节点设为原来的节点改[事实上，原来那种改法是因为前驱只有一个以及只要修改一个设计出来的，而我们这里两个都不满足]，但是有一点思想是好的，就是我改变的每次都只有一条链，而每次修改就是添加一条链上去，不是整个线段树已经建好了再去修改[有点类似Trie树的构造]，所以空间上复杂度也不吃紧，(n+m)logn(n+m)logn(n+m)logn也是可以接受的。 上面主要讲了使用什么样的线段树，下面具体说一下怎么使用线段树的问题。 操作０：因为线段树在这里做桶，于是使用 HashHashHash 来离散化，即预处理快排一下，然后查找的时候二分找对应的位置。[注意：因为操作中有修改元素的操作，所以离散化需要将这些元素也包含在内，这就需要离线处理] 操作１：预处理原序列：对于第 iii 个元素，对 iii 及 iii 后面的[指树状数组中i+lowbit(i)i+lowbit(i)i+lowbit(i)的]所有节点都加上这个元素。 操作２：修改某个位置上的元素的值：首先按原来的值在这个节点及以后的所有节点上 −1-1−1 ，然后按新的值在这个节点及以后的所有节点上 +1+1+1 操作３：询问一段区间内排行第 kkk 的元素：和静态类似。但是每次求左右子树的前缀和时使用树状数组 代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128// // AC Code// From : http://www.yhzq-blog.cc////////////////////////////////////////////// Problem: 1901// Time: 420ms// Memory: 101804 kb// Code Length: 3198 B// #include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;#define N 200010using namespace std;typedef long long ll;struct node&#123; int l,r,value;&#125;pri_tree[N*40];int pri_cnt,cnt;int data[N],value[N],rank[N],L[N],R[N],a[N],b[N],k[N],root[N];bool flag[N];int la,lb,n,q;int lowbit(int x)&#123;return x&amp;(-x);&#125;int find(int x)&#123; int l=1,r=cnt; while(l&lt;=r) &#123; int mid=l+r&gt;&gt;1; if (rank[mid]&lt;x) l=mid+1; else r=mid-1; &#125; return l;&#125;void update(int &amp;now,int l,int r,int num,int x)&#123; pri_tree[++pri_cnt]=pri_tree[now]; now=pri_cnt; pri_tree[now].value+=x; if (l==r) return; int mid=l+r&gt;&gt;1; if (num&lt;=mid) update(pri_tree[now].l,l,mid,num,x); else update(pri_tree[now].r,mid+1,r,num,x);&#125;int query(int l,int r,int k)&#123; if (l==r) return l; int suml=0,sumr=0; for (int i=1;i&lt;=la;i++) suml+=pri_tree[pri_tree[L[i]].l].value; for (int i=1;i&lt;=lb;i++) sumr+=pri_tree[pri_tree[R[i]].l].value; int mid=l+r&gt;&gt;1; if (sumr-suml&gt;=k) &#123; for (int i=1;i&lt;=la;i++) L[i]=pri_tree[L[i]].l; for (int i=1;i&lt;=lb;i++) R[i]=pri_tree[R[i]].l; return query(l,mid,k); &#125; else &#123; for (int i=1;i&lt;=la;i++) L[i]=pri_tree[L[i]].r; for (int i=1;i&lt;=lb;i++) R[i]=pri_tree[R[i]].r; return query(mid+1,r,k-(sumr-suml)); &#125;&#125;main()&#123; scanf("%d%d",&amp;n,&amp;q); for (int i=1;i&lt;=n;i++) scanf("%d",&amp;value[i]),data[i]=value[i]; int top=n; for (int i=1;i&lt;=q;i++) &#123; char com[10]; scanf("%s%d%d",com,&amp;a[i],&amp;b[i]); if (com[0]=='Q') scanf("%d",&amp;k[i]); else data[++top]=b[i]; &#125; sort(data+1,data+top+1); rank[++cnt]=data[1]; for (int i=1;i&lt;=top;i++) if (data[i]!=data[i-1]) rank[++cnt]=data[i]; for (int i=1;i&lt;=n;i++) &#123; int t=find(value[i]); for (int j=i;j&lt;=n;j+=lowbit(j)) update(root[j],1,cnt,t,1); &#125; for (int i=1;i&lt;=q;i++) &#123; if (k[i]) &#123; la=lb=0;a[i]--; for (int j=a[i];j;j-=lowbit(j)) L[++la]=root[j]; for (int j=b[i];j;j-=lowbit(j)) R[++lb]=root[j]; printf("%d\n",rank[query(1,cnt,k[i])]); &#125; else &#123; int t=find(value[a[i]]); for (int j=a[i];j&lt;=n;j+=lowbit(j)) update(root[j],1,cnt,t,-1); value[a[i]]=b[i]; t=find(b[i]); for (int j=a[i];j&lt;=n;j+=lowbit(j)) update(root[j],1,cnt,t,1); &#125; &#125;&#125;]]></content>
       <tags>
-        <tag>数据结构</tag>
         <tag>树</tag>
-        <tag>模版</tag>
+        <tag>数据结构</tag>
         <tag>线段树</tag>
+        <tag>模版</tag>
         <tag>主席树</tag>
         <tag>可持久化</tag>
       </tags>
@@ -213,8 +229,8 @@
     <url>%2Farticles%2F%E3%80%8CLYOI2016-Summer%E3%80%8D%E4%B8%80%E6%AC%A1%E5%87%BD%E6%95%B0%2F</url>
     <content type="text"><![CDATA[题目描述给你 nnn 个一次函数 fi(x)=kix+bif_i(x) = k_i x + b_if​i​​(x)=k​i​​x+b​i​​，有 mmm 个操作，格式： M i k b，把第 iii 个函数改为fi(x)=kx+bf_i(x) = kx + bf​i​​(x)=kx+b Q l r x，询问fr(fr−1(…fl(x)))&nbsp;mod&nbsp;1000000007f_r(f_{r - 1} (\ldots f _l (x))) ~ \text{mod} ~ 1000000007f​r​​(f​r−1​​(…f​l​​(x)))&nbsp;mod&nbsp;1000000007的值 对于 的数据， 对于 100%100\%100% 的数据，n,m≤200000n, m \leq 200000n,m≤200000, k,b,x&lt;1000000007k, b, x &lt; 1000000007k,b,x&lt;1000000007 这题明显是不能暴力算的（炸到死 在想了5 min后，想出了正解 我们可以维护一个这样的线段树： (使用Geogebra绘制) 对于每一个非叶子节点ppp，都有这个节点对应的函数fleft(fright(x))f_{left}(f_{right}(x))f​left​​(f​right​​(x)) 所以说，我们只要把k,bk, bk,b维护一下就可以了 kp=kp→left×kp→rightk_p = k_{p\rightarrow left} \times k_{p\rightarrow right}k​p​​=k​p→left​​×k​p→right​​bp=kp→left×bp→right+bp→leftb_p =k_{p\rightarrow left}\times b_{p\rightarrow right} +b_{p\rightarrow left} b​p​​=k​p→left​​×b​p→right​​+b​p→left​​对于合并操作，我们也只需要改一改就行了 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148// // Shq// File: lyoi-41.cpp// Time: 2018-06-09 09:23//#include &lt;algorithm&gt;#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#define DEBUG(x) std::cerr &lt;&lt; "#DEBUG: " &lt;&lt; x &lt;&lt; std::endl;const int MAXN = 200000;typedef long long ll;int n, m, mmm = 1e9 + 7;struct FFF &#123; int k, b; FFF (int _k = 1, int _b = 0) : k (_k) , b (_b) &#123;&#125; int value (int x) &#123; return ((ll)x * k % mmm + b) % mmm; &#125;&#125; origin[MAXN];FFF merge (const FFF &amp;left, const FFF &amp;right) &#123; FFF result; result.k = (ll)left.k * right.k % mmm; result.b = ((ll)right.k * left.b % mmm + right.b) % mmm; return result;&#125;struct SegmentTree &#123; int left, right; SegmentTree *left_child, *right_child; FFF fff; SegmentTree (int l, int r) : left(l) , right(r) , left_child(NULL) , right_child(NULL) &#123;&#125; void update () &#123; fff = merge (left_child-&gt;fff, right_child-&gt;fff); &#125; void build () &#123; if (right - left) &#123; fff = origin[left]; &#125; else &#123; int mid = (this-&gt;left + this-&gt;right) &gt;&gt; 1; left_child = new SegmentTree(left, mid), left_child-&gt;build(); right_child = new SegmentTree(mid, right), right_child-&gt;build(); update(); &#125; &#125; void modify(int x, const FFF &amp;fff) &#123; if(right - left == 1) this-&gt;fff = fff; else &#123; int mid = (this-&gt;left + this-&gt;right) &gt;&gt; 1; (x &lt; mid ? left_child : right_child)-&gt;modify(x, fff); update(); &#125; &#125; FFF query(int l, int r) &#123; if(left == this-&gt;left &amp;&amp; right == this-&gt;right) return fff; else &#123; int mid = (this-&gt;left + this-&gt;right) &gt;&gt; 1; FFF ans; if(l &lt; mid) &#123; ans = merge(ans, left_child-&gt;query(l, std::min(mid, r))); &#125; if(r &gt; mid)&#123; ans = merge(ans, right_child-&gt;query(std::max(mid, l), r)); &#125; return ans; &#125; &#125;&#125;;struct Solve &#123; SegmentTree *segt; void build () &#123; segt = new SegmentTree (0, n); segt-&gt;build(); &#125; void modify (int x, int k, int b) &#123; segt-&gt;modify(x, FFF (k, b)); &#125; int query (int left, int right, int x) &#123; FFF f = segt-&gt;query(left, right + 1); return f.value(x); &#125;&#125; solve ;inline int SlowRead()&#123; int data = 0, w = 1; char ch = 0; while (ch != '-' &amp;&amp; (ch &lt; '0' || ch &gt; '9')) ch = getchar(); if(ch == '-') w = -1, ch = getchar(); while (ch &gt;= '0' &amp;&amp; ch &lt;= '9') data = (data &lt;&lt; 1) + (data &lt;&lt; 3) + ch - '0', ch = getchar(); return data * w;&#125;int main(int argc, char const *argv[]) &#123; n = SlowRead(); m = SlowRead(); for(FFF *f = origin; f != origin + n; f++)&#123; f-&gt;k = SlowRead(); f-&gt;b = SlowRead(); &#125; solve.build(); for(int i = 0; i &lt; m; i++)&#123; char opt; do opt = getchar(); while(opt != 'M' &amp;&amp; opt != 'Q'); if(opt == 'M')&#123; int x, k, b; x = SlowRead(); k = SlowRead(); b = SlowRead(); x--; solve.modify(x, k, b); &#125; else if(opt == 'Q')&#123; int left, right, x; left = SlowRead(); right = SlowRead(); x = SlowRead(); left--, right--; printf("%d\n", solve.query(left, right, x)); &#125; else throw; &#125; return 0;&#125;]]></content>
       <tags>
-        <tag>模拟赛</tag>
         <tag>数据结构</tag>
+        <tag>模拟赛</tag>
         <tag>数学</tag>
         <tag>数论</tag>
         <tag>题解</tag>
@@ -245,10 +261,10 @@
     <url>%2Farticles%2FChtholly-Tree-ODT%2F</url>
     <content type="text"><![CDATA[又是一个玄学数据结构 ChthollyChthollyChtholly TreeTreeTree 珂朵莉树，又称OldOldOld DriverDriverDriver TreeTreeTree，能够水过无数数据结构题 本来以为是一种十分玄学的数据结构，发现这其实是一个很智障的东西 珂朵莉树操作前提一般用珂朵莉树的题有两个操作要求： 1.有区间覆盖操作，即是把[l,r][l,r][l,r]区间全部覆盖为xxx. 2.数据随机 看到2大概各位dalao应该已经懂了这个算法是有多么的不稳定了 ( 不过随机情况下的效率确实挺高。 珂朵莉树工作原理珂朵莉树其实就是把相同的区间整合到111个节点提高访问速度（比如区间覆盖）。所以随便写一颗平衡树即可。下面来看道例题： 下方毒瘤代码预警 Codeforces#449 Div.1 C 维护一种数据结构，支持: 区间加，区间覆盖，区间求第k大，区间求x次方和(x≤1e9)(x≤1e9)。 保证数据随机。 貌似就是要告诉你一定要用珂朵莉树 如果谁写出了一种维护xxx次方和的高效数据结构请教教我quq 证明时间复杂度请看: Codeforces 代码里面也有 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233234235236237238239240241242243244245246247248249250251252253254255256257258259260261262263264265266267268269270271272// Codeforces#449 Div.1 C// By: Shq//#include &lt;bits/stdc++.h&gt;#include &lt;algorithm&gt;#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;stack&gt;typedef long long ll;typedef unsigned int ut;inline void SlowPrint(ll x) &#123; static int buf[50]; if (!x) &#123; putchar ('0'); return; &#125; if (x &lt; 0) &#123; putchar ('-'); x =- x; &#125; while (x) &#123; buf[ ++buf[0] ] = x % 10; x /= 10; &#125; while (buf[0]) putchar (buf[ buf[0]-- ] + '0');&#125;inline ut unit() &#123; static ut state0 = 19491001; state0 ^= (state0 &lt;&lt; 13); state0 ^= (state0 &gt;&gt; 17); state0 ^= (state0 &lt;&lt; 5); return state0;&#125;inline int SlowRead () &#123; char ch = getchar(); int data = 0, f = 1; while (!isdigit (ch)) &#123; if (ch == '-') f = -1; ch = getchar();&#125; while (isdigit (ch)) &#123; data = (data &lt;&lt; 1) + (data &lt;&lt; 3) + ch - '0'; ch = getchar (); &#125; return data * f;&#125;const int MAXN = 5e5 + 50;const ll INF = 0x3f3f3f3f;int n,Q;struct Node &#123; Node *left, *right; bool rev_tag; ll add_tag; ll val,sum,mx,mn; int size,cnt; ut pri; inline void pd(); inline void add(int v); inline void rev(); inline void upt();&#125;Pool[MAXN], *pool = Pool, *null = Pool, *rt = null;typedef std::pair&lt;Node*,Node*&gt; pii;inline Node *Insert (int val,int o) &#123; ++pool; pool-&gt;left = pool-&gt;right = null; pool-&gt;rev_tag = (pool-&gt;add_tag = 0); pool-&gt;val = val; pool-&gt;sum = 1ll * val * o; pool-&gt;mx = val; pool-&gt;mn = val; pool-&gt;size = (pool-&gt;cnt=o); pool-&gt;pri = unit(); return pool;&#125;inline void Node::add (int v) &#123; val += v; sum += 1ll * v * size; add_tag += v; mx += v; mn += v;&#125;inline void Node::rev () &#123; std::swap (left, right); rev_tag = (!rev_tag);&#125;inline void Node::upt () &#123; sum = left-&gt;sum + right-&gt;sum + 1ll * val * cnt; size = left-&gt;size + right-&gt;size + cnt; mx = std::max(val, std::max(left-&gt;mx,right-&gt;mx)); mn = std::min(val, std::min(left-&gt;mn,right-&gt;mn));&#125;inline void Node::pd () &#123; if(add_tag) &#123; if (left != null) left-&gt;add(add_tag); if (right != null) right-&gt;add(add_tag); add_tag = 0; &#125; if(rev_tag) &#123; if(left != null) left-&gt;rev(); if(right != null) right-&gt;rev(); rev_tag = 0; &#125;&#125;inline pii split (Node *x, int size) &#123; if (x == null) return std::make_pair (null, null); x-&gt;pd (); if (x-&gt;left-&gt;size + x-&gt;cnt &lt;= size) &#123; pii tr1 = split(x-&gt;right, size-x-&gt;left-&gt;size - x-&gt;cnt); x-&gt;right = tr1.first; x-&gt;upt(); return std::make_pair (x, tr1.second); &#125; else &#123; pii tr1 = split (x-&gt;left, size); x-&gt;left = tr1.second; x-&gt;upt(); return std::make_pair (tr1.first, x); &#125;&#125;inline Node *merge(Node *x, Node *y) &#123; if (x == null) return y; if (y == null) return x; x-&gt;pd(); y-&gt;pd(); if (x-&gt;pri &gt; y-&gt;pri) &#123; x-&gt;right = merge(x-&gt;right, y); x-&gt;upt(); return x; &#125; else &#123; y-&gt;left = merge(x, y-&gt;left); y-&gt;upt(); return y; &#125;&#125;inline int findlef (Node *x, int rright) &#123; if (x-&gt;left != null) &#123; int t = findlef(x-&gt;left, rright); x-&gt;upt(); return t; &#125; else &#123; x-&gt;cnt -= rright; x-&gt;upt(); return x-&gt;val; &#125;&#125;inline pii Get(Node *x,int size) &#123; pii tr1 = split(x,size); int sz = size - tr1.first-&gt;size; if (sz) &#123; int t = findlef (tr1.second, sz); tr1.first = merge (tr1.first, Insert(t, sz)); &#125; return tr1;&#125;std::vector&lt; std::pair&lt;ll,int&gt; &gt;vv;inline void getnode(Node *x) &#123; vv.push_back (std::make_pair (x-&gt;val,x-&gt;cnt)); x-&gt;pd(); if (x-&gt;left != null) getnode(x-&gt;left ); if (x-&gt;right != null) getnode(x-&gt;right);&#125;inline void travel (Node *x) &#123; vv.clear(); getnode(x);&#125;int main(int argc, char const *argv[]) &#123; n = SlowRead (); null-&gt;mx = -INF; null-&gt;mn = INF; int wp = n; while (wp --&gt; 0) &#123;rt = merge (rt, Insert(SlowRead (), 1));&#125; Q=SlowRead (); while(Q --&gt; 0) &#123; int op = SlowRead (); switch(op) &#123; case 1: &#123; int x = SlowRead (),val = SlowRead (); pii tr1 = Get(rt, x); rt = merge(tr1.first, merge(Insert(val, 1), tr1.second)); break; &#125; case 2: &#123; int x = SlowRead (); pii tr1 = Get(rt, x - 1); pii tr2 = Get(tr1.second, 1); rt = merge(tr1.first, tr2.second); break; &#125; case 3: &#123; int x = SlowRead (), y = SlowRead (); pii tr1 = Get(rt, x-1); pii tr2 = Get(tr1.second, y-x+1); tr2.first-&gt;rev(); rt = merge(tr1.first, merge(tr2.first, tr2.second)); break; &#125; case 4: &#123; int l = SlowRead (), r = SlowRead (), k = SlowRead (), len = r - l + 1; k %= len; int sz1 = len - k; pii tr1 = Get (rt, l-1); pii tr2 = Get (tr1.second, sz1); pii tr3 = Get (tr2.second, k); rt = merge (merge (tr1.first, tr3.first), merge (tr2.first, tr3.second)); break; &#125; case 5: &#123; int l = SlowRead (), r = SlowRead (), val = SlowRead (); pii tr1 = Get(rt, l - 1); pii tr2 = Get(tr1.second, r - l + 1); tr2.first-&gt;add(val); rt = merge (tr1.first, merge (tr2.first, tr2.second)); break; &#125; case 6: &#123; int l = SlowRead (), r = SlowRead (), val = SlowRead (); pii tr1 = Get(rt, l - 1); pii tr2 = Get(tr1.second, r - l + 1); rt = merge (tr1.first, merge (Insert(val, r - l + 1), tr2.second)); break; &#125; case 7: &#123; int l = SlowRead (), r = SlowRead (); pii tr1 = Get(rt, l - 1); pii tr2 = Get(tr1.second, r - l + 1); SlowPrint(tr2.first-&gt;sum); putchar('\n'); rt = merge (tr1.first, merge (tr2.first, tr2.second)); break; &#125; case 8: &#123; int l = SlowRead (), r = SlowRead (); pii tr1 = Get(rt, l - 1); pii tr2 = Get(tr1.second, r - l + 1); SlowPrint(tr2.first-&gt;mx - tr2.first-&gt;mn); putchar('\n'); rt = merge (tr1.first, merge (tr2.first, tr2.second)); break; &#125; case 9: &#123; int l = SlowRead (), r = SlowRead (), val = SlowRead (); pii tr1 = Get(rt, l-1); pii tr2 = Get(tr1.second, r-l+1); travel(tr2.first); ll ans = INF; for(int t = vv.size () - 1;t &gt;= 0; t--) &#123; ans = std::min(ans, std::abs(val - vv[t].first)); &#125; SlowPrint (ans); putchar ('\n'); rt = merge (tr1.first, merge (tr2.first, tr2.second)); break; &#125; case 10: &#123; int l = SlowRead (), r = SlowRead (), k = SlowRead (); pii tr1 = Get(rt, l-1); pii tr2 = Get(tr1.second, r-l+1); travel(tr2.first); sort (vv.begin(), vv.end());int pos = 0; while(1) &#123; k -= vv[pos].second; if (k &lt;= 0) &#123;SlowPrint(vv[pos].first);putchar('\n');break;&#125; ++pos; &#125; rt = merge (tr1.first, merge (tr2.first, tr2.second)); break; &#125; case 11: &#123; int l = SlowRead (), r = SlowRead (), val = SlowRead (); pii tr1 = Get(rt, l-1); pii tr2 = Get(tr1.second, r-l+1); travel(tr2.first);int cnt = 0; for(int t = vv.size() - 1; t &gt;= 0; t--) &#123; if (vv[t].first &lt; val) cnt += vv[t].second; &#125; SlowPrint(cnt); putchar('\n'); rt = merge (tr1.first, merge (tr2.first,tr2.second)); break; &#125; &#125; &#125;&#125;]]></content>
       <tags>
-        <tag>数据结构</tag>
         <tag>珂朵莉</tag>
         <tag>Chtholly</tag>
         <tag>树</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>区间操作</tag>
       </tags>
@@ -296,8 +312,8 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
         <tag>算法</tag>
+        <tag>Algorithm</tag>
         <tag>字符串</tag>
         <tag>最长回文子串</tag>
         <tag>Manacher</tag>
@@ -323,8 +339,8 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
         <tag>AC自动机</tag>
+        <tag>Algorithm</tag>
         <tag>字符串</tag>
         <tag>自动机</tag>
         <tag>Trie</tag>
@@ -339,9 +355,9 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
         <tag>KMP</tag>
         <tag>AC自动机</tag>
+        <tag>Algorithm</tag>
         <tag>前缀和</tag>
         <tag>字符串</tag>
       </tags>
@@ -391,13 +407,13 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
         <tag>树</tag>
-        <tag>模版</tag>
+        <tag>Algorithm</tag>
         <tag>Treap</tag>
         <tag>线段树</tag>
         <tag>树套树</tag>
         <tag>数堆</tag>
+        <tag>模版</tag>
       </tags>
   </entry>
   <entry>
@@ -408,10 +424,10 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
-        <tag>数据结构</tag>
         <tag>树</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>Algorithm</tag>
         <tag>线段树</tag>
         <tag>zkw线段树</tag>
       </tags>
@@ -470,9 +486,9 @@
       </categories>
       <tags>
         <tag>图论</tag>
+        <tag>并查集</tag>
         <tag>树剖</tag>
         <tag>树链剖分</tag>
-        <tag>并查集</tag>
         <tag>邻接表</tag>
       </tags>
   </entry>
@@ -484,10 +500,10 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
         <tag>算法</tag>
-        <tag>优化</tag>
+        <tag>Algorithm</tag>
         <tag>图论</tag>
+        <tag>优化</tag>
         <tag>并查集</tag>
         <tag>路径压缩</tag>
       </tags>
@@ -634,11 +650,11 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>树</tag>
-        <tag>模板</tag>
+        <tag>数据结构</tag>
         <tag>平衡树</tag>
         <tag>Treap</tag>
+        <tag>模板</tag>
         <tag>线段树</tag>
         <tag>Splay</tag>
         <tag>二叉树</tag>
@@ -666,10 +682,10 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
         <tag>算法</tag>
         <tag>数学</tag>
         <tag>数论</tag>
+        <tag>Algorithm</tag>
         <tag>素数</tag>
       </tags>
   </entry>
@@ -681,10 +697,10 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
         <tag>算法</tag>
         <tag>数学</tag>
         <tag>数论</tag>
+        <tag>Algorithm</tag>
         <tag>线性筛</tag>
         <tag>素数</tag>
       </tags>
@@ -697,10 +713,10 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
-        <tag>数据结构</tag>
         <tag>树</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>Algorithm</tag>
         <tag>平衡树</tag>
         <tag>Treap</tag>
       </tags>
@@ -741,8 +757,8 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
         <tag>算法</tag>
+        <tag>Algorithm</tag>
         <tag>模板</tag>
         <tag>凸包</tag>
       </tags>
@@ -771,8 +787,8 @@
       <tags>
         <tag>数学</tag>
         <tag>题解</tag>
-        <tag>优化</tag>
         <tag>Problem</tag>
+        <tag>优化</tag>
         <tag>测试题</tag>
         <tag>高性能</tag>
       </tags>
@@ -802,9 +818,9 @@
       <tags>
         <tag>Algorithm</tag>
         <tag>图论</tag>
+        <tag>图</tag>
         <tag>Tarjian</tag>
         <tag>强联通</tag>
-        <tag>图</tag>
       </tags>
   </entry>
   <entry>
@@ -827,11 +843,11 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
-        <tag>数据结构</tag>
         <tag>树</tag>
-        <tag>模板</tag>
+        <tag>数据结构</tag>
+        <tag>Algorithm</tag>
         <tag>优化</tag>
+        <tag>模板</tag>
         <tag>树状数组</tag>
       </tags>
   </entry>
@@ -843,11 +859,11 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
-        <tag>数据结构</tag>
         <tag>树</tag>
-        <tag>模板</tag>
+        <tag>数据结构</tag>
+        <tag>Algorithm</tag>
         <tag>优化</tag>
+        <tag>模板</tag>
         <tag>树状数组</tag>
       </tags>
   </entry>
@@ -859,9 +875,9 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
-        <tag>数据结构</tag>
         <tag>树</tag>
+        <tag>数据结构</tag>
+        <tag>Algorithm</tag>
         <tag>线段树</tag>
       </tags>
   </entry>
@@ -896,9 +912,9 @@
         <category>《算法详解》</category>
       </categories>
       <tags>
-        <tag>高精度</tag>
-        <tag>Algorithm</tag>
         <tag>数据结构</tag>
+        <tag>Algorithm</tag>
+        <tag>高精度</tag>
       </tags>
   </entry>
   <entry>
