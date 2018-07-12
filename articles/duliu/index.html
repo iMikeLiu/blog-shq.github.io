@@ -468,7 +468,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  839
+                  835
                 </span>
               
 
@@ -522,10 +522,10 @@
 <h2 id="register"><a href="#register" class="headerlink" title="register"></a>register</h2><p>在定义变量前写上<code>register</code>，用于把变量放到CPU寄存器中，适用于一些使用频繁的变量（比如循环变量），但寄存器空间有限，如果放得变量太多，多余变量就会被放到一般内存中</p>
 <p>快到什么境界？</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_I = <span class="number">999999999</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 优化后</span></span><br><span class="line"><span class="keyword">register</span> <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= MAX_I; ++i) ++a;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 优化前</span></span><br><span class="line"><span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= MAX_I; ++i) ++b;</span><br></pre></td></tr></table></figure>
-<p>优化后：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mi mathvariant="normal">.</mi><mn>2</mn><mn>8</mn><mn>2</mn><mn>6</mn><mi>s</mi><mi>e</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">0.2826 sec</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">2</span><span class="mord mathrm">8</span><span class="mord mathrm">2</span><span class="mord mathrm">6</span><span class="mord mathit">s</span><span class="mord mathit">e</span><span class="mord mathit">c</span></span></span></span></p>
-<p>优化前：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi mathvariant="normal">.</mi><mn>9</mn><mn>4</mn><mn>4</mn><mi>s</mi><mi>e</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">1.944sec</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">.</span><span class="mord mathrm">9</span><span class="mord mathrm">4</span><span class="mord mathrm">4</span><span class="mord mathit">s</span><span class="mord mathit">e</span><span class="mord mathit">c</span></span></span></span></p>
+<p>优化后：$0.2826 sec$</p>
+<p>优化前：$1.944sec$</p>
 <hr>
-<h2 id="循环展开"><a href="#循环展开" class="headerlink" title="循环展开"></a>循环展开</h2><p>循环展开也许只是表面，在缓存和寄存器允许的情况下一条语句内大量的展开运算会刺激 CPU 并发(前提是你的 CPU 不是某 CPU)...</p>
+<h2 id="循环展开"><a href="#循环展开" class="headerlink" title="循环展开"></a>循环展开</h2><p>循环展开也许只是表面，在缓存和寄存器允许的情况下一条语句内大量的展开运算会刺激 CPU 并发(前提是你的 CPU 不是某 CPU)…</p>
 <ul>
 <li>减少了不直接有助于程序结果的操作的数量，例如循环索引计算和分支条件。</li>
 <li>提供了一些方法，可以进一步变化代码，减少整个计算中关键路径上的操作数量。</li>
@@ -780,7 +780,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">83</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -790,10 +790,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
+                
                   <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
-                </a>
+                
               </div>
             
 
@@ -802,7 +802,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">168</span>
+                  <span class="site-state-item-count">174</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -901,7 +901,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">119.9k</span>
+    <span title="Site words total count">122.4k</span>
   
 </div>
 
