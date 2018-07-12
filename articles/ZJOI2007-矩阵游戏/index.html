@@ -122,19 +122,19 @@
 
 
 
-<meta name="description" content="又双叒叕是一道二分图  题目描述小 $Q$ 是一个非常聪明的孩子，除了国际象棋，他还很喜欢玩一个电脑益智游戏――矩阵游戏。矩阵游戏在一个 $N \times N$ 黑白方阵进行（如同国际象棋一般，只是颜色是随意的）。每次可以对该矩阵进行两种操作：">
+<meta name="description" content="又双叒叕是一道二分图  题目描述小 QQQ 是一个非常聪明的孩子，除了国际象棋，他还很喜欢玩一个电脑益智游戏――矩阵游戏。矩阵游戏在一个 N×NN \times NN×N 黑白方阵进行（如同国际象棋一般，只是颜色是随意的）。每次可以对该矩阵进行两种操作：">
 <meta name="keywords" content="二分图,网络流,二分图最大匹配,题解,染色,增广路,图论,匈牙利算法,ZJOI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「ZJOI2007」矩阵游戏 - 二分图最大匹配 + 染色">
 <meta property="og:url" content="https://blog.ishq.site/articles/ZJOI2007-矩阵游戏/index.html">
 <meta property="og:site_name" content="Shq&#39;s Blog">
-<meta property="og:description" content="又双叒叕是一道二分图  题目描述小 $Q$ 是一个非常聪明的孩子，除了国际象棋，他还很喜欢玩一个电脑益智游戏――矩阵游戏。矩阵游戏在一个 $N \times N$ 黑白方阵进行（如同国际象棋一般，只是颜色是随意的）。每次可以对该矩阵进行两种操作：">
+<meta property="og:description" content="又双叒叕是一道二分图  题目描述小 QQQ 是一个非常聪明的孩子，除了国际象棋，他还很喜欢玩一个电脑益智游戏――矩阵游戏。矩阵游戏在一个 N×NN \times NN×N 黑白方阵进行（如同国际象棋一般，只是颜色是随意的）。每次可以对该矩阵进行两种操作：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wailian.work/images/2018/07/04/__20180704212506.png">
 <meta property="og:updated_time" content="2018-07-04T13:42:48.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「ZJOI2007」矩阵游戏 - 二分图最大匹配 + 染色">
-<meta name="twitter:description" content="又双叒叕是一道二分图  题目描述小 $Q$ 是一个非常聪明的孩子，除了国际象棋，他还很喜欢玩一个电脑益智游戏――矩阵游戏。矩阵游戏在一个 $N \times N$ 黑白方阵进行（如同国际象棋一般，只是颜色是随意的）。每次可以对该矩阵进行两种操作：">
+<meta name="twitter:description" content="又双叒叕是一道二分图  题目描述小 QQQ 是一个非常聪明的孩子，除了国际象棋，他还很喜欢玩一个电脑益智游戏――矩阵游戏。矩阵游戏在一个 N×NN \times NN×N 黑白方阵进行（如同国际象棋一般，只是颜色是随意的）。每次可以对该矩阵进行两种操作：">
 <meta name="twitter:image" content="http://www.wailian.work/images/2018/07/04/__20180704212506.png">
 
 
@@ -448,7 +448,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  565
+                  581
                 </span>
               
 
@@ -487,22 +487,23 @@
       
         <div class="note success"><p>又双叒叕是一道二分图</p></div>
 
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小 $Q$ 是一个非常聪明的孩子，除了国际象棋，他还很喜欢玩一个电脑益智游戏――矩阵游戏。矩阵游戏在一个 $N \times N$ 黑白方阵进行（如同国际象棋一般，只是颜色是随意的）。每次可以对该矩阵进行两种操作：</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">Q</span></span></span></span> 是一个非常聪明的孩子，除了国际象棋，他还很喜欢玩一个电脑益智游戏――矩阵游戏。矩阵游戏在一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>×</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">N \times N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mbin">×</span><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> 黑白方阵进行（如同国际象棋一般，只是颜色是随意的）。每次可以对该矩阵进行两种操作：</p>
 <a id="more"></a>
 <ol>
 <li>行交换操作 - 选择矩阵的任意两行，交换这两行（即交换对应格子的颜色）</li>
 <li>列交换操作 - 选择矩阵的任意两列，交换这两列（即交换对应格子的颜色）</li>
 </ol>
 <p>游戏的目标，即通过若干次操作，使得方阵的主对角线(左上角到右下角的连线)上的格子均为黑色</p>
-<p>对于某些关卡，小 $Q$ 百思不得其解，以致他开始怀疑这些关卡是不是根本就是无解的！于是小 $Q$ 决定写一个程序来判断这些关卡是否有解</p>
-<h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含一个整数 $T$ ，表示数据的组数。</p>
-<p>接下来包含 $T$ 组数据，每组数据第一行为一个整数 $N$ ，表示方阵的大小；接下来 $N$ 行为一个 $N \times N$ 的 $01$ 矩阵（ $0$ 表示白色， $1$ 表示黑色）。</p>
-<p>输出格式：<br>包含 $T$ 行。对于每一组数据，如果该关卡有解，输出一行 $Yes$ ；否则输出一行 $No$ </p>
+<p>对于某些关卡，小 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">Q</span></span></span></span> 百思不得其解，以致他开始怀疑这些关卡是不是根本就是无解的！于是小 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">Q</span></span></span></span> 决定写一个程序来判断这些关卡是否有解</p>
+<h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含一个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span> ，表示数据的组数。</p>
+<p>接下来包含 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span> 组数据，每组数据第一行为一个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> ，表示方阵的大小；接下来 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> 行为一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>×</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">N \times N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mbin">×</span><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> 的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mn>1</mn></mrow><annotation encoding="application/x-tex">01</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span><span class="mord mathrm">1</span></span></span></span> 矩阵（ <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span> 表示白色， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span></span></span></span> 表示黑色）。</p>
+<p>输出格式：
+包含 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span> 行。对于每一组数据，如果该关卡有解，输出一行 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi><mi>e</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Yes</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="mord mathit">e</span><span class="mord mathit">s</span></span></span></span> ；否则输出一行 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mord mathit">o</span></span></span></span> </p>
 <h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">2</span><br><span class="line">0 0</span><br><span class="line">0 1</span><br><span class="line">3</span><br><span class="line">0 0 1</span><br><span class="line">0 1 0</span><br><span class="line">1 0 0</span><br></pre></td></tr></table></figure>
 <h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">No</span><br><span class="line">Yes</span><br></pre></td></tr></table></figure>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>对于 $20\%$ 的数据，$n\le 7$</p>
-<p>对于 $50\%$ 的数据， $N \le 50$</p>
-<p>对于 $100\%$ 的数据， $N \le 200$</p>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>对于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mn>0</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">20\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mord mathrm">%</span></span></span></span> 的数据，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>≤</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">n\le 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mrel">≤</span><span class="mord mathrm">7</span></span></span></span></p>
+<p>对于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn><mn>0</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">50\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">5</span><span class="mord mathrm">0</span><span class="mord mathrm">%</span></span></span></span> 的数据， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>≤</mo><mn>5</mn><mn>0</mn></mrow><annotation encoding="application/x-tex">N \le 50</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mrel">≤</span><span class="mord mathrm">5</span><span class="mord mathrm">0</span></span></span></span></p>
+<p>对于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>0</mn><mn>0</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">100\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">%</span></span></span></span> 的数据， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>≤</mo><mn>2</mn><mn>0</mn><mn>0</mn></mrow><annotation encoding="application/x-tex">N \le 200</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mrel">≤</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span></span></span></span></p>
 <hr>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>题目很水，但是一开始让人很绝望qwq</p>
 <p>其实我们很显然的就可以找到一个建图方法:</p>
@@ -510,10 +511,12 @@
 <p>对，按照<code>横坐标</code> &amp;&amp; <code>纵坐标</code>建立二分图</p>
 <p>经过一系列操作后，图就变成了</p>
 <blockquote>
-<p>o ——— o<br>o ——— o<br>o ——— o</p>
+<p>o --------- o
+o --------- o
+o --------- o</p>
 </blockquote>
 <p>（Deepin 卡了qwq，没法再用 <code>GeoGebra</code> 了qwq</p>
-<p>所以说只要它是一个有完全匹配的图，就明显可以…</p>
+<p>所以说只要它是一个有完全匹配的图，就明显可以...</p>
 <p>真-裸二分图匹配</p>
 <p>毕竟是裸的二分图匹配，就不放代码了qwq</p>
 <p>END</p>
@@ -891,7 +894,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">122.4k</span>
+    <span title="Site words total count">126.3k</span>
   
 </div>
 

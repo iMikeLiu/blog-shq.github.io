@@ -109,7 +109,7 @@
 
 
 
-  <meta name="keywords" content="数据结构,高精度,Algorithm," />
+  <meta name="keywords" content="高精度,Algorithm,数据结构," />
 
 
 
@@ -123,7 +123,7 @@
 
 
 <meta name="description" content="高精度是在算法竞赛中一种十分常用的算法，本文就来介绍一下有关高精度的一些知识 我们知道，计算机内部直接用int或double等数据类型储存数字是有范围限制的，即当数据运算大小过大后，计算机将会出现溢出情况，使得计算结果不够精确。为了能够使计算机精确地计算高位的数字，我们需要学会使用高精度乘法 当然再本地，你可以用一些__int128之类的定义，但是你在NOIP中用个试试23333333 事实上，高">
-<meta name="keywords" content="数据结构,高精度,Algorithm">
+<meta name="keywords" content="高精度,Algorithm,数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BigInt">
 <meta property="og:url" content="https://blog.ishq.site/articles/BigInt/index.html">
@@ -468,7 +468,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,132
+                  1,130
                 </span>
               
 
@@ -513,14 +513,26 @@
 <hr>
 <h2 id="高精加"><a href="#高精加" class="headerlink" title="高精加"></a>高精加</h2><p>回忆我们小学时候的列数式加法：</p>
 <blockquote>
-<center>1  3</center><br><center>2  8</center><br><center>+—————-</center><br><center>4  1</center>
+<center>1  3</center>
+<center>2  8</center>
+<center>+----------------</center>
+<center>4  1</center>
+
 </blockquote>
 <p>这当然是一种十分有效的计算方法2333</p>
 <p>现在我们用代码的眼光重新审视一下我们加法的步骤：</p>
 <blockquote>
-<center>a[1]  a[2]</center><br><center>1  3</center><br><center>b[1]  b[2]</center><br><center>2  8</center><br><center>+—————-</center><br><center>ans[1]  ans[2]</center><br><center>4  1</center>
+<center>a[1]  a[2]</center>
+<center>1  3</center>
+<center>b[1]  b[2]</center>
+<center>2  8</center>
+<center>+----------------</center>
+<center>ans[1]  ans[2]</center>
+<center>4  1</center>
+
 </blockquote>
-<p>首先，进行a[2] + b[2] 的操作，得到ans[2] = 11, ans[2] % 10 得到1 ,向下一位进1，上一位没有进位得1。<br>继续，进行a[1] + b[1] 的操作，得到ans[1] = 3  , ans[1] % 10 得到3 ,向下一位进0，加上一位的进位1得4</p>
+<p>首先，进行a[2] + b[2] 的操作，得到ans[2] = 11, ans[2] % 10 得到1 ,向下一位进1，上一位没有进位得1。
+继续，进行a[1] + b[1] 的操作，得到ans[1] = 3  , ans[1] % 10 得到3 ,向下一位进0，加上一位的进位1得4</p>
 <p>代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//////高精度加法//////</span></span><br><span class="line"><span class="keyword">while</span>(lenc &lt;=a1_len || lenc &lt;=b1_len)&#123;</span><br><span class="line">    c[lenc] = a[lenc] + b[lenc] + x; 	<span class="comment">//两数相加</span></span><br><span class="line">    x = c[lenc]/<span class="number">10</span>;   					<span class="comment">//要进的位,注意，x要初始化为0</span></span><br><span class="line">    c[lenc] = c[lenc] % <span class="number">10</span>;     		<span class="comment">//进位后的数</span></span><br><span class="line">    lenc++;     						<span class="comment">//数组下标加1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
@@ -658,11 +670,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
-          
             <a href="/tags/高精度/" rel="tag"><i class="fa fa-tag"></i> 高精度</a>
           
             <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+          
+            <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
           
         </div>
       
@@ -895,7 +907,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">122.4k</span>
+    <span title="Site words total count">126.3k</span>
   
 </div>
 

@@ -447,7 +447,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,562
+                  3,570
                 </span>
               
 
@@ -662,7 +662,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,557
+                  1,848
                 </span>
               
 
@@ -678,7 +678,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  9
                 </span>
               
             </div>
@@ -700,10 +700,9 @@
 
       
         
-          <h2 id="洲阁筛算法"><a href="#洲阁筛算法" class="headerlink" title="洲阁筛算法"></a>洲阁筛算法</h2><p>一种在 $O(\frac{n^\frac 3  4}{\log n}) $ 的时间中求出大多数积性函数的前缀和的方法.</p>
+          <h2 id="洲阁筛算法"><a href="#洲阁筛算法" class="headerlink" title="洲阁筛算法"></a>洲阁筛算法</h2><p>一种在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mfrac><mrow><msup><mi>n</mi><mfrac><mn>3</mn><mn>4</mn></mfrac></msup></mrow><mrow><mi>log</mi><mi>n</mi></mrow></mfrac><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\frac{n^\frac 3  4}{\log n}) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.245865em;"></span><span class="strut bottom" style="height:1.726973em;vertical-align:-0.481108em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord mathit">n</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.4752071428571429em;margin-right:0.07142857142857144em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle uncramped"><span class="mord reset-scriptscriptstyle scriptscriptstyle uncramped"><span class="sizing reset-size5 size5 reset-scriptscriptstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.51444em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptscriptstyle scriptscriptstyle cramped"><span class="mord mathrm">4</span></span></span><span style="top:-0.20999999999999996em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptscriptstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptscriptstyle scriptscriptstyle uncramped"><span class="mord mathrm">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-scriptscriptstyle textstyle uncramped nulldelimiter"></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mclose">)</span></span></span></span> 的时间中求出大多数积性函数的前缀和的方法.</p>
 <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>求</p>
-<p>$$\sum_{i = 1}^{n} F(i)$$</p>
-<p>其中 $F(x)$ 是一个积性函数. 要求在低于线性的时间内求出.</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi></mrow></msubsup><mi>F</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{i = 1}^{n} F(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.6513970000000002em;"></span><span class="strut bottom" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="base displaystyle textstyle uncramped"><span class="mop op-limits"><span class="vlist"><span style="top:1.1776689999999999em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">i</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span><span style="top:-0.000005000000000143778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span><span class="op-symbol large-op mop">∑</span></span></span><span style="top:-1.2500050000000003em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mclose">)</span></span></span></span></span><p>其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">F(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span> 是一个积性函数. 要求在低于线性的时间内求出.</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/articles/洲阁筛/#more" rel="contents">
@@ -873,7 +872,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,643
+                  1,646
                 </span>
               
 
@@ -912,7 +911,7 @@
       
         
           <p>又是一个玄学数据结构</p>
-<p>$Chtholly$ $Tree$ 珂朵莉树，又称$Old$ $Driver$ $Tree$，能够水过无数数据结构题</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>h</mi><mi>t</mi><mi>h</mi><mi>o</mi><mi>l</mi><mi>l</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">Chtholly</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord mathit">h</span><span class="mord mathit">t</span><span class="mord mathit">h</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mi>r</mi><mi>e</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Tree</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">e</span><span class="mord mathit">e</span></span></span></span> 珂朵莉树，又称<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi>l</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">Old</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">d</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>r</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">Driver</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right:0.02778em;">r</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mi>r</mi><mi>e</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Tree</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">e</span><span class="mord mathit">e</span></span></span></span>，能够水过无数数据结构题</p>
 <p>本来以为是一种十分玄学的数据结构，发现这其实是一个很智障的东西</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1083,7 +1082,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,141
+                  2,260
                 </span>
               
 
@@ -1099,7 +1098,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  11
                 </span>
               
             </div>
@@ -1313,7 +1312,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,581
+                  2,694
                 </span>
               
 
@@ -1329,7 +1328,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11
+                  12
                 </span>
               
             </div>
@@ -1548,7 +1547,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,481
+                  1,644
                 </span>
               
 
@@ -1564,7 +1563,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  6
                 </span>
               
             </div>
@@ -1588,7 +1587,8 @@
         
           <p><strong>最长回文子串问题：给定一个字符串，求它的最长回文子串长度</strong></p>
 <p>我们有两种办法去解决这个问题:</p>
-<p>暴力枚举 $+$ 优化 $\rightarrow$ $O(n^2)$ <br><br>Manacher算法 $\rightarrow$ $O(n)$</p>
+<p>暴力枚举 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord">+</span></span></span></span> 优化 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.36687em;"></span><span class="strut bottom" style="height:0.36687em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">→</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span> <br>
+Manacher算法 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.36687em;"></span><span class="strut bottom" style="height:0.36687em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">→</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/articles/Manacher/#more" rel="contents">
@@ -1780,7 +1780,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,085
+                  1,106
                 </span>
               
 
@@ -1821,7 +1821,7 @@
           <blockquote>
 <p>字符串算法三连击</p>
 </blockquote>
-<h1 id="Hash算法"><a href="#Hash算法" class="headerlink" title="Hash算法"></a>Hash算法</h1><p>如何快速判断两个字符串 $S, T$ 相等？</p>
+<h1 id="Hash算法"><a href="#Hash算法" class="headerlink" title="Hash算法"></a>Hash算法</h1><p>如何快速判断两个字符串 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo separator="true">,</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S, T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span> 相等？</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/articles/KMP-AC-automaton3/#more" rel="contents">
@@ -2013,7 +2013,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,849
+                  1,844
                 </span>
               
 
@@ -2248,7 +2248,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  929
+                  1,053
                 </span>
               
 
@@ -2264,7 +2264,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -2290,7 +2290,7 @@
 <p>字符串算法三连击</p>
 </blockquote>
 <p>本文是介绍KMP算法的运用</p>
-<h1 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h1><p>给定两个字符串 $S, T$，询问 $T$ 是否在 $S$ 中出现过，如果出现过要给出所有出现的位置，时间复杂度 $O\left(\left|S\right| + \left|T\right|\right)$</p>
+<h1 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h1><p>给定两个字符串 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo separator="true">,</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S, T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span>，询问 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span> 是否在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">S</span></span></span></span> 中出现过，如果出现过要给出所有出现的位置，时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mrow><mo fence="true">(</mo><mrow><mo fence="true">∣</mo><mi>S</mi><mo fence="true">∣</mo></mrow><mo>+</mo><mrow><mo fence="true">∣</mo><mi>T</mi><mo fence="true">∣</mo></mrow><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">O\left(\left|S\right| + \left|T\right|\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="minner textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">(</span><span class="minner textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">∣</span><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">∣</span></span><span class="mbin">+</span><span class="minner textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">∣</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">∣</span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">)</span></span></span></span></span></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/articles/KMP-AC-automaton/#more" rel="contents">
@@ -2482,7 +2482,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,376
+                  2,449
                 </span>
               
 
@@ -2498,7 +2498,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9
+                  10
                 </span>
               
             </div>
@@ -2521,8 +2521,8 @@
       
         
           <p>不知道，为什么，最近迷上了暴力数据结构，觉得十分优美</p>
-<p>这篇文章，我们就来讲一讲暴力数据结构 – 分块算法</p>
-<p>暴力就是好看易懂quq（　本来想学一下替罪羊树的，结果….</p>
+<p>这篇文章，我们就来讲一讲暴力数据结构 -- 分块算法</p>
+<p>暴力就是好看易懂quq（　本来想学一下替罪羊树的，结果....</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/articles/Partitioned-Algorithm/#more" rel="contents">
@@ -2777,7 +2777,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">122.4k</span>
+    <span title="Site words total count">126.3k</span>
   
 </div>
 

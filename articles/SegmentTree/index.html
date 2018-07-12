@@ -109,7 +109,7 @@
 
 
 
-  <meta name="keywords" content="树,数据结构,Algorithm,线段树," />
+  <meta name="keywords" content="Algorithm,数据结构,树,线段树," />
 
 
 
@@ -122,19 +122,19 @@
 
 
 
-<meta name="description" content="线段树SegmentTree 线段树，类似区间树，它在各个节点保存一条线段（数组中的一段子数组），主要用于高效解决连续区间的动态查询问题，由于二叉结构的特性，它基本能保持每个操作的复杂度为O(logn)">
-<meta name="keywords" content="树,数据结构,Algorithm,线段树">
+<meta name="description" content="线段树 SegmentTree 线段树，类似区间树，它在各个节点保存一条线段（数组中的一段子数组），主要用于高效解决连续区间的动态查询问题，由于二叉结构的特性，它基本能保持每个操作的复杂度为O(logn)">
+<meta name="keywords" content="Algorithm,数据结构,树,线段树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SegmentTree线段树">
 <meta property="og:url" content="https://blog.ishq.site/articles/SegmentTree/index.html">
 <meta property="og:site_name" content="Shq&#39;s Blog">
-<meta property="og:description" content="线段树SegmentTree 线段树，类似区间树，它在各个节点保存一条线段（数组中的一段子数组），主要用于高效解决连续区间的动态查询问题，由于二叉结构的特性，它基本能保持每个操作的复杂度为O(logn)">
+<meta property="og:description" content="线段树 SegmentTree 线段树，类似区间树，它在各个节点保存一条线段（数组中的一段子数组），主要用于高效解决连续区间的动态查询问题，由于二叉结构的特性，它基本能保持每个操作的复杂度为O(logn)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images0.cnblogs.com/blog/517264/201312/01204058-426dce8b8a05491b91edeba9ec2e4112.jpg">
 <meta property="og:updated_time" content="2018-05-06T01:33:29.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SegmentTree线段树">
-<meta name="twitter:description" content="线段树SegmentTree 线段树，类似区间树，它在各个节点保存一条线段（数组中的一段子数组），主要用于高效解决连续区间的动态查询问题，由于二叉结构的特性，它基本能保持每个操作的复杂度为O(logn)">
+<meta name="twitter:description" content="线段树 SegmentTree 线段树，类似区间树，它在各个节点保存一条线段（数组中的一段子数组），主要用于高效解决连续区间的动态查询问题，由于二叉结构的特性，它基本能保持每个操作的复杂度为O(logn)">
 <meta name="twitter:image" content="https://images0.cnblogs.com/blog/517264/201312/01204058-426dce8b8a05491b91edeba9ec2e4112.jpg">
 
 
@@ -507,14 +507,15 @@
       
 
       
-        <p>线段树<br>SegmentTree</p>
+        <p>线段树
+SegmentTree</p>
 <p>线段树，类似区间树，它在各个节点保存一条线段（数组中的一段子数组），主要用于高效解决连续区间的动态查询问题，由于二叉结构的特性，它基本能保持每个操作的复杂度为O(logn)</p>
 <a id="more"></a>
 <p>Line segment tree, a similar interval tree, which saves a line segment in each node (an array of sub-array), is mainly used to efficiently solve the dynamic range of consecutive queries, due to the characteristics of binary structure, it can basically maintain each operation Complexity is O (logn)</p>
 <p>线段树的每个节点表示一个区间，子节点则分别表示父节点的左右半区间，例如父亲的区间是[a,b]，那么(c=(a+b)/2)左儿子的区间是[a,c]，右儿子的区间是[c+1,b]</p>
-<p>Each node of the segment tree represents an interval, and the subnodes represent the left and right half intervals of the parent node respectively. For example, if the father’s interval is [a, b], the interval of the left son [a, c], the right son’s interval is [c + 1, b]</p>
-<p>下面我们从一个经典的例子来了解线段树，问题描述如下:从数组arr[0…n-1]中查找某个数组某个区间内的最小值，其中数组大小固定，但是数组中的元素的值可以随时更新</p>
-<p>Below we learn from a classic example of the line segment tree, the problem is described as follows: From the array arr [0 … n-1] to find the minimum value of a range of an array, which array size fixed, but the array The value of the element can be updated at any time</p>
+<p>Each node of the segment tree represents an interval, and the subnodes represent the left and right half intervals of the parent node respectively. For example, if the father&#39;s interval is [a, b], the interval of the left son [a, c], the right son&#39;s interval is [c + 1, b]</p>
+<p>下面我们从一个经典的例子来了解线段树，问题描述如下:从数组arr[0...n-1]中查找某个数组某个区间内的最小值，其中数组大小固定，但是数组中的元素的值可以随时更新</p>
+<p>Below we learn from a classic example of the line segment tree, the problem is described as follows: From the array arr [0 ... n-1] to find the minimum value of a range of an array, which array size fixed, but the array The value of the element can be updated at any time</p>
 <p>对这个问题一个简单的解法是：遍历数组区间找到最小值，时间复杂度是O(n),额外的空间复杂度O(1)。当数据量特别大，而查询操作很频繁的时候，耗时可能会不满足需求</p>
 <p>A simple solution to this problem is: traversing the array interval to find the minimum, the time complexity is O (n), additional space complexity O (1). When the amount of data is particularly large, and query operations are frequent, time-consuming may not meet the demand</p>
 <p>另一种解法：使用一个二维数组来保存提前计算好的区间[i,j]内的最小值，那么预处理时间为O(n^2)，查询耗时O(1), 但是需要额外的O(n^2)空间，当数据量很大时，这个空间消耗是庞大的，而且当改变了数组中的某一个值时，更新二维数组中的最小值也很麻烦</p>
@@ -527,10 +528,10 @@
 </ul>
 <ul>
 <li>The leaf node is the element in the original group arr</li>
-<li>The non-leaf node represents the minimum of the range of all its children’s leaf nodes</li>
+<li>The non-leaf node represents the minimum of the range of all its children&#39;s leaf nodes</li>
 </ul>
-<p>例如对于数组[2, 5, 1, 4, 9, 3]可以构造如下的二叉树（背景为白色表示叶子节点，非叶子节点的值是其对应数组区间内的最小值，例如根节点表示数组区间arr[0…5]内的最小值是1）</p>
-<p>For example, an array [2, 5, 1, 4, 9, 3] can construct a binary tree as follows (the background is a white leaf node, and the value of a non-leaf node is the minimum value within its corresponding array interval. For example, the root node represents an array interval The minimum value in arr [0 … 5] is 1)</p>
+<p>例如对于数组[2, 5, 1, 4, 9, 3]可以构造如下的二叉树（背景为白色表示叶子节点，非叶子节点的值是其对应数组区间内的最小值，例如根节点表示数组区间arr[0...5]内的最小值是1）</p>
+<p>For example, an array [2, 5, 1, 4, 9, 3] can construct a binary tree as follows (the background is a white leaf node, and the value of a non-leaf node is the minimum value within its corresponding array interval. For example, the root node represents an array interval The minimum value in arr [0 ... 5] is 1)</p>
 <p><img src="https://images0.cnblogs.com/blog/517264/201312/01204058-426dce8b8a05491b91edeba9ec2e4112.jpg" alt=""></p>
 <p>由于线段树的父节点区间是平均分割到左右子树，因此线段树是完全二叉树，<strong>对于包含n个叶子节点的完全二叉树，它一定有n-1个非叶节点，总共2n-1个节点</strong>，因此存储线段是需要的空间复杂度是O(n)。</p>
 <p>The segment tree is a complete binary tree because the parent interval of the segment tree is evenly divided into left and right subtrees. For a complete binary tree containing n leaf nodes, it must have n-1 non-leaf nodes, for a total of 2n-1 nodes, Therefore, the space complexity required to store a line segment is O (n).</p>
@@ -663,11 +664,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/树/" rel="tag"><i class="fa fa-tag"></i> 树</a>
+            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
           
             <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
           
-            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+            <a href="/tags/树/" rel="tag"><i class="fa fa-tag"></i> 树</a>
           
             <a href="/tags/线段树/" rel="tag"><i class="fa fa-tag"></i> 线段树</a>
           
@@ -877,7 +878,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">122.4k</span>
+    <span title="Site words total count">126.3k</span>
   
 </div>
 
