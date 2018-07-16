@@ -4,8 +4,39 @@
 
     
   <url>
+    <loc>https://blog.ishq.site/articles/Luogu-P4276/</loc>
+    <lastmod>2018-07-15T14:26:06.965Z</lastmod>
+    <data>
+        <display>
+        <title>「Luogu P4278」带插入区间K小值 - 替罪羊树 + 线段树</title>
+        <pubTime>2018-07-15T14:04:49.000Z</pubTime>
+        
+        <tag>数据结构</tag>
+         
+        <tag>题解</tag>
+         
+        <tag>树套树</tag>
+         
+        <tag>平衡树</tag>
+         
+        <tag>线段树</tag>
+         
+        <tag>替罪羊树</tag>
+         
+        <tag>区间第k小</tag>
+         
+        <tag>区间</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.ishq.site/articles/FFT-study/</loc>
-    <lastmod>2018-07-12T08:21:06.116Z</lastmod>
+    <lastmod>2018-07-13T08:56:10.492Z</lastmod>
     <data>
         <display>
         <title>「数学」FFT / DFT / IDFT学习笔记</title>
@@ -74,11 +105,11 @@
         
         <tag>数学</tag>
          
-        <tag>玄学</tag>
-         
         <tag>毒瘤</tag>
          
         <tag>瞎搞</tag>
+         
+        <tag>玄学</tag>
          
          
            
@@ -289,9 +320,9 @@
          
         <tag>教程</tag>
          
-        <tag>乱搞</tag>
-         
         <tag>毒瘤</tag>
+         
+        <tag>乱搞</tag>
          
         <tag>函数</tag>
          
@@ -352,6 +383,8 @@
          
         <tag>题解</tag>
          
+        <tag>区间</tag>
+         
         <tag>分块</tag>
          
         <tag>块状链表</tag>
@@ -359,8 +392,6 @@
         <tag>bzoj</tag>
          
         <tag>毒瘤</tag>
-         
-        <tag>区间</tag>
          
          
            
@@ -379,11 +410,11 @@
         
         <tag>数学</tag>
          
-        <tag>Luogu</tag>
-         
         <tag>分块</tag>
          
         <tag>暴力</tag>
+         
+        <tag>Luogu</tag>
          
         <tag>方差</tag>
          
@@ -456,9 +487,9 @@
         
         <tag>数据结构</tag>
          
-        <tag>玄学</tag>
-         
         <tag>并查集</tag>
+         
+        <tag>玄学</tag>
          
         <tag>可持久化</tag>
          
@@ -485,11 +516,11 @@
          
         <tag>Treap</tag>
          
-        <tag>模版题</tag>
-         
         <tag>fhq treap</tag>
          
         <tag>非旋Treap</tag>
+         
+        <tag>模版题</tag>
          
          
            
@@ -565,11 +596,11 @@
          
         <tag>Treap</tag>
          
+        <tag>模版题</tag>
+         
         <tag>Luogu</tag>
          
         <tag>NOI导刊</tag>
-         
-        <tag>模版题</tag>
          
          
            
@@ -588,11 +619,11 @@
         
         <tag>数据结构</tag>
          
-        <tag>模拟赛</tag>
-         
         <tag>数学</tag>
          
         <tag>数论</tag>
+         
+        <tag>模拟赛</tag>
          
         <tag>题解</tag>
          
@@ -617,15 +648,15 @@
         <title>OI常数优化之从入门到进阶</title>
         <pubTime>2018-06-03T09:22:34.000Z</pubTime>
         
+        <tag>优化</tag>
+         
         <tag>乱搞</tag>
+         
+        <tag>玄学</tag>
          
         <tag>常数优化</tag>
          
-        <tag>优化</tag>
-         
         <tag>卡常</tag>
-         
-        <tag>玄学</tag>
          
          
            
@@ -820,13 +851,13 @@
          
         <tag>模版</tag>
          
-        <tag>Treap</tag>
-         
         <tag>树套树</tag>
          
-        <tag>数堆</tag>
-         
         <tag>线段树</tag>
+         
+        <tag>Treap</tag>
+         
+        <tag>数堆</tag>
          
          
            
@@ -870,11 +901,11 @@
         
         <tag>Algorithm</tag>
          
-        <tag>AC自动机</tag>
-         
         <tag>字符串</tag>
          
         <tag>自动机</tag>
+         
+        <tag>AC自动机</tag>
          
         <tag>Trie</tag>
          
@@ -1056,9 +1087,9 @@
          
         <tag>平衡树</tag>
          
-        <tag>Treap</tag>
-         
         <tag>线段树</tag>
+         
+        <tag>Treap</tag>
          
         <tag>Splay</tag>
          
@@ -1216,13 +1247,13 @@
         
         <tag>Algorithm</tag>
          
-        <tag>KMP</tag>
+        <tag>字符串</tag>
          
         <tag>AC自动机</tag>
          
-        <tag>前缀和</tag>
+        <tag>KMP</tag>
          
-        <tag>字符串</tag>
+        <tag>前缀和</tag>
          
          
            
@@ -1404,9 +1435,9 @@
          
         <tag>模板</tag>
          
-        <tag>优化</tag>
-         
         <tag>树状数组</tag>
+         
+        <tag>优化</tag>
          
          
            
@@ -1434,9 +1465,9 @@
          
         <tag>模板</tag>
          
-        <tag>优化</tag>
-         
         <tag>树状数组</tag>
+         
+        <tag>优化</tag>
          
          
            
@@ -1516,9 +1547,9 @@
          
         <tag>题解</tag>
          
-        <tag>优化</tag>
-         
         <tag>Problem</tag>
+         
+        <tag>优化</tag>
          
         <tag>测试题</tag>
          
@@ -1824,9 +1855,9 @@
         
         <tag>乱搞</tag>
          
-        <tag>常数优化</tag>
-         
         <tag>玄学</tag>
+         
+        <tag>常数优化</tag>
          
         <tag>技巧</tag>
          
@@ -1922,13 +1953,13 @@
         
         <tag>数学</tag>
          
-        <tag>数论</tag>
-         
         <tag>几何</tag>
          
         <tag>模板</tag>
          
         <tag>凸包</tag>
+         
+        <tag>数论</tag>
          
          
            
@@ -1948,11 +1979,11 @@
         <title>「笔记」计算几何笔记</title>
         <pubTime>2018-03-24T12:44:59.000Z</pubTime>
         
-        <tag>计算几何</tag>
-         
         <tag>数学</tag>
          
         <tag>数论</tag>
+         
+        <tag>计算几何</tag>
          
         <tag>向量</tag>
          
@@ -2105,11 +2136,11 @@
         
         <tag>图论</tag>
          
+        <tag>并查集</tag>
+         
         <tag>树剖</tag>
          
         <tag>树链剖分</tag>
-         
-        <tag>并查集</tag>
          
         <tag>邻接表</tag>
          
