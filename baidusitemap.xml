@@ -3,23 +3,39 @@
 
 
     
-    
-    
   <url>
-    <loc>https://blog.ishq.site/articles/lyoi-Poetry/</loc>
-    <lastmod>2018-07-22T14:15:40.492Z</lastmod>
+    <loc>https://blog.ishq.site/articles/Network-flow-start/</loc>
+    <lastmod>2018-07-30T12:00:51.707Z</lastmod>
     <data>
         <display>
-        <title>「诗歌」OI无悔 - by Shq</title>
-        <pubTime>2018-07-22T09:48:54.000Z</pubTime>
+        <title>网络流从入门到入土 - By Shq</title>
+        <pubTime>2018-07-30T06:36:47.000Z</pubTime>
         
-        <tag>随笔</tag>
+        <tag>网络流</tag>
          
-        <tag>文学</tag>
+        <tag>教程</tag>
          
-        <tag>OI</tag>
+        <tag>最大流</tag>
          
-        <tag>诗歌</tag>
+        <tag>最小割</tag>
+         
+        <tag>最小割最大流定理</tag>
+         
+        <tag>玄学</tag>
+         
+        <tag>Dinic</tag>
+         
+        <tag>SAP</tag>
+         
+        <tag>ISAP</tag>
+         
+        <tag>HLPP</tag>
+         
+        <tag>预留推进</tag>
+         
+        <tag>EK算法</tag>
+         
+        <tag>FF方法</tag>
          
          
            
@@ -28,10 +44,9 @@
     </url>
 
     
-    
   <url>
     <loc>https://blog.ishq.site/articles/ZJOI2006-%E4%B9%A6%E6%9E%B6/</loc>
-    <lastmod>2018-07-19T12:01:07.760Z</lastmod>
+    <lastmod>2018-07-25T08:32:36.715Z</lastmod>
     <data>
         <display>
         <title>「ZJOI 2006」书架 - fhq Treap模版题目</title>
@@ -60,6 +75,32 @@
         <tag>lambda</tag>
          
         <tag>C++11</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+  <url>
+    <loc>https://blog.ishq.site/articles/lyoi-Poetry/</loc>
+    <lastmod>2018-07-22T14:15:40.492Z</lastmod>
+    <data>
+        <display>
+        <title>「诗歌」OI无悔 - by Shq</title>
+        <pubTime>2018-07-22T09:48:54.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>文学</tag>
+         
+        <tag>OI</tag>
+         
+        <tag>诗歌</tag>
          
          
            
@@ -525,9 +566,9 @@
          
         <tag>树</tag>
          
-        <tag>线段树</tag>
-         
         <tag>模版</tag>
+         
+        <tag>线段树</tag>
          
         <tag>主席树</tag>
          
@@ -711,6 +752,8 @@
         <title>OI常数优化之从入门到进阶</title>
         <pubTime>2018-06-03T09:22:34.000Z</pubTime>
         
+        <tag>玄学</tag>
+         
         <tag>乱搞</tag>
          
         <tag>常数优化</tag>
@@ -718,8 +761,6 @@
         <tag>优化</tag>
          
         <tag>卡常</tag>
-         
-        <tag>玄学</tag>
          
          
            
@@ -878,27 +919,6 @@
     
     
   <url>
-    <loc>https://blog.ishq.site/articles/NOIP-2018-zero/</loc>
-    <lastmod>2018-05-25T14:52:40.527Z</lastmod>
-    <data>
-        <display>
-        <title>NOIP2018提高组游记</title>
-        <pubTime>2018-05-17T22:00:00.000Z</pubTime>
-        
-        <tag>NOIP</tag>
-         
-        <tag>NOIP2018</tag>
-         
-        <tag>游记</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://blog.ishq.site/articles/Segt-in-Treap/</loc>
     <lastmod>2018-05-19T03:26:31.036Z</lastmod>
     <data>
@@ -910,11 +930,11 @@
          
         <tag>树</tag>
          
+        <tag>模版</tag>
+         
         <tag>树套树</tag>
          
         <tag>线段树</tag>
-         
-        <tag>模版</tag>
          
         <tag>Treap</tag>
          
@@ -1284,9 +1304,9 @@
          
         <tag>乱搞</tag>
          
-        <tag>文学</tag>
-         
         <tag>Lgy</tag>
+         
+        <tag>文学</tag>
          
          
            
@@ -1804,9 +1824,9 @@
         
         <tag>随笔</tag>
          
-        <tag>NOIP</tag>
-         
         <tag>RP</tag>
+         
+        <tag>NOIP</tag>
          
         <tag>NOI</tag>
          
@@ -1914,11 +1934,11 @@
         <title>「玄学」常数优化的一些技巧</title>
         <pubTime>2018-04-05T05:02:02.000Z</pubTime>
         
+        <tag>玄学</tag>
+         
         <tag>乱搞</tag>
          
         <tag>常数优化</tag>
-         
-        <tag>玄学</tag>
          
         <tag>技巧</tag>
          
