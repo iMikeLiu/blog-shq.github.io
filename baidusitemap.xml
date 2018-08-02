@@ -3,6 +3,92 @@
 
 
     
+  <url>
+    <loc>https://blog.ishq.site/articles/Computed-geometry/</loc>
+    <lastmod>2018-08-02T09:42:34.987Z</lastmod>
+    <data>
+        <display>
+        <title>「计算几何」计算几何从入门到入土</title>
+        <pubTime>2018-08-02T00:01:47.000Z</pubTime>
+        
+        <tag>数学</tag>
+         
+        <tag>平面几何</tag>
+         
+        <tag>凸包</tag>
+         
+        <tag>半平面交</tag>
+         
+        <tag>向量</tag>
+         
+        <tag>计算几何</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.ishq.site/articles/FFT-study/</loc>
+    <lastmod>2018-08-02T06:12:00.247Z</lastmod>
+    <data>
+        <display>
+        <title>「数学」FFT / DFT / IDFT学习笔记</title>
+        <pubTime>2018-07-11T13:43:09.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+        <tag>数学</tag>
+         
+        <tag>数论</tag>
+         
+        <tag>DFT</tag>
+         
+        <tag>FFT</tag>
+         
+        <tag>IDFT</tag>
+         
+        <tag>教程</tag>
+         
+        <tag>学习笔记</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.ishq.site/articles/Computational-geometry2/</loc>
+    <lastmod>2018-08-02T02:44:45.961Z</lastmod>
+    <data>
+        <display>
+        <title>「总结」计算几何一些常用模板</title>
+        <pubTime>2018-03-25T01:20:56.000Z</pubTime>
+        
+        <tag>数学</tag>
+         
+        <tag>凸包</tag>
+         
+        <tag>数论</tag>
+         
+        <tag>几何</tag>
+         
+        <tag>模板</tag>
+         
+         
+           
+             
+              <breadCrumb title="《算法模板》" url="https://blog.ishq.site/categories/%E3%80%8A%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF%E3%80%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://blog.ishq.site/articles/Network-flow-start/</loc>
@@ -12,9 +98,9 @@
         <title>网络流从入门到入土 - By Shq</title>
         <pubTime>2018-07-30T06:36:47.000Z</pubTime>
         
-        <tag>教程</tag>
-         
         <tag>网络流</tag>
+         
+        <tag>教程</tag>
          
         <tag>最大流</tag>
          
@@ -111,37 +197,6 @@
     
     
   <url>
-    <loc>https://blog.ishq.site/articles/FFT-study/</loc>
-    <lastmod>2018-07-18T00:24:38.005Z</lastmod>
-    <data>
-        <display>
-        <title>「数学」FFT / DFT / IDFT学习笔记</title>
-        <pubTime>2018-07-11T13:43:09.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-        <tag>数学</tag>
-         
-        <tag>数论</tag>
-         
-        <tag>DFT</tag>
-         
-        <tag>FFT</tag>
-         
-        <tag>IDFT</tag>
-         
-        <tag>教程</tag>
-         
-        <tag>学习笔记</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://blog.ishq.site/articles/Luogu-P4276/</loc>
     <lastmod>2018-07-15T14:26:06.965Z</lastmod>
     <data>
@@ -186,13 +241,13 @@
          
         <tag>玄学</tag>
          
-        <tag>NTT</tag>
-         
         <tag>复数</tag>
          
         <tag>复平面</tag>
          
         <tag>虚数</tag>
+         
+        <tag>NTT</tag>
          
          
            
@@ -425,17 +480,17 @@
          
         <tag>教程</tag>
          
-        <tag>乱搞</tag>
-         
         <tag>毒瘤</tag>
          
+        <tag>乱搞</tag>
+         
         <tag>函数</tag>
+         
+        <tag>NTT</tag>
          
         <tag>生成函数</tag>
          
         <tag>快速傅里叶变换</tag>
-         
-        <tag>NTT</tag>
          
          
            
@@ -721,6 +776,8 @@
         <title>「LYOI2016 Summer」一次函数 - 线段树 + 数论</title>
         <pubTime>2018-06-09T02:50:04.000Z</pubTime>
         
+        <tag>模拟赛</tag>
+         
         <tag>数据结构</tag>
          
         <tag>数学</tag>
@@ -730,8 +787,6 @@
         <tag>题解</tag>
          
         <tag>线段树</tag>
-         
-        <tag>模拟赛</tag>
          
         <tag>临沂一中</tag>
          
@@ -754,11 +809,11 @@
         
         <tag>玄学</tag>
          
+        <tag>优化</tag>
+         
         <tag>乱搞</tag>
          
         <tag>常数优化</tag>
-         
-        <tag>优化</tag>
          
         <tag>卡常</tag>
          
@@ -1164,13 +1219,13 @@
          
         <tag>树</tag>
          
+        <tag>模板</tag>
+         
         <tag>平衡树</tag>
          
         <tag>线段树</tag>
          
         <tag>Treap</tag>
-         
-        <tag>模板</tag>
          
         <tag>Splay</tag>
          
@@ -1304,9 +1359,9 @@
          
         <tag>乱搞</tag>
          
-        <tag>Lgy</tag>
-         
         <tag>文学</tag>
+         
+        <tag>Lgy</tag>
          
          
            
@@ -1486,9 +1541,9 @@
          
         <tag>算法</tag>
          
-        <tag>模板</tag>
-         
         <tag>凸包</tag>
+         
+        <tag>模板</tag>
          
          
            
@@ -1514,11 +1569,11 @@
          
         <tag>树</tag>
          
-        <tag>优化</tag>
-         
         <tag>模板</tag>
          
         <tag>树状数组</tag>
+         
+        <tag>优化</tag>
          
          
            
@@ -1544,11 +1599,11 @@
          
         <tag>树</tag>
          
-        <tag>优化</tag>
-         
         <tag>模板</tag>
          
         <tag>树状数组</tag>
+         
+        <tag>优化</tag>
          
          
            
@@ -1628,9 +1683,9 @@
          
         <tag>题解</tag>
          
-        <tag>优化</tag>
-         
         <tag>Problem</tag>
+         
+        <tag>优化</tag>
          
         <tag>高性能</tag>
          
@@ -2025,34 +2080,6 @@
 
     
   <url>
-    <loc>https://blog.ishq.site/articles/Computational-geometry2/</loc>
-    <lastmod>2018-05-06T01:33:28.849Z</lastmod>
-    <data>
-        <display>
-        <title>「总结」计算几何一些常用模板</title>
-        <pubTime>2018-03-25T01:20:56.000Z</pubTime>
-        
-        <tag>数学</tag>
-         
-        <tag>数论</tag>
-         
-        <tag>几何</tag>
-         
-        <tag>模板</tag>
-         
-        <tag>凸包</tag>
-         
-         
-           
-             
-              <breadCrumb title="《算法模板》" url="https://blog.ishq.site/categories/%E3%80%8A%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF%E3%80%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://blog.ishq.site/articles/Computational-geometry1/</loc>
     <lastmod>2018-05-06T01:33:28.794Z</lastmod>
     <data>
@@ -2060,13 +2087,13 @@
         <title>「笔记」计算几何笔记</title>
         <pubTime>2018-03-24T12:44:59.000Z</pubTime>
         
-        <tag>计算几何</tag>
-         
         <tag>数学</tag>
          
-        <tag>数论</tag>
-         
         <tag>向量</tag>
+         
+        <tag>计算几何</tag>
+         
+        <tag>数论</tag>
          
         <tag>极角</tag>
          
