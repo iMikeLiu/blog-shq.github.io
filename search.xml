@@ -122,10 +122,10 @@
         <tag>数学</tag>
         <tag>FFT</tag>
         <tag>玄学</tag>
+        <tag>NTT</tag>
         <tag>复数</tag>
         <tag>复平面</tag>
         <tag>虚数</tag>
-        <tag>NTT</tag>
       </tags>
   </entry>
   <entry>
@@ -248,9 +248,9 @@
         <tag>乱搞</tag>
         <tag>毒瘤</tag>
         <tag>函数</tag>
-        <tag>NTT</tag>
         <tag>生成函数</tag>
         <tag>快速傅里叶变换</tag>
+        <tag>NTT</tag>
       </tags>
   </entry>
   <entry>
@@ -277,8 +277,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>dijkstra</tag>
+        <tag>算法</tag>
         <tag>模版</tag>
         <tag>图论</tag>
         <tag>spfa</tag>
@@ -342,10 +342,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
         <tag>数据结构</tag>
-        <tag>模版</tag>
+        <tag>树</tag>
         <tag>线段树</tag>
+        <tag>模版</tag>
         <tag>主席树</tag>
         <tag>可持久化</tag>
       </tags>
@@ -446,11 +446,11 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>珂朵莉</tag>
         <tag>Chtholly</tag>
         <tag>树</tag>
-        <tag>数据结构</tag>
-        <tag>算法</tag>
         <tag>区间操作</tag>
       </tags>
   </entry>
@@ -490,9 +490,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
         <tag>字符串</tag>
+        <tag>算法</tag>
         <tag>最长回文子串</tag>
         <tag>Manacher</tag>
       </tags>
@@ -588,12 +588,12 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>数据结构</tag>
         <tag>Algorithm</tag>
-        <tag>模版</tag>
+        <tag>数据结构</tag>
+        <tag>树</tag>
         <tag>树套树</tag>
         <tag>线段树</tag>
+        <tag>模版</tag>
         <tag>Treap</tag>
         <tag>数堆</tag>
       </tags>
@@ -606,10 +606,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
+        <tag>Algorithm</tag>
         <tag>数据结构</tag>
         <tag>算法</tag>
-        <tag>Algorithm</tag>
+        <tag>树</tag>
         <tag>线段树</tag>
         <tag>zkw线段树</tag>
       </tags>
@@ -661,8 +661,8 @@
       <tags>
         <tag>随笔</tag>
         <tag>乱搞</tag>
-        <tag>Lgy</tag>
         <tag>文学</tag>
+        <tag>Lgy</tag>
       </tags>
   </entry>
   <entry>
@@ -688,8 +688,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
+        <tag>算法</tag>
         <tag>图论</tag>
         <tag>优化</tag>
         <tag>并查集</tag>
@@ -838,9 +838,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
         <tag>数据结构</tag>
         <tag>模板</tag>
+        <tag>树</tag>
         <tag>平衡树</tag>
         <tag>线段树</tag>
         <tag>Treap</tag>
@@ -870,10 +870,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
         <tag>数学</tag>
         <tag>数论</tag>
+        <tag>算法</tag>
         <tag>素数</tag>
       </tags>
   </entry>
@@ -885,10 +885,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
         <tag>数学</tag>
         <tag>数论</tag>
+        <tag>算法</tag>
         <tag>线性筛</tag>
         <tag>素数</tag>
       </tags>
@@ -901,10 +901,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
+        <tag>Algorithm</tag>
         <tag>数据结构</tag>
         <tag>算法</tag>
-        <tag>Algorithm</tag>
+        <tag>树</tag>
         <tag>平衡树</tag>
         <tag>Treap</tag>
       </tags>
@@ -945,10 +945,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
         <tag>模板</tag>
         <tag>凸包</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -989,8 +989,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
         <tag>题解</tag>
+        <tag>树</tag>
         <tag>Problem</tag>
         <tag>动态规划</tag>
         <tag>DP</tag>
@@ -1031,10 +1031,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>数据结构</tag>
         <tag>Algorithm</tag>
+        <tag>数据结构</tag>
         <tag>模板</tag>
+        <tag>树</tag>
         <tag>优化</tag>
         <tag>树状数组</tag>
       </tags>
@@ -1047,10 +1047,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>数据结构</tag>
         <tag>Algorithm</tag>
+        <tag>数据结构</tag>
         <tag>模板</tag>
+        <tag>树</tag>
         <tag>优化</tag>
         <tag>树状数组</tag>
       </tags>
@@ -1063,9 +1063,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>数据结构</tag>
         <tag>Algorithm</tag>
+        <tag>数据结构</tag>
+        <tag>树</tag>
         <tag>线段树</tag>
       </tags>
   </entry>
@@ -1100,9 +1100,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>高精度</tag>
         <tag>Algorithm</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
