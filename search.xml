@@ -8,10 +8,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>计算几何</tag>
         <tag>数学</tag>
-        <tag>向量</tag>
         <tag>凸包</tag>
+        <tag>计算几何</tag>
+        <tag>向量</tag>
         <tag>平面几何</tag>
         <tag>半平面交</tag>
       </tags>
@@ -27,9 +27,9 @@
         <tag>教程</tag>
         <tag>网络流</tag>
         <tag>最大流</tag>
-        <tag>玄学</tag>
         <tag>最小割</tag>
         <tag>最小割最大流定理</tag>
+        <tag>玄学</tag>
         <tag>Dinic</tag>
         <tag>SAP</tag>
         <tag>ISAP</tag>
@@ -122,10 +122,10 @@
         <tag>数学</tag>
         <tag>FFT</tag>
         <tag>玄学</tag>
-        <tag>NTT</tag>
         <tag>复数</tag>
         <tag>复平面</tag>
         <tag>虚数</tag>
+        <tag>NTT</tag>
       </tags>
   </entry>
   <entry>
@@ -248,9 +248,9 @@
         <tag>乱搞</tag>
         <tag>毒瘤</tag>
         <tag>函数</tag>
+        <tag>NTT</tag>
         <tag>生成函数</tag>
         <tag>快速傅里叶变换</tag>
-        <tag>NTT</tag>
       </tags>
   </entry>
   <entry>
@@ -411,8 +411,8 @@
         <tag>数论</tag>
         <tag>题解</tag>
         <tag>线段树</tag>
-        <tag>LYOI</tag>
         <tag>临沂一中</tag>
+        <tag>LYOI</tag>
       </tags>
   </entry>
   <entry>
@@ -423,11 +423,11 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>玄学</tag>
         <tag>乱搞</tag>
         <tag>常数优化</tag>
         <tag>优化</tag>
         <tag>卡常</tag>
-        <tag>玄学</tag>
       </tags>
   </entry>
   <entry>
@@ -704,9 +704,9 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>玄学</tag>
         <tag>乱搞</tag>
         <tag>常数优化</tag>
-        <tag>玄学</tag>
         <tag>技巧</tag>
       </tags>
   </entry>
@@ -792,10 +792,10 @@
       </categories>
       <tags>
         <tag>数学</tag>
-        <tag>数论</tag>
         <tag>几何</tag>
         <tag>模板</tag>
         <tag>凸包</tag>
+        <tag>数论</tag>
       </tags>
   </entry>
   <entry>
@@ -806,9 +806,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>计算几何</tag>
         <tag>数学</tag>
         <tag>数论</tag>
+        <tag>计算几何</tag>
         <tag>向量</tag>
         <tag>极角</tag>
         <tag>叉积</tag>
