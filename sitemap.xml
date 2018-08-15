@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.ishq.site/articles/How-to-Make-A-Uneasy-to-Maintain-Code/</loc>
+    
+    <lastmod>2018-08-15T02:21:46.567Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.ishq.site/about/index.html</loc>
+    
+    <lastmod>2018-08-09T06:16:01.621Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.ishq.site/articles/Network-flow-start/</loc>
     
     <lastmod>2018-08-08T01:25:02.838Z</lastmod>
@@ -628,13 +642,6 @@
     <loc>https://blog.ishq.site/comments/index.html</loc>
     
     <lastmod>2018-07-22T14:23:39.539Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.ishq.site/about/index.html</loc>
-    
-    <lastmod>2018-07-22T14:23:02.131Z</lastmod>
     
   </url>
   

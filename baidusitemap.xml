@@ -4,6 +4,29 @@
 
     
   <url>
+    <loc>https://blog.ishq.site/articles/How-to-Make-A-Uneasy-to-Maintain-Code/</loc>
+    <lastmod>2018-08-15T02:21:46.567Z</lastmod>
+    <data>
+        <display>
+        <title>「代码规范」如何编写无法维护的代码</title>
+        <pubTime>2018-08-15T00:30:57.000Z</pubTime>
+        
+        <tag>优化</tag>
+         
+        <tag>毒瘤</tag>
+         
+         
+           
+             
+              <breadCrumb title="OI" url="https://blog.ishq.site/categories/OI/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>https://blog.ishq.site/articles/Network-flow-start/</loc>
     <lastmod>2018-08-08T01:25:02.838Z</lastmod>
     <data>
@@ -11,17 +34,17 @@
         <title>网络流从入门到入土 - By Shq</title>
         <pubTime>2018-07-30T06:36:47.000Z</pubTime>
         
-        <tag>网络流</tag>
-         
         <tag>教程</tag>
          
+        <tag>网络流</tag>
+         
         <tag>最大流</tag>
+         
+        <tag>玄学</tag>
          
         <tag>最小割</tag>
          
         <tag>最小割最大流定理</tag>
-         
-        <tag>玄学</tag>
          
         <tag>Dinic</tag>
          
@@ -61,9 +84,9 @@
          
         <tag>向量</tag>
          
-        <tag>平面几何</tag>
-         
         <tag>凸包</tag>
+         
+        <tag>平面几何</tag>
          
         <tag>半平面交</tag>
          
@@ -116,9 +139,9 @@
         
         <tag>数学</tag>
          
-        <tag>玄学</tag>
-         
         <tag>毒瘤</tag>
+         
+        <tag>玄学</tag>
          
         <tag>瞎搞</tag>
          
@@ -148,9 +171,9 @@
          
         <tag>教程</tag>
          
-        <tag>乱搞</tag>
-         
         <tag>毒瘤</tag>
+         
+        <tag>乱搞</tag>
          
         <tag>函数</tag>
          
@@ -286,13 +309,13 @@
         <title>「数据结构」主席树(可持久化线段树)算法笔记</title>
         <pubTime>2018-06-14T23:35:24.000Z</pubTime>
         
-        <tag>数据结构</tag>
-         
         <tag>树</tag>
          
-        <tag>线段树</tag>
+        <tag>数据结构</tag>
          
         <tag>模版</tag>
+         
+        <tag>线段树</tag>
          
         <tag>主席树</tag>
          
@@ -344,13 +367,13 @@
         <title>zkw线段树</title>
         <pubTime>2018-04-29T04:54:29.000Z</pubTime>
         
-        <tag>Algorithm</tag>
+        <tag>树</tag>
          
         <tag>数据结构</tag>
          
-        <tag>树</tag>
-         
         <tag>算法</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>线段树</tag>
          
@@ -412,6 +435,8 @@
         
         <tag>数据结构</tag>
          
+        <tag>毒瘤</tag>
+         
         <tag>题解</tag>
          
         <tag>平衡树</tag>
@@ -425,8 +450,6 @@
         <tag>zjoi</tag>
          
         <tag>非旋Treap</tag>
-         
-        <tag>毒瘤</tag>
          
         <tag>高性能</tag>
          
@@ -492,13 +515,13 @@
         <title>「图论」并查集</title>
         <pubTime>2018-04-13T14:38:27.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>算法</tag>
          
-        <tag>图论</tag>
+        <tag>Algorithm</tag>
          
         <tag>优化</tag>
+         
+        <tag>图论</tag>
          
         <tag>并查集</tag>
          
@@ -522,13 +545,13 @@
         <title>凸包「graham算法」</title>
         <pubTime>2018-02-24T07:23:39.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>算法</tag>
          
-        <tag>凸包</tag>
+        <tag>Algorithm</tag>
          
         <tag>模板</tag>
+         
+        <tag>凸包</tag>
          
          
            
@@ -548,11 +571,11 @@
         <title>二维树状数组</title>
         <pubTime>2018-02-08T17:17:53.000Z</pubTime>
         
-        <tag>Algorithm</tag>
+        <tag>树</tag>
          
         <tag>数据结构</tag>
          
-        <tag>树</tag>
+        <tag>Algorithm</tag>
          
         <tag>模板</tag>
          
@@ -578,11 +601,11 @@
         <title>树状数组</title>
         <pubTime>2018-02-06T09:16:16.000Z</pubTime>
         
-        <tag>Algorithm</tag>
+        <tag>树</tag>
          
         <tag>数据结构</tag>
          
-        <tag>树</tag>
+        <tag>Algorithm</tag>
          
         <tag>模板</tag>
          
@@ -608,13 +631,13 @@
         <title>「算法」Treap算法</title>
         <pubTime>2018-02-28T06:18:40.000Z</pubTime>
         
-        <tag>Algorithm</tag>
+        <tag>树</tag>
          
         <tag>数据结构</tag>
          
-        <tag>树</tag>
-         
         <tag>算法</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>平衡树</tag>
          
@@ -666,9 +689,9 @@
         
         <tag>数学</tag>
          
-        <tag>题解</tag>
-         
         <tag>优化</tag>
+         
+        <tag>题解</tag>
          
         <tag>Problem</tag>
          
@@ -780,17 +803,17 @@
         <title>「树套树」线段树套平衡树</title>
         <pubTime>2018-04-29T12:42:37.000Z</pubTime>
         
-        <tag>Algorithm</tag>
+        <tag>树</tag>
          
         <tag>数据结构</tag>
          
-        <tag>树</tag>
+        <tag>Algorithm</tag>
+         
+        <tag>模版</tag>
          
         <tag>树套树</tag>
          
         <tag>线段树</tag>
-         
-        <tag>模版</tag>
          
         <tag>Treap</tag>
          
@@ -814,11 +837,11 @@
         <title>SegmentTree线段树</title>
         <pubTime>2018-02-05T07:26:24.000Z</pubTime>
         
-        <tag>Algorithm</tag>
+        <tag>树</tag>
          
         <tag>数据结构</tag>
          
-        <tag>树</tag>
+        <tag>Algorithm</tag>
          
         <tag>线段树</tag>
          
@@ -868,9 +891,9 @@
         <title>Sandaram筛法</title>
         <pubTime>2018-03-17T00:54:23.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>算法</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>数学</tag>
          
@@ -1172,15 +1195,15 @@
         <title>OI常数优化之从入门到进阶</title>
         <pubTime>2018-06-03T09:22:34.000Z</pubTime>
         
-        <tag>乱搞</tag>
+        <tag>优化</tag>
          
-        <tag>玄学</tag>
+        <tag>乱搞</tag>
          
         <tag>常数优化</tag>
          
-        <tag>优化</tag>
-         
         <tag>卡常</tag>
+         
+        <tag>玄学</tag>
          
          
            
@@ -1290,9 +1313,9 @@
         <title>「模板」一些树的模板</title>
         <pubTime>2018-03-17T07:01:12.000Z</pubTime>
         
-        <tag>数据结构</tag>
-         
         <tag>树</tag>
+         
+        <tag>数据结构</tag>
          
         <tag>模板</tag>
          
@@ -1374,9 +1397,9 @@
         <title>Manacher算法学习笔记</title>
         <pubTime>2018-05-12T00:05:34.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>算法</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>字符串</tag>
          
@@ -1518,9 +1541,9 @@
         <title>线性筛</title>
         <pubTime>2018-03-16T22:18:26.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>算法</tag>
+         
+        <tag>Algorithm</tag>
          
         <tag>数学</tag>
          
@@ -1578,9 +1601,9 @@
          
         <tag>乱搞</tag>
          
-        <tag>Lgy</tag>
-         
         <tag>文学</tag>
+         
+        <tag>Lgy</tag>
          
          
            
@@ -1600,9 +1623,9 @@
         <title>「字符串算法」字符串 hash</title>
         <pubTime>2018-05-05T12:53:21.000Z</pubTime>
         
-        <tag>hash</tag>
-         
         <tag>字符串</tag>
+         
+        <tag>hash</tag>
          
          
            
@@ -1624,11 +1647,11 @@
         
         <tag>Algorithm</tag>
          
+        <tag>AC自动机</tag>
+         
         <tag>字符串</tag>
          
         <tag>自动机</tag>
-         
-        <tag>AC自动机</tag>
          
         <tag>Trie</tag>
          
@@ -1654,13 +1677,13 @@
         
         <tag>Algorithm</tag>
          
-        <tag>字符串</tag>
+        <tag>KMP</tag>
          
         <tag>AC自动机</tag>
          
-        <tag>KMP</tag>
-         
         <tag>前缀和</tag>
+         
+        <tag>字符串</tag>
          
          
            
@@ -1816,9 +1839,9 @@
         
         <tag>乱搞</tag>
          
-        <tag>玄学</tag>
-         
         <tag>常数优化</tag>
+         
+        <tag>玄学</tag>
          
         <tag>技巧</tag>
          
@@ -2010,11 +2033,11 @@
          
         <tag>数论</tag>
          
-        <tag>凸包</tag>
-         
         <tag>几何</tag>
          
         <tag>模板</tag>
+         
+        <tag>凸包</tag>
          
          
            
@@ -2084,13 +2107,13 @@
         <title>「数据结构」珂朵莉树 Chtholly Tree</title>
         <pubTime>2018-06-02T02:59:21.000Z</pubTime>
         
-        <tag>数据结构</tag>
-         
         <tag>珂朵莉</tag>
          
         <tag>Chtholly</tag>
          
         <tag>树</tag>
+         
+        <tag>数据结构</tag>
          
         <tag>算法</tag>
          
@@ -2116,13 +2139,13 @@
         
         <tag>数据结构</tag>
          
+        <tag>毒瘤</tag>
+         
         <tag>题解</tag>
          
         <tag>区间</tag>
          
         <tag>分块</tag>
-         
-        <tag>毒瘤</tag>
          
         <tag>块状链表</tag>
          
@@ -2146,11 +2169,11 @@
         <title>BigInt</title>
         <pubTime>2018-01-27T03:02:02.000Z</pubTime>
         
+        <tag>数据结构</tag>
+         
         <tag>高精度</tag>
          
         <tag>Algorithm</tag>
-         
-        <tag>数据结构</tag>
          
          
            
@@ -2310,13 +2333,13 @@
         <title>「LYOI2016 Summer」一次函数 - 线段树 + 数论</title>
         <pubTime>2018-06-09T02:50:04.000Z</pubTime>
         
-        <tag>模拟赛</tag>
-         
         <tag>数据结构</tag>
          
         <tag>数学</tag>
          
         <tag>数论</tag>
+         
+        <tag>模拟赛</tag>
          
         <tag>题解</tag>
          
@@ -2369,7 +2392,6 @@
     </data>
     </url>
 
-    
     
     
     
