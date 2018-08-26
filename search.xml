@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「2018 五校联考 Round1」题目讲解]]></title>
+    <url>%2Farticles%2F2018-%E4%BA%94%E6%A0%A1%E8%81%94%E8%80%83-Round1%2F</url>
+    <content type="text"><![CDATA[本文受密码保护密码：t1的输入文件名称（xxxx.in）2018 五校联考 Round1By - infinityedge前排先%%%dzm神仙Day 1A. 骰子Problem A (dice.c/cpp/pas)\text{Problem A (dice.c/cpp/pas)}Problem A (dice.c/cpp/pas)Input file: dice.in Output file: dice.out\text{Input file: dice.in Output file: dice.out}Input file: dice.in Output file: dice.outTime Limit : 1 second Memory Limit: 512 megabytes\text{Time Limit : 1 second Memory Limit: 512 megabytes}Time Limit : 1 second Memory Limit: 512 megabytes有一个 n×mn\times mn×m 的网格，在网格的左上角（第 111 行第 111 列）有一个骰子。骰子的初始状态如下图所示（即上面为 111 ，下面为 666 ，左面为 444 ，右面为 333 ，前面为 222，后面为 555）现在按一定的规则滚动骰子。滚动骰子当然是有轨迹的。你需要从左到右滚动到右端，然后向下滚动一格然后在向左滚动到左端，再向下一格，如此反复，直到所有的格子都被经过为止。你需要计算出骰子到达每个格点（包括初始的格子）时，骰子上方的数字之和Input一行两个整数 n, mOutput一行一个整数表示答案Examplesdice.indice.out3 2193 442114 514205086Notes样例 111 解释：经过每个格子时骰子上面的数字依次为： 1 4 5 1 3 5\text{1 4 5 1 3 5}1 4 5 1 3 5对于 50%50\%50% 的数据，1≤n,m≤1031\le n, m \le 10^31≤n,m≤10​3​​对于 100%100\%100% 的数据，1≤n,m≤1051 \le n, m\le 10^51≤n,m≤10​5​​算法1 - 50 pts一个简单的模拟（时间复杂度 O(n×m)O(n\times m)O(n×m)期望得分： 50 pts\text{50 pts}50 pts算法2 - 100 pts考虑到连续滚动的时候只有四个面接触，且和为 141414 ，我们只需要对于每行先 O(1)O(1)O(1) 处理出循环的部分，剩下的暴力模拟即可qwq（时间复杂度 O(n)O(n)O(n)期望得分： 100 pts\text{100 pts}100 pts这个是真的签到题。。。万人 A ....然而最菜的 Shq 并没有A.....（Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;cmath&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;#include &lt;queue&gt;#include &lt;vector&gt;#include &lt;map&gt;#include &lt;complex&gt;#define inf 0x3f3f3f3f#define MAXN 131072using namespace std;typedef long long ll;ll n, m, ans;ll s, x, z, y, q, h;void soll() &#123; int t = s; s = y, y = x, x = z, z = t; ans += s;&#125;void solr() &#123; int t = s; s = z, z = x, x = y, y = t; ans += s;&#125;void sold() &#123; int t = s; s = h, h = x, x = q, q = t; ans += s;&#125;int main() &#123; freopen("dice.in", "r", stdin); freopen("dice.out", "w", stdout); ans = s = 1, x = 6, z = 4, y = 3, q = 2, h = 5; scanf("%lld %lld",&amp;n,&amp;m); for(int i = 1; i &lt;= n; i ++)&#123; ans += ((m - 1) / 4) * 14; if(i &amp; 1) for(int j = 1; j &lt;= (m - 1) % 4; j ++) solr(); else for(int j = 1; j &lt;= (m - 1) % 4; j ++) soll(); if(i != n) sold(); &#125; printf("%lld\n", ans); return 0;&#125;B. 子序列Problem B (sub.c/cpp/pas)\text{Problem B (sub.c/cpp/pas)}Problem B (sub.c/cpp/pas)Input file: sub.in Output file: sub.out\text{Input file: sub.in Output file: sub.out}Input file: sub.in Output file: sub.outTime Limit : 1 second Memory Limit: 512 megabytes\text{Time Limit : 1 second Memory Limit: 512 megabytes}Time Limit : 1 second Memory Limit: 512 megabytes给定一个长度为 nnn 的序列 a1,a2,a3⋯ana_1,a_2,a_3\cdots a_na​1​​,a​2​​,a​3​​⋯a​n​​你需要求出有多少对这样的三元组 (i,j,k)(i, j, k)(i,j,k)满足 i&lt;j&lt;ki &lt; j &lt; ki&lt;j&lt;k 并且 ai&lt;aj&lt;aka_i &lt; a_j &lt; a_ka​i​​&lt;a​j​​&lt;a​k​​ 或 ai&gt;aj&gt;aka_i &gt; a_j &gt; a_ka​i​​&gt;a​j​​&gt;a​k​​你只需要求出答案对 109+710^9+710​9​​+7 取模的结果Input第一行为一个整数 nnn第二行为用空格空格隔开的 nnn 个整数，第 iii 个数为 aia_ia​i​​Output一行，表示答案对 109+710^9+710​9​​+7 取模的结果Examplessub.insub.out4 3 1 2 31Notes对于 20%20\%20% 的数据， n≤2×102n \le 2 \times 10^2n≤2×10​2​​对于 50%50\%50% 的数据， n≤2×103n \le 2 \times 10^3n≤2×10​3​​对于另 20%20\%20% 的数据， ai≤4×105a_i \le 4\times10^5a​i​​≤4×10​5​​对于 100%100\%100% 的数据， 3≤n≤2×105,ai≤1093\le n \le 2 \times 10^5, a_i \le 10^93≤n≤2×10​5​​,a​i​​≤10​9​​算法1 - 20 pts比较容易想的一个暴力由于 1≤n≤2001 \le n \le 2001≤n≤200我们就直接暴力枚举 i,j,ki,j, ki,j,k，然后暴力判断是否满足条件qwq（时间复杂度：O(n3)O(n^3)O(n​3​​)期望得分： 20 pts\text{20 pts}20 pts算法2 - 50 pts我们想想怎么做可以让时间复杂度降低枚举中间的数，然后统计左边有多少个数比他小/大，右边有多少个数比他大/小，用乘法原理统计答案期望得分： 50 pts\text{50 pts}50 pts算法3 - 100 pts1≤n≤2000001 \le n\le 2000001≤n≤200000离散化后用树状数组统计即可。 是给不会离散化的人准备的（时间复杂度 O(nlog2n)O(n \log_2 n)O(nlog​2​​n)期望得分： 100 pts\text{100 pts}100 ptsCode123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include &lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const ll mod = 1e9 + 7;int n;int tmp[200005], a[200005];int bit1[200005], bit2[200005];inline int lowbit(int x)&#123; return x &amp; -x;&#125;void add(int *bit, int pos, int v)&#123; for(int i = pos; i &lt;= n; i += lowbit(i))&#123; bit[i] += v; &#125;&#125;int query(int *bit, int pos)&#123; int ret = 0; for(int i = pos; i; i -= lowbit(i))&#123; ret += bit[i]; &#125; return ret;&#125;ll ans = 0;int main()&#123; freopen("sub.in", "r", stdin); freopen("sub.out", "w", stdout); scanf("%d", &amp;n); for(int i = 1; i &lt;= n; i ++)&#123; scanf("%d", &amp;a[i]); tmp[i] = a[i]; &#125; sort(tmp + 1, tmp + n + 1); for(int i = 1; i &lt;= n; i ++)&#123; a[i] = lower_bound(tmp + 1, tmp + n + 1, a[i]) - tmp; add(bit2, a[i], 1); &#125; for(int i = 1; i &lt;= n; i ++)&#123; add(bit2, a[i], -1); ans = (ans + 1ll * query(bit1, a[i] - 1) * (query(bit2, n) - query(bit2, a[i]))) % mod; ans = (ans + 1ll * query(bit2, a[i] - 1) * (query(bit1, n) - query(bit1, a[i]))) % mod; add(bit1, a[i], 1); &#125; printf("%lld\n", ans); return 0;&#125;算法4 - 100 ptsLgy: 这个不是平衡树板子题吗？平衡树搞即可Code代码来自Lgy123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;climits&gt;#include &lt;ctime&gt;#include &lt;algorithm&gt;#include &lt;cstdlib&gt;const int MAXN = 2e5 + 7;const int HA = 1e9 + 7;int a[MAXN];int low[MAXN], up[MAXN];int l2[MAXN], u2[MAXN];struct Node &#123; int val, pri, pos; int size, num; Node *left, *right; void pushUp() &#123; size = num; if (left != NULL) &#123; size += left-&gt;size; &#125; if (right != NULL) &#123; size += right-&gt;size; &#125; &#125;&#125; poor[MAXN &lt;&lt; 2], *tail = poor, *r1, *r2;Node *newNode() &#123; Node *ret = ++tail; ret-&gt;val = 0, ret-&gt;pri = rand(); ret-&gt;size = ret-&gt;num = 1; ret-&gt;left = ret-&gt;right = NULL; return ret;&#125;void leftRotate(Node *&amp;v) &#123; Node *tmp = v-&gt;right; v-&gt;right = tmp-&gt;left; tmp-&gt;left = v; v-&gt;pushUp(), tmp-&gt;pushUp(); v = tmp;&#125;void rightRotate(Node *&amp;v) &#123; Node *tmp = v-&gt;left; v-&gt;left = tmp-&gt;right; tmp-&gt;right = v; v-&gt;pushUp(), tmp-&gt;pushUp(); v = tmp;&#125;void insert(Node *&amp;v, int value, int pos) &#123; if (v == NULL) &#123; v = newNode(); v-&gt;val = value; v-&gt;pos = pos; return; &#125; if (v-&gt;val == value) &#123; v-&gt;num++; v-&gt;pushUp(); return; &#125; if (value &lt; v-&gt;val) &#123; insert(v-&gt;left, value, pos); if (v-&gt;pri &lt; v-&gt;left-&gt;pri) &#123; rightRotate(v); &#125; else v-&gt;pushUp(); &#125; else &#123; insert(v-&gt;right, value, pos); if (v-&gt;pri &lt; v-&gt;right-&gt;pri) &#123; leftRotate(v); &#125; else v-&gt;pushUp(); &#125;&#125;void getLow(Node *v, int value, int &amp;num) &#123; if (v == NULL) return; int s = 0; if (v-&gt;left) &#123; s += v-&gt;left-&gt;size; &#125; if (value &lt; v-&gt;val) &#123; getLow(v-&gt;left, value, num); &#125; else if (value &gt; v-&gt;val) &#123; num += v-&gt;num + s; getLow(v-&gt;right, value, num); &#125; else &#123; num += s; &#125;&#125;void getUp(Node *v, int value, int &amp;num) &#123; if (v == NULL) return; int s = 0; if (v-&gt;right) &#123; s += v-&gt;right-&gt;size; &#125; if (value &gt; v-&gt;val) &#123; getUp(v-&gt;right, value, num); &#125; else if (value &lt; v-&gt;val) &#123; num += v-&gt;num + s; getUp(v-&gt;left, value, num); &#125; else &#123; num += s; &#125;&#125;int main(int argc, char *argv[]) &#123; freopen("sub.in", "r", stdin); freopen("sub.out", "w", stdout); int n; srand(time(0)); scanf("%d", &amp;n); for (int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;a[i]); &#125; for (int i = 1; i &lt;= n; i++) &#123; if (i != 1) &#123; int l = 0, u = 0; getLow(r1, a[i], l); getUp(r1, a[i], u); low[i] = l; up[i] = u; &#125; insert(r1, a[i], i); &#125; long long ans = 0; for (int i = n; i &gt;= 1; i--) &#123; if (i != n) &#123; int l = 0, u = 0; getLow(r2, a[i], l); getUp(r2, a[i], u); l2[i] = l; u2[i] = u; &#125; insert(r2, a[i], i); ans = (ans + ((low[i] % HA) * (u2[i] % HA)) % HA) % HA; ans = (ans + ((up[i] % HA) * (l2[i] % HA)) % HA) % HA; &#125; printf("%lld\n", ans); return 0;&#125;C. 平面图Problem C (planar.c/cpp/pas)\text{Problem C (planar.c/cpp/pas)}Problem C (planar.c/cpp/pas)Input file: planar.in Output file: planar.out\text{Input file: planar.in Output file: planar.out}Input file: planar.in Output file: planar.outTime Limit : 1 second Memory Limit: 512 megabytes\text{Time Limit : 1 second Memory Limit: 512 megabytes}Time Limit : 1 second Memory Limit: 512 megabytes平面图（Planar graph\text{Planar graph}Planar graph）是可以画在平面上并且使得不同的边可以互不交叠的图。有一次数学课，你们正在学习选修 2−32-32−3 ，数学老师正在讲一道题，题目大意是给你一张图，要求用 444 种颜色给每个点染色，被一条边连接的两个点不能染成相同的颜色，求方案数。那张图如下：你的数学老师问大家这张图是平面图还是立体图。而你——班里唯一的 OIer\text{OIer}OIer ——是回答平面图的唯一的人。而此时，你的数学老师已经怒不可言，怒斥你没有学好立体几何。为了教你的数学老师做人，你需要解决一个更复杂的问题：图是一个 nnn 棱柱。形式化的讲，这张图有 2n2n2n 个点，其中 iii 号点与 号点有边相连，i+ni+ni+n 号点与 号点有边相连，iii 号点与 i+ni+ni+n 号点有边相连。（所有的 iii 都满足 1≤i≤n1\le i \le n1≤i≤n）。你需要求的是对这张「平面图」 用 mmm 种颜色给每个点染色，被一条边连接的两个点不能染成相同的颜色的总染色方案数（两种方案不同当且仅当存在一个点在两种方案里染成的颜色不同）。你只需求出答案对 109+710^9+710​9​​+7 取模的结果。当然，仅仅解决这个问题还是不够让数学老师屈服，你需要用低于 O(n)O(n)O(n) 的算法解决这个问题。Input一行两个整数 n,mn,mn,mOutput一行一个数，表示答案对 109+710^9+710​9​​+7 取模的结果Note子任务 111 （ 555 分）：满足 n≤4,m≤4n \le 4,m \le 4n≤4,m≤4 。 子任务 222 （ 101010 分）：满足 n≤4n \le 4n≤4 。 子任务 333 （ 555 分）：满足 m=2m = 2m=2 。 子任务 444 （ 151515 分）：满足 。 子任务 555 （ 303030 分）：满足 。 子任务 666 （ 353535 分）：无特殊限制。 对于 100%100\%100% 的数据，满足 。算法1 - 5 pts 暴力枚举。 期望得分： 5 pts\text{5 pts}5 pts算法2 - 15 ptsn≤4n \le 4n≤4 。 用到的颜色数不多，暴力然后用组合数对应即可。期望得分： 15 pts\text{15 pts}15 pts算法3 - 20 ptsm=2m = 2m=2注意到 nnn 为奇数时答案为 000，为偶数时答案为 222* 这个可以理解为奇环无法进行二分图染色，偶环有两种方案期望得分： 5 pts\text{5 pts}5 pts，结合之前算法可得 20 pts\text{20 pts}20 pts算法4 - 65 pts1≤n≤1061 \le n \le 10^61≤n≤10​6​​ 我们考虑转化一下问题f[i][0/1/2][0/1/2] 表示当前填到第 iii 列，右上角的点颜色和左上角左下角都不同/和左上角相同/左下角相同，右下角的点颜色和左上角左下角都不同/和左上角相同/左下角相同的方案数。递推即可。m=3m = 3m=3 是给忘记考虑某些特殊情况的人准备的。期望得分： 65 pts\text{65 pts}65 pts算法5 - 100 pts把递推换成矩乘即可。期望得分： 100 pts\text{100 pts}100 pts1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465#include &lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const ll mod = 1e9 + 7;int N = 7;struct Matrix&#123; ll a[7][7]; void clear()&#123; memset(a, 0, sizeof(a)); &#125; void clearE()&#123; clear(); for(int i = 0; i &lt; N; i ++) a[i][i] = 1; &#125; Matrix operator * (const Matrix &amp;b) const&#123; Matrix ret; ret.clear(); for(int i = 0; i &lt; N; i ++)&#123; for(int j = 0; j &lt; N; j ++)&#123; for(int k = 0; k &lt; N; k ++)&#123; ret.a[i][j] = (ret.a[i][j] + a[i][k] * b.a[k][j]) % mod; &#125; &#125; &#125; return ret; &#125;&#125;A;Matrix qpow(Matrix a, ll b)&#123; Matrix ret; ret.clearE(); for(; b; b &gt;&gt;= 1, a = a * a)&#123; if(b &amp; 1) ret = ret * a; &#125; return ret;&#125;// 0 0 0// 0 1 1// 0 2 2// 1 0 3// 1 2 4// 2 0 5// 2 1 6ll n, m;int main()&#123; freopen("planar.in", "r", stdin); freopen("planar.out", "w", stdout); scanf("%lld%lld", &amp;n, &amp;m); if(m == 2)&#123; if(n &amp; 1) printf("0\n"); else printf("2\n"); return 0; &#125; if(m &gt; 3) A.a[0][0] = (m - 3 + (m - 4) * (m - 4)) % mod; A.a[0][1] = A.a[0][2] = A.a[0][3] = A.a[0][5] = (m - 3) * (m - 3) % mod; A.a[0][4] = A.a[0][6] = (m - 2) * (m - 3) % mod; A.a[1][0] = A.a[1][2] = A.a[2][0] = A.a[2][1] = A.a[3][0] = A.a[3][5] = A.a[5][0] = A.a[5][3] = m - 3; A.a[1][3] = A.a[1][4] = A.a[1][5] = A.a[2][3] = A.a[2][5] = A.a[2][6] = A.a[3][1] = A.a[3][2] = A.a[3][6] = A.a[5][1] = A.a[5][2] = A.a[5][4] = m - 2; A.a[4][0] = A.a[4][1] = A.a[4][5] = A.a[4][6] = A.a[6][0] = A.a[6][2] = A.a[6][3] = A.a[6][4] = 1; A = qpow(A, n); printf("%lld\n", A.a[4][4] * m % mod * (m - 1) % mod); return 0;&#125;算法6 - 100 ptsOEIS 大法吼啊！OEIS A277443123456789101112131415161718192021222324#include &lt;cstdio&gt;const int MOD = 1e9 + 7;inline long long pow(long long a, long long n) &#123; a = (a % MOD + MOD) % MOD; long long res = 1; for (; n; n &gt;&gt;= 1, a = a * a % MOD) if (n &amp; 1) res = res * a % MOD; return res;&#125;int main() &#123; freopen("planar.in", "r", stdin); freopen("planar.out", "w", stdout); // https://oeis.org/A277443, search keyword: prism graph color // FORMULA A(n,k) = (n^2-3n+3)^k+(n-1)((3-n)^k+(1-n)^k)+n^2-3n+1. long long k, n; scanf("%lld %lld", &amp;k, &amp;n); long long ans = pow(pow(n, 2) - 3 * n + 3, k) + (n - 1) * (pow(3 - n, k) + pow(1 - n, k)) % MOD + pow(n, 2) - 3 * n + 1; printf("%lld\n", (ans % MOD + MOD) % MOD);&#125;先写到这里，Day 2回来再补吧（]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>模拟赛</tag>
+        <tag>题解</tag>
+        <tag>2018</tag>
+        <tag>五校联考</tag>
+        <tag>LYOI</tag>
+        <tag>NOIP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「代码规范」如何编写无法维护的代码]]></title>
     <url>%2Farticles%2FHow-to-Make-A-Uneasy-to-Maintain-Code%2F</url>
     <content type="text"><![CDATA[总体原则想挫败维护代码的程序员，你必须先明白他的思维方式。他接手了你的庞大程序，没有时间把它全部读一遍，更别说理解它了。他无非是想快速找到修改代码的位置、改代码、编译，然后就能交差，并希望他的修改不会出现意外的副作用qwq他查看你的代码不过是管中窥豹，一次只能看到一小段而已。你要确保他永远看不到全貌。要尽量让他难以找到他想找的代码。但更重要的是，要让他不能有把握忽略任何东西qwq程序员都被编程惯例洗脑了，还为此自鸣得意。每一次你处心积虑地违背编程惯例，都会迫使他必须用放大镜去仔细阅读你的每一行代码。你可能会觉得每个语言特性都可以用来让代码难以维护，其实不然。你必须精心地误用它们才行qwq命名规则Quidquid latine dictum sit, altum sonatur.(随便用拉丁文写点啥都会显得高大上。)“当我使用一个单词的时候” Humpty Dumpty 曾经用一种轻蔑的口气说, “它就是我想表达的意思，不多也不少。“– Lewis Carroll — 《爱丽丝魔镜之旅》， 第6章编写无法维护代码的技巧的重中之重是变量和方法命名的艺术。如何命名是和编译器无关的。这就让你有巨大的自由度去利用它们迷惑维护代码的程序员妙用键盘买个好用的键盘，你就永远不缺变量名了（才不是脸滚键盘比如 trew 就是个好名字，而且键盘输入它也省事。如果你就想找一些容易输入的变量名，可以试试 adsf 或者 aoeu 之类的单变量命名如果你给变量起名为 a,b,c ，用简单的文本编辑器就没法搜索它们的引用而且，没人能猜到它们的含义创造性的拼写错误如果你必须使用描述性的变量和函数名，那就把它们都拼错。还可以把某些函数和变量名拼错，再把其他的拼对(例如 SetPintleOpening() 和 SetPintalClosing() ) ，我们就能有效地将 grep 或 IDE 搜索技术玩弄于股掌之上。这招超级管用。还可以混淆不同语言（比如 colour — 英国英语，和 color — 美国英语)抽象在命名函数和变量的时候，充分利用抽象单词，例如 it , everything , data , handle , stuff , do , routine , perform 和数字，像这样命名的好例子有 routineX48 , PerformDataFunction , DoIt , HandleStuff 还有 do_args_method首字母大写的缩写用首字母大写缩写（比如 GNU 代表 GNU’s Not Unix ) 使代码简洁难懂。真正的汉子(无论男女)从来不说明这种缩写的含义，他们生下来就懂辞典大轮换为了打破沉闷的编程气氛，你可以用一本辞典来查找尽量多的同义词。例如 display , show , present 。在注释里含糊其辞地暗示这些命名之间有细微的差别，其实根本没有。不过，如果有两个命名相似的函数真的有重大差别，那倒是一定要确保它们用相同的单词来命名(例如，对于 “写入文件”, “在纸上书写” 和 “屏幕显示” 都用 print 来命名)。 在任何情况下都不要屈服于编写明确的项目词汇表这种无理要求。你可以辩解说，这种要求是一种不专业的行为，它违反了结构化设计的信息隐藏原则首字母大写随机地把单词中间某个音节的首字母大写。例如 ComputeReSult()重用命名在语言规则允许的地方，尽量把 类 、构造器 、方法 、成员变量 、参数 和 局部变量 都命名成一样。更高级的技巧是在 {} 块中重用局部变量。这样做的目的是迫使维护代码的程序员认真检查每个实例的作用域。特别是在 Java 代码中，可以把普通方法伪装成构造器使用非英语字母在命名中偷偷使用不易察觉的非英语字母，例如1typedef struct &#123; int i; &#125; ínt;看上去没啥不对是吧？嘿嘿嘿…这里的第二个 ínt 的 í 实际上是东北欧字母，并不是英语中的 i 。在简单的文本编辑器里，想看出这一点点区别几乎是不可能的。利用编译器对于命名长度的限制如果编译器只区分命名的前几位，比如前 8 位，那么就把后面的字母写得不一样。比如，其实是同一个变量，有时候写成 var_unit_update() ，有时候又写成 var_unit_setup()，看起来是两个不同的函数调用。而在编译的时候，它们其实是同一个函数 var_unit()下划线，真正的朋友可以拿 _ 和 __ 作为标示符123456789101112// 判素void _(int __, int ___, int ____, int _____) &#123; ((___ / __) &lt;= _____) ? _(__,___+_____,____,_____) : !(___ % __) ? _(__,___+_____,___ % __, _____) : ((___ % __)==(___ / __) &amp;&amp; !____) ? (printf("%dt",(___ / __)), _(__,___+_____,____,_____)) : ((___ % __) &gt; _____ &amp;&amp; (___ % __) &lt; (___ / __)) ? _(__,___+_____,____,_____ + !((___ / __) % (___ % __))) : (___ &lt; __ * __) ? _(__,___+_____,____,_____) : 0;&#125; int main() &#123; _(100,0,0,1);&#125;混合多语言随机地混用两种语言（人类语言或计算机语言都行）。如果老板要求使用他指定的语言，你就告诉他你用自己的语言更有利于组织你的思路，万一这招不管用，就去控诉这是语言歧视，并威胁起诉老板要求巨额精神损失赔偿扩展 ASCII 字符扩展 ASCII 字符用于变量命名是完全合法的，包括 ß, Ð, 和 ñ 等。在简单的文本编辑器里，除了拷贝/粘贴，基本上没法输入其他语言的命名使用外语字典作为变量名的来源。例如，可以用德语单词 punkt 代替 point。除非维护代码的程序员也像你一样熟练掌握了德语. 不然他就只能尽情地在代码中享受异域风情了数学命名用数学操作符的单词来命名变量。例如：openParen = (slash + asterix) / equals;(左圆括号 = (斜杠 + 星号)/等号;)令人眩晕的命名用带有完全不相关的感情色彩的单词来命名变量。例如：marypoppins = (superman + starship) / god;(欢乐满人间 = (超人 + 星河战队)/上帝;)这一招可以让阅读代码的人陷入迷惑之中，因为他们在试图想清楚这些命名的逻辑时，会不自觉地联系到不同的感情场景里而无法自拔何时使用 i永远不要把 i 用作最内层的循环变量。 用什么命名都行，就是别用 i。把 i 用在其他地方就随便了，用作非整数变量尤其好惯例 — 明修栈道，暗度陈仓忽视 Java 编码惯例，Sun 自己就是这样做的。幸运的是，你违反了它编译器也不会打小报告。这一招的目的是搞出一些在某些特殊情况下有细微差别的名字来。如果你被强迫遵循驼峰法命名，你还是可以在某些模棱两可的情况下颠覆它例如，inputFilename 和 inputfileName 两个命名都可以合法使用。在此基础上自己发明一套复杂到变态的命名惯例，然后就可以对其他人反咬一口，说他们违反了惯例小写的 l 看上去很像数字 1用小写字母 l 标识 long 常数。例如 10l 更容易被误认为是 101 而不是 10L 。 禁用所有能让人准确区分 uvw wW gq9 2z 5s il17|!j oO08 &#39;” ;,. m nn rn {[()]} 的字体。要做个有创造力的人把全局命名重用为私有在 A 模块里声明一个全局数组，然后在 B 模块的头文件里再声明一个同名的私有数组，这样看起来你在 B 模块里引用的是那个全局数组，其实却不是。不要在注释里提到这个重复的情况误导性的命名让每个方法都和它的名字蕴含的功能有一些差异。例如，一个叫 isValid(x) 的方法在判断完参数 x 的合法性之后，还顺带着把它转换成二进制并保存到数据库里qwq（伪装当一个bug需要越长的时间才会暴露，它就越难被发现。– Roedy Green编写无法维护代码的另一大秘诀就是伪装的艺术，即隐藏它或者让它看起来像其他东西。很多招式有赖于这样一个事实：编译器比肉眼或文本编辑器更有分辨能力。下面是一些伪装的最佳招式把代码伪装成注释，反之亦然下面包括了一些被注释掉的代码，但是一眼看去却像是正常代码12345678910for (j = 0; j &lt; array_len; j += 8) &#123; total += array[j + 0]; total += array[j + 1]; total += array[j + 2]; /* Main body of total += array[j + 3]; * loop is unrolled total += array[j + 4]; * for greater speed. total += array[j + 5]; */ total += array[j + 6]; total += array[j + 7];&#125;如果不是语法高亮，这个你会看出来吗（用连接符隐藏变量对于下面的定义1#define local_var xy_z可以把 xy_z 打散到两行里：12#define local_var xy\_z // local_var OK这样全局搜索 xy_z 的操作在这个文件里就一无所获了。 对于 C 预处理器来说，第一行最后的 \ 表示继续拼接下一行的内容文档任何傻瓜都能说真话，而要把谎编圆则需要相当的智慧。– Samuel Butler (1835 – 1902)不正确的文档往往比没有文档还糟糕。– Bertrand Meyer既然计算机是忽略注释和文档的，你就可以在里边堂而皇之地编织弥天大谎，让可怜的维护代码的程序员彻底迷失在注释中撒谎实际上你不需要主动地撒谎，只要没有及时保持注释和代码更新的一致性就可以了只记录显而易见的东西往代码里掺进去类似于1/* 给 i 加 1 */这样的注释，但是永远不要记录包或者方法的整体设计这样的干货记录 How 而不是 Why只解释一个程序功能的细节，而不是它要完成的任务是什么。这样的话，如果出现了一个bug，修复者就搞不清这里的代码应有的功能该写的别写比如你在开发一套航班预定系统，那就要精心设计，让它在增加另一个航空公司的时候至少有 25 处代码需要修改。永远不要在文档里说明要修改的位置。后来的开发人员要想修改你的代码？门都没有，除非他们能把每一行代码都读懂计量单位永远不要在文档中说明任何变量、输入、输出或参数的计量单位，如 英尺 、米 、加仑 等。计量单位对数豆子不是太重要，但在工程领域就相当重要了同理，永远不要说明任何转换常量的计量单位，或者是它的取值如何获得。要想让代码更乱的话，你还可以在注释里写上错误的计量单位，这是赤裸裸的欺骗，但是非常有效如果你想做一个恶贯满盈的人，不妨自己发明一套计量单位，用自己或某个小人物的名字命名这套计量单位，但不要给出定义。万一有人挑刺儿，你就告诉他们，你这么做是为了把浮点数运算凑成整数运算而进行的转换坑永远不要记录代码中的坑。如果你怀疑某个类里可能有 bug ，天知地知你知就好。如果你想到了重构或重写代码的思路，看在老天爷的份上，千万别写出来切记电影《小鹿斑比》里那句台词 “如果你不能说好听的话，那就什么也不要说。”。万一这段代码的原作者看到你的注释怎么办？万一老板看到了怎么办？万一客户看到了怎么办？搞不好最后你自己被解雇了。一句 这里需要修改 的匿名注释就好多了，尤其是当看不清这句注释指的是哪里需要修改的情况下。切记 难得糊涂 四个字，这样大家都不会感觉受到了批评说明变量永远不要对变量声明加注释。有关变量使用的方式、边界值、合法值、小数点后的位数、计量单位、显示格式、数据录入规则等等，后继者完全可以自己从程序代码中去理解和整理嘛如果老板强迫你写注释，就在方法体里胡乱多写点，但绝对不要对变量声明写注释，即使是临时变量！在注释里挑拨离间为了阻挠任何雇佣外部维护承包商的倾向，可以在代码中散布针对其他同行软件公司的攻击和抹黑，特别是可能接替你工作的其中任何一家。例如：1234567/* 优化后的内层循环这套技巧对于 SSI 软件服务公司的那帮蠢材来说太高深了，他们只会用 &lt;math.h&gt; 里的笨例程，消耗50倍的内存和处理时间。*/ class clever_SSInc &#123; /* Code */&#125;可能的话，除了注释之外，这些攻击抹黑的内容也要掺到代码里的重要语义部分，这样如果管理层想清理掉这些攻击性的言论然后发给外部承包商去维护，就会破坏代码结构程序设计编写无法维护代码的基本规则就是：在尽可能多的地方，以尽可能多的方式表述每一个事实。– Roedy Green编写可维护代码的关键因素是只在一个地方表述应用里的一个事实。如果你的想法变了，你也只在一个地方修改，这样就能保证整个程序正常工作。所以，编写无法维护代码的关键因素就是反复地表述同一个事实，在尽可能多的地方，以尽可能多的方式进行。令人高兴的是，像Java这样的语言让编写这种无法维护代码变得非常容易。例如，改变一个被引用很多的变量的类型几乎是不可能的，因为所有造型和转换功能都会出错，而且关联的临时变量的类型也不合适了。而且，如果变量值要在屏幕上显示，那么所有相关的显示和数据录入代码都必须一一找到并手工进行修改。类似的还有很多，比如由C和Java组成的Algol语言系列，Abundance甚至Smalltalk对于数组等结构的处理，都是大有可为的Java 造型Java 的造型机制是上帝的礼物。你可以问心无愧地使用它，因为 Java 语言本身就需要它。每次你从一个 Collection 里获取一个对象，你都必须把它造型为原始类型。这样这个变量的类型就必须在无数地方表述。如果后来类型变了，所有的造型都要修改才能匹配。如果倒霉的维护代码的程序员没有找全（或者修改太多），编译器能不能检测到也不好说。类似的，如果变量类型从 short 变成 int，所有匹配的造型也都要从( short) 改成 (int)利用Java的冗余Java 要求你给每个变量的类型写两次表述。 Java 程序员已经习惯了这种冗余，他们不会注意到你的两次表述有细微的差别，例如1Bubblegum b = new Bubblegom();不幸的是 ++ 操作符的盛行让下面这种伪冗余代码得手的难度变大了1swimmer = swimner + 1;永远不做校验永远不要对输入数据做任何的正确性或差异性检查。这样能表现你对公司设备的绝对信任，以及你是一位信任所有项目伙伴和系统管理员的团队合作者。总是返回合理的值，即使数据输入有问题或者错误有礼貌，无断言避免使用 assert() 机制，因为它可能把三天的 debug 盛宴变成 10 分钟的快餐避免封装为了提高效率，不要使用封装。方法的调用者需要所有能得到的外部信息，以便了解方法的内部是如何工作的复制粘贴修改以效率的名义，使用 复制 + 粘贴 + 修改。这样比写成小型可复用模块效率高得多。在用代码行数衡量你的进度的小作坊里，这招尤其管用使用静态数组如果一个库里的模块需要一个数组来存放图片，就定义一个静态数组。没人会有比 512 x 512 更大的图片，所以固定大小的数组就可以了。为了最佳精度，就把它定义成 double 类型的数组傻瓜接口编写一个名为 WrittenByMe 之类的空接口，然后让你的所有类都实现它。然后给所有你用到的 Java 内置类编写包装类。这里的思想是确保你程序里的每个对象都实现这个接口。最后，编写所有的方法，让它们的参数和返回类型都是这个 WrittenByMe。这样就几乎不可能搞清楚某个方法的功能是什么，并且所有类型都需要好玩的造型方法。更出格的玩法是，让每个团队成员编写它们自己的接口(例如 WrittenByJoe)，程序员用到的任何类都要实现他自己的接口。这样你就可以在大量无意义接口中随便找一个来引用对象了巨型监听器永远不要为每个组件创建分开的监听器。对所有按钮总是用同一个监听器，只要用大量的 if…else 来判断是哪一个按钮被点击就行了好事成堆狂野地使用封装和 OO 思想。例如1234myPanel.add( getMyButton() ); private JButton getMyButton() &#123; return myButton; &#125;这段很可能看起来不怎么好笑。别担心，只是时候未到而已友好的朋友在 C++ 里尽量多使用 friend 声明。再把创建类的指针传递给已创建类。现在你不用浪费时间去考虑接口了。另外，你应该用上关键字 private 和 protected 来表明你的类封装得很好使用三维数组大量使用它们。用扭曲的方式在数组之间移动数据，比如，用 arrayA 里的行去填充 arrayB 的列。这么做的时候，不管三七二十一再加上 1 的偏移值，这样很灵。让维护代码的程序员抓狂去吧混合与匹配存取方法和公共变量神马的都要给他用上。这样的话，你无需调用存取器的开销就可以修改一个对象的变量，还能宣称这个类是个 Java Bean 。对于那些试图添加日志函数来找出改变值的源头的维护代码的程序员，用这一招来迷惑他尤其有效没有秘密!把每个方法和变量都声明为 public。毕竟某个人某天可能会需要用到它。一旦方法被声明为 public 了，就很难缩回去。对不？这样任何它覆盖到的代码都很难修改了。它还有个令人愉快的副作用，就是让你看不清类的作用是什么。如果老板质问你是不是疯了，你就告诉他你遵循的是经典的透明接口原则全堆一块把你所有的没用的和过时的方法和变量都留在代码里。毕竟说起来，既然你在 1976 年用过一次，谁知道你啥时候会需要再用到呢？当然程序是改了，但它也可能会改回来嘛，你 不想要重新发明轮子（领导们都会喜欢这样的口气）。如果你还原封不动地留着这些方法和变量的注释，而且注释写得又高深莫测，甭管维护代码的是谁，恐怕都不敢对它轻举妄动就是 Final把你所有的叶子类都声明为 final 。毕竟说起来，你在项目里的活儿都干完了，显然不会有其他人会通过扩展你的类来改进你的代码。这种情况甚至可能有安全漏洞。 java.lang.String 被定义成 final 也许就是这个原因吧？如果项目组其他程序员有意见，告诉他们这样做能够提高运行速度避免布局永远不要用到布局。当维护代码的程序员想增加一个字段，他必须手工调整屏幕上显示所有内容的绝对坐标值。如果老板强迫你使用布局，那就写一个巨型的 GridBagLayout 并在里面用绝对坐标进行硬编码全局变量，怎么强调都不过分如果上帝不愿意我们使用全局变量，他就不会发明出这个东西。不要让上帝失望，尽量多使用全局变量。每个函数最起码都要使用和设置其中的两个，即使没有理由也要这么做。毕竟，任何优秀的维护代码的程序员都会很快搞清楚这是一种侦探工作测试，有利于让他们从笨蛋中脱颖而出再一次说说全局变量全局变量让你可以省去在函数里描述参数的麻烦。充分利用这一点。在全局变量中选那么几个来表示对其他全局变量进行操作的类型。局部变量永远不要用局部变量。在你感觉想要用的时候，把它改成一个实例或者静态变量，并无私地和其他方法分享它。这样做的好处是，你以后在其他方法里写类似声明的时候会节省时间。C++ 程序员可以百尺竿头更进一步，把所有变量都弄成全局的配置文件配置文件通常是以 关键字 = 值 的形式出现。在加载时这些值被放入 Java 变量中。最明显的迷惑技术就是把有细微差别的名字用于关键字和 Java 变量.甚至可以在配置文件里定义运行时根本不会改变的常量。参数文件变量和简单变量比，维护它的代码量起码是后者的 5 倍。子类对于编写无法维护代码的任务来说，面向对象编程的思想简直是天赐之宝。如果你有一个类，里边有10个属性（成员/方法），可以考虑写一个基类，里面只有一个属性，然后产生 9 层的子类，每层增加一个属性。等你访问到最终的子类时，你才能得到全部 10 个属性。如果可能，把每个类的声明都放在不同的文件里代码迷局操作符重载重载操作符可以让你的代码变得诡异，感谢 CCTV ，感谢 C++。这个东西是可以把混乱代码提高到一种艺术的形式。比如：重载一个类的 ! 操作符，但实际功能并不是取反，让其返回一个整数。于是，如果你使用 !! 操作符，那么，有意思的事就发生了—— 先是调用类的重载 ! 操作符，然后把其返回的整数给 ! 成了 布尔变量，如果是 !!! 呢？呵呵。迷惑 C从互联网上的各种混乱 C 语言竞赛中学习，追随大师们的脚步。追求极致总是追求用最迷惑的方式来做普通的任务。例如，要用数组来把整数转换为相应的字符串，可以这么做：1234567891011121314char *p; switch (n) &#123; case 1: p = "one"; if (0) case 2: p = "two"; if (0) case 3: p = "three"; printf("%s", p); break; &#125;一致性的小淘气当你需要一个字符常量的时候，可以用多种不同格式： ‘ ‘ , 32, 0x20, 040。在 C 或 Java 里 10 和 010 是不同的数（ 0 开头的表示 8 进制），你也可以充分利用这个特性造型把所有数据都以 void * 形式传递，然后再造型为合适的结构。不用结构而是通过位移字节数来造型也很好玩嵌套 switchswitch 里边还有 switch，这种嵌套方式是人类大脑难以破解的利用隐式转化牢记编程语言中所有的隐式转化细节。充分利用它们。数组的索引要用浮点变量，循环计数器用字符，对数字执行字符串函数调用。不管怎么说，所有这些操作都是合法的，它们无非是让源代码更简洁而已。任何尝试理解它们的维护者都会对你感激不尽，因为他们必须阅读和学习整个关于隐式数据类型转化的章节，而这个章节很可能是他们来维护你的代码之前完全忽略了的。分号!在所有语法允许的地方都加上分号，例如：1234567if(a); else;&#123;int d; d = c; &#125;;使用八进制数把八进制数混到十进制数列表里，就像这样：1234array = new int [] &#123; 111, 120, 013, 121, &#125;;嵌套尽可能深地嵌套。优秀的程序员能在一行代码里写10层()，在一个方法里写20层{}。C数组C 编译器会把 myArray[i] 转换成 *(myArray + i) ，它等同于 *(i + myArray) 也等同于 i[myArray]。 高手都知道怎么用好这个招。可以用下面的函数来产生索引，这样就把代码搞乱了123int myfunc(int q, int p) &#123; return p%q; &#125; ... myfunc(6291, 8)[Array];遗憾的是，这一招只能在本地 C 类里用，Java 还不行放长线钓大鱼一行代码里堆的东西越多越好。这样可以省下临时变量的开销，去掉换行和空格还可以缩短源文件大小。记住，要去掉运算符两边的空格。优秀的程序员总是能突破某些编辑器对于 255 个字符行宽的限制异常在这里我要向你传授一个编程领域里鲜为人知的秘诀。异常是个讨厌的东西。良好的代码永远不会出错，所以异常实际上是不必要的。不要把时间浪费在这上面。子类异常是给那些知道自己代码会出错的低能儿用的。在整个应用里，你只用在 main() 里放一个 try/catch ，里边直接调用 System.exit() 就行了。在每个方法头要贴上标准的抛出集合定义，至于会不会抛出异常你就甭管了使用异常的时机在非异常条件下才要使用异常。比如终止循环就可以用 ArrayIndexOutOfBoundsException。还可以从异常里的方法返回标准的结果狂热奔放地使用线程如题测试在程序里留些 bug ，让后继的维护代码的程序员能做点有意思的事。精心设计的 bug 是无迹可寻的，而且谁也不知道它啥时候会冒出来。要做到这一点，最简单的办法的就是不要测试代码永不测试永远不要测试负责处理错误、当机或操作系统故障的任何代码。反正这些代码永远也不会执行，只会拖累你的测试。还有，你怎么可能测试处理磁盘错误、文件读取错误、操作系统崩溃这些类型的事件呢？为啥你要用特别不稳定的计算机或者用测试脚手架来模拟这样的环境？现代化的硬件永远不会崩溃，谁还愿意写一些仅仅用于测试的代码？这一点也不好玩。万一将来出了事用户抱怨，你就怪到操作系统或者硬件头上。他们永远不会知道真相的永远不要做性能测试嘿，如果软件运行不够快，只要告诉客户买个更快的机器就行了。如果你真的做了性能测试，你可能会发现一个瓶颈，这会导致修改算法，然后导致整个产品要重新设计。谁想要这种结果？而且，在客户那边发现性能问题意味着你可以免费到外地旅游。你只要备好护照和最新照片就行了永远不要写任何测试用例永远不要做代码覆盖率或路径覆盖率测试。自动化测试是给那些窝囊废用的。搞清楚哪些特性占到你的例程使用率的90% ，然后把 90% 的测试用在这些路径上。毕竟说起 来，这种方法可能只测试到了大约你代码的 60% ，这样你就节省了 40% 的测试工作。这能帮助你赶上项目后端的进度。等到有人发现所有这些漂亮的“市场特性”不能正常工作的时候，你早就跑路了。一些有名的大软件公司就是这样测试代码的，所以你也应该这样做。如果因为某种原因你还没走，那就接着看下一节测试是给懦夫用的勇敢的程序员会跳过这个步骤。太多程序员害怕他们的老板，害怕丢掉工作，害怕客户的投诉邮件，害怕遭到起诉。这种恐惧心理麻痹了行动，降低了生产率。有科学研究成果表明，取消测试阶段意味着经理有把握能提前确定交付时间，这对于规划流程显然是有利的。消除了恐惧心理，创新和实验之花就随之绽放。程序员的角色是生产代码，调试工作完全可以由技术支持和遗留代码维护组通力合作来进行如果我们对自己的编程能力有充分信心，那么测试就没有必要了。如果我们逻辑地看待这个问题，随便一个傻瓜都能认识到测试根本都不是为了解决技术问题，相反，它是一种感性的信心问题。针对这种缺乏信心的问题，更有效的解决办法就是完全取消测试，送我们的程序员去参加自信心培训课程。毕竟说起来，如果我们选择做测试，那么我们就要测试每个程序的变更，但其实我们只需要送程序员去一次建立自信的培训课就行了。很显然这么做的成本收益是相当可观的选择你的编程语言计算机语言正在逐步进化，变得更加傻瓜化。使用最新的语言算什么好汉？尽可能坚持使用你会用的最老的语言，先考虑用穿孔纸带，不行就用汇编，再不行用FORTRAN 或者 COBOL，再不行就用C 还有 BASIC，实在不行再用 C++FORTRAN用 FORTRAN 写所有的代码。如果老板问你为啥，你可以回答说它有很多非常有用的库，你用它可以节约时间。不过，用 FORTRAN 写出可维护代码的概率是 0，所以，要达到不可维护代码编程指南里的要求就容易多了用 ASM把所有的通用工具函数都转成汇编程序用 QBASIC所有重要的库函数都要用 QBASIC 写，然后再写个汇编的封包程序来处理 large 到 medium 的内存模型映射内联汇编在你的代码里混杂一些内联的汇编程序，这样很好玩。这年头几乎没人懂汇编程序了。只要放几行汇编代码就能让维护代码的程序员望而却步宏汇编调用C如果你有个汇编模块被 C 调用，那就尽可能经常从汇编模块再去调用 C ，即使只是出于微不足道的用途，另外要充分利用 goto, bcc 和其他炫目的汇编秘籍。其他不要重编译让我们从一条可能是有史以来最友好的技巧开始：把代码编译成可执行文件。如果它能用，就在源代码里做一两个微小的改动 — 每个模块都照此办理。但是不要费劲巴拉地再编译一次了。 你可以留着等以后有空而且需要调试的时候再说。多年以后，等可怜的维护代码的程序员更改了代码之后发现出错了，他会有一种错觉，觉得这些肯定是他自己最近修改的。这样你就能让他毫无头绪地忙碌很长时间。挫败调试工具对于试图用行调试工具追踪来看懂你的代码的人，简单的一招就能让他狼狈不堪，那就是把每一行代码都写得很长。特别要把 then 语句 和 if 语句放在同一行里。他们无法设置断点。他们也无法分清在看的分支是哪个 if 里的。公制和美制在工程方面有两种编码方式。一种是把所有输入都转换为公制（米制）计量单位，然后在输出的时候自己换算回各种民用计量单位。另一种是从头到尾都保持各种计量单位混合在一起。总是选择第二种方式，这就是美国之道！持续改进要持续不懈地改进。要常常对你的代码做出“改进”，并强迫用户经常升级 — 毕竟没人愿意用一个过时的版本嘛。即便他们觉得他们对现有的程序满意了，想想看，如果他们看到你又“完善“了它，他们会多么开心啊！不要告诉任何人版本之间的差别，除非你被逼无奈 — 毕竟，为什么要告诉他们本来永远也不会注意到的一些 bug 呢？&quot;关于&quot;”关于“一栏应该只包含程序名、程序员姓名和一份用法律用语写的版权声明。理想情况下，它还应该链接到几 MB 的代码，产生有趣的动画效果。但是，里边永远不要包含程序用途的描述、它的版本号、或最新代码修改日期、或获取更新的网站地址、或作者的 email 地址等。这样，所有的用户很快就会运行在各种不同的版本上，在安装 N+1 版之前就试图安装 N+2 版变更在两个版本之间，你能做的变更自然是多多益善。你不会希望用户年复一年地面对同一套老的接口或用户界面，这样会很无聊。最后，如果你能在用户不注意的情况下做出这些变更，那就更好了 — 这会让他们保持警惕，戒骄戒躁。无需技能写无法维护代码不需要多高的技术水平。喊破嗓子不如甩开膀子，不管三七二十一开始写代码就行了。记住，管理层还在按代码行数考核生产率，即使以后这些代码里的大部分都得删掉。只带一把锤子一招鲜吃遍天，会干什么就吆喝什么，轻装前进。如果你手头只有一把锤子，那么所有的问题都是钉子。规范体系有可能的话，忽略当前你的项目所用语言和环境中被普罗大众所接受的编程规范。比如，编写基于 MFC 的应用时，就坚持使用 STL 编码风格。翻转通常的 True False 惯例把常用的 true 和 false 的定义反过来用。这一招听起来平淡无奇，但是往往收获奇效。你可以先藏好下面的定义：12#define TRUE 0 #define FALSE 1把这个定义深深地藏在代码中某个没人会再去看的文件里不易被发现的地方，然后让程序做下面这样的比较12if ( var == TRUE )if ( var != FALSE )某些人肯定会迫不及待地跳出来“修正”这种明显的冗余，并且在其他地方照着常规去使用变量var：1if ( var )还有一招是为 TRUE 和 FALSE 赋予相同的值，虽然大部分人可能会看穿这种骗局。给它们分别赋值 1 和 2 或者 -1 和 0 是让他们瞎忙乎的方式里更精巧的，而且这样做看起来也不失对他们的尊重。你在 Java 里也可以用这一招，定义一个叫 TRUE 的静态常量。在这种情况下，其他程序员更有可能怀疑你干的不是好事，因为 Java 里已经有了内建的标识符 true第三方库在你的项目里引入功能强大的第三方库，然后不要用它们。潜规则就是这样，虽然你对这些工具仍然一无所知，却可以在你简历的“其他工具”一节中写上这些没用过的库不要用库假装不知道有些库已经直接在你的开发工具中引入了。如果你用 VC++ 编程，忽略 MFC 或 STL 的存在，手工编写所有字符串和数组的实现；这样有助于保持你玩指针技术的高水平，并自动阻止任何扩展代码功能的企图创建一套Build顺序把这套顺序规则做得非常晦涩，让维护者根本无法编译任何他的修改代码。秘密保留 SmartJ ，它会让 make 脚本形同废物。类似地，偷偷地定义一个 javac 类，让它和编译程序同名。说到大招，那就是编写和维护一个定制的小程序，在程序里找到需要编译的文件，然后通过直接调用 sun.tools.javac.Main 编译类来进行编译。Make 的更多玩法用一个 makefile-generated-batch-file 批处理文件从多个目录复制源文件，文件之间的覆盖规则在文档中是没有的。这样，无需任何炫酷的源代码控制系统，就能实现代码分支，并阻止你的后继者弄清哪个版本的 DoUsefulWork() 才是他需要修改的那个。搜集编码规范尽可能搜集所有关于编写可维护代码的建议，例如 SquareBox 的建议 ，然后明目张胆地违反它们。规避公司的编码规则某些公司有严格的规定，不允许使用数字标识符，你必须使用预先命名的常量。要挫败这种规定背后的意图太容易了。比如，一位聪明的 C++ 程序员是这么写的：123#define K_ONE 1#define K_TWO 2 #define K_THOUSAND 999编译器警告一定要保留一些编译器警告。在 make 里使用 “-” 前缀强制执行，忽视任何编译器报告的错误。这样，即使维护代码的程序员不小心在你的源代码里造成了一个语法错误，make 工具还是会重新把整个包 build 一遍，甚至可能会成功！而任何程序员要是手工编译你的代码，看到屏幕上冒出一堆其实无关紧要的警告，他们肯定会觉得是自己搞坏了代码。同样，他们一定会感谢你让他们有找错的机会。学有余力的同学可以做点手脚让编译器在打开编译错误诊断工具时就没法编译你的程序。当然了，编译器也许能做一些脚本边界检查，但是真正的程序员是不用这些特性的，所以你也不该用。既然你用自己的宝贵时间就能找到这些精巧的bug，何必还多此一举让编译器来检查错误呢？把 bug 修复和升级混在一起永远不要发布什么“bug 修复”版本。一定要把 bug 修复和数据库结构变更、复杂的用户界面修改，还有管理界面重写等混在一起。那样的话，升级就变成一件非常困难的事情，人们会慢慢习惯 bug 的存在并开始称他们为特性。那些真心希望改变这些”特性“的人们就会有动力升级到新版本。这样从长期来说可以节省你的维护工作量，并从你的客户那里获得更多收入。在你的产品发布每个新版本的时候都改变文件结构没错，你的客户会要求向上兼容，那就去做吧。不过一定要确保向下是不兼容的。这样可以阻止客户从新版本回退，再配合一套合理的 bug 修复规则（见上一条），就可以确保每次新版本发布后，客户都会留在新版本。学有余力的话，还可以想办法让旧版本压根无法识别新版本产生的文件。那样的话，老版本系统不但无法读取新文件，甚至会否认这些文件是自己的应用系统产生的！温馨提示：PC 上的 Word 文字处理软件就典型地精于此道。抵消 Bug不用费劲去代码里找 bug 的根源。只要在更高级的例程里加入一些抵销它的代码就行了。这是一种很棒的智力测验，类似于玩3D棋，而且能让将来的代码维护者忙乎很长时间都想不明白问题到底出在哪里：是产生数据的低层例程，还是莫名其妙改了一堆东西的高层代码。这一招对天生需要多回合执行的编译器也很好用。你可以在较早的回合完全避免修复问题，让较晚的回合变得更加复杂。如果运气好，你永远都不用和编译器前端打交道。学有余力的话，在后端做点手脚，一旦前端产生的是正确的数据，就让后端报错。使用旋转锁不要用真正的同步原语，多种多样的旋转锁更好 — 反复休眠然后测试一个(non-volatile的) 全局变量，直到它符合你的条件为止。相比系统对象，旋转锁使用简便，”通用“性强，”灵活“多变，实为居家旅行必备。随意安插 sync 代码把某些系统同步原语安插到一些用不着它们的地方。本人曾经在一段不可能会有第二个线程的代码中看到一个临界区（critical section）代码。本人当时就质问写这段代码的程序员，他居然理直气壮地说这么写是为了表明这段代码是很”关键“（单词也是critical）的！优雅降级如果你的系统包含了一套 NT 设备驱动，就让应用程序负责给驱动分配 I/O 缓冲区，然后在任何事务过程中对内存中的驱动加锁，并在事务完成后释放或解锁。这样一旦应用非正常终止，I/O缓存又没有被解锁，NT服务器就会当机。但是在客户现场不太可能会有人知道怎么弄好设备驱动，所以他们就没有选择（只能请你去免费旅游了）。定制脚本语言在你的 C/S 应用里嵌入一个在运行时按字节编译的脚本命令语言。依赖于编译器的代码如果你发现在你的编译器或解释器里有个 bug ，一定要确保这个 bug 的存在对于你的代码正常工作是至关重要的。毕竟你又不会使用其他的编译器，其他任何人也不允许！一个货真价实的例子下面是一位大师编写的真实例子。让我们来瞻仰一下他在这样短短几行 C 函数里展示的高超技巧。12345678910void* Realocate(void*buf, int os, int ns) &#123; void*temp; temp = malloc(os); memcpy((void*)temp, (void*)buf, os); free(buf); buf = malloc(ns); memset(buf, 0, ns); memcpy((void*)buf, (void*)temp, ns); return buf;&#125;重新发明了标准库里已有的简单函数Realocate 这个单词拼写错误。所以说，永远不要低估创造性拼写的威力无缘无故地给输入缓冲区产生一个临时的副本无缘无故地造型。 memcpy() 里有 (void*)，这样即使我们的指针已经是 (void*) 了也要再造型一次。另外，这样做可以传递任何东西作为参数，加 10 分永远不必费力去释放临时内存空间。这样会导致缓慢的内存泄露，一开始看不出来，要程序运行一段时间才行把用不着的东西也从缓冲区里拷贝出来，以防万一。这样只会在 Unix 上产生 core dump，Windows 就不会很显然，os 和 ns 的含义分别是”old size” 和 “new size”给 buf 分配内存之后，memset 初始化它为 0。不要使用 calloc()，因为某些人会重写 ANSI 规范，这样将来保不齐 calloc() 往 buf 里填的就不是 0 了。（虽然我们复制过去的数据量和 buf 的大小是一样的，不需要初始化，不过这也无所谓啦）如何修复 “unused variable” 错误如果你的编译器冒出了 “unused local variable” 警告，不要去掉那个变量。相反，要找个聪明的办法把它用起来。我最喜欢的方法是：1i = i;大小很关键差点忘了说了，函数是越大越好。跳转和 GOTO 语句越多越好。那样的话，想做任何修改都需要分析很多场景。这会让维护代码的程序员陷入千头万绪之中。如果函数真的体型庞大的话，对于维护代码的程序员就是哥斯拉怪兽了，它会在他搞清楚情况之前就残酷无情地将他踩翻在地。一张图片顶1000句话，一个函数就是1000行把每个方法体写的尽可能的长 — 最好是你写的任何一个方法或函数都不会少于1000行代码，而且里边是深度嵌套，这是必须的。少个文件一定要保证一个或多个关键文件无法找到。利用 includes 里边再 includes 就能做到这一点。例如，在你的 main 模块里，你写上：1#include &lt;stdcode.h&gt;Stdcode.h 是有的。但是在 stdcode.h 里，还有个引用：1#include &quot;a:\\refcode.h&quot;然后，refcode.h 就没地方能找到了Shq tips: 有谁知道 a: 盘是什么吗......就是传说中的软盘...到处都写，无处会读至少要把一个变量弄成这样：到处被设置，但是几乎没有哪里用到它。不幸的是，现代编译器通常会阻止你做相反的事：到处读，没处写。不过你在 C 或 C++ 里还是可以这样做的。]]></content>
@@ -38,8 +54,8 @@
         <tag>计算几何</tag>
         <tag>数学</tag>
         <tag>向量</tag>
-        <tag>凸包</tag>
         <tag>平面几何</tag>
+        <tag>凸包</tag>
         <tag>半平面交</tag>
       </tags>
   </entry>
@@ -54,9 +70,9 @@
         <tag>教程</tag>
         <tag>网络流</tag>
         <tag>最大流</tag>
-        <tag>玄学</tag>
         <tag>最小割</tag>
         <tag>最小割最大流定理</tag>
+        <tag>玄学</tag>
         <tag>Dinic</tag>
         <tag>SAP</tag>
         <tag>ISAP</tag>
@@ -88,9 +104,9 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>题解</tag>
         <tag>数据结构</tag>
         <tag>毒瘤</tag>
-        <tag>题解</tag>
         <tag>平衡树</tag>
         <tag>Treap</tag>
         <tag>luogu</tag>
@@ -110,14 +126,14 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>题解</tag>
-        <tag>树套树</tag>
+        <tag>数据结构</tag>
         <tag>平衡树</tag>
+        <tag>树套树</tag>
         <tag>线段树</tag>
+        <tag>区间</tag>
         <tag>替罪羊树</tag>
         <tag>区间第k小</tag>
-        <tag>区间</tag>
       </tags>
   </entry>
   <entry>
@@ -231,10 +247,10 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>题解</tag>
         <tag>二分图</tag>
         <tag>网络流</tag>
         <tag>二分图最大匹配</tag>
-        <tag>题解</tag>
         <tag>染色</tag>
         <tag>增广路</tag>
         <tag>图论</tag>
@@ -250,10 +266,10 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>题解</tag>
         <tag>二分图</tag>
         <tag>网络流</tag>
         <tag>二分图最大匹配</tag>
-        <tag>题解</tag>
         <tag>JSOI</tag>
         <tag>染色</tag>
         <tag>博弈论</tag>
@@ -322,13 +338,13 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>题解</tag>
         <tag>数据结构</tag>
         <tag>毒瘤</tag>
-        <tag>题解</tag>
-        <tag>区间</tag>
         <tag>分块</tag>
         <tag>块状链表</tag>
         <tag>bzoj</tag>
+        <tag>区间</tag>
       </tags>
   </entry>
   <entry>
@@ -369,8 +385,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
         <tag>数据结构</tag>
+        <tag>树</tag>
         <tag>模版</tag>
         <tag>线段树</tag>
         <tag>主席树</tag>
@@ -432,14 +448,14 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>模拟赛</tag>
+        <tag>题解</tag>
+        <tag>LYOI</tag>
         <tag>数据结构</tag>
         <tag>数学</tag>
         <tag>数论</tag>
-        <tag>模拟赛</tag>
-        <tag>题解</tag>
         <tag>线段树</tag>
         <tag>临沂一中</tag>
-        <tag>LYOI</tag>
       </tags>
   </entry>
   <entry>
@@ -452,9 +468,9 @@
       <tags>
         <tag>优化</tag>
         <tag>乱搞</tag>
+        <tag>玄学</tag>
         <tag>常数优化</tag>
         <tag>卡常</tag>
-        <tag>玄学</tag>
       </tags>
   </entry>
   <entry>
@@ -473,10 +489,10 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>数据结构</tag>
         <tag>珂朵莉</tag>
         <tag>Chtholly</tag>
         <tag>树</tag>
-        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>区间操作</tag>
       </tags>
@@ -517,8 +533,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
+        <tag>算法</tag>
         <tag>字符串</tag>
         <tag>最长回文子串</tag>
         <tag>Manacher</tag>
@@ -545,9 +561,9 @@
       </categories>
       <tags>
         <tag>Algorithm</tag>
-        <tag>AC自动机</tag>
         <tag>字符串</tag>
         <tag>自动机</tag>
+        <tag>AC自动机</tag>
         <tag>Trie</tag>
         <tag>KMP自动机</tag>
       </tags>
@@ -561,10 +577,10 @@
       </categories>
       <tags>
         <tag>Algorithm</tag>
-        <tag>KMP</tag>
-        <tag>AC自动机</tag>
-        <tag>前缀和</tag>
         <tag>字符串</tag>
+        <tag>AC自动机</tag>
+        <tag>KMP</tag>
+        <tag>前缀和</tag>
       </tags>
   </entry>
   <entry>
@@ -615,14 +631,14 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>数据结构</tag>
         <tag>Algorithm</tag>
+        <tag>数据结构</tag>
+        <tag>树</tag>
         <tag>模版</tag>
-        <tag>树套树</tag>
-        <tag>线段树</tag>
         <tag>Treap</tag>
+        <tag>树套树</tag>
         <tag>数堆</tag>
+        <tag>线段树</tag>
       </tags>
   </entry>
   <entry>
@@ -633,10 +649,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>数据结构</tag>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
+        <tag>数据结构</tag>
+        <tag>树</tag>
+        <tag>算法</tag>
         <tag>线段树</tag>
         <tag>zkw线段树</tag>
       </tags>
@@ -715,8 +731,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
+        <tag>算法</tag>
         <tag>优化</tag>
         <tag>图论</tag>
         <tag>并查集</tag>
@@ -732,8 +748,8 @@
       </categories>
       <tags>
         <tag>乱搞</tag>
-        <tag>常数优化</tag>
         <tag>玄学</tag>
+        <tag>常数优化</tag>
         <tag>技巧</tag>
       </tags>
   </entry>
@@ -776,8 +792,8 @@
       </categories>
       <tags>
         <tag>随笔</tag>
-        <tag>RP</tag>
         <tag>NOIP</tag>
+        <tag>RP</tag>
         <tag>NOI</tag>
       </tags>
   </entry>
@@ -820,9 +836,9 @@
       <tags>
         <tag>数学</tag>
         <tag>数论</tag>
+        <tag>凸包</tag>
         <tag>几何</tag>
         <tag>模板</tag>
-        <tag>凸包</tag>
       </tags>
   </entry>
   <entry>
@@ -865,12 +881,12 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
         <tag>数据结构</tag>
+        <tag>树</tag>
         <tag>模板</tag>
         <tag>平衡树</tag>
-        <tag>线段树</tag>
         <tag>Treap</tag>
+        <tag>线段树</tag>
         <tag>Splay</tag>
         <tag>二叉树</tag>
         <tag>二叉搜索树</tag>
@@ -897,8 +913,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
+        <tag>算法</tag>
         <tag>数学</tag>
         <tag>数论</tag>
         <tag>素数</tag>
@@ -912,8 +928,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
+        <tag>算法</tag>
         <tag>数学</tag>
         <tag>数论</tag>
         <tag>线性筛</tag>
@@ -928,10 +944,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>数据结构</tag>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
+        <tag>数据结构</tag>
+        <tag>树</tag>
+        <tag>算法</tag>
         <tag>平衡树</tag>
         <tag>Treap</tag>
       </tags>
@@ -972,10 +988,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Algorithm</tag>
-        <tag>模板</tag>
+        <tag>算法</tag>
         <tag>凸包</tag>
+        <tag>模板</tag>
       </tags>
   </entry>
   <entry>
@@ -986,9 +1002,9 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>题解</tag>
         <tag>数学</tag>
         <tag>数论</tag>
-        <tag>题解</tag>
         <tag>函数</tag>
       </tags>
   </entry>
@@ -1000,9 +1016,9 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>题解</tag>
         <tag>数学</tag>
         <tag>优化</tag>
-        <tag>题解</tag>
         <tag>Problem</tag>
         <tag>高性能</tag>
         <tag>测试题</tag>
@@ -1016,8 +1032,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
         <tag>题解</tag>
+        <tag>树</tag>
         <tag>Problem</tag>
         <tag>动态规划</tag>
         <tag>DP</tag>
@@ -1058,9 +1074,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>数据结构</tag>
         <tag>Algorithm</tag>
+        <tag>数据结构</tag>
+        <tag>树</tag>
         <tag>模板</tag>
         <tag>优化</tag>
         <tag>树状数组</tag>
@@ -1074,9 +1090,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>数据结构</tag>
         <tag>Algorithm</tag>
+        <tag>数据结构</tag>
+        <tag>树</tag>
         <tag>模板</tag>
         <tag>优化</tag>
         <tag>树状数组</tag>
@@ -1090,9 +1106,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>数据结构</tag>
         <tag>Algorithm</tag>
+        <tag>数据结构</tag>
+        <tag>树</tag>
         <tag>线段树</tag>
       </tags>
   </entry>
@@ -1127,9 +1143,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>高精度</tag>
         <tag>Algorithm</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -1140,8 +1156,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>数论</tag>
         <tag>题解</tag>
+        <tag>数论</tag>
         <tag>欧拉函数</tag>
         <tag>gcd</tag>
       </tags>
