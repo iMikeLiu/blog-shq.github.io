@@ -66,12 +66,12 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>计算几何</tag>
         <tag>数学</tag>
+        <tag>向量</tag>
         <tag>凸包</tag>
         <tag>平面几何</tag>
         <tag>半平面交</tag>
-        <tag>向量</tag>
-        <tag>计算几何</tag>
       </tags>
   </entry>
   <entry>
@@ -84,8 +84,8 @@
       <tags>
         <tag>教程</tag>
         <tag>网络流</tag>
-        <tag>最大流</tag>
         <tag>玄学</tag>
+        <tag>最大流</tag>
         <tag>最小割</tag>
         <tag>最小割最大流定理</tag>
         <tag>Dinic</tag>
@@ -119,9 +119,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>题解</tag>
         <tag>数据结构</tag>
         <tag>毒瘤</tag>
+        <tag>题解</tag>
         <tag>平衡树</tag>
         <tag>Treap</tag>
         <tag>luogu</tag>
@@ -141,8 +141,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>题解</tag>
         <tag>数据结构</tag>
+        <tag>题解</tag>
         <tag>树套树</tag>
         <tag>平衡树</tag>
         <tag>线段树</tag>
@@ -353,12 +353,12 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>题解</tag>
         <tag>数据结构</tag>
         <tag>毒瘤</tag>
+        <tag>题解</tag>
         <tag>区间</tag>
-        <tag>分块</tag>
         <tag>块状链表</tag>
+        <tag>分块</tag>
         <tag>bzoj</tag>
       </tags>
   </entry>
@@ -373,8 +373,8 @@
         <tag>数学</tag>
         <tag>Luogu</tag>
         <tag>分块</tag>
-        <tag>暴力</tag>
         <tag>方差</tag>
+        <tag>暴力</tag>
       </tags>
   </entry>
   <entry>
@@ -402,8 +402,8 @@
       <tags>
         <tag>数据结构</tag>
         <tag>树</tag>
-        <tag>模版</tag>
         <tag>线段树</tag>
+        <tag>模版</tag>
         <tag>主席树</tag>
         <tag>可持久化</tag>
       </tags>
@@ -464,11 +464,11 @@
       </categories>
       <tags>
         <tag>模拟赛</tag>
-        <tag>题解</tag>
-        <tag>LYOI</tag>
         <tag>数据结构</tag>
         <tag>数学</tag>
         <tag>数论</tag>
+        <tag>题解</tag>
+        <tag>LYOI</tag>
         <tag>线段树</tag>
         <tag>临沂一中</tag>
       </tags>
@@ -649,9 +649,9 @@
         <tag>Algorithm</tag>
         <tag>数据结构</tag>
         <tag>树</tag>
-        <tag>模版</tag>
         <tag>树套树</tag>
         <tag>线段树</tag>
+        <tag>模版</tag>
         <tag>Treap</tag>
         <tag>数堆</tag>
       </tags>
@@ -806,8 +806,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>随笔</tag>
         <tag>NOIP</tag>
+        <tag>随笔</tag>
         <tag>RP</tag>
         <tag>NOI</tag>
       </tags>
@@ -850,10 +850,10 @@
       </categories>
       <tags>
         <tag>数学</tag>
+        <tag>数论</tag>
         <tag>几何</tag>
         <tag>模板</tag>
         <tag>凸包</tag>
-        <tag>数论</tag>
       </tags>
   </entry>
   <entry>
@@ -864,10 +864,10 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>计算几何</tag>
         <tag>数学</tag>
         <tag>数论</tag>
         <tag>向量</tag>
-        <tag>计算几何</tag>
         <tag>极角</tag>
         <tag>叉积</tag>
       </tags>
@@ -1017,9 +1017,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>题解</tag>
         <tag>数学</tag>
         <tag>数论</tag>
+        <tag>题解</tag>
         <tag>函数</tag>
       </tags>
   </entry>
@@ -1031,9 +1031,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>题解</tag>
         <tag>数学</tag>
         <tag>优化</tag>
+        <tag>题解</tag>
         <tag>Problem</tag>
         <tag>高性能</tag>
         <tag>测试题</tag>
@@ -1047,8 +1047,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>题解</tag>
         <tag>树</tag>
+        <tag>题解</tag>
         <tag>Problem</tag>
         <tag>动态规划</tag>
         <tag>DP</tag>
@@ -1171,8 +1171,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>题解</tag>
         <tag>数论</tag>
+        <tag>题解</tag>
         <tag>欧拉函数</tag>
         <tag>gcd</tag>
       </tags>

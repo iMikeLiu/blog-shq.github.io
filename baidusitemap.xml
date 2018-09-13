@@ -127,9 +127,9 @@
          
         <tag>网络流</tag>
          
-        <tag>最大流</tag>
-         
         <tag>玄学</tag>
+         
+        <tag>最大流</tag>
          
         <tag>最小割</tag>
          
@@ -167,17 +167,17 @@
         <title>「计算几何」计算几何从入门到入土</title>
         <pubTime>2018-08-02T00:01:47.000Z</pubTime>
         
+        <tag>计算几何</tag>
+         
         <tag>数学</tag>
+         
+        <tag>向量</tag>
          
         <tag>凸包</tag>
          
         <tag>平面几何</tag>
          
         <tag>半平面交</tag>
-         
-        <tag>向量</tag>
-         
-        <tag>计算几何</tag>
          
          
            
@@ -376,9 +376,9 @@
          
         <tag>分块</tag>
          
-        <tag>暴力</tag>
-         
         <tag>方差</tag>
+         
+        <tag>暴力</tag>
          
          
            
@@ -402,9 +402,9 @@
          
         <tag>树</tag>
          
-        <tag>模版</tag>
-         
         <tag>线段树</tag>
+         
+        <tag>模版</tag>
          
         <tag>主席树</tag>
          
@@ -522,11 +522,11 @@
         <title>「ZJOI 2006」书架 - fhq Treap模版题目</title>
         <pubTime>2018-07-19T10:52:36.000Z</pubTime>
         
-        <tag>题解</tag>
-         
         <tag>数据结构</tag>
          
         <tag>毒瘤</tag>
+         
+        <tag>题解</tag>
          
         <tag>平衡树</tag>
          
@@ -750,11 +750,11 @@
         <title>「题解」多段线(polyline)</title>
         <pubTime>2018-02-22T07:39:05.000Z</pubTime>
         
-        <tag>题解</tag>
-         
         <tag>数学</tag>
          
         <tag>数论</tag>
+         
+        <tag>题解</tag>
          
         <tag>函数</tag>
          
@@ -776,11 +776,11 @@
         <title>「题解」众数(mode)</title>
         <pubTime>2018-02-22T05:42:53.000Z</pubTime>
         
-        <tag>题解</tag>
-         
         <tag>数学</tag>
          
         <tag>优化</tag>
+         
+        <tag>题解</tag>
          
         <tag>Problem</tag>
          
@@ -898,11 +898,11 @@
          
         <tag>树</tag>
          
-        <tag>模版</tag>
-         
         <tag>树套树</tag>
          
         <tag>线段树</tag>
+         
+        <tag>模版</tag>
          
         <tag>Treap</tag>
          
@@ -1008,9 +1008,9 @@
         <title>「玄学」RP导论</title>
         <pubTime>2018-03-29T12:38:24.000Z</pubTime>
         
-        <tag>随笔</tag>
-         
         <tag>NOIP</tag>
+         
+        <tag>随笔</tag>
          
         <tag>RP</tag>
          
@@ -1204,9 +1204,9 @@
         <title>[P2018]消息传递</title>
         <pubTime>2018-02-11T13:24:35.000Z</pubTime>
         
-        <tag>题解</tag>
-         
         <tag>树</tag>
+         
+        <tag>题解</tag>
          
         <tag>Problem</tag>
          
@@ -1312,9 +1312,9 @@
         <title>[NOI2010]能量采集</title>
         <pubTime>2018-01-21T13:05:56.000Z</pubTime>
         
-        <tag>题解</tag>
-         
         <tag>数论</tag>
+         
+        <tag>题解</tag>
          
         <tag>欧拉函数</tag>
          
@@ -1566,9 +1566,9 @@
         <title>「Luogu P4278」带插入区间K小值 - 替罪羊树 + 线段树</title>
         <pubTime>2018-07-15T14:04:49.000Z</pubTime>
         
-        <tag>题解</tag>
-         
         <tag>数据结构</tag>
+         
+        <tag>题解</tag>
          
         <tag>树套树</tag>
          
@@ -2090,13 +2090,13 @@
         
         <tag>数学</tag>
          
+        <tag>数论</tag>
+         
         <tag>几何</tag>
          
         <tag>模板</tag>
          
         <tag>凸包</tag>
-         
-        <tag>数论</tag>
          
          
            
@@ -2116,13 +2116,13 @@
         <title>「笔记」计算几何笔记</title>
         <pubTime>2018-03-24T12:44:59.000Z</pubTime>
         
+        <tag>计算几何</tag>
+         
         <tag>数学</tag>
          
         <tag>数论</tag>
          
         <tag>向量</tag>
-         
-        <tag>计算几何</tag>
          
         <tag>极角</tag>
          
@@ -2196,17 +2196,17 @@
         <title>「BZOJ3337」ORZJRY I - 块状链表</title>
         <pubTime>2018-06-17T04:40:45.000Z</pubTime>
         
-        <tag>题解</tag>
-         
         <tag>数据结构</tag>
          
         <tag>毒瘤</tag>
          
+        <tag>题解</tag>
+         
         <tag>区间</tag>
          
-        <tag>分块</tag>
-         
         <tag>块状链表</tag>
+         
+        <tag>分块</tag>
          
         <tag>bzoj</tag>
          
@@ -2394,15 +2394,15 @@
         
         <tag>模拟赛</tag>
          
-        <tag>题解</tag>
-         
-        <tag>LYOI</tag>
-         
         <tag>数据结构</tag>
          
         <tag>数学</tag>
          
         <tag>数论</tag>
+         
+        <tag>题解</tag>
+         
+        <tag>LYOI</tag>
          
         <tag>线段树</tag>
          
