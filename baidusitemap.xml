@@ -4,6 +4,36 @@
 
     
   <url>
+    <loc>https://blog.ishq.site/articles/NOIP-Easy-Round-solution/</loc>
+    <lastmod>2018-09-16T02:56:12.092Z</lastmod>
+    <data>
+        <display>
+        <title>「LYOI 2018」NOIP Easy Round solution</title>
+        <pubTime>2018-09-16T02:40:34.000Z</pubTime>
+        
+        <tag>题解</tag>
+         
+        <tag>LYOI</tag>
+         
+        <tag>NOIP</tag>
+         
+        <tag>数学</tag>
+         
+        <tag>数论</tag>
+         
+        <tag>最小表示法</tag>
+         
+         
+           
+             
+              <breadCrumb title="OI" url="https://blog.ishq.site/categories/OI/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.ishq.site/articles/CQOI2018-%E4%B9%9D%E8%BF%9E%E7%8E%AF/</loc>
     <lastmod>2018-09-15T03:59:25.500Z</lastmod>
     <data>
@@ -64,8 +94,6 @@
         <title>「2018 五校联考 Round1」题目讲解</title>
         <pubTime>2018-08-26T14:24:38.000Z</pubTime>
         
-        <tag>模拟赛</tag>
-         
         <tag>题解</tag>
          
         <tag>2018</tag>
@@ -73,6 +101,8 @@
         <tag>五校联考</tag>
          
         <tag>LYOI</tag>
+         
+        <tag>模拟赛</tag>
          
         <tag>NOIP</tag>
          
@@ -197,9 +227,9 @@
          
         <tag>向量</tag>
          
-        <tag>平面几何</tag>
-         
         <tag>凸包</tag>
+         
+        <tag>平面几何</tag>
          
         <tag>半平面交</tag>
          
@@ -290,11 +320,11 @@
          
         <tag>函数</tag>
          
-        <tag>NTT</tag>
-         
         <tag>生成函数</tag>
          
         <tag>快速傅里叶变换</tag>
+         
+        <tag>NTT</tag>
          
          
            
@@ -338,13 +368,13 @@
          
         <tag>玄学</tag>
          
+        <tag>NTT</tag>
+         
         <tag>复数</tag>
          
         <tag>复平面</tag>
          
         <tag>虚数</tag>
-         
-        <tag>NTT</tag>
          
          
            
@@ -396,11 +426,11 @@
         
         <tag>数学</tag>
          
-        <tag>Luogu</tag>
-         
         <tag>分块</tag>
          
         <tag>暴力</tag>
+         
+        <tag>Luogu</tag>
          
         <tag>方差</tag>
          
@@ -662,9 +692,9 @@
          
         <tag>算法</tag>
          
-        <tag>凸包</tag>
-         
         <tag>模板</tag>
+         
+        <tag>凸包</tag>
          
          
            
@@ -1032,9 +1062,9 @@
         <title>「玄学」RP导论</title>
         <pubTime>2018-03-29T12:38:24.000Z</pubTime>
         
-        <tag>随笔</tag>
-         
         <tag>NOIP</tag>
+         
+        <tag>随笔</tag>
          
         <tag>RP</tag>
          
@@ -1084,9 +1114,9 @@
         <title>[Shq]等差数列?</title>
         <pubTime>2018-03-17T01:16:12.000Z</pubTime>
         
-        <tag>题目</tag>
-         
         <tag>problem</tag>
+         
+        <tag>题目</tag>
          
          
            
@@ -1284,11 +1314,11 @@
          
         <tag>Treap</tag>
          
+        <tag>模版题</tag>
+         
         <tag>Luogu</tag>
          
         <tag>NOI导刊</tag>
-         
-        <tag>模版题</tag>
          
          
            
@@ -1684,9 +1714,9 @@
          
         <tag>乱搞</tag>
          
-        <tag>文学</tag>
-         
         <tag>Lgy</tag>
+         
+        <tag>文学</tag>
          
          
            
@@ -2116,11 +2146,11 @@
          
         <tag>数论</tag>
          
-        <tag>凸包</tag>
-         
         <tag>几何</tag>
          
         <tag>模板</tag>
+         
+        <tag>凸包</tag>
          
          
            
@@ -2416,11 +2446,11 @@
         <title>「LYOI2016 Summer」一次函数 - 线段树 + 数论</title>
         <pubTime>2018-06-09T02:50:04.000Z</pubTime>
         
-        <tag>模拟赛</tag>
-         
         <tag>题解</tag>
          
         <tag>LYOI</tag>
+         
+        <tag>模拟赛</tag>
          
         <tag>数据结构</tag>
          
@@ -2492,11 +2522,11 @@
          
         <tag>Treap</tag>
          
-        <tag>模版题</tag>
-         
         <tag>fhq treap</tag>
          
         <tag>非旋Treap</tag>
+         
+        <tag>模版题</tag>
          
          
            

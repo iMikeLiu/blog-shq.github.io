@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「LYOI 2018」NOIP Easy Round solution]]></title>
+    <url>%2Farticles%2FNOIP-Easy-Round-solution%2F</url>
+    <content type="text"><![CDATA[思维难度: noiplus 提高组 T3代码实现难度: noip pj-你可以把 yh 的矿场抽象成⼀条数轴。 yh 家有 nnn 种矿，第 iii 种矿可以从 [li,ri][l_i,r_i][l​i​​,r​i​​] 中的任意位置开采得到这个暑假， 地理⽼师给了 wyh ⼀个列表： yh 的暑假作业就是收集⻬这些矿⽯（ mdzz 地理中考都考完了）。但是膜法师 shq 为了不让 yh 完成作业，就将好多个地⽅放置了⻘蛙。为了保证 yh 的⽣命安全， yh 通过阅读书籍选定了 mmm 个相对安全的采矿点，第 iii 个采矿点的坐标为 aia_ia​i​​ 。 yh 只能选择其中⼀个采矿点开采他需要的矿⽯yh是⼀个⻢⻁的男孩⼦。暑假刚开始没多久， yh 就把⽼师的列表弄丢了。唯⼀的线索是，列表上的所有矿⽯都是 yh 家有的：⼀共有 2n−12^{n-1}2​n−1​​ 种可能的列表yh 现在想要知道，在所有的可能的任务列表中，有多少种是他能够在某⼀个安全的采矿点完全收集⻬的题解我们先来看看样例（采矿点 - 1 可以采到 矿石 - 3 和 矿石 - 2，采矿点 - 2 可以采到 矿石 - 3 和 矿石 - 1所以可能的序列有(注意：一个点也需要统计){1} , {2} , {3} , {1, 2} , {2, 3}，共五种（20 pts 做法n,m≤20n, m \le 20n,m≤20我会枚举全排列！ 每次 O(m)O(m)O(m) 暴力判断即可（时间复杂度: O(2nm)O(2^nm)O(2​n​​m)60 pts 做法O(n×m)O (n \times m)O(n×m)我会容斥！100 pts 做法..这个是区间题目吧= = 好像大部分区间题目都要排序（安装左端点排序.....但是我们的采矿点怎么办呢？我好像学过一个叫做最小表示法的算法....将每一段区间的左右端点和采矿点排序对于左右端点分别标记 111, 222，采矿点标记 333我们接下来扫一遍就可以了问题来了，怎么统计答案呢= =我们定义 sss 为当前可以采到的矿的数量，tottottot 为已经统计过的区间那么，每次扫到新的采矿点的时候 我们让 ans+=2s−2totans += 2^s - 2^{\text{tot}}ans+=2​s​​−2​tot​​这个结论是比较显然的，用小学数学组合数推导一下就有了（Code1234567891011for each v in Point set: if v is 1: s++ pos[v-&gt;pos] = last if v is 2: s-- if pos[v-&gt;pos] not last then tot-- if v is 3: ans += pow(2, s) - pow(2, tot) tot = s last = i]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>LYOI</tag>
+        <tag>NOIP</tag>
+        <tag>数学</tag>
+        <tag>数论</tag>
+        <tag>最小表示法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「CQOI2018」九连环]]></title>
     <url>%2Farticles%2FCQOI2018-%E4%B9%9D%E8%BF%9E%E7%8E%AF%2F</url>
     <content type="text"><![CDATA[题目链接 [CQOI2018]九连环题目背景九连环是一种源于中国的传统智力游戏。如图所示，九个的圆环套在一把“剑”上，并且互相牵连。游戏的目标是把九个圆环全部从“剑”上卸下题目描述圆环的装卸需要遵守两个规则:第一个(最右边) 环任何时候都可以任意装上或卸下如果第 kkk 个环没有被卸下，且第 kkk 个环右边的所有环都被卸下，则第 k+1k+1k+1 个环(第 kkk 个环左边相邻的环) 可以任意装上或卸下与魔方的千变万化不同，解九连环的最优策略是唯一的。为简单起见，我们以“四连环”为例，演示这一过程。这里用 111 表示环在“剑”上，000 表示环已经卸下。初始状态为 1111 ,每步的操作如下:1101 (根据规则2,卸下第 2 个环)1100 (根据规则1,卸下第 1 个环)0100 (根据规则2,卸下第 4 个环)0101 (根据规则1,装上第 1 个环)0111 (根据规则2,装上第 2 个环)0110 (根据规则1,卸下第 1 个环)0010 (根据规则2,卸下第 3 个环)0011 (根据规则1,装上第 1 个环)0001 (根据规则2,卸下第 2 个环)0000 (根据规则1,卸下第 1 个环)由此可见，卸下“四连环”至少需要 101010 步。随着环数增加，需要的步数也会随之增多。例如卸下九连环，就至少需要 341341341 步。请你计算，有 nnn 个环的情况下，按照规则， 全部卸下至少需要多少步。输入输出格式输入格式输入文件第一行，为一个整数 mmm，表示测试点数目。接下来 mmm 行，每行一个整数 nnn输出格式输出文件共m行，对应每个测试点的计算结果输入输出样例输入样例12343359输出样例123521341说明对于 10%10\%10% 的数据，1≤n≤101\le n\le 101≤n≤10对于 30%30\%30% 的数据，1≤n≤301\le n\le 301≤n≤30对于 100%100\%100% 的数据，1≤n≤105,1≤m≤101\le n\le 10^5,1\le m\le 101≤n≤10​5​​,1≤m≤10题解水题水题用爆搜简单的打一个表n123456712510214285会发现一个简单的式子我们用 f[i] 表示 iii 连环最少需要的步数1234567f[1] = 1for i = 2 to n if i &amp; 1 then do f[i] = 2 * f[i - 1] else do f[i] = 2 * f[i - 1] + 1 end if我们打一下这个的二进制:n1234567125102142851101011010101011010101010101这样珂海星但是我们看到了二进制表示也对题目没什么帮助（我们将两个相邻的变量相加n1+22 + 33 + 44 + 55 + 66 + 77 + 811111111111111111111111111111111111所以说fn+fn+1=2n+1fn+2fn+(!n&amp;1)=2n+1fn=⌊2n+13⌋\begin{aligned}f_n+f_{n+1}&amp;=2^{n+1}\\f_n+2f_n+(!n\&amp;1)&amp;=2^{n+1}\\f_n&amp;=\lfloor\frac{2^{n+1}}{3} \rfloor\end{aligned}​f​n​​+f​n+1​​​f​n​​+2f​n​​+(!n&amp;1)​f​n​​​​​=2​n+1​​​=2​n+1​​​=⌊​3​​2​n+1​​​​⌋​​接下来我们用快速幂就可以了= =等等..取模呢QAQ不取模会崩掉吧高精会T死（我们还是老老实实打个FFT吧（，不会的同学可以看看 「数学」FFT / DFT / IDFT学习笔记代码:123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146// Code From: https://www.cnblogs.com/RabbitHu/p/BZOJ5300.html#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;cmath&gt;#include &lt;algorithm&gt;#include &lt;iostream&gt;#define enter putchar('\n')#define space putchar(' ')using namespace std;typedef long long ll;template &lt;class T&gt;void read(T &amp;x)&#123; char c; bool op = 0; while(c = getchar(), c &lt; '0' || c &gt; '9') if(c == '-') op = 1; x = c - '0'; while(c = getchar(), c &gt;= '0' &amp;&amp; c &lt;= '9') x = x * 10 + c - '0'; if(op == 1) x = -x;&#125;template &lt;class T&gt;void write(T x)&#123; if(x &lt; 0) putchar('-'), x = -x; if(x &gt;= 10) write(x / 10); putchar('0' + x % 10);&#125;const int N = 150000;const double PI = acos(-1);int T, x;struct cp &#123; double a, b; cp()&#123;&#125; cp(double x, double y): a(x), b(y)&#123;&#125; cp operator + (const cp &amp;obj) const &#123; return cp(a + obj.a, b + obj.b); &#125; cp operator - (const cp &amp;obj) const &#123; return cp(a - obj.a, b - obj.b); &#125; cp operator * (const cp &amp;obj) const &#123; return cp(a * obj.a - b * obj.b, a * obj.b + b * obj.a); &#125;&#125; inv[N], omg[N];void init(int n)&#123; for(int i = 0; i &lt; n; i++)&#123; omg[i] = cp(cos(2 * PI / n * i), sin(2 * PI / n * i)); inv[i] = cp(omg[i].a, -omg[i].b); &#125;&#125;void fft(cp *a, int n, cp *omg)&#123; int lim = 0; while((1 &lt;&lt; lim) &lt; n) lim++; for(int i = 0; i &lt; n; i++)&#123; int t = 0; for(int j = 0; j &lt; lim; j++) if(i &gt;&gt; j &amp; 1) t |= 1 &lt;&lt; (lim - j - 1); if(i &lt; t) swap(a[i], a[t]); &#125; for(int l = 2; l &lt;= n; l &lt;&lt;= 1)&#123; int m = l / 2; for(cp *p = a; p != a + n; p += l) for(int i = 0; i &lt; m; i++)&#123; cp t = omg[n / l * i] * p[i + m]; p[i + m] = p[i] - t; p[i] = p[i] + t; &#125; &#125;&#125;struct big &#123; int g[N], len; big()&#123; memset(g, 0, sizeof(g)); len = 1; &#125; big(int x)&#123; memset(g, 0, sizeof(g)); len = 0; if(!x)&#123; len = 1; return; &#125; while(x) g[len++] = x % 10, x /= 10; &#125; void out()&#123; for(int i = len - 1; i &gt;= 0; i--) printf("%d", g[i]); enter; &#125; void operator /= (int x)&#123; int sum = 0, newlen = 0; for(int i = len - 1; i &gt;= 0; i--)&#123; sum = sum * 10 + g[i]; if(sum &lt; x) g[i] = 0; else&#123; if(!newlen) newlen = i + 1; g[i] = sum / x; sum %= x; &#125; &#125; len = max(newlen, 1); &#125; void operator *= (const big &amp;b)&#123; static cp A[N], B[N]; int newlen = len + b.len - 1, n = 1; while(n &lt; newlen) n &lt;&lt;= 1; for(int i = 0; i &lt; n; i++)&#123; A[i] = cp(i &lt; len ? g[i] : 0, 0); B[i] = cp(i &lt; b.len ? b.g[i] : 0, 0); &#125; init(n); fft(A, n, omg); fft(B, n, omg); for(int i = 0; i &lt; n; i++) A[i] = A[i] * B[i]; fft(A, n, inv); for(int i = 0; i &lt; newlen; i++) g[i] = (int)floor(A[i].a / n + 0.5); g[len = newlen] = 0; for(int i = 0; i &lt; len; i++) g[i + 1] += g[i] / 10, g[i] %= 10; if(g[len]) len++; &#125;&#125; ret, a;int main()&#123; read(T); while(T--)&#123; read(x), x++; ret = big(1), a = big(2); while(x)&#123; if(x &amp; 1) ret *= a; a *= a; x &gt;&gt;= 1; &#125; ret /= 3; ret.out(); &#125; return 0;&#125;然后就完了吗？没有窝之前好像在 「数学」FFT / DFT / IDFT学习笔记 的开头放了一段AC Code每次，既然是高精，有是简单的式子为什么还要写FFT呢？Python大法好！AC Code:1for i in range(int(input())) : print(pow(2, int(input()) + 1) // 3)]]></content>
@@ -36,11 +52,11 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>模拟赛</tag>
         <tag>题解</tag>
         <tag>2018</tag>
         <tag>五校联考</tag>
         <tag>LYOI</tag>
+        <tag>模拟赛</tag>
         <tag>NOIP</tag>
       </tags>
   </entry>
@@ -82,8 +98,8 @@
         <tag>计算几何</tag>
         <tag>数学</tag>
         <tag>向量</tag>
-        <tag>平面几何</tag>
         <tag>凸包</tag>
+        <tag>平面几何</tag>
         <tag>半平面交</tag>
       </tags>
   </entry>
@@ -193,10 +209,10 @@
         <tag>数学</tag>
         <tag>FFT</tag>
         <tag>玄学</tag>
+        <tag>NTT</tag>
         <tag>复数</tag>
         <tag>复平面</tag>
         <tag>虚数</tag>
-        <tag>NTT</tag>
       </tags>
   </entry>
   <entry>
@@ -319,9 +335,9 @@
         <tag>毒瘤</tag>
         <tag>乱搞</tag>
         <tag>函数</tag>
-        <tag>NTT</tag>
         <tag>生成函数</tag>
         <tag>快速傅里叶变换</tag>
+        <tag>NTT</tag>
       </tags>
   </entry>
   <entry>
@@ -384,9 +400,9 @@
       </categories>
       <tags>
         <tag>数学</tag>
-        <tag>Luogu</tag>
         <tag>分块</tag>
         <tag>暴力</tag>
+        <tag>Luogu</tag>
         <tag>方差</tag>
       </tags>
   </entry>
@@ -447,9 +463,9 @@
       <tags>
         <tag>平衡树</tag>
         <tag>Treap</tag>
-        <tag>模版题</tag>
         <tag>fhq treap</tag>
         <tag>非旋Treap</tag>
+        <tag>模版题</tag>
       </tags>
   </entry>
   <entry>
@@ -463,9 +479,9 @@
         <tag>数据结构</tag>
         <tag>平衡树</tag>
         <tag>Treap</tag>
+        <tag>模版题</tag>
         <tag>Luogu</tag>
         <tag>NOI导刊</tag>
-        <tag>模版题</tag>
       </tags>
   </entry>
   <entry>
@@ -476,9 +492,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>模拟赛</tag>
         <tag>题解</tag>
         <tag>LYOI</tag>
+        <tag>模拟赛</tag>
         <tag>数据结构</tag>
         <tag>数学</tag>
         <tag>数论</tag>
@@ -732,8 +748,8 @@
       <tags>
         <tag>随笔</tag>
         <tag>乱搞</tag>
-        <tag>文学</tag>
         <tag>Lgy</tag>
+        <tag>文学</tag>
       </tags>
   </entry>
   <entry>
@@ -819,8 +835,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>随笔</tag>
         <tag>NOIP</tag>
+        <tag>随笔</tag>
         <tag>RP</tag>
         <tag>NOI</tag>
       </tags>
@@ -864,9 +880,9 @@
       <tags>
         <tag>数学</tag>
         <tag>数论</tag>
-        <tag>凸包</tag>
         <tag>几何</tag>
         <tag>模板</tag>
+        <tag>凸包</tag>
       </tags>
   </entry>
   <entry>
@@ -929,8 +945,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>题目</tag>
         <tag>problem</tag>
+        <tag>题目</tag>
       </tags>
   </entry>
   <entry>
@@ -1018,8 +1034,8 @@
       <tags>
         <tag>Algorithm</tag>
         <tag>算法</tag>
-        <tag>凸包</tag>
         <tag>模板</tag>
+        <tag>凸包</tag>
       </tags>
   </entry>
   <entry>
