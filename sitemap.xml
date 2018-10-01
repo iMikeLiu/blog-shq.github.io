@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.ishq.site/articles/NOIP-Easy-Round-solution/</loc>
+    <loc>https://blog.ishq.site/articles/CodeForces1051/</loc>
     
-    <lastmod>2018-09-16T02:56:12.092Z</lastmod>
+    <lastmod>2018-10-01T01:34:45.023Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.ishq.site/frlink/index.html</loc>
+    
+    <lastmod>2018-10-01T01:26:16.676Z</lastmod>
     
   </url>
   
@@ -12,13 +19,6 @@
     <loc>https://blog.ishq.site/articles/CQOI2018-%E4%B9%9D%E8%BF%9E%E7%8E%AF/</loc>
     
     <lastmod>2018-09-15T03:59:25.500Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.ishq.site/frlink/index.html</loc>
-    
-    <lastmod>2018-09-15T02:04:01.408Z</lastmod>
     
   </url>
   
