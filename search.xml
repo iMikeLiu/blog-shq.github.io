@@ -94,12 +94,12 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>计算几何</tag>
         <tag>数学</tag>
+        <tag>向量</tag>
         <tag>凸包</tag>
         <tag>平面几何</tag>
         <tag>半平面交</tag>
-        <tag>向量</tag>
-        <tag>计算几何</tag>
       </tags>
   </entry>
   <entry>
@@ -878,10 +878,10 @@
       </categories>
       <tags>
         <tag>数学</tag>
+        <tag>数论</tag>
         <tag>几何</tag>
         <tag>模板</tag>
         <tag>凸包</tag>
-        <tag>数论</tag>
       </tags>
   </entry>
   <entry>
@@ -892,10 +892,10 @@
         <category>OI</category>
       </categories>
       <tags>
+        <tag>计算几何</tag>
         <tag>数学</tag>
         <tag>数论</tag>
         <tag>向量</tag>
-        <tag>计算几何</tag>
         <tag>极角</tag>
         <tag>叉积</tag>
       </tags>
