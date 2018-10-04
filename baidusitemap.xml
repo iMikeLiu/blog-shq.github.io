@@ -4,6 +4,35 @@
 
     
   <url>
+    <loc>https://blog.ishq.site/articles/Twelvefold-way/</loc>
+    <lastmod>2018-10-04T00:28:12.104Z</lastmod>
+    <data>
+        <display>
+        <title>「数论」幼儿园组合问题</title>
+        <pubTime>2018-10-02T12:59:07.000Z</pubTime>
+        
+        <tag>数论</tag>
+         
+        <tag>容斥</tag>
+         
+        <tag>详解</tag>
+         
+        <tag>小学数学</tag>
+         
+        <tag>组合数</tag>
+         
+         
+           
+             
+              <breadCrumb title="OI" url="https://blog.ishq.site/categories/OI/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>https://blog.ishq.site/articles/CodeForces1051/</loc>
     <lastmod>2018-10-01T01:34:45.023Z</lastmod>
     <data>
@@ -30,7 +59,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>https://blog.ishq.site/articles/CQOI2018-%E4%B9%9D%E8%BF%9E%E7%8E%AF/</loc>
@@ -219,17 +247,17 @@
         <title>「计算几何」计算几何从入门到入土</title>
         <pubTime>2018-08-02T00:01:47.000Z</pubTime>
         
-        <tag>计算几何</tag>
-         
         <tag>数学</tag>
-         
-        <tag>向量</tag>
          
         <tag>凸包</tag>
          
         <tag>平面几何</tag>
          
         <tag>半平面交</tag>
+         
+        <tag>向量</tag>
+         
+        <tag>计算几何</tag>
          
          
            
@@ -454,9 +482,9 @@
          
         <tag>树</tag>
          
-        <tag>模版</tag>
-         
         <tag>线段树</tag>
+         
+        <tag>模版</tag>
          
         <tag>主席树</tag>
          
@@ -574,9 +602,9 @@
         <title>「ZJOI 2006」书架 - fhq Treap模版题目</title>
         <pubTime>2018-07-19T10:52:36.000Z</pubTime>
         
-        <tag>题解</tag>
-         
         <tag>数据结构</tag>
+         
+        <tag>题解</tag>
          
         <tag>毒瘤</tag>
          
@@ -950,11 +978,11 @@
          
         <tag>树</tag>
          
-        <tag>模版</tag>
-         
         <tag>树套树</tag>
          
         <tag>线段树</tag>
+         
+        <tag>模版</tag>
          
         <tag>Treap</tag>
          
@@ -1618,9 +1646,9 @@
         <title>「Luogu P4278」带插入区间K小值 - 替罪羊树 + 线段树</title>
         <pubTime>2018-07-15T14:04:49.000Z</pubTime>
         
-        <tag>题解</tag>
-         
         <tag>数据结构</tag>
+         
+        <tag>题解</tag>
          
         <tag>树套树</tag>
          
@@ -1760,9 +1788,9 @@
          
         <tag>字符串</tag>
          
-        <tag>AC自动机</tag>
-         
         <tag>自动机</tag>
+         
+        <tag>AC自动机</tag>
          
         <tag>Trie</tag>
          
@@ -1790,9 +1818,9 @@
          
         <tag>字符串</tag>
          
-        <tag>KMP</tag>
-         
         <tag>AC自动机</tag>
+         
+        <tag>KMP</tag>
          
         <tag>前缀和</tag>
          
@@ -2142,13 +2170,13 @@
         
         <tag>数学</tag>
          
-        <tag>数论</tag>
-         
         <tag>几何</tag>
          
         <tag>模板</tag>
          
         <tag>凸包</tag>
+         
+        <tag>数论</tag>
          
          
            
@@ -2168,13 +2196,13 @@
         <title>「笔记」计算几何笔记</title>
         <pubTime>2018-03-24T12:44:59.000Z</pubTime>
         
-        <tag>计算几何</tag>
-         
         <tag>数学</tag>
          
         <tag>数论</tag>
          
         <tag>向量</tag>
+         
+        <tag>计算几何</tag>
          
         <tag>极角</tag>
          
@@ -2248,9 +2276,9 @@
         <title>「BZOJ3337」ORZJRY I - 块状链表</title>
         <pubTime>2018-06-17T04:40:45.000Z</pubTime>
         
-        <tag>题解</tag>
-         
         <tag>数据结构</tag>
+         
+        <tag>题解</tag>
          
         <tag>毒瘤</tag>
          
@@ -2368,11 +2396,11 @@
         
         <tag>图论</tag>
          
-        <tag>并查集</tag>
-         
         <tag>树剖</tag>
          
         <tag>树链剖分</tag>
+         
+        <tag>并查集</tag>
          
         <tag>邻接表</tag>
          
@@ -2446,11 +2474,11 @@
         
         <tag>模拟赛</tag>
          
+        <tag>数据结构</tag>
+         
         <tag>题解</tag>
          
         <tag>LYOI</tag>
-         
-        <tag>数据结构</tag>
          
         <tag>数学</tag>
          
